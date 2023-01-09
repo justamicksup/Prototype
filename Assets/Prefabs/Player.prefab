@@ -151,10 +151,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 2636245865579264848}
+  HP: 0
   playerSpeed: 10
   jumpVelocity: 12
   gravity: 25
   jumpMax: 2
+  coins: 0
+  actionRange: 0
   shootRate: 0.15
   shootDist: 15
   shootDamage: 1
@@ -204,7 +207,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f1f8d58e72574174c85d55a562cb4dbc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
