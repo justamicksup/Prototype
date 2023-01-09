@@ -13,6 +13,8 @@ public class playerController : MonoBehaviour
     [SerializeField] int jumpVelocity;
     [SerializeField] int gravity;
     [SerializeField] int jumpMax;
+    [SerializeField] int coins;
+    [Range(0.01f,5)] [SerializeField] float actionRange;
 
     [Header("----- Shooting -----")]
     [Range(0.1f, 2)] [SerializeField] float shootRate;
@@ -38,6 +40,28 @@ public class playerController : MonoBehaviour
         if(!isShooting && Input.GetButton("Shoot"))
         {
             StartCoroutine(shoot());
+        }
+        if (Input.GetButtonDown("Action"))
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, actionRange))
+            {
+                if (hit.collider.GetComponent<actionObject>() != null)
+                {
+                    hit.collider.GetComponent<actionObject>().primaryAction();
+                }
+            }
+        }
+        if (Input.GetButtonDown("Submit"))
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
+            {
+                if (hit.collider.GetComponent<actionObject>() != null)
+                {
+                    hit.collider.GetComponent<actionObject>().secondaryAction();
+                }
+            }
         }
     }
 
@@ -85,5 +109,12 @@ public class playerController : MonoBehaviour
     public void takeDamage(int damage)
     {
         HP -= damage;
+    }
+
+    public int GetCoins() { return coins; }
+
+    public void addCoins(int amount) 
+    {
+        coins += amount;
     }
 }
