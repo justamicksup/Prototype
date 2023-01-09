@@ -17,6 +17,7 @@ public class gameManager : MonoBehaviour
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<playerController>();
+        playerScript.addCoins(2000);
     }
 
 
@@ -34,5 +35,10 @@ public class gameManager : MonoBehaviour
         {
             Debug.Log("You Win!!");
         }
+    }
+
+    public void updatePlayerCoins(int amount)
+    {
+        playerScript.addCoins(amount);
     }
 }

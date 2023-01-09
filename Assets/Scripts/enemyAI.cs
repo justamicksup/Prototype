@@ -12,6 +12,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] Transform headPos;
     [Range(1, 15)] [SerializeField] int HP;
     [SerializeField] int rotationSpeed;
+    [Range(10,1000)] [SerializeField] int lootValue;
 
     [Header("----- Shooting -----")]
     [SerializeField] Transform shootPos;
@@ -61,6 +62,7 @@ public class enemyAI : MonoBehaviour, IDamage
         if (HP <= 0)
         { 
             gameManager.instance.updateEnemyRemaining(-1);
+            gameManager.instance.playerScript.addCoins(lootValue);
             Destroy(gameObject);
         }
     }
