@@ -30,6 +30,9 @@ public class gameManager : MonoBehaviour
         enemiesRemaining += amount;
 
         // check for game over (enemy <= 0)
-        if(enemiesRemaining<=0) { Debug.Log("You Win!!"); }
+        if (enemiesRemaining <= 0)
+        {
+            Debug.Log("You Win!!");
+        }
     }
 }
