@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Build.Content;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class gameManager : MonoBehaviour
     public GameObject player;
     public playerController playerScript;
     public int enemiesRemaining;
-
+    public int waveCount;
     void Awake()
     {
         instance = this;
@@ -40,5 +41,10 @@ public class gameManager : MonoBehaviour
     public void updatePlayerCoins(int amount)
     {
         playerScript.addCoins(amount);
+    }
+    
+    public void updateWave(int amount)
+    {
+        waveCount += amount;
     }
 }
