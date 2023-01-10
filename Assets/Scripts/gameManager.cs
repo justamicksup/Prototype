@@ -11,12 +11,14 @@ public class gameManager : MonoBehaviour
 
     public GameObject player;
     public playerController playerScript;
+    public GameObject HUD;
     public int enemiesRemaining;
     public int waveCount;
     void Awake()
     {
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
+        HUD = transform.parent.gameObject;
         playerScript = player.GetComponent<playerController>();
         playerScript.addCoins(2000);
     }
