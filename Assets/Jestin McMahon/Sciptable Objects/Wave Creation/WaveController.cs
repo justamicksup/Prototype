@@ -5,19 +5,18 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Wave", menuName = "Scriptable Objects/Wave/Create Wave")]
 public class WaveController : ScriptableObject
 {
-    public int enemiesInWave;
-    public Wave wave;
+    public WaveStruct[] waves;
 
     public List<GameObject> CreateWave()
     {
         int enemyCount = 0;
         List<GameObject> nextWave = new List<GameObject>();
 
-        int max = wave.EnemiesInWave.Count;
+        int max = waves[gameManager.instance.waveCount].wave.EnemiesInWave.Count;
 
-        while (enemyCount < enemiesInWave)
+        while (enemyCount < waves[gameManager.instance.waveCount].enemiesInWave)
         {
-            nextWave.Add(wave.EnemiesInWave[Random.Range(0, max)]);
+            nextWave.Add(waves[gameManager.instance.waveCount].wave.EnemiesInWave[Random.Range(0, max)]);
             enemyCount += 1;
         }
 
