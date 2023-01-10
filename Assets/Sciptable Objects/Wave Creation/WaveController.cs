@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Wave", menuName = "Scriptable Objects/Wave/Create Wave")]
+[CreateAssetMenu(fileName = "Wave Controller", menuName = "Scriptable Objects/Wave/Create Wave")]
 public class WaveController : ScriptableObject
 {
-    public WaveStruct[] waves;
+    [SerializeField] WaveStruct[] waves;
 
     public List<GameObject> CreateWave()
     {

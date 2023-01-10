@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52226dc96b447924da3ad2b2b630d401, type: 3}
-  m_Name: First Wave
+  m_Script: {fileID: 11500000, guid: 7d2b099cb3ec51c40812899e31c55ca2, type: 3}
+  m_Name: Enemies In Wave
   m_EditorClassIdentifier: 
-  enemiesInWave: 10
-  wave: {fileID: 11400000, guid: 58aea525604005646b468763ccdc4ea3, type: 2}
+  <EnemiesInWave>k__BackingField: []

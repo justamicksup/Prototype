@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnWave : MonoBehaviour
 {
-    public WaveController nextWave;
+    [SerializeField] WaveController nextWave;
     [SerializeField] private GameObject spawnPoint;
     [SerializeField] private float xPos;
     [SerializeField] private float zPos;
