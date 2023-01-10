@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Build.Content;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class gameManager : MonoBehaviour
 {
@@ -11,14 +12,14 @@ public class gameManager : MonoBehaviour
 
     public GameObject player;
     public playerController playerScript;
-    public GameObject HUD;
+    public HUD HUD;
     public int enemiesRemaining;
     public int waveCount;
     void Awake()
     {
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
-        HUD = transform.parent.gameObject;
+        HUD = transform.parent.gameObject.GetComponent<HUD>();
         playerScript = player.GetComponent<playerController>();
         playerScript.addCoins(2000);
     }
@@ -48,5 +49,15 @@ public class gameManager : MonoBehaviour
     public void updateWave(int amount)
     {
         waveCount += amount;
+    }
+
+    public void loadScene(int scene)
+    {
+        //Load scene by index
+        SceneManager.LoadScene(scene);
+    }
+    public void reloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

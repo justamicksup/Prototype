@@ -103,6 +103,11 @@ public class playerController : MonoBehaviour
             {
                 hit.collider.GetComponent<IDamage>().takeDamage(shootDamage);
             }
+            if(hit.rigidbody != null)
+            {
+                hit.rigidbody.AddForceAtPosition(transform.forward * 100, hit.point);
+            }
+            
         }
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
@@ -111,6 +116,11 @@ public class playerController : MonoBehaviour
     public void takeDamage(int damage)
     {
         HP -= damage;
+        if(HP <= 0)
+        {
+            Debug.Log("You lose");
+            gameManager.instance.reloadScene();
+        }
     }
 
     public int GetCoins() 
