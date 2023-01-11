@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 73013586851506444}
   - component: {fileID: 106907136899346012}
   - component: {fileID: 98780720773419150}
-  m_Layer: 8
+  - component: {fileID: 136353284764389530}
+  m_Layer: 0
   m_Name: Gate 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 130d7378e70dbc14a9dded2d547168ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &136353284764389530
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74558803860424630}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9796563, y: 2.2144132, z: 0.094311684}
+  m_Center: {x: 0.47379813, y: 1.1072061, z: -0.0000016465783}
 --- !u!1 &74577899928646536
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +108,8 @@ GameObject:
   - component: {fileID: 72850675192846012}
   - component: {fileID: 104787607469125698}
   - component: {fileID: 98431947398485500}
-  m_Layer: 8
+  - component: {fileID: 136759337010032594}
+  m_Layer: 0
   m_Name: Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +159,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 130d7378e70dbc14a9dded2d547168ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -166,6 +181,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &136759337010032594
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74577899928646536}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9796563, y: 2.2144132, z: 0.094311684}
+  m_Center: {x: -0.47379813, y: 1.1072061, z: -0.0000018887222}
 --- !u!1 &75020445485797520
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,13 +205,12 @@ GameObject:
   - component: {fileID: 73082927320716330}
   - component: {fileID: 106158311602318868}
   - component: {fileID: 98593900883250058}
-  - component: {fileID: 621895572}
-  - component: {fileID: 621895573}
+  - component: {fileID: 139539353434964266}
   m_Layer: 0
-  m_Name: Pillars
+  m_Name: Gate_1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &73082927320716330
@@ -229,7 +256,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 130d7378e70dbc14a9dded2d547168ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -251,8 +278,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &621895572
-BoxCollider:
+--- !u!64 &139539353434964266
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -261,22 +288,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.6, y: 2.44, z: 1}
-  m_Center: {x: -1.16, y: 1.38, z: 0}
---- !u!65 &621895573
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 75020445485797520}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.6, y: 2.44, z: 1}
-  m_Center: {x: 1.16, y: 1.38, z: 0}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: aa3f6ba4d5d183c49a799bc292b04632, type: 3}
 --- !u!1 &75038997596014950
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,12 +304,12 @@ GameObject:
   - component: {fileID: 75528123194903445}
   - component: {fileID: 75528123194903442}
   - component: {fileID: 75528123194903443}
-  m_Layer: 8
-  m_Name: Gate With Pillars
+  m_Layer: 0
+  m_Name: Gate_1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &73000509574225646
 Transform:
@@ -305,7 +320,7 @@ Transform:
   m_GameObject: {fileID: 75038997596014950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.05622, y: 6.321, z: -6.7808456}
-  m_LocalScale: {x: 2.4375927, y: 2.4375927, z: 2.4375927}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 72850675192846012}
@@ -338,8 +353,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.95, y: 2.5, z: 1}
-  m_Center: {x: 0, y: 1.2, z: 0}
+  m_Size: {x: 1.9917066, y: 1.2236662, z: 0.3783741}
+  m_Center: {x: 0.015402913, y: 1.514256, z: 0.31081295}
 --- !u!114 &75528123194903443
 MonoBehaviour:
   m_ObjectHideFlags: 0
