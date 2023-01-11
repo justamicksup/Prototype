@@ -16,7 +16,7 @@ GameObject:
   m_Name: Gate 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 1
+  m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &73013586851506444
@@ -113,7 +113,7 @@ GameObject:
   m_Name: Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 1
+  m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &72850675192846012
@@ -353,8 +353,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9917066, y: 2.2062774, z: 0.3783741}
-  m_Center: {x: 0.015402913, y: 1.0229504, z: 0.31081295}
+  m_Size: {x: 1.9917066, y: 1.2236662, z: 0.3783741}
+  m_Center: {x: 0.015402913, y: 1.514256, z: 0.31081295}
 --- !u!114 &75528123194903443
 MonoBehaviour:
   m_ObjectHideFlags: 0
