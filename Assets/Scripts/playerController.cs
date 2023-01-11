@@ -8,7 +8,8 @@ public class playerController : MonoBehaviour
     [SerializeField] CharacterController controller;
 
     [Header("----- Player Stats -----")]
-    [Range(1, 10)] [SerializeField] int HP;
+    [Range(1, 100)] [SerializeField] int HP;
+    [SerializeField] int stamina;
     [SerializeField] int playerSpeed;
     [SerializeField] int jumpVelocity;
     [SerializeField] int gravity;
@@ -17,6 +18,7 @@ public class playerController : MonoBehaviour
     [Range(0.01f,5)] [SerializeField] float actionRange;
 
     [Header("----- Shooting -----")]
+    [SerializeField] int ammo;
     [Range(0.1f, 2)] [SerializeField] float shootRate;
     [Range(1, 15)] [SerializeField] int shootDist;
     [Range(1, 10)] [SerializeField] int shootDamage;
@@ -37,7 +39,7 @@ public class playerController : MonoBehaviour
     void Update()
     {
         movement();
-        if(!isShooting && Input.GetButton("Shoot"))
+        if(!isShooting && Input.GetButton("Shoot") && ammo > 0)
         {
             StartCoroutine(shoot());
         }
@@ -93,7 +95,7 @@ public class playerController : MonoBehaviour
     IEnumerator shoot()
     {
         isShooting = true;
-
+        ammo--;
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
         {
@@ -111,7 +113,25 @@ public class playerController : MonoBehaviour
         HP -= damage;
     }
 
-    public int GetCoins() { return coins; }
+    public int GetCoins() 
+    { 
+        return coins; 
+    }
+
+    public int getHP()
+    {
+        return HP;
+    }
+
+    public int getAmmo()
+    {
+        return ammo;
+    }
+
+    public int getStamina()
+    {
+        return stamina;
+    }
 
     public void addCoins(int amount) 
     {

@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.Build.Content;
+#endif
 using UnityEngine;
 
 public class gameManager : MonoBehaviour
@@ -11,12 +13,14 @@ public class gameManager : MonoBehaviour
 
     public GameObject player;
     public playerController playerScript;
+    public GameObject HUD;
     public int enemiesRemaining;
     public int waveCount;
     void Awake()
     {
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
+        HUD = transform.parent.gameObject;
         playerScript = player.GetComponent<playerController>();
         playerScript.addCoins(2000);
     }

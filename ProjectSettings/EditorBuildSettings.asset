@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Jordan Ireland.unity
+    guid: 334ea2f72dfacf543aaa999ab5528d88
   m_configObjects: {}

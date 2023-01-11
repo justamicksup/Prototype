@@ -7,8 +7,8 @@ using UnityEngine.AI;
 
 public class BaseSkeleton : MonoBehaviour
 {
-    public EnemyStats skeleton;
-    public NavMeshAgent agent;
+    [SerializeField] EnemyStats skeleton;
+    [SerializeField] NavMeshAgent agent;
     private void Start()
     {
         agent.baseOffset = skeleton.baseOffset;

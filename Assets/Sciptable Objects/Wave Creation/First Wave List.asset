@@ -14,4 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <EnemiesInWave>k__BackingField:
   - {fileID: 100086, guid: a58154c350c4ccf47a6cdad03a8dca1a, type: 3}
-  - {fileID: 100086, guid: a58154c350c4ccf47a6cdad03a8dca1a, type: 3}
