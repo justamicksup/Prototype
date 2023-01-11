@@ -20,8 +20,8 @@ MonoBehaviour:
   speed: 3.5
   angularSpeed: 120
   acceleration: 8
-  stoppingDistance: 5
+  stoppingDistance: 20
   autoBraking: 0
-  radius: 10
-  height: 1
+  radius: 0.5
+  height: 7
   weapon: {fileID: 0}

@@ -70,6 +70,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextWave: {fileID: 11400000, guid: 395383b622efbf0409ba8dab5f604934, type: 2}
   spawnPoint: {fileID: 6690070243691109246}
-  xPos: 0
-  zPos: 0
-  enemyCount: 0
+  interval: 0.1

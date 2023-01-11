@@ -27,7 +27,7 @@ public class EnemyStats : ScriptableObject
     public float radius = .5f;
     public float height = 1f;
 
-
+    
     
     public GameObject weapon;
 }

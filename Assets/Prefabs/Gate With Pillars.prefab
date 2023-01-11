@@ -304,8 +304,8 @@ GameObject:
   - component: {fileID: 75528123194903445}
   - component: {fileID: 75528123194903442}
   - component: {fileID: 75528123194903443}
-  m_Layer: 0
-  m_Name: Gate_1_1
+  m_Layer: 3
+  m_Name: Gate With Pillars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -320,8 +320,8 @@ Transform:
   m_GameObject: {fileID: 75038997596014950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.05622, y: 6.321, z: -6.7808456}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 72850675192846012}
   - {fileID: 73013586851506444}
