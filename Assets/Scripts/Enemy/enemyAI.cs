@@ -9,7 +9,9 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] NavMeshAgent agent;
 
     public GameObject enemy;
+
     [Header("----- Enemy Stats -----")]
+    [SerializeField] private EnemyStats enem;
     [SerializeField] Transform headPos;
     [Range(1, 15)] [SerializeField] int HP;
     [SerializeField] int rotationSpeed;
@@ -21,8 +23,12 @@ public class enemyAI : MonoBehaviour, IDamage
     [Range(15, 35)] [SerializeField] int bulletSpeed;
     [Range(0.1f, 2)] [SerializeField] float shootRate;
     [Range(5, 100)] [SerializeField] int shootDist;
-    [Range(1, 10)] [SerializeField] int shootDamage;
+    [Range(0, 10)] [SerializeField] int shootDamage;
 
+    [Header("----- Melee -----")] 
+    [SerializeField] float swingRate;
+    
+    bool isSwinging;
     bool isShooting;
     Vector3 playerDir;
     bool playerInRange;
@@ -41,18 +47,30 @@ public class enemyAI : MonoBehaviour, IDamage
 
         agent.SetDestination(gameManager.instance.player.transform.position);
 
-       
+        
                  if (playerInRange)
                  {
+                     if (!isSwinging)
+                     {
+                         if (enemy.CompareTag("Melee"))
+                         {
+                             StartCoroutine(MeleeHit());
+                         }
+                     }
+                    
                      if (agent.remainingDistance < agent.stoppingDistance)
                      {
                          facePlayer();
                      }
 
-                     if (!isShooting)
+                     if (enemy.CompareTag("Range"))
                      {
-                         StartCoroutine(shoot());
+                         if (!isShooting)
+                         {
+                             StartCoroutine(shoot());
+                         }
                      }
+                     
                  }
     }
 
@@ -78,6 +96,17 @@ public class enemyAI : MonoBehaviour, IDamage
 
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
+    }
+
+    IEnumerator MeleeHit()
+    {
+        isSwinging = true;
+        
+        gameManager.instance.playerScript.takeDamage(2);
+        
+
+        yield return new WaitForSeconds(swingRate);
+        isSwinging = false;
     }
 
     void facePlayer()

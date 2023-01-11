@@ -17,11 +17,11 @@ MonoBehaviour:
   attack: 1
   defense: 0
   baseOffset: 0.5
-  speed: 3.5
+  speed: 4
   angularSpeed: 120
   acceleration: 8
-  stoppingDistance: 10
-  autoBraking: 1
-  radius: 20
-  height: 1
+  stoppingDistance: 35
+  autoBraking: 0
+  radius: 0.5
+  height: 7
   weapon: {fileID: 0}

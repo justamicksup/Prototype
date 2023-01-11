@@ -3,18 +3,20 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Melee
+  - Range
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - Door
   - Water
   - UI
-  - Enemy
   - Enemy Bullet
-  - door
-  - 
+  - Enemy
+  - Player
+  - Floor
   - 
   - 
   - 
