@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 73013586851506444}
   - component: {fileID: 106907136899346012}
   - component: {fileID: 98780720773419150}
-  - component: {fileID: 136353284764389530}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Gate 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &136353284764389530
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 74558803860424630}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.9796563, y: 2.2144132, z: 0.094311684}
-  m_Center: {x: 0.47379813, y: 1.1072061, z: -0.0000016465783}
 --- !u!1 &74577899928646536
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,8 +94,7 @@ GameObject:
   - component: {fileID: 72850675192846012}
   - component: {fileID: 104787607469125698}
   - component: {fileID: 98431947398485500}
-  - component: {fileID: 136759337010032594}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,19 +166,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &136759337010032594
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 74577899928646536}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.9796563, y: 2.2144132, z: 0.094311684}
-  m_Center: {x: -0.47379813, y: 1.1072061, z: -0.0000018887222}
 --- !u!1 &75020445485797520
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,8 +178,10 @@ GameObject:
   - component: {fileID: 106158311602318868}
   - component: {fileID: 98593900883250058}
   - component: {fileID: 139539353434964266}
+  - component: {fileID: 1500002892040110906}
+  - component: {fileID: 1730663936972349731}
   m_Layer: 0
-  m_Name: Gate_1_1
+  m_Name: Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
@@ -292,6 +266,32 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: aa3f6ba4d5d183c49a799bc292b04632, type: 3}
+--- !u!65 &1500002892040110906
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75020445485797520}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 2.44, z: 1}
+  m_Center: {x: -1.16, y: 1.38, z: 0}
+--- !u!65 &1730663936972349731
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75020445485797520}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 2.44, z: 1}
+  m_Center: {x: 1.16, y: 1.38, z: 0}
 --- !u!1 &75038997596014950
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,8 +353,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9917066, y: 1.2236662, z: 0.3783741}
-  m_Center: {x: 0.015402913, y: 1.514256, z: 0.31081295}
+  m_Size: {x: 1.95, y: 2.5, z: 1}
+  m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!114 &75528123194903443
 MonoBehaviour:
   m_ObjectHideFlags: 0
