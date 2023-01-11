@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6488629642265828125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9222381886675230841}
+  m_Layer: 0
+  m_Name: shootpos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9222381886675230841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6488629642265828125}
+  m_LocalRotation: {x: 0.5948049, y: -0.41453505, z: 0.63131887, w: 0.2753261}
+  m_LocalPosition: {x: -0.242, y: 0.033, z: -0.001}
+  m_LocalScale: {x: -0.029860735, y: -0.029860727, z: -0.029860727}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1974017121347165965}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8856330063466441674
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +271,7 @@ MonoBehaviour:
   HP: 3
   rotationSpeed: 50
   lootValue: 0
-  shootPos: {fileID: 8855164302610141174}
+  shootPos: {fileID: 9222381886675230841}
   bullet: {fileID: 5245255688520990098, guid: 2e622fc3b9bedfa45bf778dccc584963, type: 3}
   bulletSpeed: 30
   shootRate: 2
@@ -1782,6 +1813,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b672cb3f3021a774a9e14073e4fe3edd, type: 3}
+--- !u!4 &1974017121347165965 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5241741018329217119, guid: b672cb3f3021a774a9e14073e4fe3edd, type: 3}
+  m_PrefabInstance: {fileID: 6042557138385282898}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6075849366093545657 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b672cb3f3021a774a9e14073e4fe3edd, type: 3}

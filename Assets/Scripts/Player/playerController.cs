@@ -18,11 +18,9 @@ public class playerController : MonoBehaviour
     [Range(0.01f,5)] [SerializeField] float actionRange;
 
     [Header("----- Shooting -----")]
-    [SerializeField] int ammo;
     public weapon[] weapons;
-    [Range(0.1f, 2)] [SerializeField] float shootRate;
-    [Range(1, 15)] [SerializeField] int shootDist;
-    [Range(1, 10)] [SerializeField] int shootDamage;
+    int currentWeapon;
+    public GameObject viewModel;
 
     int jumpTimes;
     Vector3 move;
@@ -40,9 +38,12 @@ public class playerController : MonoBehaviour
     void Update()
     {
         movement();
-        if(!isShooting && Input.GetButton("Shoot") && ammo > 0)
+        if(!isShooting && Input.GetButton("Shoot") && weapons[currentWeapon] != null)
         {
-            StartCoroutine(shoot());
+            if (weapons[currentWeapon].ammo > 0)
+            {
+                StartCoroutine(shoot());
+            }   
         }
         if(Input.GetButtonDown("Pause"))
         {
@@ -62,7 +63,7 @@ public class playerController : MonoBehaviour
         if (Input.GetButtonDown("Submit"))
         {
             RaycastHit hit;
-            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
+            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, actionRange))
             {
                 if (hit.collider.GetComponent<actionObject>() != null)
                 {
@@ -70,6 +71,7 @@ public class playerController : MonoBehaviour
                 }
             }
         }
+
     }
 
     void movement()
@@ -100,6 +102,19 @@ public class playerController : MonoBehaviour
             playerVelocity.y = jumpVelocity;
             jumpTimes++;
         }
+
+        if(Input.GetButtonDown("Weapon1"))
+        {
+            changeWeapon(0);
+        }
+        if (Input.GetButtonDown("Weapon2"))
+        {
+            changeWeapon(1);
+        }
+        if (Input.GetButtonDown("Weapon3"))
+        {
+            changeWeapon(2);
+        }
         //add gravity
         playerVelocity.y -= gravity * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
@@ -108,20 +123,20 @@ public class playerController : MonoBehaviour
     IEnumerator shoot()
     {
         isShooting = true;
-        ammo--;
+        weapons[currentWeapon].ammo--;
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
+        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, weapons[currentWeapon].shootDist))
         {
             if(hit.collider.GetComponent<IDamage>() != null) 
             {
-                hit.collider.GetComponent<IDamage>().takeDamage(shootDamage);
+                hit.collider.GetComponent<IDamage>().takeDamage(weapons[currentWeapon].shootDamage);
             }
             if(hit.rigidbody != null)
             {
-                hit.rigidbody.AddForceAtPosition(transform.forward * 100, hit.point);
+                hit.rigidbody.AddForceAtPosition(transform.forward * weapons[currentWeapon].shootForce, hit.point);
             }
         }
-        yield return new WaitForSeconds(shootRate);
+        yield return new WaitForSeconds(weapons[currentWeapon].shootRate);
         isShooting = false;
     }
 
@@ -140,11 +155,6 @@ public class playerController : MonoBehaviour
         return HP;
     }
 
-    public int getAmmo()
-    {
-        return ammo;
-    }
-
     public float getStamina()
     {
         return stamina;
@@ -153,5 +163,14 @@ public class playerController : MonoBehaviour
     public void addCoins(int amount) 
     {
         coins += amount;
+    }
+
+    public void changeWeapon(int weapon)
+    {
+        if (weapons[weapon] != null)
+        {
+            currentWeapon = weapon;
+            viewModel.GetComponent<MeshFilter>().mesh = weapons[weapon].viewModel;
+        }       
     }
 }
