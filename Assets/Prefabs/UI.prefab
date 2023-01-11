@@ -1889,6 +1889,7 @@ GameObject:
   - component: {fileID: 8958223624579302843}
   - component: {fileID: 8958223624579302842}
   - component: {fileID: 8958223624579302841}
+  - component: {fileID: 4225823234573089967}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -1987,6 +1988,28 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4225823234573089967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8958223624579302840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52693de27cdb0694b8e74e5f6c97efb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: {fileID: 6685727199014318558}
+  ammo1: {fileID: 0}
+  ammo2: {fileID: 0}
+  ammo3: {fileID: 0}
+  stamina: {fileID: 3329234537765689490}
+  coins: {fileID: 5173769001204082853}
+  pauseMenu: {fileID: 7701256236916525116}
+  Resume: {fileID: 6106563714824020096}
+  Settings: {fileID: 1798630124485561416}
+  Quit: {fileID: 170076918039930003}
 --- !u!1 &8958223624863300265
 GameObject:
   m_ObjectHideFlags: 0
