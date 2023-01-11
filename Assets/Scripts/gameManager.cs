@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.Build.Content;
+#endif
 using UnityEngine;
 
 public class gameManager : MonoBehaviour
