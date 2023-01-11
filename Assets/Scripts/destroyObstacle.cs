@@ -11,6 +11,7 @@ public class destroyObstacle : MonoBehaviour, actionObject
     [SerializeField] int obstacleCost;
     private Transform target = null;
 
+    
     bool hasCoins;
 
     private void OnTriggerEnter(Collider other)

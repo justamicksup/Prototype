@@ -6,16 +6,16 @@ public class SpawnWave : MonoBehaviour
 {
     [SerializeField] WaveController nextWave;
     [SerializeField] private GameObject spawnPoint;
-    [SerializeField] private float xPos;
-    [SerializeField] private float zPos;
+    private float xPos;
+    private float zPos;
+    [SerializeField] private float interval;
 
-
-    [SerializeField] private int enemyCount;
+    private int enemyCount;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnEnemy(.1f));
+        StartCoroutine(SpawnEnemy(interval));
         gameManager.instance.updateWave(1);
     }
 

@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BaseSkeleton : MonoBehaviour
+public class EnemyStatSheet : MonoBehaviour
 {
     [SerializeField] EnemyStats skeleton;
     [SerializeField] NavMeshAgent agent;

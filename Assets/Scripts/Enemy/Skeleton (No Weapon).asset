@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea2043a9e3979bc468638c009c689549, type: 3}
-  m_Name: New Enemy
+  m_Name: Skeleton (No Weapon)
   m_EditorClassIdentifier: 
-  name: Input Name
+  name: Skeleton (No Weapon)
   health: 10
   attack: 1
   defense: 0
@@ -20,8 +20,8 @@ MonoBehaviour:
   speed: 3.5
   angularSpeed: 120
   acceleration: 8
-  stoppingDistance: 0
-  autoBraking: 1
-  radius: 0.5
+  stoppingDistance: 0.5
+  autoBraking: 0
+  radius: 0
   height: 1
   weapon: {fileID: 0}

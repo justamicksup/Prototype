@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: First Wave List
   m_EditorClassIdentifier: 
   <EnemiesInWave>k__BackingField:
-  - {fileID: 100086, guid: a58154c350c4ccf47a6cdad03a8dca1a, type: 3}
+  - {fileID: 8933497125020024247, guid: db832c2ba11c6c440855d5f62575d7cf, type: 3}
+  - {fileID: 8856490959939266964, guid: 7cd7ae57ff70f254ab6d2596f3f9104e, type: 3}
+  - {fileID: 7824966144815336657, guid: a751461865b36c545807f8ffdd87778b, type: 3}
+  - {fileID: 586018981929148686, guid: 8beff29aea393224db8152ba85983825, type: 3}

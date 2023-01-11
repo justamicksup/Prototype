@@ -8,6 +8,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("----- Components -----")]
     [SerializeField] NavMeshAgent agent;
 
+    public GameObject enemy;
     [Header("----- Enemy Stats -----")]
     [SerializeField] Transform headPos;
     [Range(1, 15)] [SerializeField] int HP;
@@ -35,23 +36,24 @@ public class enemyAI : MonoBehaviour, IDamage
 
     // Update is called once per frame
     void Update()
-    {
-        if (playerInRange)
-        {
-            playerDir = gameManager.instance.player.transform.position - headPos.position;
+    {playerDir = gameManager.instance.player.transform.position - headPos.position;
 
-            agent.SetDestination(gameManager.instance.player.transform.position);
 
-            if (agent.remainingDistance < agent.stoppingDistance)
-            {
-                facePlayer();
-            }
+        agent.SetDestination(gameManager.instance.player.transform.position);
 
-            if (!isShooting)
-            {
-                StartCoroutine(shoot());
-            }
-        }
+       
+                 if (playerInRange)
+                 {
+                     if (agent.remainingDistance < agent.stoppingDistance)
+                     {
+                         facePlayer();
+                     }
+
+                     if (!isShooting)
+                     {
+                         StartCoroutine(shoot());
+                     }
+                 }
     }
 
     public void takeDamage(int damage)
