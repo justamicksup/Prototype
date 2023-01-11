@@ -85,7 +85,15 @@ public class playerController : MonoBehaviour
         move =  (transform.right * Input.GetAxis("Horizontal")) + 
                 (transform.forward * Input.GetAxis("Vertical"));
         //move character
-        controller.Move(move * Time.deltaTime * playerSpeed);
+        if(Input.GetButton("Sprint") && stamina >  0)
+        {
+            controller.Move(move * Time.deltaTime * playerSpeed * 2);
+        }
+        else
+        {
+            controller.Move(move * Time.deltaTime * playerSpeed);
+        }
+        
         //jump
         if (Input.GetButtonDown("Jump") && jumpTimes < jumpMax)
         {

@@ -186,7 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2636245865579264848}
   HP: 100
-  stamina: 0
+  stamina: 1
   playerSpeed: 10
   jumpVelocity: 12
   gravity: 25
@@ -194,6 +194,7 @@ MonoBehaviour:
   coins: 0
   actionRange: 0.01
   ammo: 100
+  weapons: []
   shootRate: 0.15
   shootDist: 15
   shootDamage: 5
