@@ -9,7 +9,7 @@ public class playerController : MonoBehaviour
 
     [Header("----- Player Stats -----")]
     [Range(1, 100)] [SerializeField] int HP;
-    [SerializeField] int stamina;
+    [Range(0,1)] [SerializeField] float stamina;
     [SerializeField] int playerSpeed;
     [SerializeField] int jumpVelocity;
     [SerializeField] int gravity;
@@ -19,6 +19,7 @@ public class playerController : MonoBehaviour
 
     [Header("----- Shooting -----")]
     [SerializeField] int ammo;
+    public weapon[] weapons;
     [Range(0.1f, 2)] [SerializeField] float shootRate;
     [Range(1, 15)] [SerializeField] int shootDist;
     [Range(1, 10)] [SerializeField] int shootDamage;
@@ -32,7 +33,7 @@ public class playerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        weapons = new weapon[3];
     }
 
     // Update is called once per frame
@@ -42,6 +43,10 @@ public class playerController : MonoBehaviour
         if(!isShooting && Input.GetButton("Shoot") && ammo > 0)
         {
             StartCoroutine(shoot());
+        }
+        if(Input.GetButtonDown("Pause"))
+        {
+            gameManager.instance.pauseGame();
         }
         if (Input.GetButtonDown("Action"))
         {
@@ -103,6 +108,10 @@ public class playerController : MonoBehaviour
             {
                 hit.collider.GetComponent<IDamage>().takeDamage(shootDamage);
             }
+            if(hit.rigidbody != null)
+            {
+                hit.rigidbody.AddForceAtPosition(transform.forward * 100, hit.point);
+            }
         }
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
@@ -128,7 +137,7 @@ public class playerController : MonoBehaviour
         return ammo;
     }
 
-    public int getStamina()
+    public float getStamina()
     {
         return stamina;
     }
