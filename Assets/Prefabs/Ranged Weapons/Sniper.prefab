@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8876809406679317309}
+  - component: {fileID: -19533026605710078}
   - component: {fileID: 5521158653357880472}
   - component: {fileID: 7745047605325365330}
   - component: {fileID: 9124422840288939746}
-  - component: {fileID: -19533026605710078}
   m_Layer: 0
   m_Name: Sniper
   m_TagString: Untagged
@@ -35,6 +35,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-19533026605710078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8105093614528831879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dc05bb63753a9a43b68bbd113f6e0f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootRate: 5
+  shootDist: 80
+  shootDamage: 9
+  shootForce: 9
+  ammoCapacity: 5
+  ammoRemaining: 5
+  reloadTime: 5
+  viewModel: {fileID: 0}
 --- !u!33 &5521158653357880472
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -99,20 +119,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8310518740751045040, guid: db5ef47b9b5631844bab1e1c50f5a988, type: 3}
---- !u!114 &-19533026605710078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8105093614528831879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc05bb63753a9a43b68bbd113f6e0f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ammo: 0
-  shootRate: 0
-  shootDist: 0
-  shootDamage: 0
-  shootForce: 0

@@ -144,7 +144,7 @@ MonoBehaviour:
   shootForce: 3
   ammoCapacity: 3
   ammoRemaining: 3
-  reloadTime: 3
+  reloadTime: 3.5
   viewModel: {fileID: 0}
 --- !u!95 &788959872417365982
 Animator:
