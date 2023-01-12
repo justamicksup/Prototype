@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4824846826913792730}
+  - component: {fileID: -5414257849175420183}
   - component: {fileID: 8456237506307886463}
   - component: {fileID: 5962309044822735285}
   - component: {fileID: -3569353815409751570}
-  - component: {fileID: -5414257849175420183}
   m_Layer: 0
   m_Name: Rifle 3
   m_TagString: Untagged
@@ -35,6 +35,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-5414257849175420183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5313856188506331232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dc05bb63753a9a43b68bbd113f6e0f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootRate: 0.6
+  shootDist: 12
+  shootDamage: 1
+  shootForce: 1
+  ammoCapacity: 30
+  ammoRemaining: 30
+  reloadTime: 4
+  viewModel: {fileID: -695774298109068085, guid: a5f56547380d3e6448e877c01e64c479, type: 3}
 --- !u!33 &8456237506307886463
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -99,21 +119,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -695774298109068085, guid: a5f56547380d3e6448e877c01e64c479, type: 3}
---- !u!114 &-5414257849175420183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5313856188506331232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc05bb63753a9a43b68bbd113f6e0f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ammo: 100
-  shootRate: 0.15
-  shootDist: 15
-  shootDamage: 5
-  shootForce: 100
-  viewModel: {fileID: -695774298109068085, guid: a5f56547380d3e6448e877c01e64c479, type: 3}

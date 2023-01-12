@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1627742350341262825}
+  - component: {fileID: -4026946711437129710}
   - component: {fileID: 8848284673616833758}
   - component: {fileID: 7744471881006084263}
   m_Layer: 0
@@ -34,6 +35,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-4026946711437129710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4635178282593649298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dc05bb63753a9a43b68bbd113f6e0f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootRate: 1
+  shootDist: 5
+  shootDamage: 8
+  shootForce: 8
+  ammoCapacity: 1
+  ammoRemaining: 1
+  reloadTime: 3
+  viewModel: {fileID: 0}
 --- !u!95 &8848284673616833758
 Animator:
   serializedVersion: 5

@@ -202,12 +202,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8862188248980199464}
   - component: {fileID: 8917038066490884684}
+  - component: {fileID: 1478444653}
   - component: {fileID: 9214185778403616560}
   - component: {fileID: 8857551947831360010}
   - component: {fileID: 1378948212584575665}
   - component: {fileID: 8477814509172508709}
   - component: {fileID: 7216703594966402371}
-  - component: {fileID: 1478444653}
   m_Layer: 7
   m_Name: SKELETON (Range)
   m_TagString: Range
@@ -252,6 +252,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &1478444653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8856490959939266964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8539780bbf004f341abb98a4e0d3e1a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeleton: {fileID: 11400000, guid: fb33ec6d4993ca340b760c08ac21d974, type: 2}
+  agent: {fileID: 8857551947831360010}
 --- !u!114 &9214185778403616560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,20 +357,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1478444653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8856490959939266964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8539780bbf004f341abb98a4e0d3e1a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skeleton: {fileID: 11400000, guid: fb33ec6d4993ca340b760c08ac21d974, type: 2}
-  agent: {fileID: 8857551947831360010}
 --- !u!1 &8856510566849844568
 GameObject:
   m_ObjectHideFlags: 0

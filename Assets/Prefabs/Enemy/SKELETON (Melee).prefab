@@ -838,12 +838,12 @@ GameObject:
   m_Component:
   - component: {fileID: 591581168684339378}
   - component: {fileID: 681952652266162902}
+  - component: {fileID: 637440244631146531}
   - component: {fileID: 943006695969435562}
   - component: {fileID: 586943647562871440}
   - component: {fileID: 7055562428492675627}
   - component: {fileID: 535464166409355455}
   - component: {fileID: 1652688148593331673}
-  - component: {fileID: 637440244631146531}
   m_Layer: 7
   m_Name: SKELETON (Melee)
   m_TagString: Melee
@@ -888,6 +888,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &637440244631146531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586018981929148686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8539780bbf004f341abb98a4e0d3e1a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeleton: {fileID: 11400000, guid: 7db759ab3719c0b4098e8a8270111cb4, type: 2}
+  agent: {fileID: 586943647562871440}
 --- !u!114 &943006695969435562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -979,20 +993,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &637440244631146531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586018981929148686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8539780bbf004f341abb98a4e0d3e1a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skeleton: {fileID: 11400000, guid: 7db759ab3719c0b4098e8a8270111cb4, type: 2}
-  agent: {fileID: 586943647562871440}
 --- !u!1 &586021628831177076
 GameObject:
   m_ObjectHideFlags: 0
