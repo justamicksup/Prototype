@@ -157,7 +157,6 @@ MonoBehaviour:
   stamina: {fileID: 0}
   coins: {fileID: 0}
   wave: {fileID: 0}
-  pauseMenu: {fileID: 0}
   Resume: {fileID: 0}
   Settings: {fileID: 0}
   Quit: {fileID: 0}
@@ -470,7 +469,6 @@ MonoBehaviour:
   stamina: {fileID: 0}
   coins: {fileID: 0}
   wave: {fileID: 0}
-  pauseMenu: {fileID: 0}
   Resume: {fileID: 0}
   Settings: {fileID: 0}
   Quit: {fileID: 0}
@@ -631,7 +629,6 @@ MonoBehaviour:
   stamina: {fileID: 0}
   coins: {fileID: 0}
   wave: {fileID: 0}
-  pauseMenu: {fileID: 0}
   Resume: {fileID: 0}
   Settings: {fileID: 0}
   Quit: {fileID: 0}
@@ -832,7 +829,6 @@ MonoBehaviour:
   stamina: {fileID: 0}
   coins: {fileID: 0}
   wave: {fileID: 0}
-  pauseMenu: {fileID: 0}
   Resume: {fileID: 0}
   Settings: {fileID: 0}
   Quit: {fileID: 0}
@@ -1689,7 +1685,6 @@ GameObject:
   - component: {fileID: 7671283129509736927}
   - component: {fileID: 1212335179966153919}
   - component: {fileID: 170076918039930003}
-  - component: {fileID: 390326918349728471}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -1803,7 +1798,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 390326918349728471}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: HUD, Assembly-CSharp
         m_MethodName: quit
         m_Mode: 1
@@ -1815,29 +1810,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &390326918349728471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4742143130342636047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52693de27cdb0694b8e74e5f6c97efb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: {fileID: 0}
-  ammo1: {fileID: 0}
-  ammo2: {fileID: 0}
-  ammo3: {fileID: 0}
-  stamina: {fileID: 0}
-  coins: {fileID: 0}
-  wave: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  Resume: {fileID: 0}
-  Settings: {fileID: 0}
-  Quit: {fileID: 0}
 --- !u!1 &5295139829780066193
 GameObject:
   m_ObjectHideFlags: 0
@@ -3370,7 +3342,6 @@ MonoBehaviour:
   stamina: {fileID: 3329234537765689490}
   coins: {fileID: 5173769001204082853}
   wave: {fileID: 6353073730422420728}
-  pauseMenu: {fileID: 7701256236916525116}
   Resume: {fileID: 6106563714824020096}
   Settings: {fileID: 1798630124485561416}
   Quit: {fileID: 170076918039930003}
