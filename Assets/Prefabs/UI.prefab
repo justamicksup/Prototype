@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 446454306}
   - component: {fileID: 446454305}
   - component: {fileID: 446454304}
+  - component: {fileID: 24467064276466511}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -124,7 +125,42 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 446454305}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 24467064276466511}
+        m_TargetAssemblyTypeName: HUD, Assembly-CSharp
+        m_MethodName: quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &24467064276466511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446454302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52693de27cdb0694b8e74e5f6c97efb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: {fileID: 0}
+  ammo1: {fileID: 0}
+  ammo2: {fileID: 0}
+  ammo3: {fileID: 0}
+  stamina: {fileID: 0}
+  coins: {fileID: 0}
+  wave: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  Resume: {fileID: 0}
+  Settings: {fileID: 0}
+  Quit: {fileID: 0}
 --- !u!1 &716916936
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +325,7 @@ GameObject:
   - component: {fileID: 933057499}
   - component: {fileID: 933057498}
   - component: {fileID: 933057497}
+  - component: {fileID: 5589586523720855638}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -401,7 +438,42 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 933057498}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5589586523720855638}
+        m_TargetAssemblyTypeName: HUD, Assembly-CSharp
+        m_MethodName: quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5589586523720855638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933057495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52693de27cdb0694b8e74e5f6c97efb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: {fileID: 0}
+  ammo1: {fileID: 0}
+  ammo2: {fileID: 0}
+  ammo3: {fileID: 0}
+  stamina: {fileID: 0}
+  coins: {fileID: 0}
+  wave: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  Resume: {fileID: 0}
+  Settings: {fileID: 0}
+  Quit: {fileID: 0}
 --- !u!1 &934154428
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +486,7 @@ GameObject:
   - component: {fileID: 934154432}
   - component: {fileID: 934154431}
   - component: {fileID: 934154430}
+  - component: {fileID: 7706725705284563787}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -526,7 +599,42 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 934154431}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7706725705284563787}
+        m_TargetAssemblyTypeName: HUD, Assembly-CSharp
+        m_MethodName: restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7706725705284563787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934154428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52693de27cdb0694b8e74e5f6c97efb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: {fileID: 0}
+  ammo1: {fileID: 0}
+  ammo2: {fileID: 0}
+  ammo3: {fileID: 0}
+  stamina: {fileID: 0}
+  coins: {fileID: 0}
+  wave: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  Resume: {fileID: 0}
+  Settings: {fileID: 0}
+  Quit: {fileID: 0}
 --- !u!1 &1385147179
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,6 +687,7 @@ GameObject:
   - component: {fileID: 1501218833}
   - component: {fileID: 1501218832}
   - component: {fileID: 1501218831}
+  - component: {fileID: 414791312628468141}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -691,7 +800,42 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1501218832}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 414791312628468141}
+        m_TargetAssemblyTypeName: HUD, Assembly-CSharp
+        m_MethodName: restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &414791312628468141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501218829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52693de27cdb0694b8e74e5f6c97efb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: {fileID: 0}
+  ammo1: {fileID: 0}
+  ammo2: {fileID: 0}
+  ammo3: {fileID: 0}
+  stamina: {fileID: 0}
+  coins: {fileID: 0}
+  wave: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  Resume: {fileID: 0}
+  Settings: {fileID: 0}
+  Quit: {fileID: 0}
 --- !u!1 &1512490568
 GameObject:
   m_ObjectHideFlags: 0
@@ -1545,6 +1689,7 @@ GameObject:
   - component: {fileID: 7671283129509736927}
   - component: {fileID: 1212335179966153919}
   - component: {fileID: 170076918039930003}
+  - component: {fileID: 390326918349728471}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -1657,7 +1802,42 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1212335179966153919}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 390326918349728471}
+        m_TargetAssemblyTypeName: HUD, Assembly-CSharp
+        m_MethodName: quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &390326918349728471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4742143130342636047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52693de27cdb0694b8e74e5f6c97efb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: {fileID: 0}
+  ammo1: {fileID: 0}
+  ammo2: {fileID: 0}
+  ammo3: {fileID: 0}
+  stamina: {fileID: 0}
+  coins: {fileID: 0}
+  wave: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  Resume: {fileID: 0}
+  Settings: {fileID: 0}
+  Quit: {fileID: 0}
 --- !u!1 &5295139829780066193
 GameObject:
   m_ObjectHideFlags: 0
