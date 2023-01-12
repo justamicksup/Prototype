@@ -62,9 +62,9 @@ public class gameManager : MonoBehaviour
         enemiesRemaining += amount;
 
         // check for game over (enemy <= 0)
-        if (enemiesRemaining <= 0)
+        if (waveCount == 3 && enemiesRemaining == 0)
         {
-            Debug.Log("You Win!!");
+            youWin();
         }
     }
 
@@ -98,27 +98,20 @@ public class gameManager : MonoBehaviour
 
     public void youWin()
     {
-        if (waveCount == 3 && enemiesRemaining ==0)
-        {
-            Time.timeScale = 0;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Confined;
-            activeMenu = winMenu;
-            activeMenu.SetActive(true);
-           
-        }
+        Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        activeMenu = winMenu;
+        activeMenu.SetActive(true);
     }
     
     public void youLose()
     {
-        if (HP == 0)
-        {
-            Time.timeScale = 0;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Confined;
-            pauseGame();
-            activeMenu = loseMenu;
-            activeMenu.SetActive(true);
-        }
+        Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        pauseGame();
+        activeMenu = loseMenu;
+        activeMenu.SetActive(true);
     }
 }

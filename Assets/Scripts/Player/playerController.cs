@@ -156,6 +156,10 @@ public class playerController : MonoBehaviour
     public void takeDamage(int damage)
     {
         HP -= damage;
+        if(HP <= 0)
+        {
+            gameManager.instance.youLose();
+        }
     }
 
     public int GetCoins() 
