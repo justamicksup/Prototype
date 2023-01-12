@@ -15,13 +15,17 @@ public class SpawnWave : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnEnemy(interval));
-        gameManager.instance.updateWave(1);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (gameManager.instance.enemiesRemaining == 0 && gameManager.instance.nextWave)
+        {
+            StartCoroutine(SpawnEnemy(interval));
+            gameManager.instance.nextWave = false;
+        }
     }
 
     //ReSharper disable Unity.PerformanceAnalysis
@@ -48,7 +52,7 @@ public class SpawnWave : MonoBehaviour
             zPos = position.z + max.z * zOffset * scale.z;
 
             //Generate GameObject
-            Instantiate(enemy, new Vector3(xPos, 0, zPos), Quaternion.identity);
+            Instantiate(enemy, new Vector3(xPos, position.y, zPos), Quaternion.identity);
             yield return new WaitForSeconds(interval);
         }
     }

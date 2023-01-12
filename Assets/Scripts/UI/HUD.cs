@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
@@ -15,7 +16,6 @@ public class HUD : MonoBehaviour
     [SerializeField] Text wave;
 
     [Header("Pause")]
-    public GameObject pauseMenu;
     [SerializeField] Button Resume;
     [SerializeField] Button Settings;
     [SerializeField] Button Quit;
@@ -52,22 +52,39 @@ public class HUD : MonoBehaviour
             ammo3.text = gameManager.instance.playerScript.weapons[2].ammoRemaining.ToString();
         }
 
+        if (HP.fillAmount == 0)
+        {
+            gameManager.instance.youLose();
+        }
         coins.text = gameManager.instance.playerScript.GetCoins().ToString();
         wave.text = $"Wave {gameManager.instance.waveCount}";
     }
 
-    void resume()
+    public void resume()
     {
+        gameManager.instance.isPaused = false;
         gameManager.instance.unpauseGame();
     }
 
-    void settings()
+    public void settings()
     {
 
     }
 
-    void quit()
+    public void quit()
     {
         Application.Quit();
+    }
+
+    public void restart()
+    {
+        gameManager.instance.unpauseGame();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
+    }
+    public void respawn()
+    {
+        gameManager.instance.playerScript.respawnPlayer();
+        gameManager.instance.unpauseGame();
     }
 }

@@ -12,11 +12,20 @@ public class gameManager : MonoBehaviour
     public static gameManager instance;
 
     public GameObject player;
+    
     public playerController playerScript;
     public HUD HUD;
     public int enemiesRemaining;
     public int waveCount;
     float timeScaleOrig;
+    public GameObject playerSpawnPos;
+    public int HP;
+    public bool isPaused;
+    public GameObject activeMenu;
+    public GameObject pauseMenu;
+    public GameObject winMenu;
+    public GameObject loseMenu;
+    public bool nextWave;
 
     void Awake()
     {
@@ -25,13 +34,27 @@ public class gameManager : MonoBehaviour
         HUD = transform.parent.gameObject.GetComponent<HUD>();
         playerScript = player.GetComponent<playerController>();
         playerScript.addCoins(2000);
+        playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
         timeScaleOrig = Time.timeScale;
+       
     }
 
 
     void Update()
     {
         
+        
+        if (Input.GetButtonDown("Pause"))
+        {
+            isPaused = !isPaused;
+            activeMenu = pauseMenu;
+            activeMenu.SetActive(isPaused);
+
+            if (isPaused)
+                pauseGame();
+            else
+                unpauseGame();
+        }
     }
 
     public void updateEnemyRemaining(int amount)
@@ -53,19 +76,49 @@ public class gameManager : MonoBehaviour
     public void updateWave(int amount)
     {
         waveCount += amount;
+        nextWave = true;
     }
 
     public void pauseGame()
     {
         Time.timeScale = 0;
-        HUD.pauseMenu.SetActive(true);
+        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void unpauseGame()
     {
         Time.timeScale = timeScaleOrig;
-        HUD.pauseMenu.SetActive(false);
+        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        activeMenu.SetActive(false);
+        activeMenu = null;
+        
+    }
+
+    public void youWin()
+    {
+        if (waveCount == 3 && enemiesRemaining ==0)
+        {
+            Time.timeScale = 0;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+            activeMenu = winMenu;
+            activeMenu.SetActive(true);
+           
+        }
+    }
+    
+    public void youLose()
+    {
+        if (HP == 0)
+        {
+            Time.timeScale = 0;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+            pauseGame();
+            activeMenu = loseMenu;
+            activeMenu.SetActive(true);
+        }
     }
 }
