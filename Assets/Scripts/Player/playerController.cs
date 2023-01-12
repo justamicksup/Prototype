@@ -54,11 +54,6 @@ public class playerController : MonoBehaviour
         {
             StartCoroutine(reload());
         }
-
-        if(Input.GetButtonDown("Pause"))
-        {
-            gameManager.instance.pauseGame();
-        }
         if (Input.GetButtonDown("Action"))
         {
             RaycastHit hit;

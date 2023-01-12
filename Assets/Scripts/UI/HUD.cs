@@ -16,7 +16,6 @@ public class HUD : MonoBehaviour
     [SerializeField] Text wave;
 
     [Header("Pause")]
-    public GameObject pauseMenu;
     [SerializeField] Button Resume;
     [SerializeField] Button Settings;
     [SerializeField] Button Quit;
@@ -63,6 +62,7 @@ public class HUD : MonoBehaviour
 
     public void resume()
     {
+        gameManager.instance.isPaused = false;
         gameManager.instance.unpauseGame();
     }
 
