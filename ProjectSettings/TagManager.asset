@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Melee
   - Range
+  - Player Spawn Pos
   layers:
   - Default
   - TransparentFX

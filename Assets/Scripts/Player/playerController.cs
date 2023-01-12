@@ -32,7 +32,6 @@ public class playerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -191,5 +190,12 @@ public class playerController : MonoBehaviour
             currentWeapon = weapon;
             viewModel.GetComponent<MeshFilter>().mesh = weapons[weapon].viewModel;
         }       
+    }
+    
+    public void respawnPlayer()
+    {
+        controller.enabled = false;
+        transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        controller.enabled = true;
     }
 }
