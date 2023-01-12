@@ -12,14 +12,4 @@ public class weapon : MonoBehaviour
     [Range(1, 100)] [SerializeField] public int ammoRemaining;
     [Range(0.1f, 10)] [SerializeField] public float reloadTime;
     [SerializeField] public Mesh viewModel;
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 }

@@ -26,8 +26,8 @@ public class HUD : MonoBehaviour
     void Start()
     {
         Resume.onClick.AddListener(resume);
-        Resume.onClick.AddListener(settings);
-        Resume.onClick.AddListener(quit);
+        Settings.onClick.AddListener(settings);
+        Quit.onClick.AddListener(quit);
     }
 
     // Update is called once per frame
