@@ -27,6 +27,7 @@ public class playerController : MonoBehaviour
     Vector3 playerVelocity;
 
     bool isShooting;
+    bool isReloading;
 
     // Start is called before the first frame update
     void Start()
@@ -38,13 +39,23 @@ public class playerController : MonoBehaviour
     void Update()
     {
         movement();
+
         if(!isShooting && Input.GetButton("Shoot") && weapons[currentWeapon] != null)
         {
-            if (weapons[currentWeapon].ammo > 0)
+            if (!isReloading && weapons[currentWeapon].ammoRemaining > 0)
             {
                 StartCoroutine(shoot());
             }   
+            else if (!isReloading && weapons[currentWeapon].ammoRemaining <= 0)
+            {
+                StartCoroutine(reload());
+            }
         }
+        if(!isReloading && Input.GetButtonDown("Reload"))
+        {
+            StartCoroutine(reload());
+        }
+
         if(Input.GetButtonDown("Pause"))
         {
             gameManager.instance.pauseGame();
@@ -123,7 +134,7 @@ public class playerController : MonoBehaviour
     IEnumerator shoot()
     {
         isShooting = true;
-        weapons[currentWeapon].ammo--;
+        weapons[currentWeapon].ammoRemaining--;
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, weapons[currentWeapon].shootDist))
         {
@@ -138,6 +149,14 @@ public class playerController : MonoBehaviour
         }
         yield return new WaitForSeconds(weapons[currentWeapon].shootRate);
         isShooting = false;
+    }
+
+    IEnumerator reload()
+    {
+        isReloading = false;
+        yield return new WaitForSeconds(weapons[currentWeapon].reloadTime);
+        weapons[currentWeapon].ammoRemaining = weapons[currentWeapon].ammoCapacity;
+        isReloading = true;
     }
 
     public void takeDamage(int damage)

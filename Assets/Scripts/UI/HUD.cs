@@ -41,15 +41,15 @@ public class HUD : MonoBehaviour
         //display ammo of weapons;
         if(gameManager.instance.playerScript.weapons[0] != null)
         {
-            ammo1.text = gameManager.instance.playerScript.weapons[0].ammo.ToString();
+            ammo1.text = gameManager.instance.playerScript.weapons[0].ammoRemaining.ToString();
         }
         if (gameManager.instance.playerScript.weapons[1] != null)
         {
-            ammo2.text = gameManager.instance.playerScript.weapons[1].ammo.ToString();
+            ammo2.text = gameManager.instance.playerScript.weapons[1].ammoRemaining.ToString();
         }
         if (gameManager.instance.playerScript.weapons[2] != null)
         {
-            ammo3.text = gameManager.instance.playerScript.weapons[2].ammo.ToString();
+            ammo3.text = gameManager.instance.playerScript.weapons[2].ammoRemaining.ToString();
         }
 
         coins.text = gameManager.instance.playerScript.GetCoins().ToString();
