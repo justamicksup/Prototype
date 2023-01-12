@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class weapon : MonoBehaviour
 {
-    [Range(0.1f, 2)][SerializeField] public float shootRate;
-    [Range(1, 15)][SerializeField] public int shootDist;
-    [Range(1, 10)][SerializeField] public int shootDamage;
-    [SerializeField] public float shootForce;
-    [SerializeField] public int ammoCapacity;
-    [SerializeField] public int ammoRemaining;
-    [SerializeField] public int reloadTime;
+    [Range(0.1f, 10)] [SerializeField] public float shootRate;
+    [Range(1, 100)] [SerializeField] public int shootDist;
+    [Range(1, 10)] [SerializeField] public int shootDamage;
+    [Range(1, 10)] [SerializeField] public float shootForce;
+    [Range(1, 100)] [SerializeField] public int ammoCapacity;
+    [Range(1, 100)] [SerializeField] public int ammoRemaining;
+    [Range(0.1f, 10)] [SerializeField] public float reloadTime;
     [SerializeField] public Mesh viewModel;
 
     void Start()

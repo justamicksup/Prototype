@@ -32,7 +32,7 @@ public class playerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        weapons = new weapon[3];
+
     }
 
     // Update is called once per frame
@@ -153,10 +153,10 @@ public class playerController : MonoBehaviour
 
     IEnumerator reload()
     {
-        isReloading = false;
+        isReloading = true;
         yield return new WaitForSeconds(weapons[currentWeapon].reloadTime);
         weapons[currentWeapon].ammoRemaining = weapons[currentWeapon].ammoCapacity;
-        isReloading = true;
+        isReloading = false;
     }
 
     public void takeDamage(int damage)
