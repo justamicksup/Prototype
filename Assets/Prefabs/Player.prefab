@@ -188,7 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2636245865579264848}
   HP: 100
-  stamina: 1
+  stamina: 100
   playerSpeed: 10
   jumpVelocity: 12
   gravity: 25

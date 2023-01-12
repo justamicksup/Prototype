@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Skeleton (No Weapon)
   health: 10
-  attack: 1
+  attack: 10
   defense: 0
   baseOffset: 0.5
   speed: 7
@@ -24,4 +24,3 @@ MonoBehaviour:
   autoBraking: 0
   radius: 0.5
   height: 7
-  weapon: {fileID: 0}

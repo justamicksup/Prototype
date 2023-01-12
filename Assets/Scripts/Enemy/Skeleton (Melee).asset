@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Skeleton (Melee)
   health: 10
-  attack: 2
+  attack: 20
   defense: 1
   baseOffset: 0.5
   speed: 5
@@ -24,4 +24,3 @@ MonoBehaviour:
   autoBraking: 0
   radius: 0.5
   height: 7
-  weapon: {fileID: 0}

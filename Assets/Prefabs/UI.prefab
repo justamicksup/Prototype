@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 446454306}
   - component: {fileID: 446454305}
   - component: {fileID: 446454304}
-  - component: {fileID: 24467064276466511}
+  - component: {fileID: 1445139058}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -126,8 +126,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 24467064276466511}
-        m_TargetAssemblyTypeName: HUD, Assembly-CSharp
+      - m_Target: {fileID: 1445139058}
+        m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
         m_MethodName: quit
         m_Mode: 1
         m_Arguments:
@@ -138,7 +138,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &24467064276466511
+--- !u!114 &1445139058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,20 +147,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 446454302}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52693de27cdb0694b8e74e5f6c97efb7, type: 3}
+  m_Script: {fileID: 11500000, guid: f1a19fa47171fea478ef16951583c316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: {fileID: 0}
-  ammo1: {fileID: 0}
-  ammo2: {fileID: 0}
-  ammo3: {fileID: 0}
-  stamina: {fileID: 0}
-  coins: {fileID: 0}
-  wave: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  Resume: {fileID: 0}
-  Settings: {fileID: 0}
-  Quit: {fileID: 0}
 --- !u!1 &716916936
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +314,7 @@ GameObject:
   - component: {fileID: 933057499}
   - component: {fileID: 933057498}
   - component: {fileID: 933057497}
-  - component: {fileID: 5589586523720855638}
+  - component: {fileID: 704559128}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -439,8 +428,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5589586523720855638}
-        m_TargetAssemblyTypeName: HUD, Assembly-CSharp
+      - m_Target: {fileID: 704559128}
+        m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
         m_MethodName: quit
         m_Mode: 1
         m_Arguments:
@@ -451,7 +440,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5589586523720855638
+--- !u!114 &704559128
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -460,20 +449,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 933057495}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52693de27cdb0694b8e74e5f6c97efb7, type: 3}
+  m_Script: {fileID: 11500000, guid: f1a19fa47171fea478ef16951583c316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: {fileID: 0}
-  ammo1: {fileID: 0}
-  ammo2: {fileID: 0}
-  ammo3: {fileID: 0}
-  stamina: {fileID: 0}
-  coins: {fileID: 0}
-  wave: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  Resume: {fileID: 0}
-  Settings: {fileID: 0}
-  Quit: {fileID: 0}
 --- !u!1 &934154428
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,7 +464,7 @@ GameObject:
   - component: {fileID: 934154432}
   - component: {fileID: 934154431}
   - component: {fileID: 934154430}
-  - component: {fileID: 7706725705284563787}
+  - component: {fileID: 298378328}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -600,8 +578,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7706725705284563787}
-        m_TargetAssemblyTypeName: HUD, Assembly-CSharp
+      - m_Target: {fileID: 298378328}
+        m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
         m_MethodName: restart
         m_Mode: 1
         m_Arguments:
@@ -612,7 +590,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7706725705284563787
+--- !u!114 &298378328
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -621,20 +599,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 934154428}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52693de27cdb0694b8e74e5f6c97efb7, type: 3}
+  m_Script: {fileID: 11500000, guid: f1a19fa47171fea478ef16951583c316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: {fileID: 0}
-  ammo1: {fileID: 0}
-  ammo2: {fileID: 0}
-  ammo3: {fileID: 0}
-  stamina: {fileID: 0}
-  coins: {fileID: 0}
-  wave: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  Resume: {fileID: 0}
-  Settings: {fileID: 0}
-  Quit: {fileID: 0}
 --- !u!1 &1385147179
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +654,7 @@ GameObject:
   - component: {fileID: 1501218833}
   - component: {fileID: 1501218832}
   - component: {fileID: 1501218831}
-  - component: {fileID: 414791312628468141}
+  - component: {fileID: 804947959}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -801,8 +768,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 414791312628468141}
-        m_TargetAssemblyTypeName: HUD, Assembly-CSharp
+      - m_Target: {fileID: 804947959}
+        m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
         m_MethodName: restart
         m_Mode: 1
         m_Arguments:
@@ -813,7 +780,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &414791312628468141
+--- !u!114 &804947959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -822,20 +789,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1501218829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52693de27cdb0694b8e74e5f6c97efb7, type: 3}
+  m_Script: {fileID: 11500000, guid: f1a19fa47171fea478ef16951583c316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: {fileID: 0}
-  ammo1: {fileID: 0}
-  ammo2: {fileID: 0}
-  ammo3: {fileID: 0}
-  stamina: {fileID: 0}
-  coins: {fileID: 0}
-  wave: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  Resume: {fileID: 0}
-  Settings: {fileID: 0}
-  Quit: {fileID: 0}
 --- !u!1 &1512490568
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,7 +1645,7 @@ GameObject:
   - component: {fileID: 7671283129509736927}
   - component: {fileID: 1212335179966153919}
   - component: {fileID: 170076918039930003}
-  - component: {fileID: 390326918349728471}
+  - component: {fileID: 1181950720}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -1803,8 +1759,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 390326918349728471}
-        m_TargetAssemblyTypeName: HUD, Assembly-CSharp
+      - m_Target: {fileID: 1181950720}
+        m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
         m_MethodName: quit
         m_Mode: 1
         m_Arguments:
@@ -1815,7 +1771,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &390326918349728471
+--- !u!114 &1181950720
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1824,20 +1780,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4742143130342636047}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52693de27cdb0694b8e74e5f6c97efb7, type: 3}
+  m_Script: {fileID: 11500000, guid: f1a19fa47171fea478ef16951583c316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: {fileID: 0}
-  ammo1: {fileID: 0}
-  ammo2: {fileID: 0}
-  ammo3: {fileID: 0}
-  stamina: {fileID: 0}
-  coins: {fileID: 0}
-  wave: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  Resume: {fileID: 0}
-  Settings: {fileID: 0}
-  Quit: {fileID: 0}
 --- !u!1 &5295139829780066193
 GameObject:
   m_ObjectHideFlags: 0
@@ -2066,9 +2011,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d226f3a0633e6b84bb574d629dac2100, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6851e6596c0f52a47bb350c31b7f7335, type: 3}
   m_Type: 3
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
   m_FillAmount: 1
@@ -2590,7 +2535,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6851e6596c0f52a47bb350c31b7f7335, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2667,7 +2612,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6851e6596c0f52a47bb350c31b7f7335, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2862,7 +2807,7 @@ RectTransform:
   m_GameObject: {fileID: 7518928813876463614}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.95580006, y: 0.9558, z: 0.9558}
+  m_LocalScale: {x: 0.98, y: 1.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2534779976320586739}
@@ -2870,8 +2815,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.64429855}
-  m_SizeDelta: {x: -0.31951904, y: -39.3668}
+  m_AnchoredPosition: {x: 1, y: 0.64429855}
+  m_SizeDelta: {x: -2, y: -39.3668}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &879782392299293347
 CanvasRenderer:
@@ -2901,9 +2846,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d226f3a0633e6b84bb574d629dac2100, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6851e6596c0f52a47bb350c31b7f7335, type: 3}
   m_Type: 3
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
   m_FillAmount: 1
@@ -3124,6 +3069,7 @@ GameObject:
   - component: {fileID: 9119607932200825756}
   - component: {fileID: 4072682562024970710}
   - component: {fileID: 6106563714824020096}
+  - component: {fileID: 411626192}
   m_Layer: 5
   m_Name: Resume
   m_TagString: Untagged
@@ -3236,7 +3182,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4072682562024970710}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 411626192}
+        m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
+        m_MethodName: resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &411626192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8827893033212581184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1a19fa47171fea478ef16951583c316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8958223624579302840
 GameObject:
   m_ObjectHideFlags: 0
@@ -3493,17 +3463,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   playerScript: {fileID: 0}
-  HUD: {fileID: 0}
   enemiesRemaining: 0
   waveCount: 0
   playerSpawnPos: {fileID: 2045197155}
   HP: 0
   isPaused: 0
+  HUD: {fileID: 0}
   activeMenu: {fileID: 0}
   pauseMenu: {fileID: 7701256236916525116}
   winMenu: {fileID: 1749450336}
   loseMenu: {fileID: 1385147179}
+  playerHPBar: {fileID: 6685727199014318558}
+  playerStaminaBar: {fileID: 3329234537765689490}
   nextWave: 0
+  enemiesRemainingText: {fileID: 0}
 --- !u!1 &8958223625740865911
 GameObject:
   m_ObjectHideFlags: 0

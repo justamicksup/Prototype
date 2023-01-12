@@ -1,49 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.Build.Content;
 #endif
 using UnityEngine;
+using UnityEngine.UI;
+using Cursor = UnityEngine.Cursor;
 
 public class gameManager : MonoBehaviour
 {
     public static gameManager instance;
-
-    public GameObject player;
-    
+    [Header("----- Player -----")] public GameObject player;
     public playerController playerScript;
-    public HUD HUD;
-    public int enemiesRemaining;
+
+
+    [Header("----- Game Goal -----")] public int enemiesRemaining;
     public int waveCount;
     float timeScaleOrig;
     public GameObject playerSpawnPos;
     public int HP;
     public bool isPaused;
+
+    [Header("----- UI -----")] public HUD HUD;
     public GameObject activeMenu;
     public GameObject pauseMenu;
     public GameObject winMenu;
     public GameObject loseMenu;
+    public Image playerHPBar;
+    public Image playerStaminaBar;
+
+
     public bool nextWave;
+    [SerializeField] private TextMeshProUGUI enemiesRemainingText;
+
 
     void Awake()
     {
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
-        HUD = transform.parent.gameObject.GetComponent<HUD>();
+        //HUD = transform.parent.gameObject.GetComponent<HUD>();
         playerScript = player.GetComponent<playerController>();
         playerScript.addCoins(2000);
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
         timeScaleOrig = Time.timeScale;
-       
     }
 
 
     void Update()
     {
-        
-        
         if (Input.GetButtonDown("Cancel"))
         {
             isPaused = !isPaused;
@@ -55,16 +62,20 @@ public class gameManager : MonoBehaviour
             else
                 unpauseGame();
         }
+        
     }
 
     public void updateEnemyRemaining(int amount)
     {
         enemiesRemaining += amount;
+//        enemiesRemainingText.text = enemiesRemaining.ToString("F0");
 
-        // check for game over (enemy <= 0)
+        // check to see if game is over based on enemy count <= 0
         if (enemiesRemaining <= 0)
         {
-            Debug.Log("You Win!!");
+            pauseGame();
+            activeMenu = winMenu;
+            activeMenu.SetActive(true);
         }
     }
 
@@ -72,7 +83,7 @@ public class gameManager : MonoBehaviour
     {
         playerScript.addCoins(amount);
     }
-    
+
     public void updateWave(int amount)
     {
         waveCount += amount;
@@ -93,25 +104,20 @@ public class gameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         activeMenu.SetActive(false);
         activeMenu = null;
-        
     }
 
     public void youWin()
     {
-        if (waveCount == 3 && enemiesRemaining ==0)
-        {
-            Time.timeScale = 0;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Confined;
-            activeMenu = winMenu;
-            activeMenu.SetActive(true);
-           
-        }
+        Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        activeMenu = winMenu;
+        activeMenu.SetActive(true);
     }
-    
+
     public void youLose()
     {
-        if (HP == 0)
+        if (playerScript.getHP() == 0)
         {
             Time.timeScale = 0;
             Cursor.visible = true;
@@ -121,4 +127,6 @@ public class gameManager : MonoBehaviour
             activeMenu.SetActive(true);
         }
     }
+
+   
 }
