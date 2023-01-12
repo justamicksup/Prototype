@@ -12,22 +12,20 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "New Enemy", menuName = "Scriptable Objects/Create An Enemy")]
 public class EnemyStats : ScriptableObject
 {
+    [Header("----- Enemy Info -----")]
     public new string name = "Input Name";
     public int health = 10;
     public int attack = 1;
     public int defense = 0;
     
     public float baseOffset = .5f;
+    [Header("----- Steering -----")]
     public float speed = 3.5f;
     public float angularSpeed = 120f;
     public float acceleration = 8f;
     public float stoppingDistance = 0f;
-    public bool autoBraking = true;
-
+    public bool autoBraking = false;
+    [Header("----- Obstacle Avoidance -----")]
     public float radius = .5f;
     public float height = 1f;
-
-    
-    
-    public GameObject weapon;
 }
