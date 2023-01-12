@@ -1,0 +1,1724 @@
+{
+	"DTU Version" : 4,
+	"Asset Name" : "DockStraight",
+	"Import Name" : "DockStraight",
+	"Asset Type" : "StaticMesh",
+	"Use Experimental Animation Transfer" : false,
+	"Asset Id" : "DockStraight",
+	"Content Type" : "Unknown",
+	"FBX File" : "C:/Users/jesti/Desktop/Unity Projects/PrototypeOne/Prototype1/Assets/Daz3D/DockStraight/DockStraight.fbx",
+	"Base FBX File" : "C:/Users/jesti/Desktop/Unity Projects/PrototypeOne/Prototype1/Assets/Daz3D/DockStraight/DockStraight_base.fbx",
+	"HD FBX File" : "C:/Users/jesti/Desktop/Unity Projects/PrototypeOne/Prototype1/Assets/Daz3D/DockStraight/DockStraight_HD.fbx",
+	"Import Folder" : "C:/Users/jesti/Desktop/Unity Projects/PrototypeOne/Prototype1/Assets/Daz3D/DockStraight/",
+	"Product Name" : "",
+	"Product Component Name" : "",
+	"Materials" : [
+		{
+			"Version" : 4,
+			"Asset Name" : "DockStraight",
+			"Asset Label" : "DockStraight",
+			"Material Name" : "Planks",
+			"Material Type" : "Iray Uber",
+			"Value" : "Unknown",
+			"Properties" : [
+				{
+					"Name" : "UV Set",
+					"Label" : "UV Set",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Smooth On",
+					"Label" : "Smooth",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Smooth Angle",
+					"Label" : "Angle",
+					"Value" : 180,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Line Preview Color",
+					"Label" : "Line Preview Color",
+					"Value" : "#000000",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Line Start Width",
+					"Label" : "Line Start Width (mm)",
+					"Value" : 0.1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Line End Width",
+					"Label" : "Line End Width (mm)",
+					"Value" : 0.1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Line UV Width",
+					"Label" : "Line UV Width",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Render Priority",
+					"Label" : "Render Priority",
+					"Value" : 3,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Propagate Priority",
+					"Label" : "Propagate Priority",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Follow Blend",
+					"Label" : "Follow Blend",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Base Mixing",
+					"Label" : "Base Mixing",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Metallic Weight",
+					"Label" : "Metallicity",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Diffuse Weight",
+					"Label" : "Diffuse Weight",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Diffuse Color",
+					"Label" : "Base Color",
+					"Value" : "#cccccc",
+					"Data Type" : "Color",
+					"Texture" : "D:/Game Development/DAZ/Applications/Data/DAZ 3D/My DAZ 3D Library/Runtime/Textures/Sixus1/PiratesCove/Props/Dock_BaseColor.jpg"
+				},
+				{
+					"Name" : "Diffuse Strength",
+					"Label" : "Diffuse Strength",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Diffuse Roughness",
+					"Label" : "Diffuse Roughness",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : "D:/Game Development/DAZ/Applications/Data/DAZ 3D/My DAZ 3D Library/Runtime/Textures/Sixus1/PiratesCove/Props/Dock_Roughness.jpg"
+				},
+				{
+					"Name" : "Diffuse Overlay Weight",
+					"Label" : "Diffuse Overlay Weight",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Diffuse Overlay Weight Squared",
+					"Label" : "Diffuse Overlay Weight Squared",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Diffuse Overlay Color",
+					"Label" : "Diffuse Overlay Color",
+					"Value" : "#c0c0c0",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Diffuse Overlay Color Effect",
+					"Label" : "Diffuse Overlay Color Effect",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Diffuse Overlay Roughness",
+					"Label" : "Diffuse Overlay Roughness",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Translucency Weight",
+					"Label" : "Translucency Weight",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Base Color Effect",
+					"Label" : "Base Color Effect",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Translucency Color",
+					"Label" : "Translucency Color",
+					"Value" : "#ffffff",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Invert Transmission Normal",
+					"Label" : "Invert Transmission Normal",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "SSS Reflectance Tint",
+					"Label" : "SSS Reflectance Tint",
+					"Value" : "#ffffff",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Dual Lobe Specular Weight",
+					"Label" : "Dual Lobe Specular Weight",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Dual Lobe Specular Reflectivity",
+					"Label" : "Dual Lobe Specular Reflectivity",
+					"Value" : 0.5,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Specular Lobe 1 Roughness",
+					"Label" : "Specular Lobe 1 Roughness",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Specular Lobe 2 Roughness",
+					"Label" : "Specular Lobe 2 Roughness",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Specular Lobe 1 Glossiness",
+					"Label" : "Specular Lobe 1 Glossiness",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Specular Lobe 2 Glossiness",
+					"Label" : "Specular Lobe 2 Glossiness",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Dual Lobe Specular Ratio",
+					"Label" : "Dual Lobe Specular Ratio",
+					"Value" : 0.85,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Glossy Weight",
+					"Label" : "Glossy Weight",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Glossy Layered Weight",
+					"Label" : "Glossy Layered Weight",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : "D:/Game Development/DAZ/Applications/Data/DAZ 3D/My DAZ 3D Library/Runtime/Textures/Sixus1/PiratesCove/Props/Dock_Roughness.jpg"
+				},
+				{
+					"Name" : "Share Glossy Inputs",
+					"Label" : "Share Glossy Inputs",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Glossy Color",
+					"Label" : "Glossy Color",
+					"Value" : "#ffffff",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Glossy Color Effect",
+					"Label" : "Glossy Color Effect",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Glossy Reflectivity",
+					"Label" : "Glossy Reflectivity",
+					"Value" : 0.4240506,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Glossy Specular",
+					"Label" : "Glossy Specular",
+					"Value" : "#3b3b3b",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Glossy Roughness",
+					"Label" : "Glossy Roughness",
+					"Value" : 0.8227848,
+					"Data Type" : "Double",
+					"Texture" : "D:/Game Development/DAZ/Applications/Data/DAZ 3D/My DAZ 3D Library/Runtime/Textures/Sixus1/PiratesCove/Props/Dock_Roughness.jpg"
+				},
+				{
+					"Name" : "Glossiness",
+					"Label" : "Glossiness",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Glossy Anisotropy",
+					"Label" : "Glossy Anisotropy",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Backscattering Weight",
+					"Label" : "Backscattering Weight",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Backscattering Color",
+					"Label" : "Backscattering Color",
+					"Value" : "#ffffff",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Backscattering Roughness",
+					"Label" : "Backscattering Roughness",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Backscattering Glossiness",
+					"Label" : "Backscattering Glossiness",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Backscattering Anisotropy",
+					"Label" : "Backscattering Anisotropy",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Refraction Index",
+					"Label" : "Refraction Index",
+					"Value" : 1.5,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Refraction Weight",
+					"Label" : "Refraction Weight",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Refraction Color",
+					"Label" : "Refraction Color",
+					"Value" : "#ffffff",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Refraction Roughness",
+					"Label" : "Refraction Roughness",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Refraction Glossiness",
+					"Label" : "Refraction Glossiness",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Abbe",
+					"Label" : "Abbe",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Glossy Anisotropy Rotations",
+					"Label" : "Glossy Anisotropy Rotations",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Base Thin Film",
+					"Label" : "Base Thin Film",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Base Thin Film IOR",
+					"Label" : "Base Thin Film IOR",
+					"Value" : 1.5,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Bump Strength",
+					"Label" : "Base Bump",
+					"Value" : 4,
+					"Data Type" : "Double",
+					"Texture" : "D:/Game Development/DAZ/Applications/Data/DAZ 3D/My DAZ 3D Library/Runtime/Textures/Sixus1/PiratesCove/Props/Dock_Height.jpg"
+				},
+				{
+					"Name" : "Normal Map",
+					"Label" : "Normal Map",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : "D:/Game Development/DAZ/Applications/Data/DAZ 3D/My DAZ 3D Library/Runtime/Textures/Sixus1/PiratesCove/Props/Dock_Normal.jpg"
+				},
+				{
+					"Name" : "Metallic Flakes Weight",
+					"Label" : "Metallic Flakes Weight",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Metallic Flakes Color",
+					"Label" : "Metallic Flakes Color",
+					"Value" : "#ffffff",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Metallic Flakes Color Effect",
+					"Label" : "Metallic Flakes Color Effect",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Metallic Flakes Roughness",
+					"Label" : "Metallic Flakes Roughness",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Metallic Flakes Glossiness",
+					"Label" : "Metallic Flakes Glossiness",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Metallic Flakes Size",
+					"Label" : "Metallic Flakes Size",
+					"Value" : 0.001,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Metallic Flakes Strength",
+					"Label" : "Metallic Flakes Strength",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Metallic Flakes Density",
+					"Label" : "Metallic Flakes Density",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Metallic Flakes Thin Film",
+					"Label" : "Metallic Flakes Thin Film",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Metallic Flakes Thin Film IOR",
+					"Label" : "Metallic Flakes Thin Film IOR",
+					"Value" : 1.5,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Weight",
+					"Label" : "Top Coat Weight",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Color",
+					"Label" : "Top Coat Color",
+					"Value" : "#ffffff",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Color Effect",
+					"Label" : "Top Coat Color Effect",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Roughness",
+					"Label" : "Top Coat Roughness",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Glossiness",
+					"Label" : "Top Coat Glossiness",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Layering Mode",
+					"Label" : "Top Coat Layering Mode",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Reflectivity",
+					"Label" : "Reflectivity",
+					"Value" : 0.5,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat IOR",
+					"Label" : "Top Coat IOR",
+					"Value" : 1.5,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Curve Normal",
+					"Label" : "Top Coat Curve 0",
+					"Value" : 0.04,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Curve Grazing",
+					"Label" : "Top Coat Curve 90",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Curve Exponent",
+					"Label" : "Top Coat Curve Exponent",
+					"Value" : 5,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Anisotropy",
+					"Label" : "Top Coat Anisotropy",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Rotations",
+					"Label" : "Top Coat Rotations",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Thin Film",
+					"Label" : "Top Coat Thin Film",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Thin Film IOR",
+					"Label" : "Top Coat Thin Film IOR",
+					"Value" : 1.5,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Bump Mode",
+					"Label" : "Top Coat Bump Mode",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Bump",
+					"Label" : "Top Coat Bump",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Thin Walled",
+					"Label" : "Thin Walled",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Transmitted Measurement Distance",
+					"Label" : "Transmitted Measurement Distance",
+					"Value" : 0.1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Transmitted Color",
+					"Label" : "Transmitted Color",
+					"Value" : "#000000",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "SSS Mode",
+					"Label" : "SSS Mode",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Scattering Measurement Distance",
+					"Label" : "Scattering Measurement Distance",
+					"Value" : 0.1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "SSS Amount",
+					"Label" : "SSS Amount",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "SSS Color",
+					"Label" : "SSS Color",
+					"Value" : "#000000",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "SSS Direction",
+					"Label" : "SSS Direction",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Emission Color",
+					"Label" : "Emission Color",
+					"Value" : "#000000",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Emission Temperature",
+					"Label" : "Emission Temperature (K)",
+					"Value" : 6500,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Two Sided Light",
+					"Label" : "Two Sided Light",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Luminance",
+					"Label" : "Luminance",
+					"Value" : 1500,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Luminance Units",
+					"Label" : "Luminance Units",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Luminous Efficacy",
+					"Label" : "Luminous Efficacy (lm/W)",
+					"Value" : 15,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Cutout Opacity",
+					"Label" : "Cutout Opacity",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Displacement Strength",
+					"Label" : "Displacement Strength",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Minimum Displacement",
+					"Label" : "Minimum Displacement",
+					"Value" : -0.1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Maximum Displacement",
+					"Label" : "Maximum Displacement",
+					"Value" : 0.1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "SubD Displacement Level",
+					"Label" : "SubD Displacement Level",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Horizontal Tiles",
+					"Label" : "Horizontal Tiles",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Horizontal Offset",
+					"Label" : "Horizontal Offset",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Vertical Tiles",
+					"Label" : "Vertical Tiles",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Vertical Offset",
+					"Label" : "Vertical Offset",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Round Corners Radius",
+					"Label" : "Round Corners Radius",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Round Corners Across Materials",
+					"Label" : "Round Corners Across Materials",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Round Corners Roundness",
+					"Label" : "Round Corners Roundness",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Roughness Squared",
+					"Label" : "Roughness Squared",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Glossiness Squared",
+					"Label" : "Glossiness Squared",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "BSDF Type",
+					"Label" : "BSDF Type",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "OutlineColorID",
+					"Label" : "Material ID",
+					"Value" : "#000000",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Exclude From White Mode",
+					"Label" : "Exclude From White Mode",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				}
+			]
+		},
+		{
+			"Version" : 4,
+			"Asset Name" : "DockStraight",
+			"Asset Label" : "DockStraight",
+			"Material Name" : "Posts",
+			"Material Type" : "Iray Uber",
+			"Value" : "Unknown",
+			"Properties" : [
+				{
+					"Name" : "UV Set",
+					"Label" : "UV Set",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Smooth On",
+					"Label" : "Smooth",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Smooth Angle",
+					"Label" : "Angle",
+					"Value" : 180,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Line Preview Color",
+					"Label" : "Line Preview Color",
+					"Value" : "#000000",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Line Start Width",
+					"Label" : "Line Start Width (mm)",
+					"Value" : 0.1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Line End Width",
+					"Label" : "Line End Width (mm)",
+					"Value" : 0.1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Line UV Width",
+					"Label" : "Line UV Width",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Render Priority",
+					"Label" : "Render Priority",
+					"Value" : 3,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Propagate Priority",
+					"Label" : "Propagate Priority",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Follow Blend",
+					"Label" : "Follow Blend",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Base Mixing",
+					"Label" : "Base Mixing",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Metallic Weight",
+					"Label" : "Metallicity",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Diffuse Weight",
+					"Label" : "Diffuse Weight",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Diffuse Color",
+					"Label" : "Base Color",
+					"Value" : "#cccccc",
+					"Data Type" : "Color",
+					"Texture" : "D:/Game Development/DAZ/Applications/Data/DAZ 3D/My DAZ 3D Library/Runtime/Textures/Sixus1/PiratesCove/Props/Dock_BaseColor.jpg"
+				},
+				{
+					"Name" : "Diffuse Strength",
+					"Label" : "Diffuse Strength",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Diffuse Roughness",
+					"Label" : "Diffuse Roughness",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : "D:/Game Development/DAZ/Applications/Data/DAZ 3D/My DAZ 3D Library/Runtime/Textures/Sixus1/PiratesCove/Props/Dock_Roughness.jpg"
+				},
+				{
+					"Name" : "Diffuse Overlay Weight",
+					"Label" : "Diffuse Overlay Weight",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Diffuse Overlay Weight Squared",
+					"Label" : "Diffuse Overlay Weight Squared",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Diffuse Overlay Color",
+					"Label" : "Diffuse Overlay Color",
+					"Value" : "#c0c0c0",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Diffuse Overlay Color Effect",
+					"Label" : "Diffuse Overlay Color Effect",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Diffuse Overlay Roughness",
+					"Label" : "Diffuse Overlay Roughness",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Translucency Weight",
+					"Label" : "Translucency Weight",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Base Color Effect",
+					"Label" : "Base Color Effect",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Translucency Color",
+					"Label" : "Translucency Color",
+					"Value" : "#ffffff",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Invert Transmission Normal",
+					"Label" : "Invert Transmission Normal",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "SSS Reflectance Tint",
+					"Label" : "SSS Reflectance Tint",
+					"Value" : "#ffffff",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Dual Lobe Specular Weight",
+					"Label" : "Dual Lobe Specular Weight",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Dual Lobe Specular Reflectivity",
+					"Label" : "Dual Lobe Specular Reflectivity",
+					"Value" : 0.5,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Specular Lobe 1 Roughness",
+					"Label" : "Specular Lobe 1 Roughness",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Specular Lobe 2 Roughness",
+					"Label" : "Specular Lobe 2 Roughness",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Specular Lobe 1 Glossiness",
+					"Label" : "Specular Lobe 1 Glossiness",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Specular Lobe 2 Glossiness",
+					"Label" : "Specular Lobe 2 Glossiness",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Dual Lobe Specular Ratio",
+					"Label" : "Dual Lobe Specular Ratio",
+					"Value" : 0.85,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Glossy Weight",
+					"Label" : "Glossy Weight",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Glossy Layered Weight",
+					"Label" : "Glossy Layered Weight",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : "D:/Game Development/DAZ/Applications/Data/DAZ 3D/My DAZ 3D Library/Runtime/Textures/Sixus1/PiratesCove/Props/Dock_Roughness.jpg"
+				},
+				{
+					"Name" : "Share Glossy Inputs",
+					"Label" : "Share Glossy Inputs",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Glossy Color",
+					"Label" : "Glossy Color",
+					"Value" : "#ffffff",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Glossy Color Effect",
+					"Label" : "Glossy Color Effect",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Glossy Reflectivity",
+					"Label" : "Glossy Reflectivity",
+					"Value" : 0.4240506,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Glossy Specular",
+					"Label" : "Glossy Specular",
+					"Value" : "#3b3b3b",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Glossy Roughness",
+					"Label" : "Glossy Roughness",
+					"Value" : 0.8227848,
+					"Data Type" : "Double",
+					"Texture" : "D:/Game Development/DAZ/Applications/Data/DAZ 3D/My DAZ 3D Library/Runtime/Textures/Sixus1/PiratesCove/Props/Dock_Roughness.jpg"
+				},
+				{
+					"Name" : "Glossiness",
+					"Label" : "Glossiness",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Glossy Anisotropy",
+					"Label" : "Glossy Anisotropy",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Backscattering Weight",
+					"Label" : "Backscattering Weight",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Backscattering Color",
+					"Label" : "Backscattering Color",
+					"Value" : "#ffffff",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Backscattering Roughness",
+					"Label" : "Backscattering Roughness",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Backscattering Glossiness",
+					"Label" : "Backscattering Glossiness",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Backscattering Anisotropy",
+					"Label" : "Backscattering Anisotropy",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Refraction Index",
+					"Label" : "Refraction Index",
+					"Value" : 1.5,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Refraction Weight",
+					"Label" : "Refraction Weight",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Refraction Color",
+					"Label" : "Refraction Color",
+					"Value" : "#ffffff",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Refraction Roughness",
+					"Label" : "Refraction Roughness",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Refraction Glossiness",
+					"Label" : "Refraction Glossiness",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Abbe",
+					"Label" : "Abbe",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Glossy Anisotropy Rotations",
+					"Label" : "Glossy Anisotropy Rotations",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Base Thin Film",
+					"Label" : "Base Thin Film",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Base Thin Film IOR",
+					"Label" : "Base Thin Film IOR",
+					"Value" : 1.5,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Bump Strength",
+					"Label" : "Base Bump",
+					"Value" : 4,
+					"Data Type" : "Double",
+					"Texture" : "D:/Game Development/DAZ/Applications/Data/DAZ 3D/My DAZ 3D Library/Runtime/Textures/Sixus1/PiratesCove/Props/Dock_Height.jpg"
+				},
+				{
+					"Name" : "Normal Map",
+					"Label" : "Normal Map",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : "D:/Game Development/DAZ/Applications/Data/DAZ 3D/My DAZ 3D Library/Runtime/Textures/Sixus1/PiratesCove/Props/Dock_Normal.jpg"
+				},
+				{
+					"Name" : "Metallic Flakes Weight",
+					"Label" : "Metallic Flakes Weight",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Metallic Flakes Color",
+					"Label" : "Metallic Flakes Color",
+					"Value" : "#ffffff",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Metallic Flakes Color Effect",
+					"Label" : "Metallic Flakes Color Effect",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Metallic Flakes Roughness",
+					"Label" : "Metallic Flakes Roughness",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Metallic Flakes Glossiness",
+					"Label" : "Metallic Flakes Glossiness",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Metallic Flakes Size",
+					"Label" : "Metallic Flakes Size",
+					"Value" : 0.001,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Metallic Flakes Strength",
+					"Label" : "Metallic Flakes Strength",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Metallic Flakes Density",
+					"Label" : "Metallic Flakes Density",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Metallic Flakes Thin Film",
+					"Label" : "Metallic Flakes Thin Film",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Metallic Flakes Thin Film IOR",
+					"Label" : "Metallic Flakes Thin Film IOR",
+					"Value" : 1.5,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Weight",
+					"Label" : "Top Coat Weight",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Color",
+					"Label" : "Top Coat Color",
+					"Value" : "#ffffff",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Color Effect",
+					"Label" : "Top Coat Color Effect",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Roughness",
+					"Label" : "Top Coat Roughness",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Glossiness",
+					"Label" : "Top Coat Glossiness",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Layering Mode",
+					"Label" : "Top Coat Layering Mode",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Reflectivity",
+					"Label" : "Reflectivity",
+					"Value" : 0.5,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat IOR",
+					"Label" : "Top Coat IOR",
+					"Value" : 1.5,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Curve Normal",
+					"Label" : "Top Coat Curve 0",
+					"Value" : 0.04,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Curve Grazing",
+					"Label" : "Top Coat Curve 90",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Curve Exponent",
+					"Label" : "Top Coat Curve Exponent",
+					"Value" : 5,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Anisotropy",
+					"Label" : "Top Coat Anisotropy",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Rotations",
+					"Label" : "Top Coat Rotations",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Thin Film",
+					"Label" : "Top Coat Thin Film",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Thin Film IOR",
+					"Label" : "Top Coat Thin Film IOR",
+					"Value" : 1.5,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Bump Mode",
+					"Label" : "Top Coat Bump Mode",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Top Coat Bump",
+					"Label" : "Top Coat Bump",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Thin Walled",
+					"Label" : "Thin Walled",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Transmitted Measurement Distance",
+					"Label" : "Transmitted Measurement Distance",
+					"Value" : 0.1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Transmitted Color",
+					"Label" : "Transmitted Color",
+					"Value" : "#000000",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "SSS Mode",
+					"Label" : "SSS Mode",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Scattering Measurement Distance",
+					"Label" : "Scattering Measurement Distance",
+					"Value" : 0.1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "SSS Amount",
+					"Label" : "SSS Amount",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "SSS Color",
+					"Label" : "SSS Color",
+					"Value" : "#000000",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "SSS Direction",
+					"Label" : "SSS Direction",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Emission Color",
+					"Label" : "Emission Color",
+					"Value" : "#000000",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Emission Temperature",
+					"Label" : "Emission Temperature (K)",
+					"Value" : 6500,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Two Sided Light",
+					"Label" : "Two Sided Light",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Luminance",
+					"Label" : "Luminance",
+					"Value" : 1500,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Luminance Units",
+					"Label" : "Luminance Units",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Luminous Efficacy",
+					"Label" : "Luminous Efficacy (lm/W)",
+					"Value" : 15,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Cutout Opacity",
+					"Label" : "Cutout Opacity",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Displacement Strength",
+					"Label" : "Displacement Strength",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Minimum Displacement",
+					"Label" : "Minimum Displacement",
+					"Value" : -0.1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Maximum Displacement",
+					"Label" : "Maximum Displacement",
+					"Value" : 0.1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "SubD Displacement Level",
+					"Label" : "SubD Displacement Level",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Horizontal Tiles",
+					"Label" : "Horizontal Tiles",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Horizontal Offset",
+					"Label" : "Horizontal Offset",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Vertical Tiles",
+					"Label" : "Vertical Tiles",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Vertical Offset",
+					"Label" : "Vertical Offset",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Round Corners Radius",
+					"Label" : "Round Corners Radius",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Round Corners Across Materials",
+					"Label" : "Round Corners Across Materials",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Round Corners Roundness",
+					"Label" : "Round Corners Roundness",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Roughness Squared",
+					"Label" : "Roughness Squared",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Glossiness Squared",
+					"Label" : "Glossiness Squared",
+					"Value" : 1,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "BSDF Type",
+					"Label" : "BSDF Type",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				},
+				{
+					"Name" : "OutlineColorID",
+					"Label" : "Material ID",
+					"Value" : "#000000",
+					"Data Type" : "Color",
+					"Texture" : ""
+				},
+				{
+					"Name" : "Exclude From White Mode",
+					"Label" : "Exclude From White Mode",
+					"Value" : 0,
+					"Data Type" : "Double",
+					"Texture" : ""
+				}
+			]
+		}
+	],
+	"Morphs" : [
+	],
+	"MorphLinks" : {
+	},
+	"MorphNames" : [
+	],
+	"SkeletonData" : {
+		"skeletonScale" : [
+			"skeletonScale",
+			1
+		],
+		"offset" : [
+			"offset",
+			0
+		]
+	},
+	"HeadTailData" : {
+	},
+	"JointOrientation" : {
+	},
+	"LimitData" : {
+	},
+	"PoseData" : {
+		"DockStraight" : {
+			"Name" : "DockStraight",
+			"Label" : "DockStraight",
+			"Object Type" : "MESH",
+			"Object" : "DockStraight",
+			"Position" : [
+				0,
+				0,
+				0
+			],
+			"Rotation" : [
+				0,
+				0,
+				0
+			],
+			"Scale" : [
+				1,
+				1,
+				1
+			]
+		}
+	},
+	"Subdivisions" : [
+	],
+	"dForce" : [
+	]
+}

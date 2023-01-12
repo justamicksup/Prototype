@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7064354156900621821
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 5
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -24,7 +11,6 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: 05d4c51f44017bb40b1d2a7a7951c4b3, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
-  - IRAYUBER_DUALLOBESPECULARREFLECTIVITYACTIVE
   - IRAYUBER_GLOSSYCOLORACTIVE
   - _DOUBLESIDED_ON
   m_LightmapFlags: 2
@@ -48,7 +34,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DiffuseMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 26ba1773d027e6f4ab31561c8e749d86, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -60,7 +46,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 7ef9126db3f1f36468ac2fd3a04efc02, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicMap:
@@ -68,7 +54,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 69efeca3a612b314889a2c49470b7533, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RoughnessMap:
@@ -80,7 +66,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularColorMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 18feedd90e694dc45a5bb881e7caa1c2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularLobe1RoughnessMap:
@@ -140,34 +126,47 @@ Material:
     - _AlphaClipThreshold: 0.5
     - _DualLobeSpecularRatio: 0
     - _DualLobeSpecularWeight: 0
-    - _EmissionExposureWeight: 1
+    - _EmissionExposureWeight: 0
     - _EmissionStrength: 0
     - _GlossyAnisotropy: 0
-    - _GlossyLayeredWeight: 0.07964602
+    - _GlossyLayeredWeight: 0
     - _Height: 0
     - _HeightOffset: 0.25
     - _IndexOfRefraction: 1.5
     - _IndexOfRefractionWeight: 0
     - _Metallic: 0
-    - _Normal: 1
+    - _Normal: 0
     - _QueueControl: 1
     - _QueueOffset: 0
-    - _Roughness: 0.6017699
+    - _Roughness: 1
     - _SpecularLobe1Roughness: 0
     - _SpecularLobe2Roughness: 0
-    - _SpecularStrength: 1
+    - _SpecularStrength: 0.5
     - _TopCoatBumpStrength: 0
     - _TopCoatIOR: 1.5
     - _TopCoatNormalStrength: 0
-    - _TopCoatRoughness: 0
+    - _TopCoatRoughness: 0.5
     - _TopCoatWeight: 0
     - _TranslucencyWeight: 0
     m_Colors:
-    - _Diffuse: {r: 0.68235296, g: 0.6392157, b: 0.5686275, a: 1}
-    - _Emission: {r: 0, g: 0, b: 0, a: 1}
+    - _Diffuse: {r: 1, g: 1, b: 1, a: 1}
+    - _Emission: {r: 1, g: 1, b: 1, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecularColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
-    - _TopCoatColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TopCoatColor: {r: 1, g: 1, b: 1, a: 0}
     - _TranslucencyColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
+--- !u!114 &984762103071776568
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
