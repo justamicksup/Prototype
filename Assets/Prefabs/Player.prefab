@@ -195,7 +195,10 @@ MonoBehaviour:
   jumpMax: 2
   coins: 0
   actionRange: 3
-  weapons: []
+  weapons:
+  - {fileID: 1361841781112612331, guid: cfee2bcac7752d04b9835ac3228bab74, type: 3}
+  - {fileID: 1410953198057574973, guid: 68ae35d9f4d2f2d48993b32368aa4bce, type: 3}
+  - {fileID: 0}
   viewModel: {fileID: 742615014554332869}
 --- !u!143 &2636245865579264848
 CharacterController:

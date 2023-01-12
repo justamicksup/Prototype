@@ -100,10 +100,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 288198262931219470}
+  - component: {fileID: 1410953198057574973}
   - component: {fileID: 788959872417365982}
   - component: {fileID: 1579691997945917735}
   m_Layer: 0
-  m_Name: PWGun1_Prefab
+  m_Name: PWGun1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,6 +126,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1410953198057574973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5001316686193312806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dc05bb63753a9a43b68bbd113f6e0f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootRate: 1.5
+  shootDist: 25
+  shootDamage: 3
+  shootForce: 3
+  ammoCapacity: 3
+  ammoRemaining: 3
+  reloadTime: 3
+  viewModel: {fileID: 0}
 --- !u!95 &788959872417365982
 Animator:
   serializedVersion: 5

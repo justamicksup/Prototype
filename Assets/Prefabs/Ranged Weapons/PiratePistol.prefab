@@ -92,10 +92,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6191547657790258152}
+  - component: {fileID: 1361841781112612331}
   - component: {fileID: 8760331359144210266}
   - component: {fileID: 5404417526420068776}
   m_Layer: 0
-  m_Name: PiratePistol_Prefab
+  m_Name: PiratePistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,6 +118,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1361841781112612331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6262804902759821324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dc05bb63753a9a43b68bbd113f6e0f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootRate: 0.5
+  shootDist: 15
+  shootDamage: 1
+  shootForce: 1
+  ammoCapacity: 10
+  ammoRemaining: 10
+  reloadTime: 2
+  viewModel: {fileID: 0}
 --- !u!95 &8760331359144210266
 Animator:
   serializedVersion: 5
