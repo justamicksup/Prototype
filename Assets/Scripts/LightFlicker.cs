@@ -5,6 +5,8 @@ using UnityEngine;
 public class LightFlicker : MonoBehaviour
 {
     [SerializeField] private Light spotLight;
+    public float secondsToFlicker = 3;
+    private float secondsPassed = 0;
     public Vector2 flickerIntensityRange = new Vector2(20, 100);
     private Coroutine flicker;
 
@@ -16,21 +18,23 @@ public class LightFlicker : MonoBehaviour
 
     IEnumerator Flicker()
     {
+        float flickerIntensity = flickerIntensityRange.x;
         while (true)
         {
-            float waitSeconds = Random.Range(0.5f, 1);
-            float transitionSeconds = Random.Range(0.5f, 1);
-            float flickerIntensity = Random.Range(flickerIntensityRange.x, flickerIntensityRange.y);
-            float secondsPassed = 0;
-            while (secondsPassed <= transitionSeconds)
+            secondsPassed = 0;
+            float startIntensity = spotLight.intensity;
+            //float secondsPassed = 0;
+            while (secondsPassed <= secondsToFlicker)
             {
-                spotLight.intensity = Mathf.Lerp(spotLight.intensity, flickerIntensity, secondsPassed / transitionSeconds);
+                spotLight.intensity = Mathf.Lerp(startIntensity, flickerIntensity, secondsPassed / secondsToFlicker);
                 secondsPassed += Time.deltaTime;
-                yield return null;
-                    ;
+                yield return new WaitForEndOfFrame();
             }
 
-            yield return new WaitForSeconds(waitSeconds);
+            if (flickerIntensity < flickerIntensityRange.y) flickerIntensity = flickerIntensityRange.y;
+            else flickerIntensity = flickerIntensityRange.x;
+            yield return null;
+
         }
     }
 }
