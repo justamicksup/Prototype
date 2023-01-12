@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ribs
+  m_Name: rudder
   m_Shader: {fileID: -6465566751694194690, guid: 05d4c51f44017bb40b1d2a7a7951c4b3, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
@@ -157,7 +157,7 @@ Material:
     - _TopCoatColor: {r: 1, g: 1, b: 1, a: 0}
     - _TranslucencyColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &91947700973892042
+--- !u!114 &2431894966471587838
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

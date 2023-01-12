@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PWDagg_Blade1
+  m_Name: hull
   m_Shader: {fileID: -6465566751694194690, guid: 05d4c51f44017bb40b1d2a7a7951c4b3, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
@@ -34,7 +34,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DiffuseMap:
-        m_Texture: {fileID: 2800000, guid: dcdd96c734f90ce4cb6ccfd53de6d883, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -46,7 +46,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
-        m_Texture: {fileID: 2800000, guid: a9f325768018b8b45bb69b67683868aa, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicMap:
@@ -127,7 +127,7 @@ Material:
     - _DualLobeSpecularRatio: 0
     - _DualLobeSpecularWeight: 0
     - _EmissionExposureWeight: 0
-    - _EmissionStrength: 1
+    - _EmissionStrength: 0
     - _GlossyAnisotropy: 0
     - _GlossyLayeredWeight: 0
     - _Height: 1
@@ -141,7 +141,7 @@ Material:
     - _Roughness: 1
     - _SpecularLobe1Roughness: 0
     - _SpecularLobe2Roughness: 0
-    - _SpecularStrength: 1
+    - _SpecularStrength: 0.3
     - _TopCoatBumpStrength: 0
     - _TopCoatIOR: 1.5
     - _TopCoatNormalStrength: 0
@@ -149,15 +149,15 @@ Material:
     - _TopCoatWeight: 0
     - _TranslucencyWeight: 0
     m_Colors:
-    - _Diffuse: {r: 0.7490196, g: 0.7490196, b: 0.7490196, a: 1}
+    - _Diffuse: {r: 1, g: 1, b: 1, a: 1}
     - _Emission: {r: 0, g: 0, b: 0, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecularColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
     - _TopCoatColor: {r: 1, g: 1, b: 1, a: 0}
     - _TranslucencyColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &9085134242373943903
+--- !u!114 &1389156205335236946
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

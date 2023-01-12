@@ -12,6 +12,7 @@ public class HUD : MonoBehaviour
     [SerializeField] Text ammo3;
     [SerializeField] Image stamina;
     [SerializeField] Text coins;
+    [SerializeField] Text wave;
 
     [Header("Pause")]
     public GameObject pauseMenu;
@@ -32,10 +33,27 @@ public class HUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //hp and stamina bars
         HP.fillAmount = Mathf.Clamp(gameManager.instance.playerScript.getHP() / 100f, 0, 1f);
         stamina.fillAmount = Mathf.Clamp(gameManager.instance.playerScript.getStamina() / 1f, 0, 1f);
-        //ammo.text = gameManager.instance.playerScript.getAmmo().ToString();
+
+
+        //display ammo of weapons;
+        if(gameManager.instance.playerScript.weapons[0] != null)
+        {
+            ammo1.text = gameManager.instance.playerScript.weapons[0].ammo.ToString();
+        }
+        if (gameManager.instance.playerScript.weapons[1] != null)
+        {
+            ammo2.text = gameManager.instance.playerScript.weapons[1].ammo.ToString();
+        }
+        if (gameManager.instance.playerScript.weapons[2] != null)
+        {
+            ammo3.text = gameManager.instance.playerScript.weapons[2].ammo.ToString();
+        }
+
         coins.text = gameManager.instance.playerScript.GetCoins().ToString();
+        wave.text = $"Wave {gameManager.instance.waveCount}";
     }
 
     void resume()

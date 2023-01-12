@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1937997863159198064}
   - component: {fileID: 4396025059160950202}
   - component: {fileID: 9195615305045848528}
+  - component: {fileID: -6648858402227021333}
   m_Layer: 0
   m_Name: Pistol 1
   m_TagString: Untagged
@@ -98,3 +99,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3727299226792910341, guid: e6efe674338ad4a49866fd7e5c2ba6b4, type: 3}
+--- !u!114 &-6648858402227021333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2738520558268228719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dc05bb63753a9a43b68bbd113f6e0f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammo: 0
+  shootRate: 0
+  shootDist: 0
+  shootDamage: 0
+  shootForce: 0
+  viewModel: {fileID: -3727299226792910341, guid: e6efe674338ad4a49866fd7e5c2ba6b4, type: 3}

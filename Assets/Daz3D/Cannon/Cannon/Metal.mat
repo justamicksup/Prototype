@@ -16,7 +16,7 @@ Material:
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 2450
+  m_CustomRenderQueue: 2000
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
@@ -34,7 +34,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DiffuseMap:
-        m_Texture: {fileID: 2800000, guid: 5c8e6e8c5908df449b1520c390b73332, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -46,19 +46,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
-        m_Texture: {fileID: 2800000, guid: 7d685c522da3aed4abe54ba4a6bc92a6, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicMap:
-        m_Texture: {fileID: 2800000, guid: d9def0388043d1c4d91d659e20add4df, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 092194e345a202c408f3045d05aef14a, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RoughnessMap:
-        m_Texture: {fileID: 2800000, guid: f92c0d4ddd3bd444284aac1ed4f5311d, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SSSMap:
@@ -129,16 +129,16 @@ Material:
     - _EmissionExposureWeight: 1
     - _EmissionStrength: 0
     - _GlossyAnisotropy: 0
-    - _GlossyLayeredWeight: 0.2157644
-    - _Height: 4
+    - _GlossyLayeredWeight: 1
+    - _Height: 25
     - _HeightOffset: 0.25
     - _IndexOfRefraction: 1.5
     - _IndexOfRefractionWeight: 0
     - _Metallic: 1
     - _Normal: 1
-    - _QueueControl: 0
+    - _QueueControl: 1
     - _QueueOffset: 0
-    - _Roughness: 1
+    - _Roughness: 0.9601064
     - _SpecularLobe1Roughness: 0
     - _SpecularLobe2Roughness: 0
     - _SpecularStrength: 1
@@ -149,7 +149,7 @@ Material:
     - _TopCoatWeight: 0
     - _TranslucencyWeight: 0
     m_Colors:
-    - _Diffuse: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    - _Diffuse: {r: 1, g: 1, b: 1, a: 1}
     - _Emission: {r: 0, g: 0, b: 0, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 0}
@@ -157,7 +157,7 @@ Material:
     - _TopCoatColor: {r: 1, g: 1, b: 1, a: 1}
     - _TranslucencyColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &7877921538643721245
+--- !u!114 &5800417160890854047
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
