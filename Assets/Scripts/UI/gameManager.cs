@@ -78,7 +78,7 @@ public class gameManager : MonoBehaviour
         
         if (enemiesRemaining <= 0)
         {
-            if (waveCount >= waveController.numWaves)
+            if (waveCount == waveController.numWaves)
             {
                 pauseGame();
                 activeMenu = winMenu;

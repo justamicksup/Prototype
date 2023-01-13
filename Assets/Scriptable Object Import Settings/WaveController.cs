@@ -19,8 +19,7 @@ public class WaveController : ScriptableObject
     public List<GameObject> CreateWave()
     {
         int index = gameManager.instance.waveCount - 1;
-        int EnemyPoolSize = waves.Length - 1;
-
+        int EnemyPoolSize = waves[index].wave.EnemiesInWave.Count - 1;
         
 
         var enemyCount = 0;
