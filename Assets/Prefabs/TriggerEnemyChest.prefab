@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1185b177e0dc9d04aa2ccf1369321cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chestTrigger: {fileID: 0}
+  chestTrigger: {fileID: 3455154318459857410}
 --- !u!33 &3424315010780515338
 MeshFilter:
   m_ObjectHideFlags: 0

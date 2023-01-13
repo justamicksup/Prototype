@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -38,6 +39,7 @@ public class enemyAI : MonoBehaviour, IDamage
     void Start()
     {
         gameManager.instance.updateEnemyRemaining(1);
+        enem = GetComponent<EnemyStatSheet>().skeleton;
     }
 
     // Update is called once per frame
@@ -92,7 +94,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
         GameObject bulletClone = Instantiate(bullet, shootPos.position, bullet.transform.rotation);
         bulletClone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
-        bulletClone.GetComponent<bullet>().bulletDamage = shootDamage;
+        bulletClone.GetComponent<bullet>().bulletDamage = shootDamage + enem.attack;
 
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
@@ -102,7 +104,7 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         isSwinging = true;
         
-        gameManager.instance.playerScript.takeDamage(2);
+        gameManager.instance.playerScript.takeDamage(enem.attack);
         
 
         yield return new WaitForSeconds(swingRate);

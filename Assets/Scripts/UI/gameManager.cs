@@ -23,7 +23,9 @@ public class gameManager : MonoBehaviour
     public GameObject playerSpawnPos;
     public int HP;
     public bool isPaused;
-
+    public int maxWave;
+    public WaveController waveController;
+    
     [Header("----- UI -----")] public HUD HUD;
     public GameObject activeMenu;
     public GameObject pauseMenu;
@@ -46,6 +48,7 @@ public class gameManager : MonoBehaviour
         playerScript.addCoins(2000);
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
         timeScaleOrig = Time.timeScale;
+        waveController = Resources.Load("WaveController")as WaveController;
     }
 
 
@@ -71,11 +74,21 @@ public class gameManager : MonoBehaviour
 //        enemiesRemainingText.text = enemiesRemaining.ToString("F0");
 
         // check to see if game is over based on enemy count <= 0
+       
+        
         if (enemiesRemaining <= 0)
         {
-            pauseGame();
-            activeMenu = winMenu;
-            activeMenu.SetActive(true);
+            if (waveCount >= waveController.numWaves)
+            {
+                pauseGame();
+                activeMenu = winMenu;
+                activeMenu.SetActive(true);
+            }
+            else
+            {
+                updateWave(1);
+            }
+           
         }
     }
 
@@ -117,15 +130,13 @@ public class gameManager : MonoBehaviour
 
     public void youLose()
     {
-        if (playerScript.getHP() == 0)
-        {
+        
             Time.timeScale = 0;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
             pauseGame();
             activeMenu = loseMenu;
             activeMenu.SetActive(true);
-        }
     }
 
    

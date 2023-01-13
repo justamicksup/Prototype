@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class buttonFunctions : MonoBehaviour
 {
+    private CharacterController controller;
     public void resume()
     {
         gameManager.instance.unpauseGame();

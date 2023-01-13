@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52226dc96b447924da3ad2b2b630d401, type: 3}
-  m_Name: Wave Controller
+  m_Script: {fileID: 11500000, guid: 7d2b099cb3ec51c40812899e31c55ca2, type: 3}
+  m_Name: BossyBoss
   m_EditorClassIdentifier: 
-  waves: {fileID: 11400000, guid: 58aea525604005646b468763ccdc4ea3, type: 2}
+  <EnemiesInWave>k__BackingField:
+  - {fileID: 7777564237960259858, guid: e6a2e4e1523a1e049aebbf858f6d80e3, type: 3}

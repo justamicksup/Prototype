@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootRate: 0.5
-  shootDist: 15
+  shootDist: 100
   shootDamage: 3
   shootForce: 1
   ammoCapacity: 10

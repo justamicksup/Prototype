@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 public class EnemyStatSheet : MonoBehaviour
 {
-    [SerializeField] EnemyStats skeleton;
+    public EnemyStats skeleton;
     [SerializeField] NavMeshAgent agent;
     private void Start()
     {
