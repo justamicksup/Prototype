@@ -25,18 +25,21 @@ public class gameManager : MonoBehaviour
     public bool isPaused;
     public int maxWave;
     public WaveController waveController;
-    
-    [Header("----- UI -----")] public HUD HUD;
+    public bool nextWave;
+    [SerializeField] private TextMeshProUGUI enemiesRemainingText;
+
+    [Header("----- UI -----")]
+    public HUD HUD;
     public GameObject activeMenu;
     public GameObject pauseMenu;
+    public GameObject settingsMenu;
     public GameObject winMenu;
     public GameObject loseMenu;
     public Image playerHPBar;
     public Image playerStaminaBar;
 
-
-    public bool nextWave;
-    [SerializeField] private TextMeshProUGUI enemiesRemainingText;
+    [Header("----- Game Settings -----]")]
+    public int sensitivity;
 
 
     void Awake()
@@ -56,14 +59,20 @@ public class gameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            isPaused = !isPaused;
             activeMenu = pauseMenu;
-            activeMenu.SetActive(isPaused);
+            isPaused = !isPaused;
 
             if (isPaused)
+            {
+                Debug.Log("Pause");
                 pauseGame();
+            }
+
             else
+            {
+                Debug.Log("Unpause");
                 unpauseGame();
+            }
         }
         
     }
@@ -105,9 +114,11 @@ public class gameManager : MonoBehaviour
 
     public void pauseGame()
     {
+        //activeMenu = pauseMenu;
+        activeMenu.SetActive(true);
         Time.timeScale = 0;
         Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void unpauseGame()
@@ -123,21 +134,18 @@ public class gameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
         activeMenu = winMenu;
         activeMenu.SetActive(true);
     }
 
     public void youLose()
     {
-        
-            Time.timeScale = 0;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Confined;
-            pauseGame();
-            activeMenu = loseMenu;
-            activeMenu.SetActive(true);
+        Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        pauseGame();
+        activeMenu = loseMenu;
+        activeMenu.SetActive(true);
     }
-
-   
 }

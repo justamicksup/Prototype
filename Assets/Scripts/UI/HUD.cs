@@ -20,6 +20,7 @@ public class HUD : MonoBehaviour
     [SerializeField] Button Resume;
     [SerializeField] Button Settings;
     [SerializeField] Button Quit;
+    [SerializeField] GameObject settingsMenu;
 
     //[Header("Settings")] (for later)
 
@@ -57,8 +58,8 @@ public class HUD : MonoBehaviour
         // {
         //     gameManager.instance.youLose();
         // }
-        // coins.text = gameManager.instance.playerScript.GetCoins().ToString();
-        // wave.text = $"Wave {gameManager.instance.waveCount}";
+        coins.text = gameManager.instance.playerScript.GetCoins().ToString();
+        wave.text = $"Wave {gameManager.instance.waveCount}";
     }
 
     // public void resume()
@@ -66,10 +67,6 @@ public class HUD : MonoBehaviour
     //     gameManager.instance.unpauseGame();
     // }
     //
-    // public void settings()
-    // {
-    //
-    // }
     //
     // public void quit()
     // {

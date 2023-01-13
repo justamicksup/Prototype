@@ -48,7 +48,7 @@ public class playerController : MonoBehaviour
     {
         movement();
 
-        if (!isShooting && Input.GetButton("Shoot") && weapons[currentWeapon] != null)
+        if (!isShooting && Input.GetButton("Shoot") && weapons[currentWeapon] != null && !gameManager.instance.isPaused)
         {
             if (!isReloading && weapons[currentWeapon].ammoRemaining > 0)
             {
@@ -63,11 +63,6 @@ public class playerController : MonoBehaviour
         if (!isReloading && Input.GetButtonDown("Reload"))
         {
             StartCoroutine(reload());
-        }
-
-        if (Input.GetButtonDown("Pause"))
-        {
-            gameManager.instance.pauseGame();
         }
 
         if (Input.GetButtonDown("Action"))

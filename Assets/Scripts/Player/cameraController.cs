@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class cameraController : MonoBehaviour
 {
-    //sensitivity
-    [SerializeField] int sensHor;
-    [SerializeField] int sensVert;
-
     //camera rotation limit
     [SerializeField] int lockVerMin;
     [SerializeField] int lockVerMax;
@@ -29,8 +25,8 @@ public class cameraController : MonoBehaviour
     void Update()
     {
         //get input
-        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * sensVert;
-        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * sensHor;
+        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * gameManager.instance.sensitivity;
+        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * gameManager.instance.sensitivity;
 
         if(invertX)
             xRotation += mouseY;
