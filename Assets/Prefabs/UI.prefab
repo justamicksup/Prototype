@@ -3468,6 +3468,8 @@ MonoBehaviour:
   playerSpawnPos: {fileID: 2045197155}
   HP: 0
   isPaused: 0
+  maxWave: 0
+  waveController: {fileID: 0}
   HUD: {fileID: 0}
   activeMenu: {fileID: 0}
   pauseMenu: {fileID: 7701256236916525116}

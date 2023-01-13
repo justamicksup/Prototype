@@ -4591,10 +4591,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 170076918039930003, guid: 06894b6d57d4f0a48a7d574be00bc4bc, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 390326918349728471, guid: 06894b6d57d4f0a48a7d574be00bc4bc, type: 3}
     - target: {fileID: 8958223624579302840, guid: 06894b6d57d4f0a48a7d574be00bc4bc, type: 3}
       propertyPath: m_Name
       value: UI
@@ -6147,10 +6143,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2636245865579264812, guid: 40ca8b79e48a2ec489053767b04ad659, type: 3}
-      propertyPath: actionRange
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 2636245865579264813, guid: 40ca8b79e48a2ec489053767b04ad659, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -6194,10 +6186,6 @@ PrefabInstance:
     - target: {fileID: 2636245865579264813, guid: 40ca8b79e48a2ec489053767b04ad659, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2636245865579264848, guid: 40ca8b79e48a2ec489053767b04ad659, type: 3}
-      propertyPath: m_StepOffset
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2636245865579264849, guid: 40ca8b79e48a2ec489053767b04ad659, type: 3}
       propertyPath: m_Name
