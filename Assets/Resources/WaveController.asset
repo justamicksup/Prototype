@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: WaveController
   m_EditorClassIdentifier: 
   waves:
-  - enemiesInWave: 5
+  - enemiesInWave: 3
     wave: {fileID: 11400000, guid: 58aea525604005646b468763ccdc4ea3, type: 2}
   - enemiesInWave: 5
     wave: {fileID: 11400000, guid: 58aea525604005646b468763ccdc4ea3, type: 2}
-  - enemiesInWave: 5
+  - enemiesInWave: 7
     wave: {fileID: 11400000, guid: 58aea525604005646b468763ccdc4ea3, type: 2}
   - enemiesInWave: 1
     wave: {fileID: 11400000, guid: 477b8a5993391f44b86e2bdffec4c08e, type: 2}
+  - enemiesInWave: 10
+    wave: {fileID: 11400000, guid: 58aea525604005646b468763ccdc4ea3, type: 2}
