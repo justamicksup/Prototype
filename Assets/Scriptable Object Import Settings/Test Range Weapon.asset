@@ -9,18 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46bc2a565d21d3a4baabd4ba3c137c83, type: 3}
-  m_Name: Skeleton (No Weapon)
+  m_Script: {fileID: 11500000, guid: 171a7f82f7365a947940962d821cd1b7, type: 3}
+  m_Name: Test Range Weapon
   m_EditorClassIdentifier: 
-  name: Input Name
-  health: 10
   attack: 10
-  defense: 0
-  baseOffset: 0.5
-  speed: 3.5
-  angularSpeed: 120
-  acceleration: 8
-  stoppingDistance: 0
-  autoBraking: 0
-  radius: 0.5
-  height: 1
+  range: 100
+  shootRate: 0.5
+  shootForce: 1.59
+  ammoCapacity: 10
+  reloadTime: 1
+  model: {fileID: 919132149155446097, guid: b2659f0f5ce08784f9219aa58aa8dcea, type: 3}
+  level: 3
+  ammoRemaining: 10

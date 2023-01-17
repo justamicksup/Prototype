@@ -58,8 +58,8 @@ public class HUD : MonoBehaviour
         // {
         //     gameManager.instance.youLose();
         // }
-        coins.text = gameManager.instance.playerScript.GetCoins().ToString();
-        wave.text = $"Wave {gameManager.instance.waveCount}";
+        // coins.text = gameManager.instance.playerScript.GetCoins().ToString();
+        // wave.text = $"Wave {gameManager.instance.waveCount}";
     }
 
     // public void resume()

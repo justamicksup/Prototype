@@ -9,18 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea2043a9e3979bc468638c009c689549, type: 3}
+  m_Script: {fileID: 11500000, guid: 46bc2a565d21d3a4baabd4ba3c137c83, type: 3}
   m_Name: Skeleton (Range)
   m_EditorClassIdentifier: 
-  name: Skeleton (Range)
+  name: Input Name
   health: 10
-  attack: 25
+  attack: 30
   defense: 0
   baseOffset: 0.5
-  speed: 4
+  speed: 3.5
   angularSpeed: 120
   acceleration: 8
-  stoppingDistance: 35
+  stoppingDistance: 0
   autoBraking: 0
   radius: 0.5
-  height: 7
+  height: 1

@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3263699454365990613}
-  - component: {fileID: -6648858402227021333}
   - component: {fileID: 1937997863159198064}
   - component: {fileID: 4396025059160950202}
   - component: {fileID: 9195615305045848528}
+  - component: {fileID: 7848222679096094879}
   m_Layer: 0
   m_Name: Pistol 1
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,34 +27,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2738520558268228719}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-6648858402227021333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2738520558268228719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc05bb63753a9a43b68bbd113f6e0f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootRate: 0.5
-  shootDist: 15
-  shootDamage: 1
-  shootForce: 1
-  ammoCapacity: 12
-  ammoRemaining: 12
-  reloadTime: 2
-  viewModel: {fileID: -3727299226792910341, guid: e6efe674338ad4a49866fd7e5c2ba6b4, type: 3}
 --- !u!33 &1937997863159198064
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -119,3 +99,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3727299226792910341, guid: e6efe674338ad4a49866fd7e5c2ba6b4, type: 3}
+--- !u!114 &7848222679096094879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2738520558268228719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e408070cf1c366247ad1d0292fa598eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Armory: {fileID: 0}
+  _scriptableObjectRangedWeapons: {fileID: 11400000, guid: 3cbf909ce311d5f4f86e5e651f1843c5, type: 2}
+  model: {fileID: 0}

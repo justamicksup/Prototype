@@ -1017,7 +1017,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2045197155}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -960, y: -540, z: 0}
+  m_LocalPosition: {x: -947.69, y: -540, z: 20.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2700,7 +2700,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -252, y: 100.1}
+  m_AnchoredPosition: {x: -252, y: 100.1001}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5783257564228095126
@@ -4204,17 +4204,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52693de27cdb0694b8e74e5f6c97efb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: {fileID: 6685727199014318558}
-  ammo1: {fileID: 8451845294630951923}
-  ammo2: {fileID: 8944656768645878733}
-  ammo3: {fileID: 2594776956085869259}
-  stamina: {fileID: 3329234537765689490}
-  coins: {fileID: 5173769001204082853}
-  wave: {fileID: 6353073730422420728}
-  pauseMenu: {fileID: 7701256236916525116}
-  Resume: {fileID: 6106563714824020096}
-  Settings: {fileID: 1798630124485561416}
-  Quit: {fileID: 170076918039930003}
+  HP: {fileID: 0}
+  ammo1: {fileID: 0}
+  ammo2: {fileID: 0}
+  ammo3: {fileID: 0}
+  stamina: {fileID: 0}
+  coins: {fileID: 0}
+  wave: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  Resume: {fileID: 0}
+  Settings: {fileID: 0}
+  Quit: {fileID: 0}
+  settingsMenu: {fileID: 0}
 --- !u!1 &8958223624863300265
 GameObject:
   m_ObjectHideFlags: 0
@@ -4341,16 +4342,34 @@ MonoBehaviour:
   isPaused: 0
   maxWave: 0
   waveController: {fileID: 0}
+  armory: {fileID: 0}
   nextWave: 0
   enemiesRemainingText: {fileID: 0}
   HUD: {fileID: 0}
   activeMenu: {fileID: 0}
   pauseMenu: {fileID: 7701256236916525116}
-  settingsMenu: {fileID: 0}
   winMenu: {fileID: 1749450336}
   loseMenu: {fileID: 1385147179}
   playerHPBar: {fileID: 6685727199014318558}
   playerStaminaBar: {fileID: 3329234537765689490}
+  ammoCountText:
+  - {fileID: 8451845294630951923}
+  - {fileID: 8944656768645878733}
+  - {fileID: 2594776956085869259}
+  coinsText: {fileID: 5173769001204082853}
+  waveCountText: {fileID: 6353073730422420728}
+  settingsMenu: {fileID: 0}
+  ammoRemaining: 0
+  weaponsInLevel: 0
+  currWeapon: {fileID: 0}
+  WeaponSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  GunSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   sensitivity: 300
 --- !u!1 &8958223625740865911
 GameObject:

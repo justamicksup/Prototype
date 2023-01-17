@@ -7,6 +7,7 @@ using UnityEditor;
 using UnityEditor.Build.Content;
 #endif
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Cursor = UnityEngine.Cursor;
 
@@ -25,23 +26,36 @@ public class gameManager : MonoBehaviour
     public bool isPaused;
     public int maxWave;
     public WaveController waveController;
+    public Armory armory;
     public bool nextWave;
     [SerializeField] private TextMeshProUGUI enemiesRemainingText;
-
-    [Header("----- UI -----")]
-    public HUD HUD;
+    
+    
+    [Header("----- UI -----")] public HUD HUD;
     public GameObject activeMenu;
     public GameObject pauseMenu;
-    public GameObject settingsMenu;
     public GameObject winMenu;
     public GameObject loseMenu;
     public Image playerHPBar;
     public Image playerStaminaBar;
+    [SerializeField] private Text[] ammoCountText;
+    [SerializeField] private Text coinsText;
+    [SerializeField] private Text waveCountText;
+    public GameObject settingsMenu;
+    
+    [Header("----- Weapons and Ammo -----")]
+    public int ammoRemaining;
+    public int weaponsInLevel;
+    public Weapon currWeapon;
+    //Having issue casting weapon to specific class and keeping scriptable object stats
+    //goal is to have all weapons be in Weapon[] WeaponSlots and cast accordingly for logic
+    public Weapon[] WeaponSlots;
+    public RangedWeapons[] GunSlots;
 
     [Header("----- Game Settings -----]")]
     public int sensitivity;
-
-
+    
+    
     void Awake()
     {
         instance = this;
@@ -51,30 +65,30 @@ public class gameManager : MonoBehaviour
         playerScript.addCoins(2000);
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
         timeScaleOrig = Time.timeScale;
-        waveController = Resources.Load("WaveController")as WaveController;
+        waveController = Resources.Load("WaveController") as WaveController;
+        
+        ammoCountText[0].text = "";
+        ammoCountText[1].text = "";
+        ammoCountText[2].text = "";
+        waveCountText.text = "";
+        coinsText.text = playerScript.GetCoins().ToString();
     }
 
 
     void Update()
     {
+
         if (Input.GetButtonDown("Cancel"))
         {
-            activeMenu = pauseMenu;
             isPaused = !isPaused;
+            activeMenu = pauseMenu;
+            activeMenu.SetActive(isPaused);
 
             if (isPaused)
-            {
-                Debug.Log("Pause");
                 pauseGame();
-            }
-
             else
-            {
-                Debug.Log("Unpause");
                 unpauseGame();
-            }
         }
-        
     }
 
     public void updateEnemyRemaining(int amount)
@@ -83,8 +97,8 @@ public class gameManager : MonoBehaviour
 //        enemiesRemainingText.text = enemiesRemaining.ToString("F0");
 
         // check to see if game is over based on enemy count <= 0
-       
-        
+
+
         if (enemiesRemaining <= 0)
         {
             if (waveCount == waveController.numWaves)
@@ -97,7 +111,6 @@ public class gameManager : MonoBehaviour
             {
                 updateWave(1);
             }
-           
         }
     }
 
@@ -114,11 +127,9 @@ public class gameManager : MonoBehaviour
 
     public void pauseGame()
     {
-        //activeMenu = pauseMenu;
-        activeMenu.SetActive(true);
         Time.timeScale = 0;
         Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void unpauseGame()
@@ -134,7 +145,7 @@ public class gameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
         activeMenu = winMenu;
         activeMenu.SetActive(true);
     }
@@ -143,9 +154,44 @@ public class gameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
         pauseGame();
         activeMenu = loseMenu;
         activeMenu.SetActive(true);
+    }
+
+    public void updateAmmo(int ammo)
+    {
+        gameManager.instance.GunSlots[0].ammoRemaining -= ammo;
+        ammoRemaining = gameManager.instance.GunSlots[0].ammoRemaining;
+
+    }
+
+    public void updateWeaponSlots(Weapon _weapon)
+    {
+        if (_weapon is RangedWeapons)
+        {
+            RangedWeapons rangedWeapons = (RangedWeapons)_weapon;
+            rangedWeapons = rangedWeapons.SetStats(rangedWeapons);
+
+            //temporarily putting it in hardcoded spot, will fix later
+            GunSlots[0] = rangedWeapons;
+
+            
+            UpdateUI();
+            currWeapon = GunSlots[0];
+        }
+        else
+        {
+            Debug.Log("Not a Ranged Weapons unfortunately");
+        }
+    }
+
+    public void UpdateUI()
+    {
+        ammoCountText[0].text = GunSlots[0].ammoRemaining.ToString();
+        coinsText.text = playerScript.GetCoins().ToString();
+        waveCountText.text = $"Wave {waveCount}";
+        
     }
 }

@@ -9,8 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36db2d545bfc9a34d9cec4676bd6e1ce, type: 3}
-  m_Name: BossyBoss
+  m_Script: {fileID: 11500000, guid: 8e2b91230908b2a4cb7802110c219837, type: 3}
+  m_Name: Test Melee Weapon
   m_EditorClassIdentifier: 
-  <EnemiesInWave>k__BackingField:
-  - {fileID: 7777564237960259858, guid: e6a2e4e1523a1e049aebbf858f6d80e3, type: 3}
+  weapons: []
+  attack: 2
+  weaponReach: 2
+  knockbackForce: 2
+  swingSpeed: 2
+  model: {fileID: 0}
+  level: 2

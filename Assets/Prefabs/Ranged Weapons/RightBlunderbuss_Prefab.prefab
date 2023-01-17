@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1627742350341262825}
-  - component: {fileID: -4026946711437129710}
   - component: {fileID: 8848284673616833758}
   - component: {fileID: 7744471881006084263}
+  - component: {fileID: 5936161255574865244}
   m_Layer: 0
   m_Name: RightBlunderbuss_Prefab
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,35 +26,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4635178282593649298}
-  m_LocalRotation: {x: -0.042160474, y: 0.81676674, z: 0.5594081, w: 0.13482271}
-  m_LocalPosition: {x: 0.878803, y: 1.4115549, z: 0.1019092}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2937765810417798279}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4026946711437129710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4635178282593649298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc05bb63753a9a43b68bbd113f6e0f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootRate: 1
-  shootDist: 5
-  shootDamage: 8
-  shootForce: 8
-  ammoCapacity: 1
-  ammoRemaining: 1
-  reloadTime: 3
-  viewModel: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &8848284673616833758
 Animator:
   serializedVersion: 5
@@ -89,6 +69,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SourceFBX: {fileID: 919132149155446097, guid: b672cb3f3021a774a9e14073e4fe3edd, type: 3}
   ReplaceOnImport: 1
+--- !u!114 &5936161255574865244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4635178282593649298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e408070cf1c366247ad1d0292fa598eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armoryWeaponsCount: 0
+  testWeaponNumber: 0
+  testWeaponName: 
+  _scriptableObjectRangedWeapons: {fileID: 11400000, guid: 3cbf909ce311d5f4f86e5e651f1843c5, type: 2}
 --- !u!1 &8166316946983851799
 GameObject:
   m_ObjectHideFlags: 0

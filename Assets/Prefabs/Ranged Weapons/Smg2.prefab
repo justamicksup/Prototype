@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7194392482645182088}
-  - component: {fileID: -3360536543764251379}
   - component: {fileID: 6086692193601423661}
   - component: {fileID: 8330728044735069671}
   - component: {fileID: 2837894125090453277}
+  - component: {fileID: -1737514868653869330}
   m_Layer: 0
   m_Name: Smg2
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,26 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3360536543764251379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7537985041024867378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc05bb63753a9a43b68bbd113f6e0f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootRate: 0.1
-  shootDist: 3
-  shootDamage: 1
-  shootForce: 1
-  ammoCapacity: 20
-  ammoRemaining: 20
-  reloadTime: 2
-  viewModel: {fileID: 0}
 --- !u!33 &6086692193601423661
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -119,3 +99,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2016184859081602932, guid: 69cee26a313a1a2479d6e2fdce1a78a2, type: 3}
+--- !u!114 &-1737514868653869330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7537985041024867378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e408070cf1c366247ad1d0292fa598eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armoryWeaponsCount: 0
+  testWeaponNumber: 0
+  testWeaponName: 
+  _scriptableObjectRangedWeapons: {fileID: 11400000, guid: 3cbf909ce311d5f4f86e5e651f1843c5, type: 2}

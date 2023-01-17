@@ -9,8 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36db2d545bfc9a34d9cec4676bd6e1ce, type: 3}
-  m_Name: BossyBoss
+  m_Script: {fileID: 11500000, guid: 9ed1fab3c31f2e84ca4b1e73cac9e01d, type: 3}
+  m_Name: Test Explosive Weapon
   m_EditorClassIdentifier: 
-  <EnemiesInWave>k__BackingField:
-  - {fileID: 7777564237960259858, guid: e6a2e4e1523a1e049aebbf858f6d80e3, type: 3}
+  weapons: []
+  attack: 1
+  range: 1
+  splashRadius: 1
+  knockbackForce: 1
+  explosivesCapacity: 1
+  cookoffTime: 1
+  model: {fileID: 0}
+  level: 1
