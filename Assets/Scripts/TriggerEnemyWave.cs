@@ -24,6 +24,7 @@ public class TriggerEnemyWave : MonoBehaviour
             {
                 Destroy(chestTrigger);
                 gameManager.instance.updateWave(1);
+                gameManager.instance.UpdateUI();
             }
         }
     }
