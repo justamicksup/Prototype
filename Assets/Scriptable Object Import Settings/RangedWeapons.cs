@@ -17,8 +17,19 @@ public class RangedWeapons : Weapon
     internal int ammoCapacity = 6;
     internal int ammoRemaining = 9;
     internal float reloadTime = 0.1f;
-    
-    
+
+
+    private void Start()
+    {
+        if(transform.parent.gameObject.layer == 5)
+        {
+            this.gameObject.layer = 5;
+            foreach(Transform child in transform)
+            {
+                child.gameObject.layer = 5;
+            }
+        }
+    }
     public RangedWeapons SetStats(Weapon _rangedWeapons)
     {
         RangedWeapons rangedWeapons = (RangedWeapons)_rangedWeapons;
