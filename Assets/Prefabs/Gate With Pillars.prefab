@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &73013586851506444
 Transform:
@@ -99,7 +99,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &72850675192846012
 Transform:
@@ -185,7 +185,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &73082927320716330
 Transform:
@@ -304,6 +304,7 @@ GameObject:
   - component: {fileID: 75528123194903445}
   - component: {fileID: 75528123194903442}
   - component: {fileID: 75528123194903443}
+  - component: {fileID: 950400526164897336}
   m_Layer: 3
   m_Name: Gate With Pillars
   m_TagString: Untagged
@@ -370,4 +371,21 @@ MonoBehaviour:
   obstacleLeft: {fileID: 74577899928646536}
   obstacleRight: {fileID: 74558803860424630}
   box: {fileID: 75528123194903442}
+  obstacle: {fileID: 0}
   obstacleCost: 0
+--- !u!208 &950400526164897336
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75038997596014950}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.975, y: 1.25, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.2, z: 0}
+  m_TimeToStationary: 0.5

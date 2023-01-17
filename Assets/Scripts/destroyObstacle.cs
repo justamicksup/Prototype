@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using static UnityEngine.GraphicsBuffer;
 
 public class destroyObstacle : MonoBehaviour, actionObject
@@ -8,6 +9,7 @@ public class destroyObstacle : MonoBehaviour, actionObject
     [SerializeField] GameObject obstacleLeft;
     [SerializeField] GameObject obstacleRight;
     [SerializeField] Collider box;
+    [SerializeField] NavMeshObstacle obstacle;
     [SerializeField] int obstacleCost;
     private Transform target = null;
 
@@ -49,7 +51,8 @@ public class destroyObstacle : MonoBehaviour, actionObject
             {
                 Destroy(obstacleRight.gameObject);
             }
-            box.enabled = false; 
+            box.enabled = false;
+            obstacle.enabled = false;
         }
         else
         {
