@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8328421761964083022}
+  - component: {fileID: 159487148557749316}
+  - component: {fileID: 2940778176488625341}
   - component: {fileID: 8354027623936128328}
   - component: {fileID: 8344040812487650392}
   - component: {fileID: 8330052421548415237}
   - component: {fileID: 8330052421548415241}
-  - component: {fileID: 2940778176488625341}
-  - component: {fileID: 159487148557749316}
   m_Layer: 0
   m_Name: Chest (Ranged Weapons)
   m_TagString: Chest
@@ -38,6 +38,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 179.45, z: 0}
+--- !u!114 &159487148557749316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8329907836459668288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a3177c65e24c0408a778b439392d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestCost: 0
+  rollCost: 0
+  chestWeapon: {fileID: 8330052421567631516}
+  weaponSelection: {fileID: 0}
+  seed: 0
+  tempArmory: {fileID: 11400000, guid: 8a506621b14f7964b8a4063ed5aa8437, type: 2}
+--- !u!114 &2940778176488625341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8329907836459668288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a51e3205da80b48a1edb4b9f8c62b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &8354027623936128328
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -114,36 +144,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0340915, y: 0.69282407, z: 0.64796704}
   m_Center: {x: -0.00000005960466, y: 0.34641197, z: -0.0087139625}
---- !u!114 &2940778176488625341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8329907836459668288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6a51e3205da80b48a1edb4b9f8c62b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &159487148557749316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8329907836459668288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07a3177c65e24c0408a778b439392d47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chestCost: 0
-  rollCost: 0
-  chestWeapon: {fileID: 8330052421567631516}
-  weaponSelection: {fileID: 0}
-  seed: 0
-  tempArmory: {fileID: 11400000, guid: 8a506621b14f7964b8a4063ed5aa8437, type: 2}
 --- !u!1 &8330052421567631519
 GameObject:
   m_ObjectHideFlags: 0
