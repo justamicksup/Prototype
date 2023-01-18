@@ -371,8 +371,8 @@ MonoBehaviour:
   obstacleLeft: {fileID: 74577899928646536}
   obstacleRight: {fileID: 74558803860424630}
   box: {fileID: 75528123194903442}
-  obstacle: {fileID: 0}
-  obstacleCost: 0
+  obstacle: {fileID: 950400526164897336}
+  obstacleCost: 10
 --- !u!208 &950400526164897336
 NavMeshObstacle:
   m_ObjectHideFlags: 0
