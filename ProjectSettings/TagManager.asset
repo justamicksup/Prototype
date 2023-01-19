@@ -7,6 +7,9 @@ TagManager:
   - Melee
   - Range
   - Player Spawn Pos
+  - Chest
+  - Weapon
+  - Ships
   layers:
   - Default
   - TransparentFX
