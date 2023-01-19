@@ -14,6 +14,7 @@ using Cursor = UnityEngine.Cursor;
 public class gameManager : MonoBehaviour
 {
     public static gameManager instance;
+    public static Animation shipAnim;
     [Header("----- Player -----")] public GameObject player;
     public playerController playerScript;
 
@@ -60,6 +61,7 @@ public class gameManager : MonoBehaviour
     {
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
+        shipAnim = GameObject.FindGameObjectWithTag("Ships").GetComponent<Animation>();
         //HUD = transform.parent.gameObject.GetComponent<HUD>();
         playerScript = player.GetComponent<playerController>();
         playerScript.addCoins(2000);
@@ -89,6 +91,18 @@ public class gameManager : MonoBehaviour
             else
                 unpauseGame();
         }
+    }
+
+    public IEnumerator StartGame()
+    {
+        if(shipAnim != null)
+        {
+            shipAnim.clip = shipAnim.GetClip("ShipsLanding");
+            shipAnim.Play();
+        }
+        yield return new WaitForSeconds(1.5f);
+        updateWave(1);
+        UpdateUI();
     }
 
     public void updateEnemyRemaining(int amount)
