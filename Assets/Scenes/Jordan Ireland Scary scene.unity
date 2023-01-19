@@ -3867,68 +3867,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!1001 &668335219
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2076068837}
-    m_Modifications:
-    - target: {fileID: 415309330960617117, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
-      propertyPath: m_Name
-      value: Pirate Ships
-      objectReference: {fileID: 0}
-    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
---- !u!4 &668335220 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
-  m_PrefabInstance: {fileID: 668335219}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &673982039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4431,6 +4369,68 @@ Transform:
   m_Father: {fileID: 2040539172}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &749072101
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2076068837}
+    m_Modifications:
+    - target: {fileID: 415309330960617117, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
+      propertyPath: m_Name
+      value: Pirate Ships
+      objectReference: {fileID: 0}
+    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
+--- !u!4 &749072102 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5317395872302666929, guid: 8f0b0472936533b4ea6e12054b6bd76c, type: 3}
+  m_PrefabInstance: {fileID: 749072101}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &749254470 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4382890705706664, guid: c472a7c3f85525f4c98177cf92fa98de, type: 3}
@@ -11975,7 +11975,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 668335220}
+  - {fileID: 749072102}
   - {fileID: 1900812129}
   - {fileID: 897918712}
   - {fileID: 1346116720}

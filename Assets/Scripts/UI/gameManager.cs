@@ -57,7 +57,11 @@ public class gameManager : MonoBehaviour
     {
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
-        shipAnim = GameObject.FindGameObjectWithTag("Ships").GetComponent<Animation>();
+        GameObject go = GameObject.FindGameObjectWithTag("Ships");
+        if(go != null)
+        {
+            shipAnim.GetComponent<Animation>();
+        }
         //HUD = transform.parent.gameObject.GetComponent<HUD>();
         playerScript = player.GetComponent<playerController>();
         playerScript.addCoins(2000000);
