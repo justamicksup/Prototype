@@ -99,7 +99,7 @@ public class gameManager : MonoBehaviour
             shipAnim.Play();
         }
         yield return new WaitForSeconds(1.5f);
-        updateWave(1);
+        instance.updateWave();
         UpdateUI();
     }
 
