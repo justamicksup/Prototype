@@ -12,7 +12,7 @@ public class enemyAI : MonoBehaviour, IDamage
     public GameObject enemy;
 
     [Header("----- Enemy Stats -----")]
-    [SerializeField] private EnemyStats enem;
+    //[SerializeField] private EnemyStats enem;
     [SerializeField] Transform headPos;
     [Range(1, 15)] [SerializeField] int HP;
     [SerializeField] int rotationSpeed;
@@ -28,9 +28,11 @@ public class enemyAI : MonoBehaviour, IDamage
 
     [Header("----- Melee -----")] 
     [SerializeField] float swingRate;
+    [SerializeField] int meleeDamage;
     
     bool isSwinging;
     bool isShooting;
+    bool isRangedEnemy;
     Vector3 playerDir;
     bool playerInRange;
 
@@ -39,41 +41,43 @@ public class enemyAI : MonoBehaviour, IDamage
     void Start()
     {
         gameManager.instance.updateEnemyRemaining(1);
-        enem = GetComponent<EnemyStatSheet>().skeleton;
+        //enem = GetComponent<EnemyStatSheet>().skeleton;
+        if(isRangedEnemy)
+        {
+            shootRate = 0; shootDist = 0; shootDamage = 0;
+        }
     }
 
     // Update is called once per frame
     void Update()
-    {playerDir = gameManager.instance.player.transform.position - headPos.position;
-
+    {
+        playerDir = gameManager.instance.player.transform.position - headPos.position;
 
         agent.SetDestination(gameManager.instance.player.transform.position);
 
-        
-                 if (playerInRange)
-                 {
-                     if (!isSwinging)
-                     {
-                         if (enemy.CompareTag("Melee"))
-                         {
-                             StartCoroutine(MeleeHit());
-                         }
-                     }
-                    
-                     if (agent.remainingDistance < agent.stoppingDistance)
-                     {
-                         facePlayer();
-                     }
-
-                     if (enemy.CompareTag("Range"))
-                     {
-                         if (!isShooting)
-                         {
-                             StartCoroutine(shoot());
-                         }
-                     }
-                     
-                 }
+        if (playerInRange)
+        {
+            if (agent.remainingDistance < agent.stoppingDistance)
+            {
+                facePlayer();
+            }
+            if (!isRangedEnemy && !isSwinging)
+            {
+                StartCoroutine(MeleeHit());
+            }
+            else if(!isShooting)
+            {
+                StartCoroutine(shoot());
+            }
+            
+            /*if (!isSwinging)
+            {
+                if (enemy.CompareTag("Melee"))
+                {
+                }
+            }
+            */
+        }
     }
 
     public void takeDamage(int damage)
@@ -94,7 +98,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
         GameObject bulletClone = Instantiate(bullet, shootPos.position, bullet.transform.rotation);
         bulletClone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
-        bulletClone.GetComponent<bullet>().bulletDamage = shootDamage + enem.attack;
+        bulletClone.GetComponent<bullet>().bulletDamage = shootDamage;
 
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
@@ -104,7 +108,7 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         isSwinging = true;
         
-        gameManager.instance.playerScript.takeDamage(enem.attack);
+        gameManager.instance.playerScript.takeDamage(meleeDamage);
         
 
         yield return new WaitForSeconds(swingRate);

@@ -8,11 +8,8 @@ public class playerController : MonoBehaviour
     [Header("----- Components -----")] [SerializeField]
     CharacterController controller;
 
-    [Header("----- Player Stats -----")] [Range(1, 100)] [SerializeField]
-    int HP;
-
-    private Coroutine staminaRegen;
-
+    [Header("----- Player Stats -----")] 
+    [Range(1, 100)] [SerializeField] int HP;
     [Range(1, 100)] [SerializeField] float stamina;
     [SerializeField] int playerSpeed;
     [SerializeField] int jumpVelocity;
@@ -20,18 +17,31 @@ public class playerController : MonoBehaviour
     [SerializeField] int jumpMax;
     [SerializeField] int coins;
     [Range(0.01f, 5)] [SerializeField] float actionRange;
+    private Coroutine staminaRegen;
 
     [Header("----- Shooting -----")]
-    public Weapon weapons;
-    int currentWeapon;
+    [SerializeField] List<RangedWeapon> weaponList = new List<RangedWeapon>(3);
+    [SerializeField] GameObject gunModel;
+    [SerializeField] float shootRate;
+    [SerializeField] int shootDist;
+    [SerializeField] int shootDmg;
+    [SerializeField] float reloadSpeed;
+    [SerializeField] float shootForce;
+    public int magSize; //make private later
+    public int ammoRemaining;
+    public int gunAmmo;
+    public int gunAmmoCap;//make private later
 
-    public GameObject viewModel;
-    public int ammo;
+    [Header("----- Melee -----")]
+    [SerializeField] float attackRate;//to determine how many attacks per second
+    [SerializeField] float swingRate; //to determine how fast the swing is (not sure if we'll need)
+
     int jumpTimes;
     Vector3 move;
     Vector3 playerVelocity;
 
-    [Header("----- Weapon Slots -----")] public Weapon _currentWeaponSlot;
+    [Header("----- Weapon Slots -----")] 
+    //public Weapon _currentWeaponSlot;
 
     int HPOrig;
     float staminaOrig;
@@ -39,7 +49,7 @@ public class playerController : MonoBehaviour
     bool isShooting;
     bool isReloading;
     bool staminaLeft;
-    bool isAttacking;
+    public bool inActionRange;
 
     // Start is called before the first frame update
     void Start()
@@ -56,37 +66,30 @@ public class playerController : MonoBehaviour
     {
         movement();
 
-        if (!isAttacking && Input.GetButton("Shoot"))
+        if (weaponList.Count > 0 && Input.GetButton("Shoot"))
         {
-            Attack();
+            if (ammoRemaining > 0 && !isShooting)
+            {
+                StartCoroutine(shoot());
+            }
+            else
+                StartCoroutine(reload());
         }
-        
-        if (!isReloading && Input.GetButtonDown("Reload"))
+        if (!isReloading && Input.GetButtonDown("Reload") &&
+            weaponList.Count > 0 && ammoRemaining != magSize)
         {
             StartCoroutine(reload());
         }
-        
-        // if (!isShooting && Input.GetButton("Shoot") && gameManager.instance.currWeapon != null) //weapons[currentWeapon] != null
-        // {
-        //     if (!isReloading && gameManager.instance.currWeapon.ammoRemaining > 0) //weapons[currentWeapon].ammoRemaining > 0
-        //     {
-        //         StartCoroutine(shoot());
-        //     }
-        //     else if (!isReloading && gameManager.instance.currWeapon.ammoRemaining <= 0)  //weapons[currentWeapon].ammoRemaining <= 0
-        //     {
-        //         StartCoroutine(reload());
-        //     }
-        // }
-        //
-        // if (!isReloading && Input.GetButtonDown("Reload"))
-        // {
-        //     StartCoroutine(reload());
-        // }
-        //
-        // if (Input.GetButtonDown("Pause"))
-        // {
-        //     gameManager.instance.pauseGame();
-        // }
+        if (gameManager.instance.actionObject != null 
+            && Input.GetButtonDown("Interact") && inActionRange) //assigned to 'e'
+        {
+            gameManager.instance.actionObject.GetComponent<actionObject>().primaryAction();
+        }
+        if (gameManager.instance.actionObject != null
+            && Input.GetButtonDown("Submit") && inActionRange) //assigned to 'enter'
+        {
+            gameManager.instance.actionObject.GetComponent<actionObject>().secondaryAction();
+        }
     }
 
     void movement()
@@ -120,21 +123,6 @@ public class playerController : MonoBehaviour
             jumpTimes++;
         }
 
-        // if (Input.GetButtonDown("Weapon1"))
-        // {
-        //     changeWeapon(0);
-        // }
-        //
-        // if (Input.GetButtonDown("Weapon2"))
-        // {
-        //     changeWeapon(1);
-        // }
-        //
-        // if (Input.GetButtonDown("Weapon3"))
-        // {
-        //     changeWeapon(2);
-        // }
-
         //add gravity
         playerVelocity.y -= gravity * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
@@ -142,31 +130,24 @@ public class playerController : MonoBehaviour
 
     IEnumerator shoot()
     {
-        isAttacking = true;
+        isShooting = true;
         RaycastHit hit;
         
-        gameManager.instance.UpdateUI();
-        ammo = gameManager.instance.GunSlots[0].ammoRemaining;
-
-        
-
+        ammoRemaining--;
+        gameManager.instance.updateAmmoUI();
        
-        if (gameManager.instance.GunSlots[0].ammoRemaining > 0)
+        if (ammoRemaining > 0)
         {
-            gameManager.instance.updateAmmo(1);
-
-            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit,
-                    gameManager.instance.GunSlots[0].range))
+            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
             {
                 if (hit.collider.GetComponent<IDamage>() != null)
                 {
-                    hit.collider.GetComponent<IDamage>().takeDamage(gameManager.instance.GunSlots[0].attack);
+                    hit.collider.GetComponent<IDamage>().takeDamage(shootDmg);
                 }
 
                 if (hit.rigidbody != null)
                 {
-                    hit.rigidbody.AddForceAtPosition(transform.forward * gameManager.instance.GunSlots[0].shootForce,
-                        hit.point);
+                    hit.rigidbody.AddForceAtPosition(transform.forward * shootForce, hit.point);
                 }
             }
         }
@@ -175,17 +156,31 @@ public class playerController : MonoBehaviour
             StartCoroutine(reload());
         }
 
-        yield return new WaitForSeconds(gameManager.instance.GunSlots[0].shootRate);
-        isAttacking = false;
+        yield return new WaitForSeconds(shootRate);
+        isShooting = false;
     }
 
     IEnumerator reload()
-     {
-         isReloading = true;
-         yield return new WaitForSeconds(gameManager.instance.GunSlots[0].reloadTime);
-         gameManager.instance.GunSlots[0].ammoRemaining = gameManager.instance.GunSlots[0].ammoCapacity;
-         isReloading = false;
-     }
+    {
+        isReloading = true;
+        if (magSize <= gunAmmo)
+        {
+            gunAmmo -= magSize;
+            ammoRemaining += magSize;
+        }
+        else
+        {
+            int temp = gunAmmo;
+            gunAmmo = 0;
+            ammoRemaining += temp;
+        }
+        gameManager.instance.updateAmmoUI();
+
+        //play reload anim
+
+        yield return new WaitForSeconds(reloadSpeed);
+        isReloading = false;
+    }
 
     public void takeDamage(int damage)
     {
@@ -196,7 +191,6 @@ public class playerController : MonoBehaviour
             gameManager.instance.youLose();
         }
     }
-
     public void useStamina(float energy)
     {
         if (stamina - energy >= 0)
@@ -212,7 +206,6 @@ public class playerController : MonoBehaviour
 
         staminaRegen = StartCoroutine(regainStamina());
     }
-
     IEnumerator regainStamina()
     {
         yield return new WaitForSeconds(2);
@@ -226,46 +219,20 @@ public class playerController : MonoBehaviour
 
         staminaRegen = null;
     }
-
-    public int GetCoins()
-    {
-        return coins;
-    }
-
-    public int getHP()
-    {
-        return HP;
-    }
-
-    public float getStamina()
-    {
-        return stamina;
-    }
-
+    public int GetCoins() { return coins; }
     public void addCoins(int amount)
     {
         coins += amount;
+        gameManager.instance.updateCoinUI();
     }
-
-    // public void changeWeapon(int weapon)
-    // {
-    //     if (weapons[weapon] != null)
-    //     {
-    //         currentWeapon = weapon;
-    //         viewModel.GetComponent<MeshFilter>().mesh = weapons[weapon].viewModel;
-    //     }
-    // }
-
     public void updatePlayerHP()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / (float)HPOrig;
     }
-
     public void updatePlayerStamina()
     {
         gameManager.instance.playerStaminaBar.fillAmount = (float)stamina / (float)staminaOrig;
     }
-
     public void respawnPlayer()
     {
         controller.enabled = false;
@@ -273,14 +240,21 @@ public class playerController : MonoBehaviour
         controller.enabled = true;
     }
 
-    public void Attack()
+    public void weaponPickup(RangedWeapon weapon)
     {
-        if (gameManager.instance.currWeapon is RangedWeapons)
-        {
-            Debug.Log("Call Attack With Range Weapon");
-            
-            StartCoroutine(shoot());
-        }
+        weaponList.Add(weapon);
+
+        shootRate = weapon.shootRate;
+        shootDist = weapon.shootDist;
+        shootDmg = weapon.shootDmg;
+        reloadSpeed = weapon.reloadSpeed;
+        shootForce = weapon.shootForce;
+        magSize = weapon.magSize;
+        ammoRemaining = weapon.ammoRemaining;
+        gunAmmo = weapon.gunAmmo;
+        gunAmmoCap = weapon.gunAmmoCap;
+
+        gunModel.GetComponent<MeshFilter>().sharedMesh = weapon.gunModel.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = weapon.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
     }
-    
 }

@@ -9,92 +9,91 @@ using Random = UnityEngine.Random;
 
 public class chest : MonoBehaviour, actionObject
 {
-    [SerializeField] int chestCost;
-    [SerializeField] int rollCost;
-    //[SerializeField] Weapon armory;
-    [SerializeField] Transform chestWeapon;
-    public Weapon weaponSelection;
     [SerializeField] int seed;
+    [SerializeField] int chestCost;
+    [Range(100, 1000)] [SerializeField] int rollCost;
+    [SerializeField] Transform chestWeapon;
+    public GameObject weaponSelection;
+    [SerializeField] List<RangedWeapon> chestContents;
     private Transform target = null;
-    public Armory tempArmory;
 
     bool hasCoins;
-    bool openingChest;
     bool playerInRange;
-    bool choseWeapon;
-
-
-
 
     void Start()
     {
-        //weaponSelection = tempArmory.ListOfWeapons[seed];
+        rollChest();
+        weaponSelection.SetActive(false);
     }
     void Update()
     {
 
-        if (playerInRange)
-        {
-            
-            
-            if (!openingChest && Input.GetButton("Action"))
-            {
-                checkWallet();
-                if (hasCoins)
-                {
-                    Debug.Log("Have Money");
-                    StartCoroutine(OpenTheChest());
-                    //gameManager.instance.updateAmmo();
-                   
-                }
-                else
-                {
-                    Debug.Log("You're Broke");
-                }
-                
-            }
-
-            if (!choseWeapon && Input.GetButton("Submit"))
-            {
-                if (weaponSelection != null)
-                {
-                    Debug.Log("Got Weapon");
-                    StartCoroutine(TakeWeapon());
-                }
-                else
-                {
-                    Debug.Log("Where is my weapon?");
-                }
-            }
-        }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if ((other.tag == "Player"))
+        if (other.tag == "Player")
         {
             target = other.transform;
             Debug.Log("PLAYER");
             playerInRange = true;
+            gameManager.instance.actionObject = this.gameObject;
+            if (chestCost < gameManager.instance.playerScript.GetCoins())
+            {
+                hasCoins = true;
+                weaponSelection.SetActive(true);
+                gameManager.instance.playerScript.inActionRange = true;
+            }
+            else
+            {
+                hasCoins = false;
+            }
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player") target = null;
+        if (other.tag == "Player")
+        {
+            target = null;
+            gameManager.instance.actionObject = null;
+            weaponSelection.SetActive(false);
+        }
         Debug.Log("NO PLAYER");
         playerInRange = false;
+        gameManager.instance.playerScript.inActionRange = false;
+        hasCoins = false;
     }
 
     public void primaryAction()
     {
+        //get weapon stats
+        //destroy weapon and chest
+        gameManager.instance.playerScript.addCoins(-chestCost);
+        gameManager.instance.playerScript.weaponPickup(chestContents[seed]);
+        Destroy(gameObject);
+
+        //give player weapon
     }
 
     public void secondaryAction()
     {
+        gameManager.instance.playerScript.addCoins(-rollCost);
+        rollChest();
     }
-
-    IEnumerator OpenTheChest()
+    private void rollChest()
+    {
+        if (weaponSelection != null)
+        {
+            Destroy(weaponSelection);
+        }
+        seed = Random.Range(0, chestContents.Count - 1);
+        chestCost = (seed + 1) * 100;
+        weaponSelection = chestContents[seed].gunModel;
+        weaponSelection = Instantiate(weaponSelection, chestWeapon.position, chestWeapon.rotation);
+    }
+}
+    /*IEnumerator OpenTheChest()
     {
         openingChest = true;
 
@@ -171,5 +170,4 @@ public class chest : MonoBehaviour, actionObject
         {
             hasCoins = false;
         }
-    }
-}
+    }*/
