@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e04f2a6496a43a243bfd3583872cf2e8, type: 3}
+  m_Name: PirateDagger_Prefab
+  m_EditorClassIdentifier: 
+  Model: {fileID: 949889774532150666, guid: 9c8c4c66d54ec8d4293cfcde9445f3b2, type: 3}
+  meleeDamage: 4
+  meleeReach: 29
+  knockbackForce: 43
+  swingSpeed: 0.70570785

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ribs
+  m_Name: PWDagg_Hand
   m_Shader: {fileID: -6465566751694194690, guid: 05d4c51f44017bb40b1d2a7a7951c4b3, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
