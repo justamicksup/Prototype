@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.016538732, g: 0.012662387, b: 0.00901876, a: 1}
+  m_IndirectSpecularColor: {r: 0.016538706, g: 0.012662371, b: 0.0090187555, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9787,8 +9787,7 @@ PrefabInstance:
       propertyPath: waveController
       value: 
       objectReference: {fileID: 11400000, guid: 395383b622efbf0409ba8dab5f604934, type: 2}
-    m_RemovedComponents:
-    - {fileID: 4225823234573089967, guid: 0afedfbd6b28a374bbecd09da526e330, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0afedfbd6b28a374bbecd09da526e330, type: 3}
 --- !u!114 &1652417570 stripped
 MonoBehaviour:
