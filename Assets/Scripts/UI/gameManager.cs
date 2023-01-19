@@ -31,7 +31,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI enemiesRemainingText;
     
     
-    [Header("----- UI -----")] public HUD HUD;
+    [Header("----- UI -----")]
     public GameObject activeMenu;
     public GameObject pauseMenu;
     public GameObject winMenu;
