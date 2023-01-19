@@ -9,11 +9,13 @@ using Random = UnityEngine.Random;
 
 public class chest : MonoBehaviour, actionObject
 {
+    
     [SerializeField] int chestCost;
     [SerializeField] int rollCost;
-    //[SerializeField] Weapon armory;
+   
     [SerializeField] Transform chestWeapon;
-    public Weapon weaponSelection;
+    
+    [SerializeField]  GameObject weaponDisplay;
     [SerializeField] int seed;
     private Transform target = null;
     public Armory tempArmory;
@@ -28,7 +30,7 @@ public class chest : MonoBehaviour, actionObject
 
     void Start()
     {
-        //weaponSelection = tempArmory.ListOfWeapons[seed];
+       
     }
     void Update()
     {
@@ -56,7 +58,7 @@ public class chest : MonoBehaviour, actionObject
 
             if (!choseWeapon && Input.GetButton("Submit"))
             {
-                if (weaponSelection != null)
+                if (weaponDisplay != null)
                 {
                     Debug.Log("Got Weapon");
                     StartCoroutine(TakeWeapon());
@@ -98,13 +100,6 @@ public class chest : MonoBehaviour, actionObject
     {
         openingChest = true;
 
-        if (weaponSelection != null)
-        {
-            Debug.Log("Before Destroy");
-            Destroy(weaponSelection.GameObject());
-            Debug.Log("Before Destroy");
-        }
-       
         
         
         RaycastHit hit;
@@ -116,16 +111,18 @@ public class chest : MonoBehaviour, actionObject
                 if (hasCoins)
                 {
                     gameManager.instance.updatePlayerCoins(-chestCost);
-                    seed = Random.Range(0, tempArmory.ListOfWeapons.Count);
-                    Debug.Log("Before");
-                    //weaponSelection = armory.armory.ListOfWeapons[seed];
-                    Debug.Log("After");
+                    
+                    seed = Random.Range(0, tempArmory.MasterWeaponList.Count);
                     chestCost = (seed + 1) * 10;
-                   weaponSelection = Instantiate(tempArmory.ListOfWeapons[seed], chestWeapon.position,
-                        chestWeapon.transform.rotation, chestWeapon.transform);
-                    Debug.Log("Last");
+
+                    weaponDisplay.GetComponent<MeshFilter>().sharedMesh =
+                        tempArmory.MasterWeaponList[seed].Model.GetComponent<MeshFilter>().sharedMesh;
+                    weaponDisplay.GetComponent<MeshRenderer>().sharedMaterials =
+                        tempArmory.MasterWeaponList[seed].Model.GetComponent<MeshRenderer>().sharedMaterials;
                     
                     
+
+
                 }
             }
         }
@@ -142,16 +139,9 @@ public class chest : MonoBehaviour, actionObject
         {
             if (hit.collider.CompareTag("Weapon"))
             {
-                //armory.armory.ListOfWeapons[seed]
-                //Instantiate(armory.armory.ListOfWeapons[seed], new Vector3(0,0,0), Quaternion.identity);
-                var temp = Instantiate(tempArmory.ListOfWeapons[seed], gameManager.instance.playerScript.viewModel.transform);
-
-                gameManager.instance.updateWeaponSlots(tempArmory.ListOfWeapons[seed]);
-               // gameManager.instance.playerScript.weapons[0] = armory.armory.ListOfWeapons[seed];
-
-               // gameManager.instance.updateWeaponSlots(armory.armory.ListOfWeapons[seed]);
+                gameManager.instance.playerScript.WeaponPickup(tempArmory.MasterWeaponList[seed]);
+              
                 
-               //gameManager.instance.updateWeaponSlots(weap);
                    Destroy(gameObject);
             }
         }

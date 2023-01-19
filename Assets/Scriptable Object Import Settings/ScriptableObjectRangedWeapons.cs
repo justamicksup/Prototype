@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 
-[CreateAssetMenu(fileName = "New Ranged Weapon", menuName = "Scriptable Objects/Ranged Weapons")]
+//[CreateAssetMenu(fileName = "New Ranged Weapon", menuName = "Scriptable Objects/Ranged Weapons")]
 [System.Serializable]
 public class ScriptableObjectRangedWeapons : ScriptableObject
 {

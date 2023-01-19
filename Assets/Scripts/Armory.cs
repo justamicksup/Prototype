@@ -7,6 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Armory", menuName = "Scriptable Objects/Armory")]
 public class Armory : ScriptableObject
 {
-    [SerializeField] public List<Weapon> ListOfWeapons;
+    [SerializeField] public List<ProjectileWeaponScriptableObjects> ListOfWeapons;
+    [SerializeField] public List<MasterWeapon> MasterWeaponList;
     
 }

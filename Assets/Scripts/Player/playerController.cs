@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Serialization;
 
 public class playerController : MonoBehaviour
 {
@@ -12,7 +15,6 @@ public class playerController : MonoBehaviour
     int HP;
 
     private Coroutine staminaRegen;
-
     [Range(1, 100)] [SerializeField] float stamina;
     [SerializeField] int playerSpeed;
     [SerializeField] int jumpVelocity;
@@ -20,18 +22,52 @@ public class playerController : MonoBehaviour
     [SerializeField] int jumpMax;
     [SerializeField] int coins;
     [Range(0.01f, 5)] [SerializeField] float actionRange;
-
-    [Header("----- Shooting -----")]
-    public Weapon weapons;
-    int currentWeapon;
-
-    public GameObject viewModel;
     public int ammo;
     int jumpTimes;
     Vector3 move;
     Vector3 playerVelocity;
 
-    [Header("----- Weapon Slots -----")] public Weapon _currentWeaponSlot;
+    
+
+
+    [Header("----- Gun Stats -----")]
+    
+    [SerializeField] int gunLevel;
+    [SerializeField] int shootDamage;
+    [SerializeField] int range;
+    [SerializeField] float shootRate;
+    [SerializeField] float shootForce;
+    [SerializeField] int ammoCapacity;
+    [SerializeField] int ammoRemaining;
+    [SerializeField] float reloadTime;
+
+    [Header("----- Melee Stats -----")] 
+    
+    [SerializeField] int meleeLevel;
+    [SerializeField] int meleeDamage;
+    [SerializeField] int meleeReach;
+    [SerializeField] float knockbackForce;
+    [SerializeField] float swingSpeed;
+
+
+    //public GameObject viewModel;
+
+    [Header("----- Player Info -----")] [Header("----- Weapon Slots -----")] 
+    [SerializeField] List<MasterWeapon> weaponList = new List<MasterWeapon>();
+
+    [SerializeField] int currentWeapon;
+
+  //[SerializeField] List<ProjectileWeaponScriptableObjects> gunList = new List<ProjectileWeaponScriptableObjects>();
+    
+    //[SerializeField] List<MeleeWeaponScriptableObjects> meleeList = new List<MeleeWeaponScriptableObjects>();
+
+ 
+
+    [SerializeField] private List<GameObject> WeaponSlots;
+    
+    
+
+    public Weapon _currentWeaponSlot;
 
     int HPOrig;
     float staminaOrig;
@@ -48,7 +84,10 @@ public class playerController : MonoBehaviour
         staminaOrig = stamina;
         updatePlayerHP();
         updatePlayerStamina();
-       
+        WeaponSlots[0].SetActive(false);
+        WeaponSlots[1].SetActive(false);
+        WeaponSlots[2].SetActive(false);
+        currentWeapon = 0;
     }
 
     // Update is called once per frame
@@ -56,37 +95,18 @@ public class playerController : MonoBehaviour
     {
         movement();
 
-        if (!isAttacking && Input.GetButton("Shoot"))
+        if (weaponList.Count > 0)
         {
-            Attack();
+            if (!isAttacking && Input.GetButton("Shoot"))
+            {
+                Attack();
+            }
+
+            if (!isReloading && Input.GetButtonDown("Reload"))
+            {
+                //StartCoroutine(reload(projectileWeaponScriptableObjects));
+            }
         }
-        
-        if (!isReloading && Input.GetButtonDown("Reload"))
-        {
-            StartCoroutine(reload());
-        }
-        
-        // if (!isShooting && Input.GetButton("Shoot") && gameManager.instance.currWeapon != null) //weapons[currentWeapon] != null
-        // {
-        //     if (!isReloading && gameManager.instance.currWeapon.ammoRemaining > 0) //weapons[currentWeapon].ammoRemaining > 0
-        //     {
-        //         StartCoroutine(shoot());
-        //     }
-        //     else if (!isReloading && gameManager.instance.currWeapon.ammoRemaining <= 0)  //weapons[currentWeapon].ammoRemaining <= 0
-        //     {
-        //         StartCoroutine(reload());
-        //     }
-        // }
-        //
-        // if (!isReloading && Input.GetButtonDown("Reload"))
-        // {
-        //     StartCoroutine(reload());
-        // }
-        //
-        // if (Input.GetButtonDown("Pause"))
-        // {
-        //     gameManager.instance.pauseGame();
-        // }
     }
 
     void movement()
@@ -120,72 +140,70 @@ public class playerController : MonoBehaviour
             jumpTimes++;
         }
 
-        // if (Input.GetButtonDown("Weapon1"))
-        // {
-        //     changeWeapon(0);
-        // }
-        //
-        // if (Input.GetButtonDown("Weapon2"))
-        // {
-        //     changeWeapon(1);
-        // }
-        //
-        // if (Input.GetButtonDown("Weapon3"))
-        // {
-        //     changeWeapon(2);
-        // }
+        if (Input.GetButtonDown("Weapon1"))
+        {
+            changeWeapon(0);
+        }
+
+        if (Input.GetButtonDown("Weapon2"))
+        {
+            changeWeapon(1);
+        }
+
+        if (Input.GetButtonDown("Weapon3"))
+        {
+            changeWeapon(2);
+        }
 
         //add gravity
         playerVelocity.y -= gravity * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
     }
 
-    IEnumerator shoot()
+    IEnumerator shoot(ProjectileWeaponScriptableObjects projectileWeaponScriptableObjects)
     {
         isAttacking = true;
         RaycastHit hit;
-        
+
         gameManager.instance.UpdateUI();
-        ammo = gameManager.instance.GunSlots[0].ammoRemaining;
+        ammo = projectileWeaponScriptableObjects.ammoRemaining;
+        ammoRemaining = ammo;
 
-        
-
-       
-        if (gameManager.instance.GunSlots[0].ammoRemaining > 0)
+        if (projectileWeaponScriptableObjects.ammoRemaining > 0)
         {
-            gameManager.instance.updateAmmo(1);
+            projectileWeaponScriptableObjects.ammoRemaining -= 1;
 
             if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit,
-                    gameManager.instance.GunSlots[0].range))
+                    projectileWeaponScriptableObjects.range))
             {
                 if (hit.collider.GetComponent<IDamage>() != null)
                 {
-                    hit.collider.GetComponent<IDamage>().takeDamage(gameManager.instance.GunSlots[0].attack);
+                    hit.collider.GetComponent<IDamage>().takeDamage(projectileWeaponScriptableObjects.shootDamage);
                 }
 
                 if (hit.rigidbody != null)
                 {
-                    hit.rigidbody.AddForceAtPosition(transform.forward * gameManager.instance.GunSlots[0].shootForce,
+                    hit.rigidbody.AddForceAtPosition(transform.forward * projectileWeaponScriptableObjects.shootForce,
                         hit.point);
                 }
             }
         }
         else
         {
-            StartCoroutine(reload());
+            StartCoroutine(reload(projectileWeaponScriptableObjects));
         }
 
-        yield return new WaitForSeconds(gameManager.instance.GunSlots[0].shootRate);
+        yield return new WaitForSeconds(projectileWeaponScriptableObjects.shootRate);
         isAttacking = false;
     }
 
-    IEnumerator reload()
-     {
-         isReloading = true;
-         yield return new WaitForSeconds(gameManager.instance.GunSlots[0].reloadTime);
-         gameManager.instance.GunSlots[0].ammoRemaining = gameManager.instance.GunSlots[0].ammoCapacity;
-         isReloading = false;
-     }
+    IEnumerator reload(ProjectileWeaponScriptableObjects projectileWeaponScriptableObjects)
+    {
+        isReloading = true;
+        yield return new WaitForSeconds(projectileWeaponScriptableObjects.reloadTime);
+        projectileWeaponScriptableObjects.ammoRemaining = projectileWeaponScriptableObjects.ammoCapacity;
+        isReloading = false;
+    }
 
     public void takeDamage(int damage)
     {
@@ -247,14 +265,20 @@ public class playerController : MonoBehaviour
         coins += amount;
     }
 
-    // public void changeWeapon(int weapon)
-    // {
-    //     if (weapons[weapon] != null)
-    //     {
-    //         currentWeapon = weapon;
-    //         viewModel.GetComponent<MeshFilter>().mesh = weapons[weapon].viewModel;
-    //     }
-    // }
+    public void changeWeapon(int weapon)
+    {
+        if (weaponList.Count > weapon)
+        {
+            Debug.Log("Correct number");
+            WeaponSlots[currentWeapon].SetActive(false);
+            WeaponSlots[weapon].SetActive(true);
+            currentWeapon = weapon;
+        }
+        else
+        {
+            Debug.Log("bad math");
+        }
+    }
 
     public void updatePlayerHP()
     {
@@ -275,12 +299,145 @@ public class playerController : MonoBehaviour
 
     public void Attack()
     {
-        if (gameManager.instance.currWeapon is RangedWeapons)
+        // if no weapons
+        //show no weapon dialog to player
+
+        //if current weapon is a gun
+        if (weaponList[currentWeapon].GetType() == typeof(ProjectileWeaponScriptableObjects))
         {
-            Debug.Log("Call Attack With Range Weapon");
-            
-            StartCoroutine(shoot());
+            //call shoot logic
+            Debug.Log("Call Shoot attack");
+            StartCoroutine(shoot((ProjectileWeaponScriptableObjects)weaponList[currentWeapon]));
+        }
+        // else if current weapon is a melee
+        else if (weaponList[currentWeapon].GetType() == typeof(MeleeWeaponScriptableObjects))
+        {
+            Debug.Log("Call Melee attack");
+            //call melee logic
+        }
+
+        //if current weapon is a explosive
+        // call explosive logic
+
+        //if current weapon is a heal
+        // call heal logic
+    }
+
+    // public void gunPickup(ProjectileWeaponScriptableObjects projectileWeaponScriptableObjects)
+    // {
+    //     gunList.Add(projectileWeaponScriptableObjects);
+    //
+    //     gunLevel = projectileWeaponScriptableObjects.gunLevel;
+    //     shootDamage = projectileWeaponScriptableObjects.shootDamage;
+    //     range = projectileWeaponScriptableObjects.range;
+    //     shootRate = projectileWeaponScriptableObjects.shootRate;
+    //     shootForce = projectileWeaponScriptableObjects.shootForce;
+    //     ammoCapacity = projectileWeaponScriptableObjects.ammoCapacity;
+    //     ammoRemaining = projectileWeaponScriptableObjects.ammoRemaining;
+    //     reloadTime = projectileWeaponScriptableObjects.reloadTime;
+    //
+    //     gunModel.GetComponent<MeshFilter>().sharedMesh =
+    //         projectileWeaponScriptableObjects.gunModel.GetComponent<MeshFilter>().sharedMesh;
+    //     
+    //      gunModel.GetComponent<MeshRenderer>().sharedMaterial =
+    //          projectileWeaponScriptableObjects.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+    // }
+
+    public void SetGunStats(ProjectileWeaponScriptableObjects projectileWeaponScriptableObjects, int index)
+    {
+        //gunList.Add(projectileWeaponScriptableObjects);
+
+        gunLevel = projectileWeaponScriptableObjects.gunLevel;
+        shootDamage = projectileWeaponScriptableObjects.shootDamage;
+        range = projectileWeaponScriptableObjects.range;
+        shootRate = projectileWeaponScriptableObjects.shootRate;
+        shootForce = projectileWeaponScriptableObjects.shootForce;
+        ammoCapacity = projectileWeaponScriptableObjects.ammoCapacity;
+        ammoRemaining = projectileWeaponScriptableObjects.ammoRemaining;
+        reloadTime = projectileWeaponScriptableObjects.reloadTime;
+
+
+        WeaponSlots[index].GetComponent<MeshFilter>().sharedMesh =
+            projectileWeaponScriptableObjects.Model.GetComponent<MeshFilter>().sharedMesh;
+
+        WeaponSlots[index].GetComponent<MeshRenderer>().sharedMaterials =
+            projectileWeaponScriptableObjects.Model.GetComponent<MeshRenderer>().sharedMaterials;
+
+
+        WeaponSlots[index].transform.localScale = projectileWeaponScriptableObjects.Model.transform.localScale;
+        WeaponSlots[index].transform.localRotation = projectileWeaponScriptableObjects.Model.transform.rotation;
+
+        ammo = projectileWeaponScriptableObjects.ammoRemaining;
+    }
+
+    public void SetMeleeStats(MeleeWeaponScriptableObjects meleeWeaponScriptableObjects, int index)
+    {
+        //meleeList.Add(meleeWeaponScriptableObjects);
+
+        meleeLevel = meleeWeaponScriptableObjects.meleeLevel;
+        meleeReach = meleeWeaponScriptableObjects.meleeDamage;
+        knockbackForce = meleeWeaponScriptableObjects.knockbackForce;
+        swingSpeed = meleeWeaponScriptableObjects.swingSpeed;
+
+
+        WeaponSlots[index].GetComponent<MeshFilter>().sharedMesh =
+            meleeWeaponScriptableObjects.Model.GetComponent<MeshFilter>().sharedMesh;
+
+        WeaponSlots[index].GetComponent<MeshRenderer>().sharedMaterials =
+            meleeWeaponScriptableObjects.Model.GetComponent<MeshRenderer>().sharedMaterials;
+
+        WeaponSlots[index].transform.localScale = meleeWeaponScriptableObjects.Model.transform.localScale;
+        WeaponSlots[index].transform.localRotation = meleeWeaponScriptableObjects.Model.transform.rotation;
+       
+    }
+
+    public void GetWeaponType(MasterWeapon tempArmoryListOfWeapon, int index)
+    {
+        if (tempArmoryListOfWeapon.GetType() == typeof(ProjectileWeaponScriptableObjects))
+        {
+            Debug.Log("Projectile");
+            SetGunStats((ProjectileWeaponScriptableObjects)tempArmoryListOfWeapon, index);
+        }
+
+        else if (tempArmoryListOfWeapon.GetType() == typeof(MeleeWeaponScriptableObjects))
+        {
+            Debug.Log("Melee");
+            SetMeleeStats((MeleeWeaponScriptableObjects)tempArmoryListOfWeapon, index);
         }
     }
-    
+
+
+    public void WeaponPickup(MasterWeapon masterWeapon)
+    {
+        AddWeaponToInventory(masterWeapon);
+    }
+
+    public void AddWeaponToInventory(MasterWeapon tempArmoryListOfWeapon)
+    {
+        //if no weapons in list 
+        if (weaponList.Count == 0)
+        {
+            weaponList.Add(tempArmoryListOfWeapon);
+            currentWeapon = 0;
+            GetWeaponType(tempArmoryListOfWeapon, 0);
+            WeaponSlots[currentWeapon].SetActive(true);
+        } //if weapon inventory is full
+        else if (weaponList.Count == 3)
+        {
+            weaponList[currentWeapon] = tempArmoryListOfWeapon;
+            GetWeaponType(tempArmoryListOfWeapon, currentWeapon);
+        } //if weapon inventory is over max
+        else if (weaponList.Count > 3)
+        {
+            Debug.Log("Too Many Weapons in AddWeaponToInventory");
+        } //if weapon inventory is in between
+        else
+        {
+            weaponList.Add(tempArmoryListOfWeapon);
+            WeaponSlots[currentWeapon].SetActive(false);
+            currentWeapon += 1;
+            GetWeaponType(tempArmoryListOfWeapon, currentWeapon);
+            WeaponSlots[currentWeapon].SetActive(true);
+        }
+    }
 }

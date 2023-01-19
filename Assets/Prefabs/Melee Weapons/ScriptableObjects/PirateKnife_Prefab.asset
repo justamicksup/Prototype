@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e04f2a6496a43a243bfd3583872cf2e8, type: 3}
+  m_Name: PirateKnife_Prefab
+  m_EditorClassIdentifier: 
+  Model: {fileID: 2990741783873607454, guid: f647333a4bdc4c1408fc4cecc2a739cf, type: 3}
+  meleeLevel: 1
+  meleeDamage: 6
+  meleeReach: 72
+  knockbackForce: 34
+  swingSpeed: 2.4526215
