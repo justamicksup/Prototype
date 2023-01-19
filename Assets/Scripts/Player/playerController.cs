@@ -37,8 +37,8 @@ public class playerController : MonoBehaviour
     [SerializeField] int range;
     [SerializeField] float shootRate;
     [SerializeField] float shootForce;
-    [SerializeField] int ammoCapacity;
-    [SerializeField] int ammoRemaining;
+    [SerializeField] public int ammoCapacity;
+    [SerializeField] public int ammoRemaining;
     [SerializeField] float reloadTime;
 
     [Header("----- Melee Stats -----")] 
@@ -75,6 +75,8 @@ public class playerController : MonoBehaviour
     bool isReloading;
     bool staminaLeft;
     bool isAttacking;
+    public bool inActionRange;
+
 
     // Start is called before the first frame update
     void Start()

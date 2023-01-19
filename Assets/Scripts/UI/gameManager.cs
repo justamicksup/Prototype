@@ -107,7 +107,7 @@ public class gameManager : MonoBehaviour
             }
             else
             {
-                updateWave(1);
+                updateWave();
             }
         }
     }
@@ -117,9 +117,9 @@ public class gameManager : MonoBehaviour
         playerScript.addCoins(amount);
     }
 
-    public void updateWave(int amount)
+    public void updateWave()
     {
-        waveCount += amount;
+        waveCount++;
         nextWave = true;
     }
 
@@ -157,6 +157,14 @@ public class gameManager : MonoBehaviour
         activeMenu = loseMenu;
         activeMenu.SetActive(true);
     }
+    
+    public void updateAmmoUI()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            ammoCountText[i].text = playerScript.ammoRemaining.ToString() + "/" + playerScript.ammoCapacity.ToString();
+        }
+    }
 
     public void updateAmmo(int ammo)
     {
@@ -172,5 +180,10 @@ public class gameManager : MonoBehaviour
         coinsText.text = playerScript.GetCoins().ToString();
         waveCountText.text = $"Wave {waveCount}";
         
+    }
+    
+    public void updateCoinUI()
+    {
+        coinsText.text = playerScript.GetCoins().ToString();
     }
 }
