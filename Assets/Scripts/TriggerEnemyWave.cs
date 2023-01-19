@@ -23,7 +23,7 @@ public class TriggerEnemyWave : MonoBehaviour
             if (Input.GetButtonDown("Action"))
             {
                 Destroy(chestTrigger);
-                StartCoroutine(gameManager.instance.StartGame());
+                gameManager.instance.StartGame();
             }
         }
     }

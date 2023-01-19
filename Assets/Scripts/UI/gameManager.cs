@@ -91,7 +91,12 @@ public class gameManager : MonoBehaviour
         }
     }
 
-    public IEnumerator StartGame()
+    public void StartGame()
+    {
+        StartCoroutine(StartGameHelper());
+    }
+
+    private IEnumerator StartGameHelper()
     {
         if(shipAnim != null)
         {
@@ -100,7 +105,7 @@ public class gameManager : MonoBehaviour
         }
         yield return new WaitForSeconds(1.5f);
         instance.updateWave();
-        UpdateUI();
+        instance.UpdateUI();
     }
 
     public void updateEnemyRemaining(int amount)
