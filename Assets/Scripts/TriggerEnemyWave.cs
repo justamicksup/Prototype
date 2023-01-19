@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerEnemyWave : MonoBehaviour
+public class TriggerEnemyWave : MonoBehaviour, actionObject
 {
     bool playerInRange;
     public GameObject chestTrigger;
@@ -17,15 +17,7 @@ public class TriggerEnemyWave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerInRange)
-        {
-            
-            if (Input.GetButtonDown("Action"))
-            {
-                Destroy(chestTrigger);
-                StartCoroutine(gameManager.instance.StartGame());
-            }
-        }
+
     }
 
     public void OnTriggerEnter(Collider other)
@@ -42,6 +34,21 @@ public class TriggerEnemyWave : MonoBehaviour
             playerInRange = false;
         }
     }
-    
-    
+    public void primaryAction()
+    {
+        if (playerInRange)
+        {
+            if (Input.GetButtonDown("Action"))
+            {
+                Destroy(chestTrigger);
+                gameManager.instance.updateWave();
+                gameManager.instance.updateAmmoUI();
+            }
+        }
+    }
+
+    public void secondaryAction()
+    {
+        primaryAction();
+    }
 }

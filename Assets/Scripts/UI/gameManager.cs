@@ -47,11 +47,7 @@ public class gameManager : MonoBehaviour
     [Header("----- Weapons and Ammo -----")]
     public int ammoRemaining;
     public int weaponsInLevel;
-    public Weapon currWeapon;
-    //Having issue casting weapon to specific class and keeping scriptable object stats
-    //goal is to have all weapons be in Weapon[] WeaponSlots and cast accordingly for logic
-    public Weapon[] WeaponSlots;
-    public RangedWeapons[] GunSlots;
+    
 
     [Header("----- Game Settings -----]")]
     public int sensitivity;
@@ -64,7 +60,7 @@ public class gameManager : MonoBehaviour
         shipAnim = GameObject.FindGameObjectWithTag("Ships").GetComponent<Animation>();
         //HUD = transform.parent.gameObject.GetComponent<HUD>();
         playerScript = player.GetComponent<playerController>();
-        playerScript.addCoins(2000);
+        playerScript.addCoins(2000000);
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
         timeScaleOrig = Time.timeScale;
         waveController = Resources.Load("WaveController") as WaveController;
@@ -74,6 +70,8 @@ public class gameManager : MonoBehaviour
         ammoCountText[2].text = "";
         waveCountText.text = "";
         coinsText.text = playerScript.GetCoins().ToString();
+        
+        
     }
 
 
@@ -123,7 +121,7 @@ public class gameManager : MonoBehaviour
             }
             else
             {
-                updateWave(1);
+                updateWave();
             }
         }
     }
@@ -133,9 +131,9 @@ public class gameManager : MonoBehaviour
         playerScript.addCoins(amount);
     }
 
-    public void updateWave(int amount)
+    public void updateWave()
     {
-        waveCount += amount;
+        waveCount++;
         nextWave = true;
     }
 
@@ -173,39 +171,33 @@ public class gameManager : MonoBehaviour
         activeMenu = loseMenu;
         activeMenu.SetActive(true);
     }
+    
+    public void updateAmmoUI()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            ammoCountText[i].text = playerScript.ammoRemaining.ToString() + "/" + playerScript.ammoCapacity.ToString();
+        }
+    }
 
     public void updateAmmo(int ammo)
     {
-        gameManager.instance.GunSlots[0].ammoRemaining -= ammo;
-        ammoRemaining = gameManager.instance.GunSlots[0].ammoRemaining;
-
+        playerScript.ammo -= ammo;
+        
     }
 
-    public void updateWeaponSlots(Weapon _weapon)
-    {
-        if (_weapon is RangedWeapons)
-        {
-            RangedWeapons rangedWeapons = (RangedWeapons)_weapon;
-            rangedWeapons = rangedWeapons.SetStats(rangedWeapons);
-
-            //temporarily putting it in hardcoded spot, will fix later
-            GunSlots[0] = rangedWeapons;
-
-            
-            UpdateUI();
-            currWeapon = GunSlots[0];
-        }
-        else
-        {
-            Debug.Log("Not a Ranged Weapons unfortunately");
-        }
-    }
+  
 
     public void UpdateUI()
     {
-        ammoCountText[0].text = GunSlots[0].ammoRemaining.ToString();
+       // update ammo on slot
         coinsText.text = playerScript.GetCoins().ToString();
         waveCountText.text = $"Wave {waveCount}";
         
+    }
+    
+    public void updateCoinUI()
+    {
+        coinsText.text = playerScript.GetCoins().ToString();
     }
 }

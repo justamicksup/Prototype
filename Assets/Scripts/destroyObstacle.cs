@@ -18,7 +18,10 @@ public class destroyObstacle : MonoBehaviour, actionObject
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player") target = other.transform;
+        if (other.tag == "Player")
+        {
+            target = other.transform;
+        }
         if (gameManager.instance.playerScript.GetCoins() >= obstacleCost)
         {
             hasCoins = true;
@@ -31,8 +34,10 @@ public class destroyObstacle : MonoBehaviour, actionObject
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player") target = null;
-
+        if (other.tag == "Player")
+        {
+            target = null;
+        }
         //remove UI
         Debug.Log("NO PLAYER");
     }

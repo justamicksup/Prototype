@@ -11,9 +11,10 @@ public class chest : MonoBehaviour, actionObject
 {
     [SerializeField] int chestCost;
     [SerializeField] int rollCost;
-    //[SerializeField] Weapon armory;
+
     [SerializeField] Transform chestWeapon;
-    public Weapon weaponSelection;
+
+    [SerializeField] GameObject weaponDisplay;
     [SerializeField] int seed;
     private Transform target = null;
     public Armory tempArmory;
@@ -22,143 +23,233 @@ public class chest : MonoBehaviour, actionObject
     bool openingChest;
     bool playerInRange;
     bool choseWeapon;
-
-
+    bool isRerolling;
 
 
     void Start()
     {
-        //weaponSelection = tempArmory.ListOfWeapons[seed];
+        //Cameron Code
+
+        rollChest();
+        weaponDisplay.SetActive(false);
+        // weaponSelection.SetActive(false);
     }
+
     void Update()
     {
-
-        if (playerInRange)
-        {
-            
-            
-            if (!openingChest && Input.GetButton("Action"))
-            {
-                checkWallet();
-                if (hasCoins)
-                {
-                    Debug.Log("Have Money");
-                    StartCoroutine(OpenTheChest());
-                    //gameManager.instance.updateAmmo();
-                   
-                }
-                else
-                {
-                    Debug.Log("You're Broke");
-                }
-                
-            }
-
-            if (!choseWeapon && Input.GetButton("Submit"))
-            {
-                if (weaponSelection != null)
-                {
-                    Debug.Log("Got Weapon");
-                    StartCoroutine(TakeWeapon());
-                }
-                else
-                {
-                    Debug.Log("Where is my weapon?");
-                }
-            }
-        }
+        // if (playerInRange)
+        // {
+        //     
+        //     
+        //     if (!openingChest && Input.GetButton("Action"))
+        //     {
+        //         checkWallet();
+        //         if (hasCoins)
+        //         {
+        //             Debug.Log("Have Money");
+        //             StartCoroutine(OpenTheChest());
+        //             //gameManager.instance.updateAmmo();
+        //            
+        //         }
+        //         else
+        //         {
+        //             Debug.Log("You're Broke");
+        //         }
+        //         
+        //     }
+        //
+        //     if (!choseWeapon && Input.GetButton("Submit"))
+        //     {
+        //         if (weaponDisplay != null)
+        //         {
+        //             Debug.Log("Got Weapon");
+        //             StartCoroutine(TakeWeapon());
+        //         }
+        //         else
+        //         {
+        //             Debug.Log("Where is my weapon?");
+        //         }
+        //     }
+        // }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if ((other.tag == "Player"))
+        if (other.tag == "Player")
         {
             target = other.transform;
             Debug.Log("PLAYER");
             playerInRange = true;
+            // gameManager.instance.actionObject = this.gameObject;
+            if (chestCost < gameManager.instance.playerScript.GetCoins())
+            {
+                hasCoins = true;
+                weaponDisplay.SetActive(true);
+                //weaponSelection.SetActive(true);
+                gameManager.instance.playerScript.inActionRange = true;
+            }
+            else
+            {
+                hasCoins = false;
+            }
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            if (playerInRange)
+            {
+                if (Input.GetButton("Action") && !isRerolling)
+                {
+                    
+                    secondaryAction();
+                    StartCoroutine(Delay(.1f));
+
+                }
+            
+            }
+
+
+            if (playerInRange && Input.GetButton("Submit"))
+            {
+                primaryAction();
+            }
+        }
+    }
+    
+
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player") target = null;
+        if (other.tag == "Player")
+        {
+            target = null;
+            weaponDisplay.SetActive(false);
+
+            // gameManager.instance.actionObject = null;
+            //weaponSelection.SetActive(false);
+        }
+
         Debug.Log("NO PLAYER");
         playerInRange = false;
+        gameManager.instance.playerScript.inActionRange = false;
+        hasCoins = false;
     }
-
+    
     public void primaryAction()
     {
+        //Take the weapon you bought
+        gameManager.instance.playerScript.WeaponPickup(tempArmory.MasterWeaponList[seed]);
+        // Destroy chest
+        Destroy(gameObject);
+
+       
+
+       
+
+
+        // //get weapon stats
+        // //destroy weapon and chest
+        // gameManager.instance.playerScript.addCoins(-chestCost);
+        // gameManager.instance.playerScript.weaponPickup(chestContents[seed]);
+        // Destroy(gameObject);
+        //
+        // //give player weapon
     }
 
     public void secondaryAction()
     {
-    }
-
-    IEnumerator OpenTheChest()
-    {
-        openingChest = true;
-
-        if (weaponSelection != null)
-        {
-            Debug.Log("Before Destroy");
-            Destroy(weaponSelection.GameObject());
-            Debug.Log("Before Destroy");
-        }
-       
+       //Deduct coins for roll
+        gameManager.instance.playerScript.addCoins(-rollCost);
         
+         // Re Roll for a new Weapon
+        rollChest();
         
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit))
-        {
-            if (hit.collider.GetComponent<chest>() != null)
-            {
-                hit.collider.GetComponent<chest>().checkWallet();
-                if (hasCoins)
-                {
-                    gameManager.instance.updatePlayerCoins(-chestCost);
-                    seed = Random.Range(0, tempArmory.ListOfWeapons.Count);
-                    Debug.Log("Before");
-                    //weaponSelection = armory.armory.ListOfWeapons[seed];
-                    Debug.Log("After");
-                    chestCost = (seed + 1) * 10;
-                   weaponSelection = Instantiate(tempArmory.ListOfWeapons[seed], chestWeapon.position,
-                        chestWeapon.transform.rotation, chestWeapon.transform);
-                    Debug.Log("Last");
-                    
-                    
-                }
-            }
-        }
-
-        yield return new WaitForSeconds(.5f);
-        openingChest = false;
     }
 
-    IEnumerator TakeWeapon()
+    IEnumerator Delay(float delay)
     {
-        choseWeapon = true;
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit))
-        {
-            if (hit.collider.CompareTag("Weapon"))
-            {
-                //armory.armory.ListOfWeapons[seed]
-                //Instantiate(armory.armory.ListOfWeapons[seed], new Vector3(0,0,0), Quaternion.identity);
-                var temp = Instantiate(tempArmory.ListOfWeapons[seed], gameManager.instance.playerScript.viewModel.transform);
-
-                gameManager.instance.updateWeaponSlots(tempArmory.ListOfWeapons[seed]);
-               // gameManager.instance.playerScript.weapons[0] = armory.armory.ListOfWeapons[seed];
-
-               // gameManager.instance.updateWeaponSlots(armory.armory.ListOfWeapons[seed]);
-                
-               //gameManager.instance.updateWeaponSlots(weap);
-                   Destroy(gameObject);
-            }
-        }
-
-        yield return new WaitForSeconds(.1f);
-        choseWeapon = false;
+        //Delay to not reroll weapon since registering multiple rolls in 1 frame
+        isRerolling = true;
+        yield return new WaitForSeconds(delay);
+        isRerolling = false;
     }
+
+    private void rollChest()
+    {
+        // if (weaponSelection != null)
+        // {
+        //     Destroy(weaponSelection);
+        // }
+        // seed = Random.Range(0, chestContents.Count - 1);
+        //chestCost = (seed + 1) * 100;
+
+        //weaponSelection = chestContents[seed].gunModel;
+        //weaponSelection = Instantiate(weaponSelection, chestWeapon.position, chestWeapon.rotation);
+
+        seed = Random.Range(0, tempArmory.MasterWeaponList.Count);
+        chestCost = (seed + 1) * 100;
+
+        weaponDisplay.GetComponent<MeshFilter>().sharedMesh =
+            tempArmory.MasterWeaponList[seed].Model.GetComponent<MeshFilter>().sharedMesh;
+        weaponDisplay.GetComponent<MeshRenderer>().sharedMaterials =
+            tempArmory.MasterWeaponList[seed].Model.GetComponent<MeshRenderer>().sharedMaterials;
+    }
+
+    // IEnumerator OpenTheChest()
+    // {
+    // openingChest = true;
+    //
+    //
+    //
+    // RaycastHit hit;
+    // if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit))
+    // {
+    //     if (hit.collider.GetComponent<chest>() != null)
+    //     {
+    //         hit.collider.GetComponent<chest>().checkWallet();
+    //         if (hasCoins)
+    //         {
+    //             gameManager.instance.updatePlayerCoins(-chestCost);
+    //             
+    //             seed = Random.Range(0, tempArmory.MasterWeaponList.Count);
+    //             chestCost = (seed + 1) * 10;
+    //
+    //             weaponDisplay.GetComponent<MeshFilter>().sharedMesh =
+    //                 tempArmory.MasterWeaponList[seed].Model.GetComponent<MeshFilter>().sharedMesh;
+    //             weaponDisplay.GetComponent<MeshRenderer>().sharedMaterials =
+    //                 tempArmory.MasterWeaponList[seed].Model.GetComponent<MeshRenderer>().sharedMaterials;
+    //             
+    //             
+    //
+    //
+    //         }
+    //     }
+    // }
+    //
+    // yield return new WaitForSeconds(.5f);
+    // openingChest = false;
+    // }
+
+    // IEnumerator TakeWeapon()
+    // {
+    //     choseWeapon = true;
+    //     RaycastHit hit;
+    //     if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit))
+    //     {
+    //         if (hit.collider.CompareTag("Weapon"))
+    //         {
+    //             gameManager.instance.playerScript.WeaponPickup(tempArmory.MasterWeaponList[seed]);
+    //
+    //
+    //             Destroy(gameObject);
+    //         }
+    //     }
+    //
+    //     yield return new WaitForSeconds(.1f);
+    //     choseWeapon = false;
+    // }
 
 
     void checkWallet()
