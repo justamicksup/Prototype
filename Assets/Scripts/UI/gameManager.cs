@@ -46,11 +46,7 @@ public class gameManager : MonoBehaviour
     [Header("----- Weapons and Ammo -----")]
     public int ammoRemaining;
     public int weaponsInLevel;
-    public Weapon currWeapon;
-    //Having issue casting weapon to specific class and keeping scriptable object stats
-    //goal is to have all weapons be in Weapon[] WeaponSlots and cast accordingly for logic
-    public Weapon[] WeaponSlots;
-    public RangedWeapons[] GunSlots;
+    
 
     [Header("----- Game Settings -----]")]
     public int sensitivity;
@@ -168,25 +164,7 @@ public class gameManager : MonoBehaviour
         
     }
 
-    public void updateWeaponSlots(Weapon _weapon)
-    {
-        // if (_weapon is RangedWeapons)
-        // {
-        //     RangedWeapons rangedWeapons = (RangedWeapons)_weapon;
-        //     rangedWeapons = rangedWeapons.SetStats(rangedWeapons);
-        //
-        //     //temporarily putting it in hardcoded spot, will fix later
-        //     GunSlots[0] = rangedWeapons;
-        //
-        //     
-        //     UpdateUI();
-        //     currWeapon = GunSlots[0];
-        // }
-        // else
-        // {
-        //     Debug.Log("Not a Ranged Weapons unfortunately");
-        // }
-    }
+  
 
     public void UpdateUI()
     {

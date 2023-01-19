@@ -66,8 +66,7 @@ public class playerController : MonoBehaviour
     [SerializeField] private List<GameObject> WeaponSlots;
     
     
-
-    public Weapon _currentWeaponSlot;
+    
 
     int HPOrig;
     float staminaOrig;

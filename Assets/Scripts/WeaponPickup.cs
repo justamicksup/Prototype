@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunPickup : MonoBehaviour
+public class WeaponPickup : MonoBehaviour
 {
     [SerializeField] MasterWeapon weapon;
     public void OnTriggerEnter(Collider other)

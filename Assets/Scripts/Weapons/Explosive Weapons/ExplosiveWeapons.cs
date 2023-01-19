@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 
-public class ExplosiveWeapons : Weapon
+public class ExplosiveWeapons : MonoBehaviour
 {
     // internal Armory.EnumWeaponCategory weaponCategory = Armory.EnumWeaponCategory.Explosives;
     // public Armory.EnumExplosiveWeapons explosiveWeaponsType = Armory.EnumExplosiveWeapons.Grenade;
