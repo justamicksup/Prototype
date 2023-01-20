@@ -8,31 +8,33 @@ public class explosiveWeapon : MonoBehaviour
     [SerializeField] int timer;
     [SerializeField] int range;
     [SerializeField] int force;
+    [SerializeField] GameObject explosion;
 
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, timer);
+        StartCoroutine(explode());
     }
 
-    private void OnTriggerEnter(Collider other)
+    IEnumerator explode()
     {
-        if (other.CompareTag("Melee") || other.CompareTag("Range"))
+        yield return new WaitForSeconds(timer);
+        GameObject explosionClone = Instantiate(explosion, transform.position, transform.rotation);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, range);
+        for (int i = 0; i < colliders.Length; i++)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, other.transform.position, out hit, range))
+            if (colliders[i].GetComponent<IDamage>() != null)
             {
-                if (hit.collider.GetComponent<IDamage>() != null)
-                {
-                    hit.collider.GetComponent<IDamage>().takeDamage(damage);
-                }
+                colliders[i].GetComponent<IDamage>().takeDamage(damage);
+            }
 
-                if (hit.rigidbody != null)
-                {
-                    hit.rigidbody.AddForceAtPosition(transform.forward * force, hit.point);
-                }
+            if (colliders[i].GetComponent<Rigidbody>() != null)
+            {
+                colliders[i].GetComponent<Rigidbody>().AddForceAtPosition(transform.forward * force, colliders[i].transform.position);
             }
         }
+
         Destroy(gameObject);
+        Destroy(explosionClone, 0.5f);
     }
 }
