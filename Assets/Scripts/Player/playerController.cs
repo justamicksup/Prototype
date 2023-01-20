@@ -53,7 +53,7 @@ public class playerController : MonoBehaviour
     //public GameObject viewModel;
 
     [Header("----- Player Info -----")] [Header("----- Weapon Slots -----")] 
-    [SerializeField] List<MasterWeapon> weaponList = new List<MasterWeapon>();
+    [SerializeField] public List<MasterWeapon> weaponList = new List<MasterWeapon>();
 
     [SerializeField] int currentWeapon;
 
@@ -166,7 +166,7 @@ public class playerController : MonoBehaviour
         isAttacking = true;
         RaycastHit hit;
 
-        gameManager.instance.UpdateUI();
+        //gameManager.instance.UpdateUI();
         ammo = projectileWeaponScriptableObjects.ammoRemaining;
         ammoRemaining = ammo;
 
@@ -209,6 +209,7 @@ public class playerController : MonoBehaviour
     public void takeDamage(int damage)
     {
         HP -= damage;
+        StartCoroutine(gameManager.instance.flash());
         updatePlayerHP();
         if (HP <= 0)
         {

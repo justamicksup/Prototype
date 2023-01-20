@@ -39,6 +39,7 @@ public class gameManager : MonoBehaviour
     public GameObject loseMenu;
     public Image playerHPBar;
     public Image playerStaminaBar;
+    public GameObject screenFlash;
     [SerializeField] private Text[] ammoCountText;
     [SerializeField] private Text coinsText;
     [SerializeField] private Text waveCountText;
@@ -60,7 +61,7 @@ public class gameManager : MonoBehaviour
         GameObject go = GameObject.FindGameObjectWithTag("Ships");
         if(go != null)
         {
-            shipAnim.GetComponent<Animation>();
+            shipAnim = go.GetComponent<Animation>();
         }
         //HUD = transform.parent.gameObject.GetComponent<HUD>();
         playerScript = player.GetComponent<playerController>();
@@ -82,6 +83,7 @@ public class gameManager : MonoBehaviour
     void Update()
     {
 
+        UpdateUI();
         if (Input.GetButtonDown("Cancel"))
         {
             isPaused = !isPaused;
@@ -110,6 +112,14 @@ public class gameManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         instance.updateWave();
         instance.UpdateUI();
+    }
+
+    public IEnumerator flash()
+    {
+        screenFlash.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        screenFlash.SetActive(false);
+        
     }
 
     public void updateEnemyRemaining(int amount)
@@ -183,10 +193,7 @@ public class gameManager : MonoBehaviour
     
     public void updateAmmoUI()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            ammoCountText[i].text = playerScript.ammoRemaining.ToString() + "/" + playerScript.ammoCapacity.ToString();
-        }
+        
     }
 
     public void updateAmmo(int ammo)
@@ -199,9 +206,9 @@ public class gameManager : MonoBehaviour
 
     public void UpdateUI()
     {
-       // update ammo on slot
         coinsText.text = playerScript.GetCoins().ToString();
         waveCountText.text = $"Wave {waveCount}";
+        updateAmmoUI();
         
     }
     
