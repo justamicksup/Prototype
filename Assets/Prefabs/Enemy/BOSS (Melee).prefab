@@ -1510,7 +1510,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7780874006304872622}
   - component: {fileID: 7689975587143090890}
-  - component: {fileID: 7716395526612441151}
   - component: {fileID: 7987340409677309878}
   - component: {fileID: 7776518621719362188}
   - component: {fileID: 154500052919202359}
@@ -1532,7 +1531,7 @@ Transform:
   m_GameObject: {fileID: 7777564237960259858}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.938754, y: -1.7298, z: 48.186554}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7780710445344900654}
@@ -1560,20 +1559,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &7716395526612441151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7777564237960259858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8539780bbf004f341abb98a4e0d3e1a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skeleton: {fileID: 11400000, guid: 7db759ab3719c0b4098e8a8270111cb4, type: 2}
-  agent: {fileID: 7776518621719362188}
 --- !u!114 &7987340409677309878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1587,19 +1572,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 7776518621719362188}
-  enemy: {fileID: 7777564237960259858}
-  enem: {fileID: 0}
+  masterEnemyScriptableObject: {fileID: 11400000, guid: 3a0c791295a2221408c36ebcf48f8bab, type: 2}
   headPos: {fileID: 7774838096704600226}
   HP: 3
   rotationSpeed: 50
   lootValue: 0
+  shootDamage: 0
+  range: 0
+  shootRate: 2
+  shootForce: 0
+  ammoCapacity: 0
+  ammoRemaining: 0
+  reloadTime: 0
+  audGunShot: {fileID: 0}
   shootPos: {fileID: 0}
   bullet: {fileID: 0}
   bulletSpeed: 16
-  shootRate: 2
-  shootDist: 10
-  shootDamage: 0
+  attack: 1
   swingRate: 2
+  audWeaponSwing: {fileID: 0}
 --- !u!195 &7776518621719362188
 NavMeshAgent:
   m_ObjectHideFlags: 0

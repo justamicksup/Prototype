@@ -108,6 +108,8 @@ public class playerController : MonoBehaviour
                 //StartCoroutine(reload(projectileWeaponScriptableObjects));
             }
         }
+
+        
     }
 
     void movement()

@@ -454,7 +454,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8930192300184882187}
   - component: {fileID: 8839744971792356975}
-  - component: {fileID: 1061218340517127850}
   - component: {fileID: 9137213148432823059}
   - component: {fileID: 8934828601399275049}
   - component: {fileID: 1311033204645996178}
@@ -504,20 +503,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &1061218340517127850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8933497125020024247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8539780bbf004f341abb98a4e0d3e1a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skeleton: {fileID: 11400000, guid: 6fc00edacdca9f94aa2836ec21e9f0d5, type: 2}
-  agent: {fileID: 8934828601399275049}
 --- !u!114 &9137213148432823059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,19 +516,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 8934828601399275049}
-  enemy: {fileID: 8933497125020024247}
-  enem: {fileID: 0}
+  masterEnemyScriptableObject: {fileID: 11400000, guid: d2b36ca62e2a2714299a63a47b1e9f9a, type: 2}
   headPos: {fileID: 8930808710795488263}
   HP: 3
   rotationSpeed: 50
   lootValue: 0
+  shootDamage: 1
+  range: 0
+  shootRate: 2
+  shootForce: 0
+  ammoCapacity: 0
+  ammoRemaining: 0
+  reloadTime: 0
+  audGunShot: {fileID: 0}
   shootPos: {fileID: 8931032593443707861}
   bullet: {fileID: 5245255688520990098, guid: 2e622fc3b9bedfa45bf778dccc584963, type: 3}
   bulletSpeed: 15
-  shootRate: 2
-  shootDist: 10
-  shootDamage: 1
+  attack: 1
   swingRate: 0
+  audWeaponSwing: {fileID: 0}
 --- !u!195 &8934828601399275049
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -607,7 +598,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 70
+  m_Radius: 25
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8933500040356480461
 GameObject:

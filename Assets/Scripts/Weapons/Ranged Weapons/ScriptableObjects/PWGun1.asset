@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: PWGun1
   m_EditorClassIdentifier: 
   Model: {fileID: 5001316686193312806, guid: 68ae35d9f4d2f2d48993b32368aa4bce, type: 3}
-  gunLevel: 1
-  shootDamage: 5
-  range: 5
-  shootRate: 1
-  shootForce: 1
+  gunLevel: 7
+  shootDamage: 54
+  range: 79
+  shootRate: 0.16928029
+  shootForce: 4
   ammoCapacity: 6
-  ammoRemaining: 9
-  reloadTime: 0.1
+  ammoRemaining: 6
+  reloadTime: 0.15581174
   audGunShot: {fileID: 0}

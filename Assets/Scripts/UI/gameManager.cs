@@ -18,6 +18,7 @@ public class gameManager : MonoBehaviour
     [Header("----- Player -----")] public GameObject player;
     public playerController playerScript;
 
+    
 
     [Header("----- Game Goal -----")] public int enemiesRemaining;
     public int waveCount;
