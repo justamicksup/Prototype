@@ -130,7 +130,15 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isShooting = true;
-        anim.SetTrigger("Shoot");
+        if (agent.velocity.normalized.magnitude > 0)
+        {
+             anim.SetTrigger("Shoot");
+        }
+        else
+        {
+            anim.SetTrigger("IdleShoot");
+        }
+       
         GameObject bulletClone = Instantiate(bullet, shootPos.position, bullet.transform.rotation);
         bulletClone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
         bulletClone.GetComponent<bullet>().bulletDamage = shootDamage;

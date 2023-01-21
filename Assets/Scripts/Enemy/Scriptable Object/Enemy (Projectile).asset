@@ -17,7 +17,7 @@ MonoBehaviour:
   defense: 0
   isBoss: 0
   Model: {fileID: 5414797501623950903, guid: af1a6bb05b0524c4394a7ad88bc5fb44, type: 3}
-  navMesh: {fileID: 11400000, guid: 97a5b885f6460ef40baf12baec706060, type: 2}
+  navMesh: {fileID: 11400000, guid: dc5ab1088cb48c94589cb76287fccec0, type: 2}
   agent: {fileID: 0}
   shootDamage: 25
   range: 50
