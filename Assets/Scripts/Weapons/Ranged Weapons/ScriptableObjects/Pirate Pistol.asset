@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Model: {fileID: 4641864485281425789, guid: 3792d458fd760dc49ad3bc092c9c5c10, type: 3}
   gunLevel: 2
-  shootDamage: 29
+  shootDamage: 1
   range: 49
   shootRate: 0.12933286
   shootForce: 4
   ammoCapacity: 9
-  ammoRemaining: 9
+  ammoRemaining: 0
   reloadTime: 0.99142784
   audGunShot: {fileID: 0}

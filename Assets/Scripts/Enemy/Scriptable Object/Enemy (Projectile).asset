@@ -16,7 +16,7 @@ MonoBehaviour:
   health: 10
   defense: 0
   isBoss: 0
-  Model: {fileID: 8856490959939266964, guid: 7cd7ae57ff70f254ab6d2596f3f9104e, type: 3}
+  Model: {fileID: 5414797501623950903, guid: af1a6bb05b0524c4394a7ad88bc5fb44, type: 3}
   navMesh: {fileID: 11400000, guid: 97a5b885f6460ef40baf12baec706060, type: 2}
   agent: {fileID: 0}
   shootDamage: 25

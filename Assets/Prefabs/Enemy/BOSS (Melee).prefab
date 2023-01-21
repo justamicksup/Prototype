@@ -1573,6 +1573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 7776518621719362188}
   masterEnemyScriptableObject: {fileID: 11400000, guid: 3a0c791295a2221408c36ebcf48f8bab, type: 2}
+  anim: {fileID: 7689975587143090890}
   headPos: {fileID: 7774838096704600226}
   HP: 3
   rotationSpeed: 50

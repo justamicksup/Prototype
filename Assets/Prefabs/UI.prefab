@@ -2218,10 +2218,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d50521b467cb5094db7e035260984290, type: 3}
-    m_FontSize: 300
-    m_FontStyle: 0
+    m_FontSize: 200
+    m_FontStyle: 3
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 300
     m_Alignment: 5
     m_AlignByGeometry: 0
@@ -2229,7 +2229,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 00/00
 --- !u!1 &4243624832498924136
 GameObject:
   m_ObjectHideFlags: 0
@@ -2881,10 +2881,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d50521b467cb5094db7e035260984290, type: 3}
-    m_FontSize: 300
-    m_FontStyle: 0
+    m_FontSize: 200
+    m_FontStyle: 3
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 300
     m_Alignment: 5
     m_AlignByGeometry: 0
@@ -2892,7 +2892,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 00/00
 --- !u!1 &5901642355153224532
 GameObject:
   m_ObjectHideFlags: 0
@@ -4104,10 +4104,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d50521b467cb5094db7e035260984290, type: 3}
-    m_FontSize: 300
-    m_FontStyle: 0
+    m_FontSize: 200
+    m_FontStyle: 3
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 0
     m_MaxSize: 300
     m_Alignment: 5
     m_AlignByGeometry: 0
@@ -4115,7 +4115,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 00/00
 --- !u!1 &8765993446081417537
 GameObject:
   m_ObjectHideFlags: 0
@@ -4578,7 +4578,7 @@ MonoBehaviour:
   HP: 0
   isPaused: 0
   maxWave: 0
-  waveController: {fileID: 0}
+  waveController: {fileID: 11400000, guid: 395383b622efbf0409ba8dab5f604934, type: 2}
   armory: {fileID: 0}
   nextWave: 0
   enemiesRemainingText: {fileID: 0}
@@ -4594,7 +4594,7 @@ MonoBehaviour:
   - {fileID: 8944656768645878733}
   - {fileID: 2594776956085869259}
   coinsText: {fileID: 5173769001204082853}
-  waveCountText: {fileID: 6353073730422420728}
+  waveCountText: {fileID: 5013520045522165855}
   settingsMenu: {fileID: 0}
   ammoRemaining: 0
   weaponsInLevel: 0

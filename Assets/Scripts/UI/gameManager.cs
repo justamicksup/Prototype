@@ -208,7 +208,7 @@ public class gameManager : MonoBehaviour
     public void UpdateUI()
     {
         coinsText.text = playerScript.GetCoins().ToString();
-        waveCountText.text = $"Wave {waveCount}";
+        waveCountText.text = $" {waveCount}";
         updateAmmoUI();
         
     }

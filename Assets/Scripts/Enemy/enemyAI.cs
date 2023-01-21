@@ -11,7 +11,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("----- Components -----")] 
     [SerializeField] NavMeshAgent agent;
     public MasterEnemy masterEnemyScriptableObject;
-    
+    public Animator anim;
 
     [Header("----- Enemy Stats -----")]
     [SerializeField] Transform headPos;
@@ -76,10 +76,10 @@ public class enemyAI : MonoBehaviour, IDamage
     void Update()
     {
         playerDir = gameManager.instance.player.transform.position - headPos.position;
-
-
+        
         agent.SetDestination(gameManager.instance.player.transform.position);
-
+        anim.SetFloat("Speed", agent.velocity.normalized.magnitude);
+        
       
             if (agent.remainingDistance < agent.stoppingDistance)
             {
@@ -115,20 +115,22 @@ public class enemyAI : MonoBehaviour, IDamage
     public void takeDamage(int damage)
     {
         HP -= damage;
+        anim.SetTrigger("Hit1");
         facePlayer();
         agent.SetDestination(gameManager.instance.player.transform.position);
         if (HP <= 0)
         {
             gameManager.instance.updateEnemyRemaining(-1);
             gameManager.instance.playerScript.addCoins(lootValue);
+           
             Destroy(gameObject);
         }
     }
-
+    
     IEnumerator shoot()
     {
         isShooting = true;
-
+        anim.SetTrigger("Shoot");
         GameObject bulletClone = Instantiate(bullet, shootPos.position, bullet.transform.rotation);
         bulletClone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
         bulletClone.GetComponent<bullet>().bulletDamage = shootDamage;
@@ -141,7 +143,7 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator MeleeHit()
     {
         isSwinging = true;
-
+        anim.SetTrigger("Attack1h1");
         gameManager.instance.playerScript.takeDamage(attack);
         
         yield return new WaitForSeconds(swingRate);
