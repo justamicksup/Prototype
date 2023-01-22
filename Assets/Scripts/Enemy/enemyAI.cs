@@ -7,14 +7,15 @@ using UnityEngine.Serialization;
 
 public class enemyAI : MonoBehaviour, IDamage
 {
-    
-    [Header("----- Components -----")] 
-    [SerializeField] NavMeshAgent agent;
+    [Header("----- Components -----")] [SerializeField]
+    NavMeshAgent agent;
+
     public MasterEnemy masterEnemyScriptableObject;
     public Animator anim;
+    
+    [Header("----- Enemy Stats -----")] [SerializeField]
+    Transform headPos;
 
-    [Header("----- Enemy Stats -----")]
-    [SerializeField] Transform headPos;
     [SerializeField] int HP;
     [SerializeField] int rotationSpeed;
     [Range(10, 1000)] [SerializeField] int lootValue;
@@ -34,14 +35,24 @@ public class enemyAI : MonoBehaviour, IDamage
 
     [Header("----- Melee -----")] [SerializeField]
     public int attack = 1;
+
     public float swingRate = 0.1f;
     public AudioClip audWeaponSwing;
+
+    [Header("----- Explosive -----")] 
+    [SerializeField] int throwingDistance = 1;
+    [SerializeField] int explosiveDamage = 1;
+    [SerializeField] int force = 1;
+    [SerializeField] Transform throwingHand;
+    [SerializeField] GameObject bomb;
 
 
     bool isSwinging;
     bool isShooting;
+    bool isThrowing;
     bool isRangedEnemy;
     bool isMeleeEnemy;
+    bool isExplosiveEnemy;
     Vector3 playerDir;
     bool playerInRange;
 
@@ -50,13 +61,14 @@ public class enemyAI : MonoBehaviour, IDamage
     void Start()
     {
         gameManager.instance.updateEnemyRemaining(1);
-        
-        
+
+
         if (masterEnemyScriptableObject.GetType() == typeof(EnemyProjectileScriptableObjects))
         {
             Debug.Log("Its the Projectile type");
             isRangedEnemy = true;
             isMeleeEnemy = false;
+            isExplosiveEnemy = false;
             GetStats((EnemyProjectileScriptableObjects)masterEnemyScriptableObject);
             GetNavMesh();
         }
@@ -65,9 +77,21 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             isMeleeEnemy = true;
             isRangedEnemy = false;
+            isExplosiveEnemy = false;
 
             Debug.Log("Its the Melee type");
             GetStats((EnemyMeleeScriptableObject)masterEnemyScriptableObject);
+            GetNavMesh();
+        }
+
+        if (masterEnemyScriptableObject.GetType() == typeof(EnemyExplosiveScriptableObjects))
+        {
+            isExplosiveEnemy = true;
+            isMeleeEnemy = false;
+            isRangedEnemy = false;
+
+            Debug.Log("Its the Melee type");
+            GetStats((EnemyExplosiveScriptableObjects)masterEnemyScriptableObject);
             GetNavMesh();
         }
     }
@@ -76,39 +100,44 @@ public class enemyAI : MonoBehaviour, IDamage
     void Update()
     {
         playerDir = gameManager.instance.player.transform.position - headPos.position;
-        
+
         agent.SetDestination(gameManager.instance.player.transform.position);
         anim.SetFloat("Speed", agent.velocity.normalized.magnitude);
-        
-      
-            if (agent.remainingDistance < agent.stoppingDistance)
-            {
-                facePlayer();
-            }
-           
-            
-            if (playerInRange)
-            {
-                if (isRangedEnemy)
-                {
-                    if (!isShooting)
-                    {
-                        Debug.Log("Shooting");
-                        StartCoroutine(shoot());
-                    }
-                }
-                else if (isMeleeEnemy)
-                {
-                    if (!isSwinging)
-                    {
-                        Debug.Log("Swinging");
-                        StartCoroutine(MeleeHit());
-                    }
-                }
-            }
-       
 
-       
+
+        if (agent.remainingDistance < agent.stoppingDistance)
+        {
+            facePlayer();
+        }
+
+
+        if (playerInRange)
+        {
+            if (isRangedEnemy)
+            {
+                if (!isShooting)
+                {
+                    Debug.Log("Shooting");
+                    StartCoroutine(shoot());
+                }
+            }
+            else if (isMeleeEnemy)
+            {
+                if (!isSwinging)
+                {
+                    Debug.Log("Swinging");
+                    StartCoroutine(MeleeHit());
+                }
+            }
+            else if (isExplosiveEnemy)
+            {
+                if (!isThrowing)
+                {
+                    Debug.Log("Throwing");
+                    StartCoroutine(ThrowBomb());
+                }
+            }
+        }
     }
 
 
@@ -122,23 +151,23 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             gameManager.instance.updateEnemyRemaining(-1);
             gameManager.instance.playerScript.addCoins(lootValue);
-           
+
             Destroy(gameObject);
         }
     }
-    
+
     IEnumerator shoot()
     {
         isShooting = true;
         if (agent.velocity.normalized.magnitude > 0)
         {
-             anim.SetTrigger("Shoot");
+            anim.SetTrigger("Shoot");
         }
         else
         {
             anim.SetTrigger("IdleShoot");
         }
-       
+
         GameObject bulletClone = Instantiate(bullet, shootPos.position, bullet.transform.rotation);
         bulletClone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
         bulletClone.GetComponent<bullet>().bulletDamage = shootDamage;
@@ -153,11 +182,30 @@ public class enemyAI : MonoBehaviour, IDamage
         isSwinging = true;
         anim.SetTrigger("Attack1h1");
         gameManager.instance.playerScript.takeDamage(attack);
-        
+
         yield return new WaitForSeconds(swingRate);
         isSwinging = false;
     }
 
+    IEnumerator ThrowBomb()
+    {
+        isThrowing = true;
+       
+        anim.SetTrigger("Throw");
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+
+        GameObject grenade = Instantiate(bomb, throwingHand.position, throwingHand.rotation);
+        Rigidbody grenadeRigidbody = grenade.GetComponent<Rigidbody>();
+        grenadeRigidbody.AddForce(transform.forward * 1000 + transform.up * 250);
+        grenadeRigidbody.AddTorque(Random.insideUnitSphere * 500);
+        
+        grenadeRigidbody.GetComponent<explosiveWeapon>().damage = explosiveDamage;
+
+        yield return new WaitForSeconds(0.8728814f);
+        
+        isThrowing = false;
+    }
+    
     void facePlayer()
     {
         //don't rotate up or down (Y)
@@ -205,6 +253,12 @@ public class enemyAI : MonoBehaviour, IDamage
         swingRate = _enemyMeleeScriptableObject.swingRate;
         audWeaponSwing = _enemyMeleeScriptableObject.audWeaponSwing;
     }
+
+    void GetStats(EnemyExplosiveScriptableObjects _enemyExplosiveScriptableObject)
+    {
+        HP = _enemyExplosiveScriptableObject.health;
+    }
+
 
     void GetNavMesh()
     {

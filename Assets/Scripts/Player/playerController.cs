@@ -70,6 +70,10 @@ public class playerController : MonoBehaviour
 
     int HPOrig;
     float staminaOrig;
+    public Vector3 pushBack;
+    [SerializeField] int pushBackTime;
+    
+    
 
     bool isShooting;
     bool isReloading;
@@ -94,21 +98,26 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement();
+       
+           
 
-        if (weaponList.Count > 0)
-        {
-            if (!isAttacking && Input.GetButton("Shoot"))
-            {
-                Attack();
-            }
+             movement();
+            
+                    if (weaponList.Count > 0)
+                    {
+                        if (!isAttacking && Input.GetButton("Shoot"))
+                        {
+                            Attack();
+                        }
+            
+                        if (!isReloading && Input.GetButtonDown("Reload"))
+                        {
+                            //StartCoroutine(reload(projectileWeaponScriptableObjects));
+                        }
+                    }
 
-            if (!isReloading && Input.GetButtonDown("Reload"))
-            {
-                //StartCoroutine(reload(projectileWeaponScriptableObjects));
-            }
-        }
-
+        
+       
         
     }
 
