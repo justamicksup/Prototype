@@ -45,8 +45,10 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int force = 1;
     [SerializeField] Transform throwingHand;
     [SerializeField] GameObject bomb;
-
-
+    [SerializeField] int explosionRadius = 5;
+    [SerializeField] int explosionForce = 100;
+    [SerializeField] int timer = 100;
+    
     bool isSwinging;
     bool isShooting;
     bool isThrowing;
@@ -190,18 +192,28 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator ThrowBomb()
     {
         isThrowing = true;
-       
-        anim.SetTrigger("Throw");
+        if (agent.velocity.normalized.magnitude > 0)
+        {
+            anim.SetTrigger("Throw");
+        }
+        else
+        {
+            anim.SetTrigger("IdleThrow");
+        }
+        
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
 
         GameObject grenade = Instantiate(bomb, throwingHand.position, throwingHand.rotation);
         Rigidbody grenadeRigidbody = grenade.GetComponent<Rigidbody>();
-        grenadeRigidbody.AddForce(transform.forward * 1000 + transform.up * 250);
+        grenadeRigidbody.AddForce(transform.forward * 500 + transform.up * 250);
         grenadeRigidbody.AddTorque(Random.insideUnitSphere * 500);
-        
-        grenadeRigidbody.GetComponent<explosiveWeapon>().damage = explosiveDamage;
+       
+        grenade.GetComponent<explosiveWeapon>().damage = explosiveDamage;
+        grenade.GetComponent<explosiveWeapon>().range = explosionRadius;
+        grenade.GetComponent<explosiveWeapon>().force = explosionForce;
+        grenade.GetComponent<explosiveWeapon>().timer = timer;
 
-        yield return new WaitForSeconds(0.8728814f);
+        //yield return new WaitForSeconds(0.8728814f);
         
         isThrowing = false;
     }

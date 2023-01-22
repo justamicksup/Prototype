@@ -19,6 +19,7 @@ MonoBehaviour:
   shootRate: 0.12933286
   shootForce: 4
   ammoCapacity: 9
-  ammoRemaining: 0
+  ammoRemaining: 8
   reloadTime: 0.99142784
   audGunShot: {fileID: 0}
+  muzzleFlash: {fileID: 19800004, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}

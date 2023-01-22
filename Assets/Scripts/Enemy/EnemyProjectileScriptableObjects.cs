@@ -12,4 +12,5 @@ public class EnemyProjectileScriptableObjects : MasterEnemy
         public int ammoRemaining = 6;
         public float reloadTime = 0.1f;
         public AudioClip audGunShot;
+        
     }

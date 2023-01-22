@@ -98,7 +98,9 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+       // pushBack.x = Mathf.Lerp(pushBack.x, 0, Time.deltaTime * pushBackTime);
+        //pushBack.z = Mathf.Lerp(pushBack.x, 0, Time.deltaTime * pushBackTime);
+       // pushBack.y = Mathf.Lerp(pushBack.x, 0, Time.deltaTime * pushBackTime * 3);
            
 
              movement();
@@ -183,8 +185,8 @@ public class playerController : MonoBehaviour
 
         if (projectileWeaponScriptableObjects.ammoRemaining > 0)
         {
+            
             projectileWeaponScriptableObjects.ammoRemaining -= 1;
-
             if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit,
                     projectileWeaponScriptableObjects.range))
             {
@@ -217,6 +219,7 @@ public class playerController : MonoBehaviour
         isReloading = false;
     }
 
+    
     public void takeDamage(int damage)
     {
         HP -= damage;
@@ -321,6 +324,7 @@ public class playerController : MonoBehaviour
             //call shoot logic
             Debug.Log("Call Shoot attack");
             StartCoroutine(shoot((ProjectileWeaponScriptableObjects)weaponList[currentWeapon]));
+           
         }
         // else if current weapon is a melee
         else if (weaponList[currentWeapon].GetType() == typeof(MeleeWeaponScriptableObjects))
@@ -375,11 +379,11 @@ public class playerController : MonoBehaviour
 
         WeaponSlots[index].GetComponent<MeshRenderer>().sharedMaterials =
             projectileWeaponScriptableObjects.Model.GetComponent<MeshRenderer>().sharedMaterials;
-
-
+        
         WeaponSlots[index].transform.localScale = projectileWeaponScriptableObjects.Model.transform.localScale;
         WeaponSlots[index].transform.localRotation = projectileWeaponScriptableObjects.Model.transform.rotation;
 
+       
         ammo = projectileWeaponScriptableObjects.ammoRemaining;
     }
 
