@@ -15,8 +15,8 @@ public class playerController : MonoBehaviour
     int HP;
 
     private Coroutine staminaRegen;
-    [Range(1, 100)] [SerializeField] float stamina;
-    [SerializeField] int playerSpeed;
+    [Range(1, 100)] [SerializeField] public float stamina;
+    [SerializeField] public int playerSpeed;
     [SerializeField] int jumpVelocity;
     [SerializeField] int gravity;
     [SerializeField] int jumpMax;
@@ -33,7 +33,7 @@ public class playerController : MonoBehaviour
     [Header("----- Gun Stats -----")]
     
     [SerializeField] int gunLevel;
-    [SerializeField] int shootDamage;
+    [SerializeField] public int shootDamage;
     [SerializeField] int range;
     [SerializeField] float shootRate;
     [SerializeField] float shootForce;
@@ -44,7 +44,7 @@ public class playerController : MonoBehaviour
     [Header("----- Melee Stats -----")] 
     
     [SerializeField] int meleeLevel;
-    [SerializeField] int meleeDamage;
+    [SerializeField] public int meleeDamage;
     [SerializeField] int meleeReach;
     [SerializeField] float knockbackForce;
     [SerializeField] float swingSpeed;
@@ -339,6 +339,27 @@ public class playerController : MonoBehaviour
         //if current weapon is a heal
         // call heal logic
     }
+
+    public void powerPickup(PowerStat power)
+    {
+        if (power.speedBonus != 0)
+        {
+            playerSpeed += power.speedBonus;
+        }
+        if (power.staminaBonus != 0)
+        {
+            stamina += power.staminaBonus;
+        }
+        if (power.shootDmgBonus != 0)
+        {
+            shootDamage += power.shootDmgBonus;
+        }
+        if (power.meleeDmgBonus != 0)
+        {
+            meleeDamage += power.meleeDmgBonus;
+        }
+    }
+
 
     // public void gunPickup(ProjectileWeaponScriptableObjects projectileWeaponScriptableObjects)
     // {
