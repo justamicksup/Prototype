@@ -16,9 +16,11 @@ MonoBehaviour:
   health: 100
   defense: 0
   isBoss: 1
-  Model: {fileID: 7777564237960259858, guid: e6a2e4e1523a1e049aebbf858f6d80e3, type: 3}
+  Model: {fileID: 7777564237960259858, guid: 68efba89ed6ea694ea0022adb4af6414, type: 3}
   navMesh: {fileID: 11400000, guid: 672b3309c95ed5542a413243f8235a79, type: 2}
-  agent: {fileID: 0}
   attack: 50
   swingRate: 1.5
+  swingAngle: 60
+  viewAngle: 90
+  rotationSpeed: 50
   audWeaponSwing: {fileID: 0}

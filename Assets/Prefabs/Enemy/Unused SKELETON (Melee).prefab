@@ -844,7 +844,7 @@ GameObject:
   - component: {fileID: 535464166409355455}
   - component: {fileID: 1652688148593331673}
   m_Layer: 7
-  m_Name: SKELETON (Melee)
+  m_Name: Unused SKELETON (Melee)
   m_TagString: Melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

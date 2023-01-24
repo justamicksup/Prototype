@@ -1101,7 +1101,7 @@ GameObject:
   - component: {fileID: 5414797501614435759}
   - component: {fileID: 5414797501614435758}
   m_Layer: 7
-  m_Name: SKELETON(Projectile)
+  m_Name: Unused SKELETON(Projectile)
   m_TagString: Range
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

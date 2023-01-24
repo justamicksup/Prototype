@@ -9982,7 +9982,7 @@ GameObject:
   - component: {fileID: 3059545344676545134}
   m_Layer: 10
   m_Name: Bomb
-  m_TagString: Untagged
+  m_TagString: Enemy Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10016,10 +10016,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f564215d21e46c34abd4e24750fc4e66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  timer: 3
-  range: 0
-  force: 0
+  damage: 10
+  timer: 2
+  range: 5
+  force: 5
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
   explosion: {fileID: 100006, guid: e076683e0305e35498b8e8834978c0fa, type: 3}
 --- !u!64 &7762696762606173499
 MeshCollider:

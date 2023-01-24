@@ -9,6 +9,7 @@ public class explosiveWeapon : MonoBehaviour
     public int timer;
     public int range;
     public int force;
+    public LayerMask layerMask;
     [SerializeField] GameObject explosion;
 
 
@@ -22,11 +23,12 @@ public class explosiveWeapon : MonoBehaviour
     {
         yield return new WaitForSeconds(timer);
         GameObject explosionClone = Instantiate(explosion, transform.position, transform.rotation);
-        Collider[] colliders = Physics.OverlapSphere(transform.position, range);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, range, layerMask);
 
 
         for (int i = 0; i < colliders.Length; i++)
         {
+           
             if (colliders[i].GetComponent<IDamage>() != null)
             {
                 colliders[i].GetComponent<IDamage>().takeDamage(damage);

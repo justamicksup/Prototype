@@ -12,6 +12,6 @@ public abstract class MasterEnemy : ScriptableObject
     public bool isBoss = false;
     public GameObject Model;
     public NavMeshScriptableObject navMesh;
-    public NavMeshAgent agent;
+    
 
 }

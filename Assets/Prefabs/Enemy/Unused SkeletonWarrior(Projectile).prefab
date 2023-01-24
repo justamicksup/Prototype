@@ -979,7 +979,7 @@ GameObject:
   - component: {fileID: 7122973909787905928}
   - component: {fileID: 7122973909787905926}
   m_Layer: 7
-  m_Name: SkeletonWarrior(Projectile)
+  m_Name: Unused SkeletonWarrior(Projectile)
   m_TagString: Range
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

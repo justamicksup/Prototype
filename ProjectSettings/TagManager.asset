@@ -10,6 +10,9 @@ TagManager:
   - Chest
   - Weapon
   - Ships
+  - Enemy Bomb
+  - Enemy
+  - Explosive
   layers:
   - Default
   - TransparentFX
@@ -21,7 +24,7 @@ TagManager:
   - Enemy
   - Player
   - Floor
-  - Bomb
+  - Enemy Bomb
   - 
   - 
   - 
