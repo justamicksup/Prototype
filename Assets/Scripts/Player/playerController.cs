@@ -203,6 +203,10 @@ public class playerController : MonoBehaviour
                 }
             }
         }
+        if(Input.GetButtonDown("Reload"))
+        {
+            StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon]));
+        }
 
         //add gravity
         playerVelocity.y -= gravity * Time.deltaTime;
@@ -218,7 +222,7 @@ public class playerController : MonoBehaviour
         ammo = projectileWeaponScriptableObjects.ammoRemaining;
         ammoRemaining = ammo;
 
-        if (projectileWeaponScriptableObjects.ammoRemaining > 0)
+        if (projectileWeaponScriptableObjects.ammoRemaining > 0 && !isReloading)
         {
             
             projectileWeaponScriptableObjects.ammoRemaining -= 1;
@@ -259,6 +263,7 @@ public class playerController : MonoBehaviour
     {
         HP -= damage;
         updatePlayerHP();
+        StartCoroutine(gameManager.instance.flash());
         if (HP <= 0)
         {
             gameManager.instance.youLose();

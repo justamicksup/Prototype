@@ -119,7 +119,7 @@ public class gameManager : MonoBehaviour
     public IEnumerator flash()
     {
         screenFlash.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.15f);
         screenFlash.SetActive(false);
         
     }

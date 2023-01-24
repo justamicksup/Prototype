@@ -22,6 +22,7 @@ public class TriggerEnemyWave : MonoBehaviour
 
             if (Input.GetButtonDown("Action"))
             {
+                gameManager.instance.alertText.text = "";
                 Destroy(chestTrigger);
                 gameManager.instance.StartGame();
             }
@@ -33,6 +34,7 @@ public class TriggerEnemyWave : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            gameManager.instance.alertText.text = "E: Start Wave";
         }
     }
     public void OnTriggerExit(Collider other)
@@ -40,6 +42,7 @@ public class TriggerEnemyWave : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            gameManager.instance.alertText.text = "";
         }
     }
 
