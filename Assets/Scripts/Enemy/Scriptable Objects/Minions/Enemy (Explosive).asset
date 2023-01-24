@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496e2e3209684df98e6e9cbcbb715d55, type: 3}
+  m_Name: Enemy (Explosive)
+  m_EditorClassIdentifier: 
+  name: Boom Boom
+  health: 400
+  defense: 0
+  isBoss: 0
+  Model: {fileID: 8933497125020024247, guid: 647452330745e5e438a35226953b1055, type: 3}
+  navMesh: {fileID: 11400000, guid: dc68a3f436874894a98651f3a3d62b01, type: 2}
+  throwingDistance: 10
+  bomb: {fileID: 3059545344676545123, guid: 1f4818403b07b744eb850073b9e47dc3, type: 3}
+  throwAngle: 45
+  viewAngle: 60
+  forceForward: 500
+  forceUpward: 250
+  torque: 500
+  rotationSpeed: 50

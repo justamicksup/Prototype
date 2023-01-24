@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13155339a80f41aabe72a232a9aa188e, type: 3}
+  m_Name: Enemy (Projectile)
+  m_EditorClassIdentifier: 
+  name: Shooter McGavin
+  health: 200
+  defense: 0
+  isBoss: 0
+  Model: {fileID: 5414797501623950903, guid: af1a6bb05b0524c4394a7ad88bc5fb44, type: 3}
+  navMesh: {fileID: 11400000, guid: dc5ab1088cb48c94589cb76287fccec0, type: 2}
+  shootDamage: 25
+  range: 50
+  shootRate: 0.5
+  shootForce: 0
+  bulletSpeed: 10
+  ammoCapacity: 0
+  ammoRemaining: 0
+  reloadTime: 0
+  shootAngle: 45
+  viewAngle: 60
+  rotationSpeed: 50
+  audGunShot: {fileID: 0}

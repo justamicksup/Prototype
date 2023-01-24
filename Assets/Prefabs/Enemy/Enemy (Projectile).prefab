@@ -1094,15 +1094,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5414797501623452183}
+  - component: {fileID: 426749435472643753}
   - component: {fileID: 5414797501614435745}
   - component: {fileID: 5414797501614435757}
   - component: {fileID: 5414797501614435756}
   - component: {fileID: 5414797501614435759}
   - component: {fileID: 5414797501614435758}
-  - component: {fileID: 426749435472643753}
   m_Layer: 7
   m_Name: Enemy (Projectile)
-  m_TagString: Range
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1124,6 +1124,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &426749435472643753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5414797501623950903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cc827e59e246eda321be69cbd0e79e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 0
+  rotationSpeed: 50
+  lootValue: 0
+  shootDamage: 0
+  range: 0
+  shootRate: 0
+  shootForce: 0
+  ammoCapacity: 0
+  ammoRemaining: 0
+  reloadTime: 0
+  audGunShot: {fileID: 0}
+  shootAngle: 45
+  viewAngle: 60
+  bulletSpeed: 0
+  masterEnemyScriptableObject: {fileID: 11400000, guid: d2b36ca62e2a2714299a63a47b1e9f9a, type: 2}
+  animator: {fileID: 5414797501614435745}
+  agent: {fileID: 5414797501614435757}
+  headPos: {fileID: 5414797501623452231}
+  shootPos: {fileID: 3142955913297490424}
+  bullet: {fileID: 5245255688520990098, guid: 2e622fc3b9bedfa45bf778dccc584963, type: 3}
+  stoppingDistOrig: 0
 --- !u!95 &5414797501614435745
 Animator:
   serializedVersion: 5
@@ -1134,7 +1167,7 @@ Animator:
   m_GameObject: {fileID: 5414797501623950903}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a58154c350c4ccf47a6cdad03a8dca1a, type: 3}
-  m_Controller: {fileID: 9100000, guid: c0374fdb2a1030d4d971c7b9629288e8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7626728b6d693cd4dae2b0f26507a49d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1209,38 +1242,6 @@ CapsuleCollider:
   m_Height: 7.77
   m_Direction: 1
   m_Center: {x: 0, y: 2.82, z: 0}
---- !u!114 &426749435472643753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5414797501623950903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3cc827e59e246eda321be69cbd0e79e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: 0
-  rotationSpeed: 50
-  lootValue: 0
-  shootDamage: 0
-  range: 0
-  shootRate: 0
-  shootForce: 0
-  ammoCapacity: 0
-  ammoRemaining: 0
-  reloadTime: 0
-  audGunShot: {fileID: 0}
-  shootAngle: 45
-  viewAngle: 60
-  bulletSpeed: 0
-  masterEnemyScriptableObject: {fileID: 11400000, guid: d2b36ca62e2a2714299a63a47b1e9f9a, type: 2}
-  animator: {fileID: 5414797501614435745}
-  agent: {fileID: 5414797501614435757}
-  headPos: {fileID: 5414797501623452231}
-  shootPos: {fileID: 3142955913297490424}
-  bullet: {fileID: 5245255688520990098, guid: 2e622fc3b9bedfa45bf778dccc584963, type: 3}
 --- !u!1 &5414797501623950905
 GameObject:
   m_ObjectHideFlags: 0

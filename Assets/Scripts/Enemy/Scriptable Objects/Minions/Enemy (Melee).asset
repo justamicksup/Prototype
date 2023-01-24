@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37832fd23c5441888db79163836997bb, type: 3}
+  m_Name: Enemy (Melee)
+  m_EditorClassIdentifier: 
+  name: Axel Rose
+  health: 100
+  defense: 0
+  isBoss: 0
+  Model: {fileID: 586018981929148686, guid: d8cf69971f13b234194cf9afa5a6bbb8, type: 3}
+  navMesh: {fileID: 11400000, guid: 97a5b885f6460ef40baf12baec706060, type: 2}
+  attack: 10
+  swingRate: 0.5
+  swingAngle: 60
+  viewAngle: 90
+  rotationSpeed: 50
+  hasWeapon: 1
+  audWeaponSwing: {fileID: 0}

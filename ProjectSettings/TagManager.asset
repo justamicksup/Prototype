@@ -13,6 +13,8 @@ TagManager:
   - Enemy Bomb
   - Enemy
   - Explosive
+  - No Weapon
+  - Projectile
   layers:
   - Default
   - TransparentFX

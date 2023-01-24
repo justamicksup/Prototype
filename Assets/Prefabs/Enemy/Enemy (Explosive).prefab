@@ -484,12 +484,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8930192300184882187}
+  - component: {fileID: 3920414612879505658}
   - component: {fileID: 8839744971792356975}
   - component: {fileID: 8934828601399275049}
   - component: {fileID: 1311033204645996178}
   - component: {fileID: 7292553168433975648}
   - component: {fileID: 8409773804851076102}
-  - component: {fileID: 3920414612879505658}
   m_Layer: 7
   m_Name: Enemy (Explosive)
   m_TagString: Explosive
@@ -514,6 +514,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3920414612879505658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8933497125020024247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841a11eeea44b5a42ad54cae5e69717a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 0
+  rotationSpeed: 0
+  lootValue: 0
+  throwingDistance: 5
+  forceForward: 1
+  forceUpward: 1
+  torque: 1
+  coolDown: 3
+  throwAngle: 0
+  viewAngle: 0
+  timer: 100
+  explosionRadius: 5
+  explosionForce: 100
+  explosiveDamage: 1
+  masterEnemyScriptableObject: {fileID: 11400000, guid: fcdf93a4076ad874a9dd7730ac3e7417, type: 2}
+  animator: {fileID: 8839744971792356975}
+  agent: {fileID: 8934828601399275049}
+  headPos: {fileID: 8930808710795488263}
+  throwingHand: {fileID: 1352547680}
+  bomb: {fileID: 3059545344676545123, guid: 1f4818403b07b744eb850073b9e47dc3, type: 3}
+  stoppingDistOrig: 0
 --- !u!95 &8839744971792356975
 Animator:
   serializedVersion: 5
@@ -599,39 +632,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 50
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3920414612879505658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8933497125020024247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 841a11eeea44b5a42ad54cae5e69717a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: 0
-  rotationSpeed: 0
-  lootValue: 0
-  throwingDistance: 5
-  forceForward: 1
-  forceUpward: 1
-  torque: 1
-  coolDown: 3
-  throwAngle: 0
-  viewAngle: 0
-  timer: 100
-  explosionRadius: 5
-  explosionForce: 100
-  explosiveDamage: 1
-  masterEnemyScriptableObject: {fileID: 11400000, guid: fcdf93a4076ad874a9dd7730ac3e7417, type: 2}
-  animator: {fileID: 8839744971792356975}
-  agent: {fileID: 8934828601399275049}
-  headPos: {fileID: 8930808710795488263}
-  throwingHand: {fileID: 1352547680}
-  bomb: {fileID: 3059545344676545123, guid: 1f4818403b07b744eb850073b9e47dc3, type: 3}
-  stoppingDistOrig: 0
 --- !u!1 &8933500040356480461
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &314427883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 314427884}
+  - component: {fileID: 314427885}
+  - component: {fileID: 314427886}
+  m_Layer: 0
+  m_Name: Sword Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &314427884
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314427883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 591562256796672440}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &314427885
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314427883}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.81
+  m_Height: 5.22
+  m_Direction: 2
+  m_Center: {x: -0.00017633705, y: 0.12, z: 2.25}
+--- !u!114 &314427886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314427883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e23ded5fd9984e5bbc56ec271fcf982d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
 --- !u!1 &585469905137492746
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +185,8 @@ Transform:
   m_LocalPosition: {x: -0.376, y: 0.106, z: -0.044}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 314427884}
   m_Father: {fileID: 591592833644236200}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 28.256, y: -4.7200003, z: -4.2860003}
@@ -837,8 +898,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 591581168684339378}
-  - component: {fileID: 681952652266162902}
   - component: {fileID: 4724056798505104338}
+  - component: {fileID: 681952652266162902}
   - component: {fileID: 586943647562871440}
   - component: {fileID: 7055562428492675627}
   - component: {fileID: 535464166409355455}
@@ -867,6 +928,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4724056798505104338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586018981929148686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaf4d628adb3dad4fa1b462d152bbc1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 0
+  rotationSpeed: 0
+  lootValue: 0
+  attack: 1
+  swingRate: 0.1
+  audWeaponSwing: {fileID: 0}
+  swingAngle: 0
+  stoppingDistOrig: 0
+  viewAngle: 0
+  masterEnemyScriptableObject: {fileID: 11400000, guid: db5772d71d793644599845e5c287ea3d, type: 2}
+  animator: {fileID: 681952652266162902}
+  agent: {fileID: 586943647562871440}
+  headPos: {fileID: 588641490153156798}
+  weaponCollider: {fileID: 314427885}
+  weapon: {fileID: 314427886}
 --- !u!95 &681952652266162902
 Animator:
   serializedVersion: 5
@@ -887,28 +975,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &4724056798505104338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586018981929148686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaf4d628adb3dad4fa1b462d152bbc1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: 0
-  rotationSpeed: 0
-  lootValue: 0
-  attack: 1
-  swingRate: 0.1
-  audWeaponSwing: {fileID: 0}
-  masterEnemyScriptableObject: {fileID: 11400000, guid: db5772d71d793644599845e5c287ea3d, type: 2}
-  animator: {fileID: 681952652266162902}
-  agent: {fileID: 586943647562871440}
-  headPos: {fileID: 588641490153156798}
 --- !u!195 &586943647562871440
 NavMeshAgent:
   m_ObjectHideFlags: 0
