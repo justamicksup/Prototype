@@ -185,7 +185,7 @@ public class enemyAI : MonoBehaviour, IDamage
         
         isSwinging = true;
         anim.SetTrigger("Attack1h1");
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length * anim.GetCurrentAnimatorStateInfo(0).speed);
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         gameManager.instance.playerScript.takeDamage(attack);
         
         
