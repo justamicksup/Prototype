@@ -567,13 +567,13 @@ MonoBehaviour:
   attack: 1
   swingRate: 0
   audWeaponSwing: {fileID: 0}
-  throwingDistance: 50
+  throwingDistance: 10
   explosiveDamage: 10
   force: 100
   throwingHand: {fileID: 1352547680}
   bomb: {fileID: 3059545344676545123, guid: 1f4818403b07b744eb850073b9e47dc3, type: 3}
-  explosionRadius: 25
-  explosionForce: 100
+  explosionRadius: 10
+  explosionForce: 10
   timer: 3
 --- !u!195 &8934828601399275049
 NavMeshAgent:

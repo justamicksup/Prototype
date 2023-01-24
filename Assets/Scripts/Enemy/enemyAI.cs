@@ -10,6 +10,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("----- Components -----")] [SerializeField]
     NavMeshAgent agent;
 
+    bool routineCalled;
     public MasterEnemy masterEnemyScriptableObject;
     public Animator anim;
     
@@ -181,11 +182,15 @@ public class enemyAI : MonoBehaviour, IDamage
 
     IEnumerator MeleeHit()
     {
+        
         isSwinging = true;
         anim.SetTrigger("Attack1h1");
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length * anim.GetCurrentAnimatorStateInfo(0).speed);
         gameManager.instance.playerScript.takeDamage(attack);
-
+        
+        
         yield return new WaitForSeconds(swingRate);
+        
         isSwinging = false;
     }
 
