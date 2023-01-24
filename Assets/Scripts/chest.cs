@@ -80,6 +80,7 @@ public class chest : MonoBehaviour, actionObject
             target = other.transform;
             Debug.Log("PLAYER");
             playerInRange = true;
+            gameManager.instance.alertText.text = $"Weapon Cost: {chestCost}\n Roll Cost: {rollCost}";
             // gameManager.instance.actionObject = this.gameObject;
             if (chestCost < gameManager.instance.playerScript.GetCoins())
             {
@@ -105,6 +106,7 @@ public class chest : MonoBehaviour, actionObject
                 {
                     
                     secondaryAction();
+                    gameManager.instance.alertText.text = $"Weapon Cost: {chestCost}\n Roll Cost: {rollCost}";
                     StartCoroutine(Delay(.1f));
 
                 }
@@ -115,6 +117,7 @@ public class chest : MonoBehaviour, actionObject
             if (playerInRange && Input.GetButton("Submit"))
             {
                 primaryAction();
+                gameManager.instance.alertText.text = "";
             }
         }
     }
@@ -126,6 +129,7 @@ public class chest : MonoBehaviour, actionObject
         {
             target = null;
             weaponDisplay.SetActive(false);
+            gameManager.instance.alertText.text = "";
 
             // gameManager.instance.actionObject = null;
             //weaponSelection.SetActive(false);
@@ -141,6 +145,7 @@ public class chest : MonoBehaviour, actionObject
     {
         //Take the weapon you bought
         gameManager.instance.playerScript.WeaponPickup(tempArmory.MasterWeaponList[seed]);
+        gameManager.instance.playerScript.addCoins(-chestCost);
         // Destroy chest
         Destroy(gameObject);
 
@@ -188,6 +193,7 @@ public class chest : MonoBehaviour, actionObject
         //weaponSelection = chestContents[seed].gunModel;
         //weaponSelection = Instantiate(weaponSelection, chestWeapon.position, chestWeapon.rotation);
 
+        gameManager.instance.playerScript.addCoins(-rollCost);
         seed = Random.Range(0, tempArmory.MasterWeaponList.Count);
         chestCost = (seed + 1) * 100;
 

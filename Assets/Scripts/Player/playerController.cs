@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,7 +56,7 @@ public class playerController : MonoBehaviour
     [Header("----- Player Info -----")] [Header("----- Weapon Slots -----")] 
     [SerializeField] public List<MasterWeapon> weaponList = new List<MasterWeapon>();
 
-    [SerializeField] int currentWeapon;
+    [SerializeField] public int currentWeapon;
 
   //[SerializeField] List<ProjectileWeaponScriptableObjects> gunList = new List<ProjectileWeaponScriptableObjects>();
     
@@ -156,17 +157,51 @@ public class playerController : MonoBehaviour
 
         if (Input.GetButtonDown("Weapon1"))
         {
-            changeWeapon(0);
+            if(weaponList.Count > 0 && weaponList[0] != null)
+            {
+                changeWeapon(0);
+                try
+                {
+                    SetGunStats((ProjectileWeaponScriptableObjects)weaponList[0], 0);
+                }
+                catch(InvalidCastException)
+                {
+                    SetMeleeStats((MeleeWeaponScriptableObjects)weaponList[0], 0);
+                }
+                
+            }       
         }
 
         if (Input.GetButtonDown("Weapon2"))
         {
-            changeWeapon(1);
+            if (weaponList.Count >= 1 && weaponList[1] != null)
+            {
+                changeWeapon(1);
+                try
+                {
+                    SetGunStats((ProjectileWeaponScriptableObjects)weaponList[1], 1);
+                }
+                catch (InvalidCastException)
+                {
+                    SetMeleeStats((MeleeWeaponScriptableObjects)weaponList[1], 1);
+                }
+            }
         }
 
         if (Input.GetButtonDown("Weapon3"))
         {
-            changeWeapon(2);
+            if (weaponList.Count >= 2 && weaponList[2] != null)
+            {
+                changeWeapon(2);
+                try
+                {
+                    SetGunStats((ProjectileWeaponScriptableObjects)weaponList[2], 2);
+                }
+                catch (InvalidCastException)
+                {
+                    SetMeleeStats((MeleeWeaponScriptableObjects)weaponList[2], 2);
+                }
+            }
         }
 
         //add gravity
@@ -179,7 +214,7 @@ public class playerController : MonoBehaviour
         isAttacking = true;
         RaycastHit hit;
 
-        //gameManager.instance.UpdateUI();
+        gameManager.instance.UpdateUI();
         ammo = projectileWeaponScriptableObjects.ammoRemaining;
         ammoRemaining = ammo;
 
@@ -223,7 +258,6 @@ public class playerController : MonoBehaviour
     public void takeDamage(int damage)
     {
         HP -= damage;
-        StartCoroutine(gameManager.instance.flash());
         updatePlayerHP();
         if (HP <= 0)
         {

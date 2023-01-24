@@ -41,10 +41,12 @@ public class gameManager : MonoBehaviour
     public Image playerHPBar;
     public Image playerStaminaBar;
     public GameObject screenFlash;
-    [SerializeField] private Text[] ammoCountText;
+    //[SerializeField] private Text[] ammoCountText;
+    [SerializeField] Image[] weaponIcons;
+    [SerializeField] Text ammoText;
     [SerializeField] private Text coinsText;
     [SerializeField] private Text waveCountText;
-    public GameObject settingsMenu;
+    public Text alertText;
     
     [Header("----- Weapons and Ammo -----")]
     public int ammoRemaining;
@@ -71,9 +73,9 @@ public class gameManager : MonoBehaviour
         timeScaleOrig = Time.timeScale;
         waveController = Resources.Load("WaveController") as WaveController;
         
-        ammoCountText[0].text = "";
-        ammoCountText[1].text = "";
-        ammoCountText[2].text = "";
+        //ammoCountText[0].text = "";
+        //ammoCountText[1].text = "";
+        //ammoCountText[2].text = "";
         waveCountText.text = "";
         coinsText.text = playerScript.GetCoins().ToString();
         
@@ -83,7 +85,6 @@ public class gameManager : MonoBehaviour
 
     void Update()
     {
-
         UpdateUI();
         if (Input.GetButtonDown("Cancel"))
         {
@@ -118,7 +119,7 @@ public class gameManager : MonoBehaviour
     public IEnumerator flash()
     {
         screenFlash.SetActive(true);
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         screenFlash.SetActive(false);
         
     }
@@ -194,7 +195,7 @@ public class gameManager : MonoBehaviour
     
     public void updateAmmoUI()
     {
-        
+        ammoText.text = $"{playerScript.ammoRemaining} / {playerScript.ammoCapacity}";
     }
 
     public void updateAmmo(int ammo)
@@ -207,6 +208,27 @@ public class gameManager : MonoBehaviour
 
     public void UpdateUI()
     {
+        if(playerScript.weaponList.Count > 0)
+        {
+            if (playerScript.currentWeapon == 0)
+            {
+                weaponIcons[0].color = new Color(255, 255, 255, 1f);
+                weaponIcons[1].color = new Color(255, 255, 255, 0.2f);
+                weaponIcons[2].color = new Color(255, 255, 255, 0.2f);
+            }
+            else if (playerScript.currentWeapon == 1)
+            {
+                weaponIcons[0].color = new Color(255, 255, 255, 0.2f);
+                weaponIcons[1].color = new Color(255, 255, 255, 1f);
+                weaponIcons[2].color = new Color(255, 255, 255, 0.2f);
+            }
+            else if (playerScript.currentWeapon == 2)
+            {
+                weaponIcons[0].color = new Color(255, 255, 255, 0.2f);
+                weaponIcons[1].color = new Color(255, 255, 255, 0.2f);
+                weaponIcons[2].color = new Color(255, 255, 255, 1f);
+            }
+        }        
         coinsText.text = playerScript.GetCoins().ToString();
         waveCountText.text = $" {waveCount}";
         updateAmmoUI();
