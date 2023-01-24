@@ -1412,7 +1412,7 @@ GameObject:
   - component: {fileID: 6906026491746527969}
   - component: {fileID: 6906026491746527968}
   m_Layer: 7
-  m_Name: SKELETON(Base)
+  m_Name: Unused SKELETON(Base)
   m_TagString: Range
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
