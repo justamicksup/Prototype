@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Sniper
   m_EditorClassIdentifier: 
   Model: {fileID: 8105093614528831879, guid: ea96cf43fa5d15147921a167ed9e68f7, type: 3}
-  gunLevel: 1
-  shootDamage: 5
-  range: 5
-  shootRate: 1
-  shootForce: 1
-  ammoCapacity: 6
-  ammoRemaining: 9
-  reloadTime: 0.1
+  gunLevel: 7
+  shootDamage: 57
+  range: 70
+  shootRate: 0.10809963
+  shootForce: 3
+  ammoCapacity: 18
+  ammoRemaining: 7
+  reloadTime: 0.17198843
   audGunShot: {fileID: 0}

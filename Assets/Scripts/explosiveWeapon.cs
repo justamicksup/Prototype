@@ -1,38 +1,50 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class explosiveWeapon : MonoBehaviour
 {
-    [SerializeField] int damage;
-    [SerializeField] int timer;
-    [SerializeField] int range;
-    [SerializeField] int force;
+    public int damage;
+    public int timer;
+    public int range;
+    public int force;
+    [SerializeField] GameObject explosion;
 
-    // Start is called before the first frame update
+
+    //Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, timer);
+        StartCoroutine(explode());
     }
 
-    private void OnTriggerEnter(Collider other)
+    IEnumerator explode()
     {
-        if (other.CompareTag("Melee") || other.CompareTag("Range"))
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, other.transform.position, out hit, range))
-            {
-                if (hit.collider.GetComponent<IDamage>() != null)
-                {
-                    hit.collider.GetComponent<IDamage>().takeDamage(damage);
-                }
+        yield return new WaitForSeconds(timer);
+        GameObject explosionClone = Instantiate(explosion, transform.position, transform.rotation);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, range);
 
-                if (hit.rigidbody != null)
-                {
-                    hit.rigidbody.AddForceAtPosition(transform.forward * force, hit.point);
-                }
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].GetComponent<IDamage>() != null)
+            {
+                colliders[i].GetComponent<IDamage>().takeDamage(damage);
+            }
+
+            if (colliders[i].GetComponent<Rigidbody>() != null)
+            {
+                colliders[i].GetComponent<Rigidbody>()
+                    .AddForceAtPosition(transform.forward * force, colliders[i].transform.position);
+            }
+
+            if (colliders[i].CompareTag("Player"))
+            {
+                gameManager.instance.playerScript.takeDamage(damage);
             }
         }
+
         Destroy(gameObject);
+        Destroy(explosionClone, 0.5f);
     }
 }

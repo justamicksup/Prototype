@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Pirate Pistol
   m_EditorClassIdentifier: 
   Model: {fileID: 4641864485281425789, guid: 3792d458fd760dc49ad3bc092c9c5c10, type: 3}
-  gunLevel: 1
-  shootDamage: 5
-  range: 5
-  shootRate: 1
-  shootForce: 1
-  ammoCapacity: 6
-  ammoRemaining: 9
-  reloadTime: 0.1
+  gunLevel: 2
+  shootDamage: 1
+  range: 49
+  shootRate: 0.12933286
+  shootForce: 4
+  ammoCapacity: 9
+  ammoRemaining: 8
+  reloadTime: 0.99142784
   audGunShot: {fileID: 0}
+  muzzleFlash: {fileID: 19800004, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}

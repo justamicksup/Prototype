@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Smg2
   m_EditorClassIdentifier: 
   Model: {fileID: 7537985041024867378, guid: e79abd9230a6f0f47b4b6098d11e913e, type: 3}
-  gunLevel: 1
-  shootDamage: 5
-  range: 5
-  shootRate: 1
-  shootForce: 1
-  ammoCapacity: 6
-  ammoRemaining: 9
-  reloadTime: 0.1
+  gunLevel: 8
+  shootDamage: 81
+  range: 63
+  shootRate: 0.2876453
+  shootForce: 3
+  ammoCapacity: 14
+  ammoRemaining: 14
+  reloadTime: 1.5866647
   audGunShot: {fileID: 0}

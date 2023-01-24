@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Rifle 2
   m_EditorClassIdentifier: 
   Model: {fileID: 2336555170174120158, guid: 41b1038c4481a854092ac3410e44f57d, type: 3}
-  gunLevel: 1
-  shootDamage: 5
-  range: 5
-  shootRate: 1
+  gunLevel: 3
+  shootDamage: 18
+  range: 94
+  shootRate: 0.13219906
   shootForce: 1
-  ammoCapacity: 6
-  ammoRemaining: 9
-  reloadTime: 0.1
+  ammoCapacity: 18
+  ammoRemaining: 18
+  reloadTime: 0.1738559
   audGunShot: {fileID: 0}

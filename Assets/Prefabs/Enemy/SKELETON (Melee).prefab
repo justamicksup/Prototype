@@ -838,7 +838,6 @@ GameObject:
   m_Component:
   - component: {fileID: 591581168684339378}
   - component: {fileID: 681952652266162902}
-  - component: {fileID: 637440244631146531}
   - component: {fileID: 943006695969435562}
   - component: {fileID: 586943647562871440}
   - component: {fileID: 7055562428492675627}
@@ -888,20 +887,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &637440244631146531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586018981929148686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8539780bbf004f341abb98a4e0d3e1a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skeleton: {fileID: 11400000, guid: 7db759ab3719c0b4098e8a8270111cb4, type: 2}
-  agent: {fileID: 586943647562871440}
 --- !u!114 &943006695969435562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -915,19 +900,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 586943647562871440}
-  enemy: {fileID: 586018981929148686}
-  enem: {fileID: 0}
+  masterEnemyScriptableObject: {fileID: 11400000, guid: db5772d71d793644599845e5c287ea3d, type: 2}
+  anim: {fileID: 681952652266162902}
   headPos: {fileID: 588641490153156798}
   HP: 3
   rotationSpeed: 50
   lootValue: 0
+  shootDamage: 0
+  range: 0
+  shootRate: 2
+  shootForce: 0
+  ammoCapacity: 0
+  ammoRemaining: 0
+  reloadTime: 0
+  audGunShot: {fileID: 0}
   shootPos: {fileID: 0}
   bullet: {fileID: 0}
   bulletSpeed: 16
-  shootRate: 2
-  shootDist: 10
-  shootDamage: 0
+  attack: 1
   swingRate: 2
+  audWeaponSwing: {fileID: 0}
 --- !u!195 &586943647562871440
 NavMeshAgent:
   m_ObjectHideFlags: 0

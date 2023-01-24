@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestCost: 0
-  rollCost: 0
+  rollCost: 100
   chestWeapon: {fileID: 8330052421567631516}
   weaponDisplay: {fileID: 8330052421567631519}
   seed: 0

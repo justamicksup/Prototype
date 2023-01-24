@@ -15,8 +15,8 @@ public class playerController : MonoBehaviour
     int HP;
 
     private Coroutine staminaRegen;
-    [Range(1, 100)] [SerializeField] float stamina;
-    [SerializeField] int playerSpeed;
+    [Range(1, 100)] [SerializeField] public float stamina;
+    [SerializeField] public int playerSpeed;
     [SerializeField] int jumpVelocity;
     [SerializeField] int gravity;
     [SerializeField] int jumpMax;
@@ -33,7 +33,7 @@ public class playerController : MonoBehaviour
     [Header("----- Gun Stats -----")]
     
     [SerializeField] int gunLevel;
-    [SerializeField] int shootDamage;
+    [SerializeField] public int shootDamage;
     [SerializeField] int range;
     [SerializeField] float shootRate;
     [SerializeField] float shootForce;
@@ -44,7 +44,7 @@ public class playerController : MonoBehaviour
     [Header("----- Melee Stats -----")] 
     
     [SerializeField] int meleeLevel;
-    [SerializeField] int meleeDamage;
+    [SerializeField] public int meleeDamage;
     [SerializeField] int meleeReach;
     [SerializeField] float knockbackForce;
     [SerializeField] float swingSpeed;
@@ -53,7 +53,7 @@ public class playerController : MonoBehaviour
     //public GameObject viewModel;
 
     [Header("----- Player Info -----")] [Header("----- Weapon Slots -----")] 
-    [SerializeField] List<MasterWeapon> weaponList = new List<MasterWeapon>();
+    [SerializeField] public List<MasterWeapon> weaponList = new List<MasterWeapon>();
 
     [SerializeField] int currentWeapon;
 
@@ -70,6 +70,10 @@ public class playerController : MonoBehaviour
 
     int HPOrig;
     float staminaOrig;
+    public Vector3 pushBack;
+    [SerializeField] int pushBackTime;
+    
+    
 
     bool isShooting;
     bool isReloading;
@@ -94,20 +98,29 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement();
+       // pushBack.x = Mathf.Lerp(pushBack.x, 0, Time.deltaTime * pushBackTime);
+        //pushBack.z = Mathf.Lerp(pushBack.x, 0, Time.deltaTime * pushBackTime);
+       // pushBack.y = Mathf.Lerp(pushBack.x, 0, Time.deltaTime * pushBackTime * 3);
+           
 
-        if (weaponList.Count > 0)
-        {
-            if (!isAttacking && Input.GetButton("Shoot"))
-            {
-                Attack();
-            }
+             movement();
+            
+                    if (weaponList.Count > 0)
+                    {
+                        if (!isAttacking && Input.GetButton("Shoot"))
+                        {
+                            Attack();
+                        }
+            
+                        if (!isReloading && Input.GetButtonDown("Reload"))
+                        {
+                            //StartCoroutine(reload(projectileWeaponScriptableObjects));
+                        }
+                    }
 
-            if (!isReloading && Input.GetButtonDown("Reload"))
-            {
-                //StartCoroutine(reload(projectileWeaponScriptableObjects));
-            }
-        }
+        
+       
+        
     }
 
     void movement()
@@ -166,14 +179,14 @@ public class playerController : MonoBehaviour
         isAttacking = true;
         RaycastHit hit;
 
-        gameManager.instance.UpdateUI();
+        //gameManager.instance.UpdateUI();
         ammo = projectileWeaponScriptableObjects.ammoRemaining;
         ammoRemaining = ammo;
 
         if (projectileWeaponScriptableObjects.ammoRemaining > 0)
         {
+            
             projectileWeaponScriptableObjects.ammoRemaining -= 1;
-
             if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit,
                     projectileWeaponScriptableObjects.range))
             {
@@ -206,9 +219,11 @@ public class playerController : MonoBehaviour
         isReloading = false;
     }
 
+    
     public void takeDamage(int damage)
     {
         HP -= damage;
+        StartCoroutine(gameManager.instance.flash());
         updatePlayerHP();
         if (HP <= 0)
         {
@@ -309,6 +324,7 @@ public class playerController : MonoBehaviour
             //call shoot logic
             Debug.Log("Call Shoot attack");
             StartCoroutine(shoot((ProjectileWeaponScriptableObjects)weaponList[currentWeapon]));
+           
         }
         // else if current weapon is a melee
         else if (weaponList[currentWeapon].GetType() == typeof(MeleeWeaponScriptableObjects))
@@ -323,6 +339,27 @@ public class playerController : MonoBehaviour
         //if current weapon is a heal
         // call heal logic
     }
+
+    public void powerPickup(PowerStat power)
+    {
+        if (power.speedBonus != 0)
+        {
+            playerSpeed += power.speedBonus;
+        }
+        if (power.staminaBonus != 0)
+        {
+            stamina += power.staminaBonus;
+        }
+        if (power.shootDmgBonus != 0)
+        {
+            shootDamage += power.shootDmgBonus;
+        }
+        if (power.meleeDmgBonus != 0)
+        {
+            meleeDamage += power.meleeDmgBonus;
+        }
+    }
+
 
     // public void gunPickup(ProjectileWeaponScriptableObjects projectileWeaponScriptableObjects)
     // {
@@ -363,11 +400,11 @@ public class playerController : MonoBehaviour
 
         WeaponSlots[index].GetComponent<MeshRenderer>().sharedMaterials =
             projectileWeaponScriptableObjects.Model.GetComponent<MeshRenderer>().sharedMaterials;
-
-
+        
         WeaponSlots[index].transform.localScale = projectileWeaponScriptableObjects.Model.transform.localScale;
         WeaponSlots[index].transform.localRotation = projectileWeaponScriptableObjects.Model.transform.rotation;
 
+       
         ammo = projectileWeaponScriptableObjects.ammoRemaining;
     }
 
