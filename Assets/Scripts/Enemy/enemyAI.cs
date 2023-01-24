@@ -226,7 +226,7 @@ public class enemyAI : MonoBehaviour, IDamage
     void facePlayer()
     {
         //don't rotate up or down (Y)
-        playerDir.y = 0;
+         playerDir.y = 0;
         //Quaternion for a rotation to player
         Quaternion rot = Quaternion.LookRotation(playerDir);
         //make rotation smooth with Lerp

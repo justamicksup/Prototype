@@ -1161,8 +1161,8 @@ MonoBehaviour:
   anim: {fileID: 5414797501614435745}
   headPos: {fileID: 5414797501623452231}
   HP: 0
-  rotationSpeed: 0
-  lootValue: 0
+  rotationSpeed: 50
+  lootValue: 10
   shootDamage: 0
   range: 0
   shootRate: 0
@@ -1177,6 +1177,14 @@ MonoBehaviour:
   attack: 1
   swingRate: 0.1
   audWeaponSwing: {fileID: 0}
+  throwingDistance: 1
+  explosiveDamage: 1
+  force: 1
+  throwingHand: {fileID: 0}
+  bomb: {fileID: 0}
+  explosionRadius: 5
+  explosionForce: 100
+  timer: 100
 --- !u!195 &5414797501614435757
 NavMeshAgent:
   m_ObjectHideFlags: 0

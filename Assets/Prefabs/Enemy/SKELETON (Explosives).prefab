@@ -552,7 +552,7 @@ MonoBehaviour:
   headPos: {fileID: 8930808710795488263}
   HP: 3
   rotationSpeed: 50
-  lootValue: 0
+  lootValue: 50
   shootDamage: 1
   range: 0
   shootRate: 2
