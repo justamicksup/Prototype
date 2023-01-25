@@ -11,5 +11,6 @@ public class PowerStat : ScriptableObject
     public int staminaBonus;
     public int shootDmgBonus;
     public int meleeDmgBonus;
+    public int goldBonus;
     public AudioClip powerAudio;
 }

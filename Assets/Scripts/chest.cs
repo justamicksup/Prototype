@@ -70,7 +70,6 @@ public class chest : MonoBehaviour, actionObject
                     secondaryAction();
                     gameManager.instance.alertText.text = $"Weapon Cost: {chestCost}\n Roll Cost: {rollCost}";
                     StartCoroutine(Delay(.1f));
-
                 }
             
             }

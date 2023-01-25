@@ -99,29 +99,25 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // pushBack.x = Mathf.Lerp(pushBack.x, 0, Time.deltaTime * pushBackTime);
+        // pushBack.x = Mathf.Lerp(pushBack.x, 0, Time.deltaTime * pushBackTime);
         //pushBack.z = Mathf.Lerp(pushBack.x, 0, Time.deltaTime * pushBackTime);
-       // pushBack.y = Mathf.Lerp(pushBack.x, 0, Time.deltaTime * pushBackTime * 3);
-           
+        // pushBack.y = Mathf.Lerp(pushBack.x, 0, Time.deltaTime * pushBackTime * 3);
 
-             movement();
-            
-                    if (weaponList.Count > 0)
-                    {
-                        if (!isAttacking && Input.GetButton("Shoot"))
-                        {
-                            Attack();
-                        }
-            
-                        if (!isReloading && Input.GetButtonDown("Reload"))
-                        {
-                            //StartCoroutine(reload(projectileWeaponScriptableObjects));
-                        }
-                    }
 
-        
-       
-        
+        movement();
+
+        if (weaponList.Count > 0)
+        {
+            if (!isAttacking && Input.GetButton("Shoot"))
+            {
+                Attack();
+            }
+
+            if (!isReloading && Input.GetButtonDown("Reload"))
+            {
+                //StartCoroutine(reload(projectileWeaponScriptableObjects));
+            }
+        }
     }
 
     void movement()
@@ -396,6 +392,10 @@ public class playerController : MonoBehaviour
         if (power.meleeDmgBonus != 0)
         {
             meleeDamage += power.meleeDmgBonus;
+        }
+        if (power.goldBonus != 0)
+        {
+            coins+= power.goldBonus;
         }
     }
 

@@ -13,8 +13,12 @@ public class PowerUp : MonoBehaviour
             gameManager.instance.playerScript.powerPickup(power);
 
             gameObject.SetActive(false);
-
-            Invoke(nameof(ResetStats), power.effectDuration);
+            if (power.effectDuration > 0)
+            {
+                Invoke(nameof(ResetStats), power.effectDuration);
+            }
+            else
+                Destroy(gameObject);
         }
     }
     private void ResetStats()
