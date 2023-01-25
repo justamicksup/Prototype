@@ -48,7 +48,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] private Text coinsText;
     [SerializeField] private Text waveCountText;
     public Text alertText;
-    
+    public GameObject TitleScreen;
     [Header("----- Weapons and Ammo -----")]
     public int ammoRemaining;
     public int weaponsInLevel;
@@ -80,8 +80,7 @@ public class gameManager : MonoBehaviour
         //ammoCountText[2].text = "";
         waveCountText.text = "";
         coinsText.text = playerScript.GetCoins().ToString();
-        
-        
+
     }
 
 

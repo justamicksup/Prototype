@@ -42,4 +42,9 @@ public class buttonFunctions : MonoBehaviour
     {
         gameManager.instance.sensitivity = (int)slider.value;
     }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
 }

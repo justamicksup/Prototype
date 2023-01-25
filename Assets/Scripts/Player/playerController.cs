@@ -6,11 +6,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class playerController : MonoBehaviour
 {
     [Header("----- Components -----")] [SerializeField]
     CharacterController controller;
+    [SerializeField] AudioSource aud;
 
     [Header("----- Player Stats -----")] [Range(1, 100)] [SerializeField]
     int HP;
@@ -28,8 +30,13 @@ public class playerController : MonoBehaviour
     Vector3 move;
     Vector3 playerVelocity;
 
-    
-
+    [Header("----- Audio -----")] [SerializeField]
+    AudioClip[] audPlayerDamage;
+    [Range(0, 1)] [SerializeField] float audPlayerDamageVol;
+    [SerializeField] AudioClip[] audPlayerJump;
+    [Range(0, 1)] [SerializeField] float audPlayerJumpVol;
+    [SerializeField] AudioClip[] audPlayerSteps;
+    [Range(0, 1)] [SerializeField] float audPlayerStepsVol;
 
     [Header("----- Gun Stats -----")]
     
@@ -81,7 +88,8 @@ public class playerController : MonoBehaviour
     bool staminaLeft;
     bool isAttacking;
     public bool inActionRange;
-
+    bool isPlayingSteps;
+    bool isSprinting;
 
     // Start is called before the first frame update
     void Start()
@@ -104,6 +112,8 @@ public class playerController : MonoBehaviour
         // pushBack.y = Mathf.Lerp(pushBack.x, 0, Time.deltaTime * pushBackTime * 3);
 
 
+        if (move.normalized.magnitude > 0.3f && !isPlayingSteps)
+            StartCoroutine(playSteps());
         movement();
 
         if (weaponList.Count > 0)
@@ -136,11 +146,13 @@ public class playerController : MonoBehaviour
         //move character
         if (Input.GetButton("Sprint") && stamina > 0)
         {
+            isSprinting = true;
             controller.Move(move * Time.deltaTime * playerSpeed * 2);
             useStamina(0.5f);
         }
         else
         {
+            isSprinting = false;
             controller.Move(move * Time.deltaTime * playerSpeed);
         }
 
@@ -149,6 +161,7 @@ public class playerController : MonoBehaviour
         {
             playerVelocity.y = jumpVelocity;
             jumpTimes++;
+            aud.PlayOneShot(audPlayerJump[Random.Range(0, audPlayerJump.Length)], audPlayerJumpVol);
         }
 
         if (Input.GetButtonDown("Weapon1"))
@@ -517,4 +530,25 @@ public class playerController : MonoBehaviour
             WeaponSlots[currentWeapon].SetActive(true);
         }
     }
+    
+    IEnumerator playSteps()
+    {
+        if (controller.isGrounded)
+        {
+            isPlayingSteps = true;
+            aud.PlayOneShot(audPlayerSteps[Random.Range(0, audPlayerSteps.Length)], audPlayerStepsVol);
+            if (!isSprinting)
+            {
+                yield return new WaitForSeconds(0.5f);
+            }
+            else
+            {
+                yield return new WaitForSeconds(0.3f);
+            }
+
+            isPlayingSteps = false;
+        }
+        
+    }
+    
 }
