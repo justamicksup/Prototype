@@ -129,8 +129,8 @@ Material:
     - _EmissionExposureWeight: 1
     - _EmissionStrength: 0
     - _GlossyAnisotropy: 0
-    - _GlossyLayeredWeight: 1
-    - _Height: 25
+    - _GlossyLayeredWeight: 0.2157644
+    - _Height: 4
     - _HeightOffset: 0.25
     - _IndexOfRefraction: 1.5
     - _IndexOfRefractionWeight: 0
@@ -138,7 +138,7 @@ Material:
     - _Normal: 1
     - _QueueControl: 1
     - _QueueOffset: 0
-    - _Roughness: 0.9601064
+    - _Roughness: 1
     - _SpecularLobe1Roughness: 0
     - _SpecularLobe2Roughness: 0
     - _SpecularStrength: 1
@@ -149,7 +149,7 @@ Material:
     - _TopCoatWeight: 0
     - _TranslucencyWeight: 0
     m_Colors:
-    - _Diffuse: {r: 1, g: 1, b: 1, a: 1}
+    - _Diffuse: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     - _Emission: {r: 0, g: 0, b: 0, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 0}
@@ -157,7 +157,7 @@ Material:
     - _TopCoatColor: {r: 1, g: 1, b: 1, a: 1}
     - _TranslucencyColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &5800417160890854047
+--- !u!114 &5642375324449597696
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

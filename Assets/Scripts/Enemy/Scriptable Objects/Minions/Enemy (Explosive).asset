@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy (Explosive)
   m_EditorClassIdentifier: 
   name: Boom Boom
-  health: 400
+  health: 200
   defense: 0
   isBoss: 0
   Model: {fileID: 8933497125020024247, guid: 647452330745e5e438a35226953b1055, type: 3}

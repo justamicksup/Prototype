@@ -16,11 +16,11 @@ MonoBehaviour:
   health: 200
   defense: 0
   isBoss: 0
-  Model: {fileID: 5414797501623950903, guid: af1a6bb05b0524c4394a7ad88bc5fb44, type: 3}
+  Model: {fileID: 5414797501623950903, guid: 7f455a2c625d23f4cbb2c024f4fc7086, type: 3}
   navMesh: {fileID: 11400000, guid: dc5ab1088cb48c94589cb76287fccec0, type: 2}
-  shootDamage: 25
+  shootDamage: 20
   range: 50
-  shootRate: 0.5
+  shootRate: 0.8
   shootForce: 0
   bulletSpeed: 10
   ammoCapacity: 0

@@ -30,6 +30,7 @@ public class destroyObstacle : MonoBehaviour, actionObject
             if (playerInRange && Input.GetButton("Submit") && hasCoins)
             {
                 primaryAction();
+                gameManager.instance.playerScript.addCoins(-obstacleCost);
             }
         }
     }

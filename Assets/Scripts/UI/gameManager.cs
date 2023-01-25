@@ -48,7 +48,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] private Text coinsText;
     [SerializeField] private Text waveCountText;
     public Text alertText;
-    
+    public GameObject TitleScreen;
     [Header("----- Weapons and Ammo -----")]
     public int ammoRemaining;
     public int weaponsInLevel;
@@ -70,7 +70,14 @@ public class gameManager : MonoBehaviour
         sun = GameObject.FindGameObjectWithTag("Sun");
         //HUD = transform.parent.gameObject.GetComponent<HUD>();
         playerScript = player.GetComponent<playerController>();
-        playerScript.addCoins(2000000);
+
+          //****TURN ON FOR TESTING*****\\
+
+         playerScript.addCoins(2200);
+
+        //*******TURN ON FOR TESTING********\\
+
+        
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
         timeScaleOrig = Time.timeScale;
         waveController = Resources.Load("WaveController") as WaveController;
@@ -80,8 +87,7 @@ public class gameManager : MonoBehaviour
         //ammoCountText[2].text = "";
         waveCountText.text = "";
         coinsText.text = playerScript.GetCoins().ToString();
-        
-        
+
     }
 
 

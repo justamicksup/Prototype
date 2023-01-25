@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36db2d545bfc9a34d9cec4676bd6e1ce, type: 3}
+  m_Name: Wave 3
+  m_EditorClassIdentifier: 
+  <EnemiesInWave>k__BackingField:
+  - {fileID: 586018981929148686, guid: d8cf69971f13b234194cf9afa5a6bbb8, type: 3}
+  - {fileID: 586018981929148686, guid: d8cf69971f13b234194cf9afa5a6bbb8, type: 3}
+  - {fileID: 586018981929148686, guid: d8cf69971f13b234194cf9afa5a6bbb8, type: 3}
+  - {fileID: 586018981929148686, guid: d8cf69971f13b234194cf9afa5a6bbb8, type: 3}
+  - {fileID: 586018981929148686, guid: d8cf69971f13b234194cf9afa5a6bbb8, type: 3}
+  - {fileID: 586018981929148686, guid: d8cf69971f13b234194cf9afa5a6bbb8, type: 3}
+  - {fileID: 586018981929148686, guid: d8cf69971f13b234194cf9afa5a6bbb8, type: 3}
+  - {fileID: 8933497125020024247, guid: 647452330745e5e438a35226953b1055, type: 3}
+  - {fileID: 8933497125020024247, guid: 647452330745e5e438a35226953b1055, type: 3}
+  - {fileID: 5414797501623950903, guid: 7f455a2c625d23f4cbb2c024f4fc7086, type: 3}
+  - {fileID: 5414797501623950903, guid: 7f455a2c625d23f4cbb2c024f4fc7086, type: 3}
+  - {fileID: 5414797501623950903, guid: 7f455a2c625d23f4cbb2c024f4fc7086, type: 3}
+  - {fileID: 5414797501623950903, guid: 7f455a2c625d23f4cbb2c024f4fc7086, type: 3}
+  - {fileID: 5414797501623950903, guid: 7f455a2c625d23f4cbb2c024f4fc7086, type: 3}
+  - {fileID: 5414797501623950903, guid: 7f455a2c625d23f4cbb2c024f4fc7086, type: 3}
