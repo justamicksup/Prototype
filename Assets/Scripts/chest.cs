@@ -28,49 +28,13 @@ public class chest : MonoBehaviour, actionObject
 
     void Start()
     {
-        //Cameron Code
-
         rollChest();
         weaponDisplay.SetActive(false);
-        // weaponSelection.SetActive(false);
     }
 
     void Update()
     {
-        // if (playerInRange)
-        // {
-        //     
-        //     
-        //     if (!openingChest && Input.GetButton("Action"))
-        //     {
-        //         checkWallet();
-        //         if (hasCoins)
-        //         {
-        //             Debug.Log("Have Money");
-        //             StartCoroutine(OpenTheChest());
-        //             //gameManager.instance.updateAmmo();
-        //            
-        //         }
-        //         else
-        //         {
-        //             Debug.Log("You're Broke");
-        //         }
-        //         
-        //     }
-        //
-        //     if (!choseWeapon && Input.GetButton("Submit"))
-        //     {
-        //         if (weaponDisplay != null)
-        //         {
-        //             Debug.Log("Got Weapon");
-        //             StartCoroutine(TakeWeapon());
-        //         }
-        //         else
-        //         {
-        //             Debug.Log("Where is my weapon?");
-        //         }
-        //     }
-        // }
+        
     }
 
     void OnTriggerEnter(Collider other)
@@ -81,12 +45,10 @@ public class chest : MonoBehaviour, actionObject
             Debug.Log("PLAYER");
             playerInRange = true;
             gameManager.instance.alertText.text = $"Weapon Cost: {chestCost}\n Roll Cost: {rollCost}";
-            // gameManager.instance.actionObject = this.gameObject;
             if (chestCost < gameManager.instance.playerScript.GetCoins())
             {
                 hasCoins = true;
                 weaponDisplay.SetActive(true);
-                //weaponSelection.SetActive(true);
                 gameManager.instance.playerScript.inActionRange = true;
             }
             else
@@ -130,15 +92,12 @@ public class chest : MonoBehaviour, actionObject
             target = null;
             weaponDisplay.SetActive(false);
             gameManager.instance.alertText.text = "";
-
-            // gameManager.instance.actionObject = null;
-            //weaponSelection.SetActive(false);
+            Debug.Log("NO PLAYER");
+            playerInRange = false;
+            gameManager.instance.playerScript.inActionRange = false;
+            hasCoins = false;
         }
 
-        Debug.Log("NO PLAYER");
-        playerInRange = false;
-        gameManager.instance.playerScript.inActionRange = false;
-        hasCoins = false;
     }
     
     public void primaryAction()
@@ -148,19 +107,6 @@ public class chest : MonoBehaviour, actionObject
         gameManager.instance.playerScript.addCoins(-chestCost);
         // Destroy chest
         Destroy(gameObject);
-
-       
-
-       
-
-
-        // //get weapon stats
-        // //destroy weapon and chest
-        // gameManager.instance.playerScript.addCoins(-chestCost);
-        // gameManager.instance.playerScript.weaponPickup(chestContents[seed]);
-        // Destroy(gameObject);
-        //
-        // //give player weapon
     }
 
     public void secondaryAction()
@@ -183,16 +129,6 @@ public class chest : MonoBehaviour, actionObject
 
     private void rollChest()
     {
-        // if (weaponSelection != null)
-        // {
-        //     Destroy(weaponSelection);
-        // }
-        // seed = Random.Range(0, chestContents.Count - 1);
-        //chestCost = (seed + 1) * 100;
-
-        //weaponSelection = chestContents[seed].gunModel;
-        //weaponSelection = Instantiate(weaponSelection, chestWeapon.position, chestWeapon.rotation);
-
         gameManager.instance.playerScript.addCoins(-rollCost);
         seed = Random.Range(0, tempArmory.MasterWeaponList.Count);
         chestCost = (seed + 1) * 100;
@@ -202,61 +138,6 @@ public class chest : MonoBehaviour, actionObject
         weaponDisplay.GetComponent<MeshRenderer>().sharedMaterials =
             tempArmory.MasterWeaponList[seed].Model.GetComponent<MeshRenderer>().sharedMaterials;
     }
-
-    // IEnumerator OpenTheChest()
-    // {
-    // openingChest = true;
-    //
-    //
-    //
-    // RaycastHit hit;
-    // if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit))
-    // {
-    //     if (hit.collider.GetComponent<chest>() != null)
-    //     {
-    //         hit.collider.GetComponent<chest>().checkWallet();
-    //         if (hasCoins)
-    //         {
-    //             gameManager.instance.updatePlayerCoins(-chestCost);
-    //             
-    //             seed = Random.Range(0, tempArmory.MasterWeaponList.Count);
-    //             chestCost = (seed + 1) * 10;
-    //
-    //             weaponDisplay.GetComponent<MeshFilter>().sharedMesh =
-    //                 tempArmory.MasterWeaponList[seed].Model.GetComponent<MeshFilter>().sharedMesh;
-    //             weaponDisplay.GetComponent<MeshRenderer>().sharedMaterials =
-    //                 tempArmory.MasterWeaponList[seed].Model.GetComponent<MeshRenderer>().sharedMaterials;
-    //             
-    //             
-    //
-    //
-    //         }
-    //     }
-    // }
-    //
-    // yield return new WaitForSeconds(.5f);
-    // openingChest = false;
-    // }
-
-    // IEnumerator TakeWeapon()
-    // {
-    //     choseWeapon = true;
-    //     RaycastHit hit;
-    //     if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit))
-    //     {
-    //         if (hit.collider.CompareTag("Weapon"))
-    //         {
-    //             gameManager.instance.playerScript.WeaponPickup(tempArmory.MasterWeaponList[seed]);
-    //
-    //
-    //             Destroy(gameObject);
-    //         }
-    //     }
-    //
-    //     yield return new WaitForSeconds(.1f);
-    //     choseWeapon = false;
-    // }
-
 
     void checkWallet()
     {
