@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29ca8ea7698aad546ba30bd172e960d4, type: 3}
-  m_Name: PowerUp - Speed
+  m_Name: PowerUp - OneShot 10s
   m_EditorClassIdentifier: 
-  effectDuration: 5
-  speedBonus: 10
+  effectDuration: 10
+  speedBonus: 0
   staminaBonus: 0
-  shootDmgBonus: 0
-  meleeDmgBonus: 0
+  shootDmgBonus: 2147483647
+  meleeDmgBonus: 2147483647
   goldBonus: 5
-  powerAudio: {fileID: 8300000, guid: 0c008ee3ee72a4362a35be25fa5de043, type: 3}
+  powerAudio: {fileID: 8300000, guid: b349fabd81d085d49a6046be5f1d1e9f, type: 3}
