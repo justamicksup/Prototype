@@ -73,7 +73,7 @@ public class gameManager : MonoBehaviour
 
           //****TURN ON FOR TESTING*****\\
 
-         //playerScript.addCoins(2000000);\\
+         playerScript.addCoins(2200);
 
         //*******TURN ON FOR TESTING********\\
 

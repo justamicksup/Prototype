@@ -13,7 +13,7 @@ public class playerController : MonoBehaviour
     [Header("----- Components -----")] [SerializeField]
     CharacterController controller;
     [SerializeField] AudioSource aud;
-    //[SerializeField] Animator animator;
+    [SerializeField] Animator animator;
     
     [Header("----- Player Stats -----")] [Range(1, 100)] [SerializeField]
     int HP;
