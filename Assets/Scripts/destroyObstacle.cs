@@ -15,21 +15,21 @@ public class destroyObstacle : MonoBehaviour, actionObject
 
     
     bool hasCoins;
+    bool playerInRange;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
         {
-            target = other.transform;
+            if (obstacleCost <= gameManager.instance.playerScript.GetCoins())
+            {
+                hasCoins = true;
+            }
+            if (playerInRange && Input.GetButton("Submit") && hasCoins)
+            {
+                primaryAction();
+            }
         }
-        if (gameManager.instance.playerScript.GetCoins() >= obstacleCost)
-        {
-            hasCoins = true;
-        }
-        else
-            hasCoins = false;
-        //UI to display cost and action keys
-        Debug.Log("PLAYER");
     }
 
     private void OnTriggerExit(Collider other)
