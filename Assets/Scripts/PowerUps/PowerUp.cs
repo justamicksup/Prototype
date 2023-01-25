@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
     [SerializeField] PowerStat power;
+    public AudioSource aud;
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        {
+        {         
             gameManager.instance.playerScript.powerPickup(power);
-
+            aud.PlayOneShot(power.powerAudio);
             gameObject.SetActive(false);
             if (power.effectDuration > 0)
             {

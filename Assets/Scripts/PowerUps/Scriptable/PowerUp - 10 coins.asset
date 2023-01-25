@@ -17,5 +17,5 @@ MonoBehaviour:
   staminaBonus: 0
   shootDmgBonus: 0
   meleeDmgBonus: 0
-  goldBonus: 0
-  powerAudio: {fileID: 0}
+  goldBonus: 10
+  powerAudio: {fileID: 8300000, guid: e429ade05b4044b1c9294d95181ec8f0, type: 3}
