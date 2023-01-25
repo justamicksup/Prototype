@@ -15,6 +15,7 @@ TagManager:
   - Explosive
   - No Weapon
   - Projectile
+  - Sun
   layers:
   - Default
   - TransparentFX

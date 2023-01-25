@@ -15,6 +15,7 @@ public class gameManager : MonoBehaviour
 {
     public static gameManager instance;
     public static Animation shipAnim;
+    public static GameObject sun;
     [Header("----- Player -----")] public GameObject player;
     public playerController playerScript;
 
@@ -66,6 +67,7 @@ public class gameManager : MonoBehaviour
         {
             shipAnim = go.GetComponent<Animation>();
         }
+        sun = GameObject.FindGameObjectWithTag("Sun");
         //HUD = transform.parent.gameObject.GetComponent<HUD>();
         playerScript = player.GetComponent<playerController>();
         playerScript.addCoins(2000000);
@@ -110,6 +112,19 @@ public class gameManager : MonoBehaviour
         {
             shipAnim.clip = shipAnim.GetClip("ShipsLanding");
             shipAnim.Play();
+        }
+        if(sun != null)
+        {
+            float time = 0;
+            Quaternion startValue = transform.rotation;
+            Quaternion endValue = Quaternion.Euler(-52, 4, -145);
+            while (time < 1.5f)
+            {
+                sun.transform.rotation = Quaternion.Lerp(startValue, endValue, time / 1.5f);
+                time += Time.deltaTime;
+                yield return null;
+            }
+            sun.transform.rotation = endValue;
         }
         yield return new WaitForSeconds(1.5f);
         instance.updateWave();
