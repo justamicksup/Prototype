@@ -70,7 +70,14 @@ public class gameManager : MonoBehaviour
         sun = GameObject.FindGameObjectWithTag("Sun");
         //HUD = transform.parent.gameObject.GetComponent<HUD>();
         playerScript = player.GetComponent<playerController>();
-        playerScript.addCoins(2000000);
+
+          //****TURN ON FOR TESTING*****\\
+
+         //playerScript.addCoins(2000000);\\
+
+        //*******TURN ON FOR TESTING********\\
+
+        
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
         timeScaleOrig = Time.timeScale;
         waveController = Resources.Load("WaveController") as WaveController;
