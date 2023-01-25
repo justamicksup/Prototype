@@ -13,7 +13,8 @@ public class playerController : MonoBehaviour
     [Header("----- Components -----")] [SerializeField]
     CharacterController controller;
     [SerializeField] AudioSource aud;
-
+    //[SerializeField] Animator animator;
+    
     [Header("----- Player Stats -----")] [Range(1, 100)] [SerializeField]
     int HP;
 
@@ -107,11 +108,14 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // pushBack.x = Mathf.Lerp(pushBack.x, 0, Time.deltaTime * pushBackTime);
-        //pushBack.z = Mathf.Lerp(pushBack.x, 0, Time.deltaTime * pushBackTime);
-        // pushBack.y = Mathf.Lerp(pushBack.x, 0, Time.deltaTime * pushBackTime * 3);
-
-
+      
+        //Code to turn on if we use the pirate player with animation
+        // animator.SetFloat("Speed", move.normalized.magnitude);
+        //
+        // if (Input.GetKey(KeyCode.B))
+        // {
+        //     animator.SetTrigger("MeleeAttack");
+        // }
         if (move.normalized.magnitude > 0.3f && !isPlayingSteps)
             StartCoroutine(playSteps());
         movement();
