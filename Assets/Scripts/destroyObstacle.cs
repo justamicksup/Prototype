@@ -22,6 +22,7 @@ public class destroyObstacle : MonoBehaviour, actionObject
         if (other.tag == "Player")
         {
             target = gameManager.instance.player.transform;
+            playerInRange= true;
             if (obstacleCost <= gameManager.instance.playerScript.GetCoins())
             {
                 hasCoins = true;
@@ -39,6 +40,7 @@ public class destroyObstacle : MonoBehaviour, actionObject
         {
             target = null;
             hasCoins = false;
+            playerInRange= false;
         }
         //remove UI
         Debug.Log("NO PLAYER");
