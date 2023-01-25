@@ -1101,7 +1101,7 @@ GameObject:
   - component: {fileID: 5414797501614435759}
   - component: {fileID: 5414797501614435758}
   m_Layer: 7
-  m_Name: Enemy (Projectile)
+  m_Name: Unused Enemy (Projectile)
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1191,12 +1191,12 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 10
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
+  m_Height: 1
+  m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!54 &5414797501614435756

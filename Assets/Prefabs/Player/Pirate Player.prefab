@@ -1097,7 +1097,7 @@ CharacterController:
   m_StepOffset: 0.5
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.99, z: 0}
+  m_Center: {x: 0, y: 1.08, z: 0}
 --- !u!54 &3446603263550917649
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1178,9 +1178,9 @@ MonoBehaviour:
   weaponList: []
   currentWeapon: 0
   WeaponSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8607455752039212804}
+  - {fileID: 7284895989292357305}
+  - {fileID: 5309630757744845430}
   pushBack: {x: 0, y: 0, z: 0}
   pushBackTime: 0
   inActionRange: 0
