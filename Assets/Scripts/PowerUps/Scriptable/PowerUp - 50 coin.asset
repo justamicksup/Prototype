@@ -18,4 +18,4 @@ MonoBehaviour:
   shootDmgBonus: 0
   meleeDmgBonus: 0
   goldBonus: 50
-  powerAudio: {fileID: 8300000, guid: ea9880e836f434692aaee994503242a3, type: 3}
+  powerAudio: {fileID: 8300000, guid: 85d7cff3cdc284ed7acccf730e9091c9, type: 3}

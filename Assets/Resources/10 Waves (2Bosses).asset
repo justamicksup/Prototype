@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df11115afea02a498d3ad0eaf6e7550, type: 3}
+  m_Name: 10 Waves (2Bosses)
+  m_EditorClassIdentifier: 
+  waves:
+  - enemiesInWave: 8
+    wave: {fileID: 11400000, guid: 3e6a0dad856d00a489a587f6235d6cba, type: 2}
+  - enemiesInWave: 12
+    wave: {fileID: 11400000, guid: 5c83e739049e2d64ea7c61c0bed55710, type: 2}
+  - enemiesInWave: 15
+    wave: {fileID: 11400000, guid: c62e0c6fe6fe178439eb84d5c4b4c57d, type: 2}
+  - enemiesInWave: 18
+    wave: {fileID: 11400000, guid: 6de42274acbdc604a841ecc7cb087a86, type: 2}
+  - enemiesInWave: 10
+    wave: {fileID: 11400000, guid: 80f9ce0b88dae164abd3c838e39048e3, type: 2}
+  - enemiesInWave: 25
+    wave: {fileID: 11400000, guid: d563088f8f4e2e8468ea57bc5e888d05, type: 2}
+  - enemiesInWave: 25
+    wave: {fileID: 11400000, guid: e6e6508c50818024d9f99194359e5679, type: 2}
+  - enemiesInWave: 30
+    wave: {fileID: 11400000, guid: 8aaa8d1b4ba04044eb01a30029aecee9, type: 2}
+  - enemiesInWave: 30
+    wave: {fileID: 11400000, guid: cf58dbf1cd8b8dc428238f9d19190543, type: 2}
+  - enemiesInWave: 10
+    wave: {fileID: 11400000, guid: 6a333e56ede21a245b4c3e8e80ff90d5, type: 2}

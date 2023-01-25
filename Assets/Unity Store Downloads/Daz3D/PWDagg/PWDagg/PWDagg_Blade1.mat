@@ -127,7 +127,7 @@ Material:
     - _DualLobeSpecularRatio: 0
     - _DualLobeSpecularWeight: 0
     - _EmissionExposureWeight: 0
-    - _EmissionStrength: 0
+    - _EmissionStrength: 1
     - _GlossyAnisotropy: 0
     - _GlossyLayeredWeight: 0
     - _Height: 1
@@ -141,7 +141,7 @@ Material:
     - _Roughness: 1
     - _SpecularLobe1Roughness: 0
     - _SpecularLobe2Roughness: 0
-    - _SpecularStrength: 0.3
+    - _SpecularStrength: 1
     - _TopCoatBumpStrength: 0
     - _TopCoatIOR: 1.5
     - _TopCoatNormalStrength: 0
@@ -149,15 +149,15 @@ Material:
     - _TopCoatWeight: 0
     - _TranslucencyWeight: 0
     m_Colors:
-    - _Diffuse: {r: 1, g: 1, b: 1, a: 1}
+    - _Diffuse: {r: 0.7490196, g: 0.7490196, b: 0.7490196, a: 1}
     - _Emission: {r: 0, g: 0, b: 0, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _SpecularColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
     - _TopCoatColor: {r: 1, g: 1, b: 1, a: 0}
     - _TranslucencyColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &1389156205335236946
+--- !u!114 &7109292072652656651
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

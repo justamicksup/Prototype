@@ -8325,6 +8325,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4460585105350440651, guid: 02a06caee0d7d814992369062a4b2a38, type: 3}
+      propertyPath: nextWave
+      value: 
+      objectReference: {fileID: 11400000, guid: 322663ea14b38944db9a94d16ae00452, type: 2}
     - target: {fileID: 6690070243691109241, guid: 02a06caee0d7d814992369062a4b2a38, type: 3}
       propertyPath: m_RootOrder
       value: 2
