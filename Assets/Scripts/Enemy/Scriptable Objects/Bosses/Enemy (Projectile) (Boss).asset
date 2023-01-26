@@ -19,10 +19,10 @@ MonoBehaviour:
   Model: {fileID: 7824966144815336657, guid: 2b6f2a1a1ac18494bba3af57d35ef085, type: 3}
   navMesh: {fileID: 11400000, guid: 672b3309c95ed5542a413243f8235a79, type: 2}
   shootDamage: 20
-  range: 5
+  range: 20
   shootRate: 2
   shootForce: 1
-  bulletSpeed: 0
+  bulletSpeed: 30
   ammoCapacity: 6
   ammoRemaining: 6
   reloadTime: 0.5

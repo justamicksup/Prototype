@@ -2729,7 +2729,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -5268,12 +5268,12 @@ MonoBehaviour:
   levelMusicBackground:
   - {fileID: 8300000, guid: c7bacb7473211d047a9403618998b896, type: 3}
   - {fileID: 8300000, guid: bab1c73a27b439549aa2e67b4c4a70c5, type: 3}
-  levelVolBackground: 0.3
+  levelVolBackground: 0.01
   aud: {fileID: 780959754384182064}
   levelMusic:
   - {fileID: 8300000, guid: 66fbdcbc3689a5140a365274fe1d0dad, type: 3}
   - {fileID: 8300000, guid: 6f4cd8476ae007341b5161f16ef687e3, type: 3}
-  levelVol: 1
+  levelVol: 0.1
   sensitivity: 300
 --- !u!1 &8958223625740865911
 GameObject:
@@ -5486,6 +5486,14 @@ PrefabInstance:
     - target: {fileID: 780959753395037502, guid: fad744eb0e2bfae45873c09c5b91c73d, type: 3}
       propertyPath: m_Name
       value: Level Music
+      objectReference: {fileID: 0}
+    - target: {fileID: 780959754929329852, guid: fad744eb0e2bfae45873c09c5b91c73d, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 780959755127141588, guid: fad744eb0e2bfae45873c09c5b91c73d, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 780959755127141588, guid: fad744eb0e2bfae45873c09c5b91c73d, type: 3}
       propertyPath: MaxDistance

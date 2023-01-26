@@ -1739,7 +1739,7 @@ MonoBehaviour:
   weapon: {fileID: 2058002611}
   model: {fileID: 7886939071975061047}
   aud: {fileID: 1841107106}
-  audWeaponSwingtVol: 1
+  audWeaponSwingtVol: 0.1
 --- !u!95 &7908567486035732233
 Animator:
   serializedVersion: 5

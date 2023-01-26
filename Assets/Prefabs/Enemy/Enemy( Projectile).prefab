@@ -1748,7 +1748,7 @@ MonoBehaviour:
   model: {fileID: 7886939071975061047}
   aud: {fileID: 7165698963279513722}
   stoppingDistOrig: 0
-  audGunShotVol: 1
+  audGunShotVol: 0.1
 --- !u!95 &7908567486035732233
 Animator:
   serializedVersion: 5

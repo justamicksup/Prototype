@@ -18,7 +18,7 @@ MonoBehaviour:
   isBoss: 0
   Model: {fileID: 7824966144815336657, guid: c2c92ed6a521f2d4f920eadc944dcbfa, type: 3}
   navMesh: {fileID: 11400000, guid: 97a5b885f6460ef40baf12baec706060, type: 2}
-  attack: 1
+  attack: 3
   swingRate: 0.2
   swingAngle: 60
   viewAngle: 90
