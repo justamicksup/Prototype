@@ -110,13 +110,13 @@ public class playerController : MonoBehaviour
     {
       
         //Code to turn on if we use the pirate player with animation
-         animator.SetFloat("Speed", move.normalized.magnitude);
-
-
-        if (Input.GetKey(KeyCode.B))
-        {
-            animator.SetTrigger("MeleeAttack");
-        }
+        //  animator.SetFloat("Speed", move.normalized.magnitude);
+        //
+        //
+        // if (Input.GetKey(KeyCode.B))
+        // {
+        //     animator.SetTrigger("MeleeAttack");
+        // }
 
         //
         // if (Input.GetKey(KeyCode.B))

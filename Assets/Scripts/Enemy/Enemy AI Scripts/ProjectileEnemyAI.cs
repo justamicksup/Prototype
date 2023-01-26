@@ -82,7 +82,7 @@ using UnityEngine.AI;
     void facePlayer()
     {
         //don't rotate up or down (Y)
-        playerDir.y = 0;
+        //playerDir.y = 0;
         //Quaternion for a rotation to player
         Quaternion rot = Quaternion.LookRotation(playerDir);
         //make rotation smooth with Lerp
@@ -138,16 +138,16 @@ using UnityEngine.AI;
     IEnumerator shoot()
     {
         isShooting = true;
-        if (agent.velocity.normalized.magnitude > 0)
-        {
-            animator.SetTrigger("Shoot");
-        }
-        else
-        {
-            animator.SetTrigger("IdleShoot");
-        }
+        // if (agent.velocity.normalized.magnitude > 0)
+        // {
+        //     animator.SetTrigger("Shoot");
+        // }
+        // else
+        // {
+        //     animator.SetTrigger("IdleShoot");
+        // }
 
-        //animator.SetTrigger("Shoot");
+        animator.SetTrigger("Shoot");
         GameObject bulletClone = Instantiate(bullet, shootPos.position, bullet.transform.rotation);
         bulletClone.GetComponent<Rigidbody>().velocity = (gameManager.instance.player.transform.position - headPos.transform.position).normalized * bulletSpeed;
         bulletClone.GetComponent<bullet>().bulletDamage = shootDamage;

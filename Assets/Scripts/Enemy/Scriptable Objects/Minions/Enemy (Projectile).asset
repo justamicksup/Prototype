@@ -12,24 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13155339a80f41aabe72a232a9aa188e, type: 3}
   m_Name: Enemy (Projectile)
   m_EditorClassIdentifier: 
-  name: Shooter McGavin
-  health: 200
+  name: Input Name
+  health: 100
   defense: 0
   isBoss: 0
-<<<<<<< Updated upstream
-  Model: {fileID: 5414797501623950903, guid: 7f455a2c625d23f4cbb2c024f4fc7086, type: 3}
-=======
   Model: {fileID: 7824966144815336657, guid: 2b6f2a1a1ac18494bba3af57d35ef085, type: 3}
->>>>>>> Stashed changes
   navMesh: {fileID: 11400000, guid: dc5ab1088cb48c94589cb76287fccec0, type: 2}
   shootDamage: 20
-  range: 50
-  shootRate: 0.8
+  range: 15
+  shootRate: 0.5
   shootForce: 10
   bulletSpeed: 10
-  ammoCapacity: 0
-  ammoRemaining: 0
-  reloadTime: 0
+  ammoCapacity: 6
+  ammoRemaining: 6
+  reloadTime: 0.1
   shootAngle: 45
   viewAngle: 60
   rotationSpeed: 50

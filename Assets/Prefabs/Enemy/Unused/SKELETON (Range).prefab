@@ -241,7 +241,7 @@ Animator:
   m_GameObject: {fileID: 8856490959939266964}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a58154c350c4ccf47a6cdad03a8dca1a, type: 3}
-  m_Controller: {fileID: 9100000, guid: 6e092ad3d6b50a14bac692ea833c646a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7626728b6d693cd4dae2b0f26507a49d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -263,27 +263,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6caa00c14216c3b408aeea71ce236bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 8857551947831360010}
-  masterEnemyScriptableObject: {fileID: 11400000, guid: d2b36ca62e2a2714299a63a47b1e9f9a, type: 2}
-  anim: {fileID: 8917038066490884684}
-  headPos: {fileID: 8854675978816075812}
-  HP: 3
-  rotationSpeed: 50
-  lootValue: 0
-  shootDamage: 1
-  range: 0
-  shootRate: 2
-  shootForce: 0
-  ammoCapacity: 0
-  ammoRemaining: 0
-  reloadTime: 0
-  audGunShot: {fileID: 0}
-  shootPos: {fileID: 9222381886675230841}
-  bullet: {fileID: 5245255688520990098, guid: 2e622fc3b9bedfa45bf778dccc584963, type: 3}
-  bulletSpeed: 15
-  attack: 1
-  swingRate: 0
-  audWeaponSwing: {fileID: 0}
 --- !u!195 &8857551947831360010
 NavMeshAgent:
   m_ObjectHideFlags: 0
