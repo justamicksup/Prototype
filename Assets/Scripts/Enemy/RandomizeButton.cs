@@ -12,7 +12,7 @@ public class ProjectileWeaponRandomize : Editor
     {
         base.OnInspectorGUI();
         var projectileWeaponScriptableObjects = (ProjectileWeaponScriptableObjects)target;
- 
+    
         if(GUILayout.Button("Randomize", GUILayout.Height(20)))
         {
             projectileWeaponScriptableObjects.Randomize();

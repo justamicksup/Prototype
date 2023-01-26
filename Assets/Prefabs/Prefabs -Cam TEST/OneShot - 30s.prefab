@@ -66,7 +66,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 1681834994927940423, guid: c98f7c48261af2c4382c80a1efed084e, type: 3}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101,7 +100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: {fileID: 11400000, guid: 700ee2f2636adf2419bf1e0e0fbcf462, type: 2}
-  aud: {fileID: 3388871496356866261}
 --- !u!54 &1207957636343052753
 Rigidbody:
   m_ObjectHideFlags: 0

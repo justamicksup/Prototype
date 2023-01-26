@@ -52,6 +52,11 @@ public class gameManager : MonoBehaviour
     [Header("----- Weapons and Ammo -----")]
     public int ammoRemaining;
     public int weaponsInLevel;
+    [Header("----- Background -----")]
+    public AudioSource audBackground;
+    public AudioClip[] levelMusicBackground;
+    [Range(0, 1)] [SerializeField] float levelVolBackground;
+    [Header("----- Fight Music -----")]
     public AudioSource aud;
     public AudioClip[] levelMusic;
     [Range(0, 1)] [SerializeField] float levelVol;
@@ -81,7 +86,7 @@ public class gameManager : MonoBehaviour
         
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
         timeScaleOrig = Time.timeScale;
-        waveController = Resources.Load("WaveController") as WaveController;
+        waveController = Resources.Load("10 Waves (2Bosses)") as WaveController;
         
         //ammoCountText[0].text = "";
         //ammoCountText[1].text = "";
@@ -89,6 +94,12 @@ public class gameManager : MonoBehaviour
         waveCountText.text = "";
         coinsText.text = playerScript.GetCoins().ToString();
         
+        if (audBackground != null)
+        {
+            audBackground.volume = levelVolBackground;
+            audBackground.clip = levelMusicBackground[Random.Range(0, levelMusicBackground.Length)];
+            audBackground.Play();
+        }
         
         
     }
@@ -138,6 +149,7 @@ public class gameManager : MonoBehaviour
 
         if (aud != null)
         {
+            audBackground.Stop();
             aud.volume = levelVol;
             aud.clip = levelMusic[Random.Range(0, levelMusic.Length)];
             aud.Play();

@@ -25,6 +25,7 @@ public class chest : MonoBehaviour, actionObject
     bool choseWeapon;
     bool isRerolling;
 
+    public int wallet;
 
     void Start()
     {
@@ -34,7 +35,17 @@ public class chest : MonoBehaviour, actionObject
 
     void Update()
     {
-        
+        wallet = gameManager.instance.playerScript.GetCoins();
+        if (rollCost < wallet)
+        {
+            hasCoins = true;
+            weaponDisplay.SetActive(true);
+            gameManager.instance.playerScript.inActionRange = true;
+        }
+        else
+        {
+            hasCoins = false;
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -45,16 +56,16 @@ public class chest : MonoBehaviour, actionObject
             Debug.Log("PLAYER");
             playerInRange = true;
             gameManager.instance.alertText.text = $"Weapon Cost: {chestCost}\n Roll Cost: {rollCost}";
-            if (chestCost < gameManager.instance.playerScript.GetCoins())
-            {
-                hasCoins = true;
-                weaponDisplay.SetActive(true);
-                gameManager.instance.playerScript.inActionRange = true;
-            }
-            else
-            {
-                hasCoins = false;
-            }
+            // if (chestCost < wallet)
+            // {
+            //     hasCoins = true;
+            //     weaponDisplay.SetActive(true);
+            //     gameManager.instance.playerScript.inActionRange = true;
+            // }
+            // else
+            // {
+            //     hasCoins = false;
+            // }
         }
     }
 
@@ -63,19 +74,19 @@ public class chest : MonoBehaviour, actionObject
         if (other.tag == "Player")
         {
             if (playerInRange)
-            {
-                if (Input.GetButton("Action") && !isRerolling)
+            { 
+                
+                if (Input.GetButton("Action") && !isRerolling && hasCoins)
                 {
-                    
+                   gameManager.instance.alertText.text = $"Weapon Cost: {chestCost}\n Roll Cost: {rollCost}";
                     secondaryAction();
-                    gameManager.instance.alertText.text = $"Weapon Cost: {chestCost}\n Roll Cost: {rollCost}";
                     StartCoroutine(Delay(.1f));
                 }
             
             }
 
 
-            if (playerInRange && Input.GetButton("Submit"))
+            if (playerInRange && Input.GetButton("Submit") && wallet >= chestCost)
             {
                 primaryAction();
                 gameManager.instance.alertText.text = "";

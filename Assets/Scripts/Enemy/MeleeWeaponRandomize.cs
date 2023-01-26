@@ -13,7 +13,7 @@ public class MeleeWeaponRandomize : Editor
     {
         base.OnInspectorGUI();
         var meleeWeaponScriptableObjects = (MeleeWeaponScriptableObjects)target;
- 
+    
         if(GUILayout.Button("Randomize", GUILayout.Height(20)))
         {
             meleeWeaponScriptableObjects.Randomize();

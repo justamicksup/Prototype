@@ -15,6 +15,7 @@ public class playerController : MonoBehaviour
     [SerializeField] AudioSource aud;
     [SerializeField] Animator animator;
     
+    
     [Header("----- Player Stats -----")] [Range(1, 100)] [SerializeField]
     int HP;
 
@@ -101,6 +102,7 @@ public class playerController : MonoBehaviour
         staminaOrig = stamina;
         updatePlayerHP();
         updatePlayerStamina();
+        respawnPlayer();
         WeaponSlots[0].SetActive(false);
         WeaponSlots[1].SetActive(false);
         WeaponSlots[2].SetActive(false);
@@ -226,7 +228,7 @@ public class playerController : MonoBehaviour
                 }
             }
         }
-        if(Input.GetButtonDown("Reload"))
+        if(Input.GetButtonDown("Reload") && currentWeapon > 0)
         {
             StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon]));
         }
@@ -587,4 +589,5 @@ public class playerController : MonoBehaviour
         yield return new WaitForSeconds(duration);
     }
     
+   
 }

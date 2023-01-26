@@ -29,5 +29,9 @@ MonoBehaviour:
   shootAngle: 45
   viewAngle: 60
   rotationSpeed: 50
-  audGunShot: []
+  audGunShot:
+  - {fileID: 8300000, guid: 22284098b1541dc4fae2ccc076508260, type: 3}
+  - {fileID: 8300000, guid: 985ecd38338cc1e4184cdea24de2cdc3, type: 3}
+  - {fileID: 8300000, guid: b1d9cc2e6e473a643a0f6a695c9cb5ac, type: 3}
+  - {fileID: 8300000, guid: e2cfe3447afef774ca1f6027cdd8a0ea, type: 3}
   deathEffect: {fileID: 100006, guid: 28ccd38a41e256a4e8fea96f5a8d039d, type: 3}

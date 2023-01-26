@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Game/Title Screen.unity
-    guid: 646ebf1ffcf1d104eb0a8c9c790e7c70
+    path: Assets/Scenes/Game 1/Title Screen.unity
+    guid: e88ee78fbbb49a24eb15f2d4c845d9ce
   - enabled: 1
-    path: Assets/Scenes/Game/Jordan Ireland Scary scene.unity
-    guid: 7cbfc88ca9421b34ea602350b6a0637e
+    path: Assets/Scenes/Game 1/Jordan Ireland Scary scene.unity
+    guid: 7ae805a2ff4513a4a860dca945488fe1
   m_configObjects: {}

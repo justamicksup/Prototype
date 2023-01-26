@@ -194,7 +194,7 @@ MonoBehaviour:
   playerSpeed: 10
   jumpVelocity: 12
   gravity: 25
-  jumpMax: 2
+  jumpMax: 1
   coins: 0
   actionRange: 3
   ammo: 0
