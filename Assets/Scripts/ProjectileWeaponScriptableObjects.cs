@@ -18,6 +18,7 @@ public class ProjectileWeaponScriptableObjects : MasterWeapon
     public int ammoRemaining = 6;
     public float reloadTime = 0.1f;
     public AudioClip audGunShot;
+    [Range(0, 1)] public float audGunShotVol;
     public ParticleSystem muzzleFlash;
     
     public void Randomize()

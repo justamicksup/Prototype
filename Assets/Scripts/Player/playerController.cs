@@ -38,7 +38,8 @@ public class playerController : MonoBehaviour
     [Range(0, 1)] [SerializeField] float audPlayerJumpVol;
     [SerializeField] AudioClip[] audPlayerSteps;
     [Range(0, 1)] [SerializeField] float audPlayerStepsVol;
-    [SerializeField] AudioSource audGunShot;
+    [SerializeField] AudioClip audReload;
+    [Range(0, 1)] [SerializeField] float audReloadVol;
 
     [Header("----- Gun Stats -----")]
     
@@ -246,7 +247,7 @@ public class playerController : MonoBehaviour
         if (projectileWeaponScriptableObjects.ammoRemaining > 0 && !isReloading)
         {
             
-            audGunShot.PlayOneShot(projectileWeaponScriptableObjects.audGunShot);
+            aud.PlayOneShot(projectileWeaponScriptableObjects.audGunShot, projectileWeaponScriptableObjects.audGunShotVol);
 
 
             projectileWeaponScriptableObjects.ammoRemaining -= 1;
@@ -281,6 +282,7 @@ public class playerController : MonoBehaviour
 
         yield return new WaitForSeconds(projectileWeaponScriptableObjects.reloadTime);
         projectileWeaponScriptableObjects.ammoRemaining = projectileWeaponScriptableObjects.ammoCapacity;
+        aud.PlayOneShot(audReload, audReloadVol);
         isReloading = false;
     }
 
