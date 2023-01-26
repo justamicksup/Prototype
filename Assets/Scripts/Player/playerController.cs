@@ -268,6 +268,7 @@ public class playerController : MonoBehaviour
         else
         {
             StartCoroutine(reload(projectileWeaponScriptableObjects));
+            gameManager.instance.UpdateUI();
         }
 
         yield return new WaitForSeconds(projectileWeaponScriptableObjects.shootRate);
@@ -277,6 +278,7 @@ public class playerController : MonoBehaviour
     IEnumerator reload(ProjectileWeaponScriptableObjects projectileWeaponScriptableObjects)
     {
         isReloading = true;
+
         yield return new WaitForSeconds(projectileWeaponScriptableObjects.reloadTime);
         projectileWeaponScriptableObjects.ammoRemaining = projectileWeaponScriptableObjects.ammoCapacity;
         isReloading = false;
@@ -386,8 +388,7 @@ public class playerController : MonoBehaviour
         {
             //call shoot logic
             Debug.Log("Call Shoot attack");
-            StartCoroutine(shoot((ProjectileWeaponScriptableObjects)weaponList[currentWeapon]));
-           
+            StartCoroutine(shoot((ProjectileWeaponScriptableObjects)weaponList[currentWeapon]));           
         }
         // else if current weapon is a melee
         else if (weaponList[currentWeapon].GetType() == typeof(MeleeWeaponScriptableObjects))

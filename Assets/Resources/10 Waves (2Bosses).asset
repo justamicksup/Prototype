@@ -21,7 +21,7 @@ MonoBehaviour:
     wave: {fileID: 11400000, guid: c62e0c6fe6fe178439eb84d5c4b4c57d, type: 2}
   - enemiesInWave: 18
     wave: {fileID: 11400000, guid: 6de42274acbdc604a841ecc7cb087a86, type: 2}
-  - enemiesInWave: 10
+  - enemiesInWave: 1
     wave: {fileID: 11400000, guid: 80f9ce0b88dae164abd3c838e39048e3, type: 2}
   - enemiesInWave: 25
     wave: {fileID: 11400000, guid: d563088f8f4e2e8468ea57bc5e888d05, type: 2}
@@ -31,5 +31,5 @@ MonoBehaviour:
     wave: {fileID: 11400000, guid: 8aaa8d1b4ba04044eb01a30029aecee9, type: 2}
   - enemiesInWave: 30
     wave: {fileID: 11400000, guid: cf58dbf1cd8b8dc428238f9d19190543, type: 2}
-  - enemiesInWave: 10
+  - enemiesInWave: 1
     wave: {fileID: 11400000, guid: 6a333e56ede21a245b4c3e8e80ff90d5, type: 2}
