@@ -27,7 +27,7 @@ public class ExplosiveEnemyAI : MonoBehaviour, IDamage
     
     [Header("----- Needed References -----")]
     public MasterEnemy masterEnemyScriptableObject;
-
+    [SerializeField] Renderer model;
     public Animator animator;
     public NavMeshAgent agent;
     public Transform headPos;
@@ -70,6 +70,7 @@ public class ExplosiveEnemyAI : MonoBehaviour, IDamage
     {
         HP -= damage;
         animator.SetTrigger("Hit1");
+        StartCoroutine(flashDamage());
         facePlayer();
         agent.SetDestination(gameManager.instance.player.transform.position);
         if (HP <= 0)
@@ -146,6 +147,12 @@ public class ExplosiveEnemyAI : MonoBehaviour, IDamage
         {
             playerInRange = false;
         }
+    }
+    public IEnumerator flashDamage()
+    {
+        model.material.color = Color.red;
+        yield return new WaitForSeconds(0.15f);
+        model.material.color = Color.white;
     }
 
     IEnumerator ThrowBomb()

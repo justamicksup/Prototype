@@ -24,6 +24,7 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
     public Transform headPos;
     public Collider weaponCollider;
     public MeleeWeapon weapon;
+    [SerializeField] Renderer model;
     
     [Header("----- Variables -----")]
     Vector3 playerDir;
@@ -63,6 +64,7 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
         HP -= damage;
         animator.SetTrigger("Hit1");
         weaponColliderOff();
+        StartCoroutine(flashDamage());
         facePlayer();
         agent.SetDestination(gameManager.instance.player.transform.position);
         if (HP <= 0)
@@ -124,7 +126,13 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
         agent.autoTraverseOffMeshLink = masterEnemyScriptableObject.navMesh.AutoTraverseOffMeshLink;
         agent.autoRepath = masterEnemyScriptableObject.navMesh.AutoRepath;
     }
-    
+    public IEnumerator flashDamage()
+    {
+        model.material.color = Color.red;
+        yield return new WaitForSeconds(0.15f);
+        model.material.color = Color.white;
+    }
+
     IEnumerator MeleeHit()
     {
         

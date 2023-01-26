@@ -6,7 +6,7 @@ using UnityEngine.AI;
     public class ProjectileEnemyAI: MonoBehaviour, IDamage
     {
         
-        [Header("----- Projectile Enemy Stats From SO -----")]
+    [Header("----- Projectile Enemy Stats From SO -----")]
     [SerializeField] int HP;
     [SerializeField] int rotationSpeed;
     [Range(10, 1000)] [SerializeField] int lootValue;
@@ -29,6 +29,7 @@ using UnityEngine.AI;
     public Transform headPos;
     [SerializeField] Transform shootPos;
     [SerializeField] GameObject bullet;
+    [SerializeField] Renderer model;
     
     [Header("----- Variables -----")]
     Vector3 playerDir;
@@ -68,6 +69,7 @@ using UnityEngine.AI;
     {
         HP -= damage;
         animator.SetTrigger("Hit1");
+        StartCoroutine(flashDamage());
         facePlayer();
         agent.SetDestination(gameManager.instance.player.transform.position);
         if (HP <= 0)
@@ -82,7 +84,7 @@ using UnityEngine.AI;
     void facePlayer()
     {
         //don't rotate up or down (Y)
-        //playerDir.y = 0;
+        playerDir.y = 0;
         //Quaternion for a rotation to player
         Quaternion rot = Quaternion.LookRotation(playerDir);
         //make rotation smooth with Lerp
@@ -135,6 +137,13 @@ using UnityEngine.AI;
         agent.autoRepath = masterEnemyScriptableObject.navMesh.AutoRepath;
     }
     
+    public IEnumerator flashDamage()
+    {
+        model.material.color = Color.red;
+        yield return new WaitForSeconds(0.15f);
+        model.material.color = Color.white;
+    }
+
     IEnumerator shoot()
     {
         isShooting = true;
