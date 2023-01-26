@@ -1627,6 +1627,7 @@ MonoBehaviour:
   headPos: {fileID: 7774838096704600226}
   weaponCollider: {fileID: 2124503394}
   weapon: {fileID: 2124503392}
+  model: {fileID: 7641660217703453684}
 --- !u!95 &7689975587143090890
 Animator:
   serializedVersion: 5

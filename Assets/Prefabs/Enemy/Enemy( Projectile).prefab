@@ -1582,6 +1582,7 @@ MonoBehaviour:
   headPos: {fileID: 7826532922156539233}
   shootPos: {fileID: 6413020137398002228}
   bullet: {fileID: 5245255688520990098, guid: 2e622fc3b9bedfa45bf778dccc584963, type: 3}
+  model: {fileID: 7886939071975061047}
   stoppingDistOrig: 0
 --- !u!95 &7908567486035732233
 Animator:
@@ -1593,7 +1594,7 @@ Animator:
   m_GameObject: {fileID: 7824966144815336657}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a58154c350c4ccf47a6cdad03a8dca1a, type: 3}
-  m_Controller: {fileID: 9100000, guid: f6ef3085c5087ae40a352ae36cb63891, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7626728b6d693cd4dae2b0f26507a49d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

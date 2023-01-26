@@ -11,12 +11,17 @@ public class explosiveWeapon : MonoBehaviour
     public int force;
     public LayerMask layerMask;
     [SerializeField] GameObject explosion;
-
+    public Renderer renderer;
+    public Color originalColor;
+    public float blinkTime;
+    public Color color;
 
     //Start is called before the first frame update
     void Start()
     {
+        originalColor = renderer.material.color;
         StartCoroutine(explode());
+        StartCoroutine(BlinkEffect());
     }
 
     IEnumerator explode()
@@ -49,4 +54,18 @@ public class explosiveWeapon : MonoBehaviour
         Destroy(gameObject);
         Destroy(explosionClone, 0.5f);
     }
+
+    IEnumerator BlinkEffect()
+    {
+        while (true)
+        {
+            renderer.material.color = color;
+
+            yield return new WaitForSeconds(blinkTime);
+
+            renderer.material.color = originalColor;
+            yield return new WaitForSeconds(blinkTime);
+        }
+    }
+
 }

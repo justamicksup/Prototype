@@ -541,11 +541,12 @@ MonoBehaviour:
   explosionForce: 100
   explosiveDamage: 1
   masterEnemyScriptableObject: {fileID: 11400000, guid: fcdf93a4076ad874a9dd7730ac3e7417, type: 2}
+  model: {fileID: 8798340704051873617}
   animator: {fileID: 8839744971792356975}
   agent: {fileID: 8934828601399275049}
   headPos: {fileID: 8930808710795488263}
   throwingHand: {fileID: 1352547680}
-  bomb: {fileID: 3059545344676545123, guid: 1f4818403b07b744eb850073b9e47dc3, type: 3}
+  bomb: {fileID: 6182639289201271482, guid: ee552b3e7cb86874d8ebe3c3863ec48e, type: 3}
   stoppingDistOrig: 0
 --- !u!95 &8839744971792356975
 Animator:

@@ -10024,6 +10024,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   explosion: {fileID: 100006, guid: e076683e0305e35498b8e8834978c0fa, type: 3}
+  renderer: {fileID: 0}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
+  blinkTime: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!64 &7762696762606173499
 MeshCollider:
   m_ObjectHideFlags: 0
