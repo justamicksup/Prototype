@@ -247,6 +247,8 @@ public class playerController : MonoBehaviour
         {
             
             audGunShot.PlayOneShot(projectileWeaponScriptableObjects.audGunShot);
+
+
             projectileWeaponScriptableObjects.ammoRemaining -= 1;
             if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit,
                     projectileWeaponScriptableObjects.range))

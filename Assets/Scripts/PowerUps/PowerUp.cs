@@ -6,7 +6,7 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     [SerializeField] PowerStat power;
-    public AudioSource aud;
+    //public AudioSource aud;
 
     public void OnTriggerEnter(Collider other)
     {
