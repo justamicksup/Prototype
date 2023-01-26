@@ -31,13 +31,14 @@ public class playerController : MonoBehaviour
     Vector3 move;
     Vector3 playerVelocity;
 
-    [Header("----- Audio -----")] [SerializeField]
-    AudioClip[] audPlayerDamage;
+    [Header("----- Audio -----")] 
+    [SerializeField] AudioClip[] audPlayerDamage;
     [Range(0, 1)] [SerializeField] float audPlayerDamageVol;
     [SerializeField] AudioClip[] audPlayerJump;
     [Range(0, 1)] [SerializeField] float audPlayerJumpVol;
     [SerializeField] AudioClip[] audPlayerSteps;
     [Range(0, 1)] [SerializeField] float audPlayerStepsVol;
+    [SerializeField] AudioSource audGunShot;
 
     [Header("----- Gun Stats -----")]
     
@@ -238,7 +239,7 @@ public class playerController : MonoBehaviour
     {
         isAttacking = true;
         RaycastHit hit;
-
+        audGunShot.PlayOneShot(projectileWeaponScriptableObjects.audGunShot);
         gameManager.instance.UpdateUI();
         ammo = projectileWeaponScriptableObjects.ammoRemaining;
         ammoRemaining = ammo;

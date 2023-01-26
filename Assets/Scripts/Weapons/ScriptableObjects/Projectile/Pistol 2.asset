@@ -21,4 +21,5 @@ MonoBehaviour:
   ammoCapacity: 29
   ammoRemaining: 29
   reloadTime: 1.5637057
-  audGunShot: {fileID: 0}
+  audGunShot: {fileID: 8300000, guid: 93d5e672d673c2e4fa1f4add039d39af, type: 3}
+  muzzleFlash: {fileID: 0}
