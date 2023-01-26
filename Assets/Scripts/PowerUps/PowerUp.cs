@@ -11,16 +11,13 @@ public class PowerUp : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        {         
+        {
             gameManager.instance.playerScript.powerPickup(power);
-            aud.PlayOneShot(power.powerAudio);
+            //aud.PlayOneShot(aud.clip);
             gameObject.SetActive(false);
-            if (power.effectDuration > 0)
-            {
-                Invoke(nameof(ResetStats), power.effectDuration);
-            }
-            else
-                Destroy(gameObject);
+
+            Invoke(nameof(ResetStats), power.effectDuration);
+
         }
     }
     private void ResetStats()

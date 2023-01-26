@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29ca8ea7698aad546ba30bd172e960d4, type: 3}
-  m_Name: PowerUp - Speed
+  m_Name: PowerUp - 500 coin
   m_EditorClassIdentifier: 
-  effectDuration: 5
-  speedBonus: 15
+  effectDuration: 0.1
+  speedBonus: 0
   staminaBonus: 0
   shootDmgBonus: 0
   meleeDmgBonus: 0
-  goldBonus: 5
-  powerAudio: {fileID: 8300000, guid: 7bd6b897eb5ca4b7d88a205c4a51640c, type: 3}
+  goldBonus: 500
+  powerAudio: {fileID: 8300000, guid: 85d7cff3cdc284ed7acccf730e9091c9, type: 3}
