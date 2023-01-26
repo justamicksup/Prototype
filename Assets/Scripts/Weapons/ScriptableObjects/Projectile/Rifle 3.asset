@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Model: {fileID: 5313856188506331232, guid: 7444562fe5798e846a4045a93e123308, type: 3}
   gunLevel: 7
-  shootDamage: 79
+  shootDamage: 30
   range: 59
   shootRate: 0.5556563
   shootForce: 4

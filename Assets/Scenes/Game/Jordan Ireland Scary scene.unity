@@ -7309,6 +7309,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2636245865579264812, guid: 40ca8b79e48a2ec489053767b04ad659, type: 3}
+      propertyPath: audGunShot
+      value: 
+      objectReference: {fileID: 1415542786}
     - target: {fileID: 2636245865579264813, guid: 40ca8b79e48a2ec489053767b04ad659, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -8528,6 +8532,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4335768345104374, guid: df32d079362cd4d408b19a6dc52ee968, type: 3}
   m_PrefabInstance: {fileID: 796938728}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1415542786 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3734570729019460057, guid: 40ca8b79e48a2ec489053767b04ad659, type: 3}
+  m_PrefabInstance: {fileID: 1187502708}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1418377883
 PrefabInstance:

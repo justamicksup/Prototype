@@ -239,7 +239,6 @@ public class playerController : MonoBehaviour
     {
         isAttacking = true;
         RaycastHit hit;
-        audGunShot.PlayOneShot(projectileWeaponScriptableObjects.audGunShot);
         gameManager.instance.UpdateUI();
         ammo = projectileWeaponScriptableObjects.ammoRemaining;
         ammoRemaining = ammo;
@@ -247,6 +246,7 @@ public class playerController : MonoBehaviour
         if (projectileWeaponScriptableObjects.ammoRemaining > 0 && !isReloading)
         {
             
+            audGunShot.PlayOneShot(projectileWeaponScriptableObjects.audGunShot);
             projectileWeaponScriptableObjects.ammoRemaining -= 1;
             if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit,
                     projectileWeaponScriptableObjects.range))
