@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class explosiveWeapon : MonoBehaviour
 {
@@ -15,7 +16,9 @@ public class explosiveWeapon : MonoBehaviour
     public Color originalColor;
     public float blinkTime;
     public Color color;
-
+    public AudioSource aud;
+    public AudioClip[] audExplosion;
+    [Range(0, 1)] [SerializeField] float audExplosionVol;
     //Start is called before the first frame update
     void Start()
     {
@@ -50,7 +53,7 @@ public class explosiveWeapon : MonoBehaviour
                 gameManager.instance.playerScript.takeDamage(damage);
             }
         }
-
+        aud.PlayOneShot(audExplosion[Random.Range(0, audExplosion.Length)], audExplosionVol);
         Destroy(gameObject);
         Destroy(explosionClone, 0.5f);
     }

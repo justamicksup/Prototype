@@ -10,5 +10,6 @@ using UnityEngine;
         public int viewAngle;
         public int rotationSpeed = 50;
         public bool hasWeapon = false;
-        public AudioClip audWeaponSwing;
+        public AudioClip[] audWeaponSwing;
+        public GameObject deathEffect;
     }

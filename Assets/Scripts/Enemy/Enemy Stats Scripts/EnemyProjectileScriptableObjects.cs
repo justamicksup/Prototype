@@ -14,6 +14,6 @@ public class EnemyProjectileScriptableObjects : MasterEnemy
         public int shootAngle = 45;
         public int viewAngle = 60;
         public int rotationSpeed = 50;
-        public AudioClip audGunShot;
-        
+        public AudioClip[] audGunShot;
+        public GameObject deathEffect;
     }

@@ -68,6 +68,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5627f59869de1d04a9d08484785d9a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextWave: {fileID: 11400000, guid: 395383b622efbf0409ba8dab5f604934, type: 2}
+  nextWave: {fileID: 11400000, guid: 322663ea14b38944db9a94d16ae00452, type: 2}
   spawnPoint: {fileID: 6690070243691109246}
-  interval: 0.1
+  interval: 1

@@ -188,6 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2636245865579264848}
   aud: {fileID: 3734570729019460057}
+  animator: {fileID: 0}
   HP: 100
   stamina: 100
   playerSpeed: 10
@@ -221,6 +222,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 64d75686ea0df924c87733584876b8b9, type: 3}
   - {fileID: 8300000, guid: c061d6766b7607c42aab89957ff46319, type: 3}
   audPlayerStepsVol: 0.05
+  audGunShot: {fileID: 3734570729019460057}
   gunLevel: 0
   shootDamage: 0
   range: 0
