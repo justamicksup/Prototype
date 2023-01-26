@@ -13,11 +13,6 @@ MonoBehaviour:
   m_Name: Armory
   m_EditorClassIdentifier: 
   MasterWeaponList:
-  - {fileID: 11400000, guid: ccec6a2180df45548844ce09a1b561c1, type: 2}
-  - {fileID: 11400000, guid: 234c13687db1fcc48986cbef9523597c, type: 2}
-  - {fileID: 11400000, guid: e80905f6fd4aabe4799611f137c32aec, type: 2}
-  - {fileID: 11400000, guid: f062c0acfbc5adf40bec8da5ca459ea2, type: 2}
-  - {fileID: 11400000, guid: afea25a3b6f28ee4ab171bfd40d3d47c, type: 2}
   - {fileID: 11400000, guid: c9c3ec12297a6404297ea0f6b1b3ee09, type: 2}
   - {fileID: 11400000, guid: 420fa84636ae8d7459d2bb832cffe48b, type: 2}
   - {fileID: 11400000, guid: 8dd5dbfcbf91b6146964d8cf10582558, type: 2}
