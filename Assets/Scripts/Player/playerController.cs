@@ -425,6 +425,10 @@ public class playerController : MonoBehaviour
         {
             coins+= power.goldBonus;
         }
+        if(power.healthBonus != 0)
+        {
+            StartCoroutine(healOverTime((int)power.effectDuration, power.healthBonus));
+        }
     }
 
 
@@ -564,6 +568,19 @@ public class playerController : MonoBehaviour
             isPlayingSteps = false;
         }
         
+    }
+    IEnumerator healOverTime(int duration, int amount)
+    {
+        if (getHP() < HPOrig)
+        {
+            for (int i = 0; i < duration; i++)
+            {
+                HP += amount;
+                updatePlayerHP();
+                new WaitForSeconds(0.5f);
+            }
+        }
+        yield return new WaitForSeconds(duration);
     }
     
 }
