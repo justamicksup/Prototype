@@ -11,5 +11,5 @@ public class EnemyExplosiveScriptableObjects : MasterEnemy
     public int forceUpward= 250;
     public int torque= 500;
     public int rotationSpeed = 50;
-   
+    public GameObject deathEffect;
 }

@@ -17,7 +17,8 @@ public class ExplosiveEnemyAI : MonoBehaviour, IDamage
     [SerializeField] float coolDown = 3;
     public int throwAngle;
     public int viewAngle;
-
+    public DeathEffect deathEffect;
+    
     [Header("----- Bomb Stats -----")] 
     [SerializeField] int timer = 1;
     [SerializeField] int explosionRadius = 1;
@@ -33,6 +34,7 @@ public class ExplosiveEnemyAI : MonoBehaviour, IDamage
     public Transform headPos;
     public Transform throwingHand;
     public GameObject bomb;
+   
 
     [Header("----- Variables -----")] Vector3 playerDir;
     bool isThrowing;
@@ -77,6 +79,7 @@ public class ExplosiveEnemyAI : MonoBehaviour, IDamage
         {
             gameManager.instance.updateEnemyRemaining(-1);
             gameManager.instance.playerScript.addCoins(lootValue);
+            deathEffect.DeathByEffects();
 
             Destroy(gameObject);
         }
@@ -103,6 +106,7 @@ public class ExplosiveEnemyAI : MonoBehaviour, IDamage
         torque = _enemyExplosiveScriptableObject.torque;
         rotationSpeed = _enemyExplosiveScriptableObject.rotationSpeed;
         throwingDistance = _enemyExplosiveScriptableObject.throwingDistance;
+        deathEffect.SetDeathEffect(_enemyExplosiveScriptableObject.deathEffect);
         // Haven't implemented defense yet
         // Haven't implemented boss check yet
     }
@@ -215,4 +219,7 @@ public class ExplosiveEnemyAI : MonoBehaviour, IDamage
 
         return false;
     }
+    
+   
+    
 }

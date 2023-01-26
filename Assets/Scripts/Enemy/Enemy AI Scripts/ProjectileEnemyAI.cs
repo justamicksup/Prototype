@@ -21,7 +21,8 @@ using UnityEngine.AI;
     public int shootAngle;
     public int viewAngle;
     [Range(15, 35)] [SerializeField] int bulletSpeed;
-
+    public DeathEffect deathEffect;
+    
     [Header("----- Needed References -----")]
     public MasterEnemy masterEnemyScriptableObject;
     public Animator animator;
@@ -30,6 +31,8 @@ using UnityEngine.AI;
     [SerializeField] Transform shootPos;
     [SerializeField] GameObject bullet;
     [SerializeField] Renderer model;
+    public AudioSource aud;
+
     
     [Header("----- Variables -----")]
     Vector3 playerDir;
@@ -37,7 +40,7 @@ using UnityEngine.AI;
     bool playerInRange;
     float angleToPlayer;
     public float stoppingDistOrig;
-      
+    [Range(0, 1)] [SerializeField] float audGunShotVol;
       
     // Start is called before the first frame update
     void Start()
@@ -76,6 +79,7 @@ using UnityEngine.AI;
         {
             gameManager.instance.updateEnemyRemaining(-1);
             gameManager.instance.playerScript.addCoins(lootValue);
+            deathEffect.DeathByEffects();
 
             Destroy(gameObject);
         }
@@ -102,11 +106,12 @@ using UnityEngine.AI;
         ammoCapacity = _enemyProjectileScriptableObjects.ammoCapacity;
         ammoRemaining = _enemyProjectileScriptableObjects.ammoRemaining;
         reloadTime = _enemyProjectileScriptableObjects.reloadTime;
-        audGunShot = _enemyProjectileScriptableObjects.audGunShot;
+        audGunShot = _enemyProjectileScriptableObjects.audGunShot[Random.Range(0, _enemyProjectileScriptableObjects.audGunShot.Length)];
         shootAngle = _enemyProjectileScriptableObjects.shootAngle;
         shootAngle = _enemyProjectileScriptableObjects.shootAngle;
         viewAngle = _enemyProjectileScriptableObjects.viewAngle;
         rotationSpeed = _enemyProjectileScriptableObjects.rotationSpeed;
+        deathEffect.SetDeathEffect(_enemyProjectileScriptableObjects.deathEffect);
         // Haven't implemented defense yet
         // Haven't implemented boss check yet
     }
@@ -157,6 +162,7 @@ using UnityEngine.AI;
         // }
 
         animator.SetTrigger("Shoot");
+        aud.PlayOneShot(audGunShot, audGunShotVol);
         GameObject bulletClone = Instantiate(bullet, shootPos.position, bullet.transform.rotation);
         bulletClone.GetComponent<Rigidbody>().velocity = (gameManager.instance.player.transform.position - headPos.transform.position).normalized * bulletSpeed;
         bulletClone.GetComponent<bullet>().bulletDamage = shootDamage;
@@ -216,5 +222,8 @@ using UnityEngine.AI;
 
         return false;
     }
+    
+   
+    
 }
     

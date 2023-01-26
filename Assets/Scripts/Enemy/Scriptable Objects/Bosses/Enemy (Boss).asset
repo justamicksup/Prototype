@@ -24,4 +24,13 @@ MonoBehaviour:
   viewAngle: 90
   rotationSpeed: 50
   hasWeapon: 1
-  audWeaponSwing: {fileID: 0}
+  audWeaponSwing:
+  - {fileID: 0}
+  - {fileID: 8300000, guid: cab105fac4cec034096fd7b006f6148e, type: 3}
+  - {fileID: 8300000, guid: 779c09f47f58dfe408ba85dcabf489be, type: 3}
+  - {fileID: 8300000, guid: db219d5cc29c0ba4ea2a54bb58856005, type: 3}
+  - {fileID: 8300000, guid: a6aa1e37905c4c4499e347dfbaa63940, type: 3}
+  - {fileID: 8300000, guid: 4ba44a8720ef69742af8b54416e1ad87, type: 3}
+  - {fileID: 8300000, guid: 8d50859c687877e49945ff34cef186a5, type: 3}
+  - {fileID: 8300000, guid: 7d1e1cbcb72b0b7438491e85d270a686, type: 3}
+  deathEffect: {fileID: 100006, guid: 28ccd38a41e256a4e8fea96f5a8d039d, type: 3}

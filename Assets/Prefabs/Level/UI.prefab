@@ -5181,6 +5181,11 @@ MonoBehaviour:
   TitleScreen: {fileID: 0}
   ammoRemaining: 0
   weaponsInLevel: 0
+  aud: {fileID: 0}
+  levelMusic:
+  - {fileID: 8300000, guid: 66fbdcbc3689a5140a365274fe1d0dad, type: 3}
+  - {fileID: 8300000, guid: 6f4cd8476ae007341b5161f16ef687e3, type: 3}
+  levelVol: 1
   sensitivity: 300
 --- !u!1 &8958223625740865911
 GameObject:

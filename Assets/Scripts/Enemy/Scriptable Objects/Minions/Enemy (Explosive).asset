@@ -26,3 +26,4 @@ MonoBehaviour:
   forceUpward: 250
   torque: 500
   rotationSpeed: 50
+  deathEffect: {fileID: 100006, guid: 28ccd38a41e256a4e8fea96f5a8d039d, type: 3}

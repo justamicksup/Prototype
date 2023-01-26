@@ -52,8 +52,9 @@ public class gameManager : MonoBehaviour
     [Header("----- Weapons and Ammo -----")]
     public int ammoRemaining;
     public int weaponsInLevel;
-    
-
+    public AudioSource aud;
+    public AudioClip[] levelMusic;
+    [Range(0, 1)] [SerializeField] float levelVol;
     [Header("----- Game Settings -----]")]
     public int sensitivity;
     
@@ -87,9 +88,10 @@ public class gameManager : MonoBehaviour
         //ammoCountText[2].text = "";
         waveCountText.text = "";
         coinsText.text = playerScript.GetCoins().ToString();
-
+        
+        
+        
     }
-
 
     void Update()
     {
@@ -114,6 +116,7 @@ public class gameManager : MonoBehaviour
 
     private IEnumerator StartGameHelper()
     {
+        
         if(shipAnim != null)
         {
             shipAnim.clip = shipAnim.GetClip("ShipsLanding");
@@ -131,6 +134,13 @@ public class gameManager : MonoBehaviour
                 yield return null;
             }
             sun.transform.rotation = endValue;
+        }
+
+        if (aud != null)
+        {
+            aud.volume = levelVol;
+            aud.clip = levelMusic[Random.Range(0, levelMusic.Length)];
+            aud.Play();
         }
         yield return new WaitForSeconds(1.5f);
         instance.updateWave();

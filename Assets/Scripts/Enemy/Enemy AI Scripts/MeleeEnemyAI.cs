@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class MeleeEnemyAI : MonoBehaviour, IDamage
 {
@@ -16,6 +18,8 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
     public int swingAngle;
     public float stoppingDistOrig;
     public int viewAngle;
+    public DeathEffect deathEffect;
+    
     
     [Header("----- Needed References -----")]
     public MasterEnemy masterEnemyScriptableObject;
@@ -25,6 +29,8 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
     public Collider weaponCollider;
     public MeleeWeapon weapon;
     [SerializeField] Renderer model;
+    public AudioSource aud;
+
     
     [Header("----- Variables -----")]
     Vector3 playerDir;
@@ -32,6 +38,7 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
     bool playerInRange;
     float angleToPlayer;
     bool hasWeapon;
+    [Range(0, 1)] [SerializeField] float audWeaponSwingtVol;
     
     // Start is called before the first frame update
     void Start()
@@ -71,7 +78,9 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
         {
             gameManager.instance.updateEnemyRemaining(-1);
             gameManager.instance.playerScript.addCoins(lootValue);
-
+    
+                deathEffect.DeathByEffects();
+            
             Destroy(gameObject);
         }
     }
@@ -93,10 +102,11 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
         swingAngle = _enemyMeleeScriptableObject.swingAngle;
         viewAngle = _enemyMeleeScriptableObject.viewAngle;
         rotationSpeed = _enemyMeleeScriptableObject.rotationSpeed;
-        audWeaponSwing = _enemyMeleeScriptableObject.audWeaponSwing;
+        audWeaponSwing = _enemyMeleeScriptableObject.audWeaponSwing[Random.Range(0,_enemyMeleeScriptableObject.audWeaponSwing.Length)];
         weapon.damage = _enemyMeleeScriptableObject.attack;
         attack = weapon.damage;
-     
+      
+        deathEffect.SetDeathEffect(_enemyMeleeScriptableObject.deathEffect);
         // Haven't implemented defense yet
         // Haven't implemented boss check yet
     }
@@ -139,6 +149,8 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
         isSwinging = true;
         animator.SetTrigger("Attack1h1");
        
+        
+       
        // gameManager.instance.playerScript.takeDamage(attack);
         
         
@@ -151,6 +163,7 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
     public void weaponColliderOn()
     {
         weaponCollider.enabled = true;
+        aud.PlayOneShot(audWeaponSwing, audWeaponSwingtVol);
     }
     
     public void weaponColliderOff()
@@ -205,4 +218,6 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
         
         return false;
     }
+
+    
 }
