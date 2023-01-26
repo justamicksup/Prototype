@@ -292,6 +292,7 @@ public class playerController : MonoBehaviour
         HP -= damage;
         updatePlayerHP();
         StartCoroutine(gameManager.instance.flash());
+        aud.PlayOneShot(audPlayerDamage[Random.Range(0, audPlayerDamage.Length)], audPlayerDamageVol);
         if (HP <= 0)
         {
             gameManager.instance.youLose();
