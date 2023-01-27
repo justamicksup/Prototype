@@ -148,11 +148,6 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
         
         isSwinging = true;
         animator.SetTrigger("Attack1h1");
-       
-        
-       
-       // gameManager.instance.playerScript.takeDamage(attack);
-        
         
         yield return new WaitForSeconds(swingRate);
         
