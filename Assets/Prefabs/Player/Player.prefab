@@ -205,12 +205,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 12c0019d45c1ec24aa66d8ba74c21314, type: 3}
   - {fileID: 8300000, guid: e5a4df509834fce48a4787127cb9307e, type: 3}
   - {fileID: 8300000, guid: f8868ab235e702b4880d137d3c9db499, type: 3}
-  audPlayerDamageVol: 1
+  audPlayerDamageVol: 0.1
   audPlayerJump:
   - {fileID: 8300000, guid: bfb0c7a1ea96ca847a5bb864b1db9996, type: 3}
   - {fileID: 8300000, guid: 0479baaeae733ed44b06d98dee9ec6c1, type: 3}
   - {fileID: 8300000, guid: 41effd06f50fb3c40949356b4e0a0c18, type: 3}
-  audPlayerJumpVol: 0.3
+  audPlayerJumpVol: 0.1
   audPlayerSteps:
   - {fileID: 8300000, guid: cf91bf3e8fcc22144b270071010dcafa, type: 3}
   - {fileID: 8300000, guid: e21fa9741f286004687bce555194213b, type: 3}
@@ -221,9 +221,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 341cefd4ec4cbe94197c069972ead8d6, type: 3}
   - {fileID: 8300000, guid: 64d75686ea0df924c87733584876b8b9, type: 3}
   - {fileID: 8300000, guid: c061d6766b7607c42aab89957ff46319, type: 3}
-  audPlayerStepsVol: 0.05
+  audPlayerStepsVol: 0.02
   audReload: {fileID: 8300000, guid: e7632c6401c09437e83de45d33c5858e, type: 3}
-  audReloadVol: 0.5
+  audReloadVol: 0.1
   gunLevel: 0
   shootDamage: 0
   range: 0
