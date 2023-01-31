@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: No Weapon (NavMesh)
   m_EditorClassIdentifier: 
   baseOffset: 0.5
-  speed: 3.5
-  angularSpeed: 120
-  acceleration: 8
+  speed: 15
+  angularSpeed: 720
+  acceleration: 50
   stoppingDistance: 0
   autoBraking: 0
   radius: 0.5

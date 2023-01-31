@@ -22,7 +22,7 @@ MonoBehaviour:
   swingRate: 0.5
   swingAngle: 60
   viewAngle: 90
-  rotationSpeed: 50
+  rotationSpeed: 100
   hasWeapon: 1
   audWeaponSwing:
   - {fileID: 8300000, guid: cab105fac4cec034096fd7b006f6148e, type: 3}

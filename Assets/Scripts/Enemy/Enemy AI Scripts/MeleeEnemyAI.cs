@@ -54,9 +54,12 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
     {
         playerDir = gameManager.instance.player.transform.position - headPos.position;
 
+       
         agent.SetDestination(gameManager.instance.player.transform.position);
+       
         animator.SetFloat("Speed", agent.velocity.normalized.magnitude);
         
+       
        
 
         if (playerInRange)
