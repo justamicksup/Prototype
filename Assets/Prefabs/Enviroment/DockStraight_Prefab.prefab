@@ -61,8 +61,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ff3bff94a166a246921e5036763d6e6, type: 2}
-  - {fileID: 2100000, guid: aa5948bc5d8c9444b87ed17d95d84d61, type: 2}
+  - {fileID: -1266757229121151654, guid: e50c8bc2841195c4db5b6e8cbcb0b276, type: 3}
+  - {fileID: 1379711075021050917, guid: 41b5ac2cfc254d34f8be234ca99af768, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,7 +94,6 @@ GameObject:
   m_Component:
   - component: {fileID: 541112766394510104}
   - component: {fileID: 2779456535897574609}
-  - component: {fileID: 6205745164948167401}
   m_Layer: 0
   m_Name: DockStraight_Prefab
   m_TagString: Untagged
@@ -138,17 +137,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &6205745164948167401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5533589235358030559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a237cd1edabd402bb18b45be88b01ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SourceFBX: {fileID: 919132149155446097, guid: 41b5ac2cfc254d34f8be234ca99af768, type: 3}
-  ReplaceOnImport: 1

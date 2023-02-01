@@ -52,11 +52,11 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: de94501e5fb74be478cedc22a6e32e0b, type: 2}
-  - {fileID: 2100000, guid: 42a2d16c110b67e4c93699e26b4f15da, type: 2}
-  - {fileID: 2100000, guid: 07014b699a0117848b9fbd036e64238c, type: 2}
-  - {fileID: 2100000, guid: 2873f96aec5cc164da2bd6fe88e2d5ff, type: 2}
-  - {fileID: 2100000, guid: 040d77243003e4546a48becef4db4860, type: 2}
+  - {fileID: 1073505616252304109, guid: d719792a1a7cc5e409ef67ecd6641d51, type: 3}
+  - {fileID: 4223064395825965945, guid: d719792a1a7cc5e409ef67ecd6641d51, type: 3}
+  - {fileID: 6096199635886217660, guid: d719792a1a7cc5e409ef67ecd6641d51, type: 3}
+  - {fileID: -5606234383221112674, guid: d719792a1a7cc5e409ef67ecd6641d51, type: 3}
+  - {fileID: 2641055961850288816, guid: d719792a1a7cc5e409ef67ecd6641d51, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -102,7 +102,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6579548589171827331}
   - component: {fileID: 3060195267007919244}
-  - component: {fileID: 1746280455491122988}
   m_Layer: 0
   m_Name: TreasureChest_Prefab
   m_TagString: Untagged
@@ -146,20 +145,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &1746280455491122988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4525446131858281679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a237cd1edabd402bb18b45be88b01ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SourceFBX: {fileID: 919132149155446097, guid: d719792a1a7cc5e409ef67ecd6641d51, type: 3}
-  ReplaceOnImport: 1
 --- !u!1 &5177320774378586801
 GameObject:
   m_ObjectHideFlags: 0

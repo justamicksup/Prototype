@@ -17,7 +17,7 @@ public class explosiveWeapon : MonoBehaviour
     
     [Header("----- Bomb Visuals -----")] 
     [SerializeField] GameObject explosion;
-    public Renderer renderer;
+    public new Renderer renderer;
     public Color originalColor;
     public float blinkTime;
     public Color color;

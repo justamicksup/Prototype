@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5815355586476815190}
   - component: {fileID: 364621685914363960}
-  - component: {fileID: 2326696214195273917}
   m_Layer: 0
   m_Name: DockCorner_Prefab
   m_TagString: Untagged
@@ -54,20 +53,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &2326696214195273917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6562618635322894693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a237cd1edabd402bb18b45be88b01ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SourceFBX: {fileID: 919132149155446097, guid: e50c8bc2841195c4db5b6e8cbcb0b276, type: 3}
-  ReplaceOnImport: 1
 --- !u!1 &6701828099969194774
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,8 +114,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d21d7122837341949beb135754fbd2c6, type: 2}
-  - {fileID: 2100000, guid: b578ac48f4aa6fd47b0033e169d1bcc8, type: 2}
+  - {fileID: -1266757229121151654, guid: 41b5ac2cfc254d34f8be234ca99af768, type: 3}
+  - {fileID: 1379711075021050917, guid: e50c8bc2841195c4db5b6e8cbcb0b276, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

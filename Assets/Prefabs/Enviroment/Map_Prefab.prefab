@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1161147255834511974}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b48b56205e6ed34e9cf119dd2c33f0c, type: 2}
+  - {fileID: 4750514739761011293, guid: 2f9f552cfa7af6940a60d7b646c71576, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93,7 +93,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6252092362918388315}
   - component: {fileID: 6914897949178050691}
-  - component: {fileID: 574412727116181450}
   m_Layer: 0
   m_Name: Map_Prefab
   m_TagString: Untagged
@@ -137,17 +136,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &574412727116181450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7892295886175247959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a237cd1edabd402bb18b45be88b01ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SourceFBX: {fileID: 919132149155446097, guid: 2f9f552cfa7af6940a60d7b646c71576, type: 3}
-  ReplaceOnImport: 1

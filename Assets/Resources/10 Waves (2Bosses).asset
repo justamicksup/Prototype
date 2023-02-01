@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: 10 Waves (2Bosses)
   m_EditorClassIdentifier: 
   waves:
-  - enemiesInWave: 50
+  - enemiesInWave: 20
     wave: {fileID: 11400000, guid: 3e6a0dad856d00a489a587f6235d6cba, type: 2}
-  - enemiesInWave: 12
+  - enemiesInWave: 20
     wave: {fileID: 11400000, guid: 5c83e739049e2d64ea7c61c0bed55710, type: 2}
   - enemiesInWave: 15
     wave: {fileID: 11400000, guid: c62e0c6fe6fe178439eb84d5c4b4c57d, type: 2}

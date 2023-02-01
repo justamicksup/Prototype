@@ -8,7 +8,7 @@ public class TitleFade : MonoBehaviour
     public Image TeamLogo;
     public Image StartScreen;
     public float fadeSpeed = 1f;
-    bool isFading;
+    bool isFading = false;
     
     
     

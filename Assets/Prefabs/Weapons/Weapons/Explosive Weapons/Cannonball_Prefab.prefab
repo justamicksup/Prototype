@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7884212551707174017}
   - component: {fileID: 4096547329106610144}
-  - component: {fileID: 6584312086799679924}
   m_Layer: 0
   m_Name: Cannonball_Prefab
   m_TagString: Untagged
@@ -54,20 +53,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &6584312086799679924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1569050344161951948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a237cd1edabd402bb18b45be88b01ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SourceFBX: {fileID: 919132149155446097, guid: 1e096ec26a224c144afadc3082ccaa2d, type: 3}
-  ReplaceOnImport: 1
 --- !u!1 &5102255977946710905
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,7 +114,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fe77c8e7fb62ce449386a340f0046de, type: 2}
+  - {fileID: 1591589595654046286, guid: 1e096ec26a224c144afadc3082ccaa2d, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

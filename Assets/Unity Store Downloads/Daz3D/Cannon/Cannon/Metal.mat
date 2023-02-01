@@ -149,7 +149,7 @@ Material:
     - _TopCoatWeight: 0
     - _TranslucencyWeight: 0
     m_Colors:
-    - _Diffuse: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    - _Diffuse: {r: 1, g: 1, b: 1, a: 1}
     - _Emission: {r: 0, g: 0, b: 0, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 0}
