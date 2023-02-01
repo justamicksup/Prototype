@@ -157,7 +157,7 @@ Material:
     - _TopCoatColor: {r: 1, g: 1, b: 1, a: 1}
     - _TranslucencyColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &629256710127172706
+--- !u!114 &1672319457833448753
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
