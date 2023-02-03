@@ -41,6 +41,7 @@ public class gameManager : MonoBehaviour
     public GameObject loseMenu;
     public Image playerHPBar;
     public Image playerStaminaBar;
+    public GameObject instaKillIcon;
     public GameObject screenFlash;
     //[SerializeField] private Text[] ammoCountText;
     [SerializeField] Image[] weaponIcons;

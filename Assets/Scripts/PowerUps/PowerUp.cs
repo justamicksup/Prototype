@@ -36,6 +36,8 @@ public class PowerUp : MonoBehaviour
         gameManager.instance.playerScript.shootDamage -= power.shootDmgBonus;
         gameManager.instance.playerScript.meleeDamage -= power.meleeDmgBonus;
 
+        gameManager.instance.instaKillIcon.SetActive(false);
+
         Destroy(gameObject);
     }
 

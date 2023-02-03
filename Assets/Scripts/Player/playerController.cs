@@ -422,10 +422,12 @@ public class playerController : MonoBehaviour
         if (power.shootDmgBonus != 0)
         {
             shootDamage += power.shootDmgBonus;
+            gameManager.instance.instaKillIcon.SetActive(true);
         }
         if (power.meleeDmgBonus != 0)
         {
             meleeDamage += power.meleeDmgBonus;
+            gameManager.instance.instaKillIcon.SetActive(true);
         }
         if (power.goldBonus != 0)
         {
