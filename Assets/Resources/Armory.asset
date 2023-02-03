@@ -13,15 +13,10 @@ MonoBehaviour:
   m_Name: Armory
   m_EditorClassIdentifier: 
   MasterWeaponList:
-  - {fileID: 11400000, guid: c9c3ec12297a6404297ea0f6b1b3ee09, type: 2}
-  - {fileID: 11400000, guid: 420fa84636ae8d7459d2bb832cffe48b, type: 2}
-  - {fileID: 11400000, guid: 8dd5dbfcbf91b6146964d8cf10582558, type: 2}
-  - {fileID: 11400000, guid: 17ac5c0003eab4e43ac573efb7d41411, type: 2}
-  - {fileID: 11400000, guid: 92147d126d28d1c4f97897ed694111bc, type: 2}
-  - {fileID: 11400000, guid: 1f221e3810d7cd541a88e2c6ec9d3398, type: 2}
-  - {fileID: 11400000, guid: 4a1a974028a0fcd4a83e407fe6fa6983, type: 2}
-  - {fileID: 11400000, guid: 477e013616d7d4040bc7ebe113cde751, type: 2}
-  - {fileID: 11400000, guid: 48171595e9135964d97c32ef33a2e7bd, type: 2}
-  - {fileID: 11400000, guid: bcf0ddbff67b3fe429f13fc4266aeab3, type: 2}
+  - {fileID: 11400000, guid: d59adb0356b387949aa178f5e46a89ce, type: 2}
   - {fileID: 11400000, guid: 471e25766a7ebda4e976b4868cac1972, type: 2}
-  - {fileID: 11400000, guid: 315e487b85dcbdc459fcc079ebea9bac, type: 2}
+  - {fileID: 11400000, guid: a4f4a09b9ecef6d40be0202a1deea74c, type: 2}
+  - {fileID: 11400000, guid: 521714b85b7969d45a511603ace3b37f, type: 2}
+  - {fileID: 11400000, guid: 504e944048d948049b8843c7e31a8a8a, type: 2}
+  - {fileID: 11400000, guid: c9c3ec12297a6404297ea0f6b1b3ee09, type: 2}
+  - {fileID: 11400000, guid: 17ac5c0003eab4e43ac573efb7d41411, type: 2}
