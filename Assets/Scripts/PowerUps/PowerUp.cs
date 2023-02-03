@@ -18,7 +18,7 @@ public class PowerUp : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             gameManager.instance.playerScript.powerPickup(power);
-            aud.Play(0);
+            aud.Play();
             gameObject.SetActive(false);
 
             Invoke(nameof(ResetStats), power.effectDuration);
