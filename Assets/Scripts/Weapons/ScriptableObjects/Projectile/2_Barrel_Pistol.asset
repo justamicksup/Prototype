@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f74d68fe9c4a2d444a38063544fb9d05, type: 3}
+  m_Name: 2_Barrel_Pistol
+  m_EditorClassIdentifier: 
+  Model: {fileID: 100000, guid: 9338cea503da6d44184871e2bff075a3, type: 3}
+  gunLevel: 1
+  shootDamage: 25
+  range: 25
+  shootRate: 0.12786064
+  shootForce: 3
+  ammoCapacity: 1
+  ammoRemaining: 0
+  reloadTime: 2
+  audGunShot: {fileID: 8300000, guid: b1d9cc2e6e473a643a0f6a695c9cb5ac, type: 3}
+  audGunShotVol: 0.3
+  muzzleFlash: {fileID: 0}
