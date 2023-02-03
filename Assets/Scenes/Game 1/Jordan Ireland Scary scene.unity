@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18230176, g: 0.22487107, b: 0.2891168, a: 1}
+  m_IndirectSpecularColor: {r: 0.18230158, g: 0.2248708, b: 0.28911623, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -460,6 +460,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7936286990073150175, guid: 34f63170157053648a939e54a8c15152, type: 3}
+      propertyPath: obstacleText
+      value: Open gate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7936286991592532681, guid: 34f63170157053648a939e54a8c15152, type: 3}
+      propertyPath: obstacleText
+      value: Open gate
+      objectReference: {fileID: 0}
     - target: {fileID: 8011638298451116270, guid: 34f63170157053648a939e54a8c15152, type: 3}
       propertyPath: m_Name
       value: ===== Enviroment =====
