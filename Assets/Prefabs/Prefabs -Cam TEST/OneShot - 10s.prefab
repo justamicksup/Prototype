@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: {fileID: 11400000, guid: 2f58f0520819eff48a087dccd9362ede, type: 2}
+  aud: {fileID: 4052835389328346272}
 --- !u!54 &2055731071558752934
 Rigidbody:
   m_ObjectHideFlags: 0

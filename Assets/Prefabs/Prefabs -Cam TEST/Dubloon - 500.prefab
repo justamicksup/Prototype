@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 3108766136223328794}
   - component: {fileID: 4162761625342175052}
   - component: {fileID: 3549527432175692932}
+  - component: {fileID: 1652705319}
   m_Layer: 0
   m_Name: Dubloon - 500
   m_TagString: Untagged
@@ -238,7 +239,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7086524919657854735}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.9468155, y: -0.177001, z: 9.964928}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 0
@@ -281,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: {fileID: 11400000, guid: 563e23ac7c43d274097992f3c448e46a, type: 2}
-  aud: {fileID: 0}
+  aud: {fileID: 484785676043071514}
 --- !u!54 &4162761625342175052
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -311,3 +312,16 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.15
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1652705319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7086524919657854735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bec96fd1535d0540a76620dba5060b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 1

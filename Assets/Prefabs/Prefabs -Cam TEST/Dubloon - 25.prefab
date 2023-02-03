@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8787829183783466926}
   - component: {fileID: 4129985826208943966}
   - component: {fileID: 7928960118763608642}
+  - component: {fileID: 98083423}
   m_Layer: 0
   m_Name: Dubloon - 25
   m_TagString: Untagged
@@ -100,6 +101,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.15
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &98083423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3129925147036517503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bec96fd1535d0540a76620dba5060b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 1
 --- !u!1 &5298957360020894772
 GameObject:
   m_ObjectHideFlags: 0
