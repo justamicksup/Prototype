@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: PowerUp - OneShot 30s
   m_EditorClassIdentifier: 
   effectDuration: 30
+  healthBonus: 0
   speedBonus: 0
   staminaBonus: 0
-  shootDmgBonus: 2147483647
-  meleeDmgBonus: 2147483647
+  shootDmgBonus: 40548668
+  meleeDmgBonus: 40548596
   goldBonus: 5
   powerAudio: {fileID: 8300000, guid: 7bd6b897eb5ca4b7d88a205c4a51640c, type: 3}

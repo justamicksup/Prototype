@@ -17,9 +17,8 @@ public class PowerUp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            gameManager.instance.playerScript.powerPickup(power);
             aud.Play();
-            gameObject.SetActive(false);
+            StartCoroutine(playAud());
 
             Invoke(nameof(ResetStats), power.effectDuration);
 
@@ -33,5 +32,12 @@ public class PowerUp : MonoBehaviour
         gameManager.instance.playerScript.meleeDamage -= power.meleeDmgBonus;
 
         Destroy(gameObject);
+    }
+
+    private IEnumerator playAud()
+    {
+        yield return new WaitForSeconds(aud.clip.length);
+        gameManager.instance.playerScript.powerPickup(power);
+        gameObject.SetActive(false);
     }
 }

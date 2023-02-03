@@ -10,8 +10,8 @@ public class PowerStat : ScriptableObject
     public int healthBonus;
     public int speedBonus;
     public int staminaBonus;
-    public int shootDmgBonus;
-    public int meleeDmgBonus;
+    [Range(0, 2147483000)]public int shootDmgBonus;
+    [Range(0, 2147483000)]public int meleeDmgBonus;
     public int goldBonus;
     public AudioClip powerAudio;
 }
