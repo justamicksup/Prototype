@@ -55,7 +55,7 @@ public class chest : MonoBehaviour, actionObject
             target = other.transform;
             Debug.Log("PLAYER");
             playerInRange = true;
-            gameManager.instance.alertText.text = $"Weapon Cost: {chestCost}\n Roll Cost: {rollCost}";
+            gameManager.instance.alertText.text = $"F: Purchase Weapon ({chestCost})\n E: Reroll ({rollCost})";
             // if (chestCost < wallet)
             // {
             //     hasCoins = true;
@@ -78,7 +78,7 @@ public class chest : MonoBehaviour, actionObject
                 
                 if (Input.GetButton("Action") && !isRerolling && hasCoins)
                 {
-                   gameManager.instance.alertText.text = $"Weapon Cost: {chestCost}\n Roll Cost: {rollCost}";
+                   gameManager.instance.alertText.text = $"F: Purchase Weapon ({chestCost})\n E: Reroll ({rollCost})";
                     secondaryAction();
                     StartCoroutine(Delay(.1f));
                 }

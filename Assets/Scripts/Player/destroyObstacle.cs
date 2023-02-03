@@ -11,6 +11,7 @@ public class destroyObstacle : MonoBehaviour, actionObject
     [SerializeField] Collider box;
     [SerializeField] NavMeshObstacle obstacle;
     [SerializeField] int obstacleCost;
+    [SerializeField] string obstacleText;
     private Transform target = null;
 
     
@@ -19,8 +20,9 @@ public class destroyObstacle : MonoBehaviour, actionObject
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && obstacleLeft != null && obstacleRight != null)
         {
+            gameManager.instance.alertText.text = $"F: {obstacleText} ({obstacleCost})";
             target = gameManager.instance.player.transform;
             playerInRange= true;
             if (obstacleCost <= gameManager.instance.playerScript.GetCoins())
@@ -43,7 +45,7 @@ public class destroyObstacle : MonoBehaviour, actionObject
             hasCoins = false;
             playerInRange= false;
         }
-        //remove UI
+        gameManager.instance.alertText.text = "";
         Debug.Log("NO PLAYER");
     }
 
@@ -61,6 +63,7 @@ public class destroyObstacle : MonoBehaviour, actionObject
             {
                 Destroy(obstacleRight.gameObject);
             }
+            gameManager.instance.alertText.text = "";
             box.enabled = false;
             obstacle.enabled = false;
         }

@@ -13,6 +13,11 @@ public class PowerUp : MonoBehaviour
         aud.clip = power.powerAudio;
     }
 
+    public void Update()
+    {
+        transform.Rotate(Vector3.up * (100 * Time.deltaTime));
+    }
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
