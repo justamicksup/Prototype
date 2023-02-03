@@ -258,7 +258,7 @@ public class playerController : MonoBehaviour
             {
                 if (hit.collider.GetComponent<IDamage>() != null)
                 {
-                    hit.collider.GetComponent<IDamage>().takeDamage(projectileWeaponScriptableObjects.shootDamage);
+                    hit.collider.GetComponent<IDamage>().takeDamage(projectileWeaponScriptableObjects.damage);
                 }
 
                 if (hit.rigidbody != null)
@@ -463,7 +463,7 @@ public class playerController : MonoBehaviour
         //gunList.Add(projectileWeaponScriptableObjects);
 
         gunLevel = projectileWeaponScriptableObjects.gunLevel;
-        shootDamage = projectileWeaponScriptableObjects.shootDamage;
+        shootDamage = projectileWeaponScriptableObjects.damage;
         range = projectileWeaponScriptableObjects.range;
         shootRate = projectileWeaponScriptableObjects.shootRate;
         shootForce = projectileWeaponScriptableObjects.shootForce;
@@ -490,7 +490,7 @@ public class playerController : MonoBehaviour
         //meleeList.Add(meleeWeaponScriptableObjects);
 
         meleeLevel = meleeWeaponScriptableObjects.meleeLevel;
-        meleeReach = meleeWeaponScriptableObjects.meleeDamage;
+        meleeReach = meleeWeaponScriptableObjects.damage;
         knockbackForce = meleeWeaponScriptableObjects.knockbackForce;
         swingSpeed = meleeWeaponScriptableObjects.swingSpeed;
 

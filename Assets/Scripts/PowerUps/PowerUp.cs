@@ -6,14 +6,19 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     [SerializeField] PowerStat power;
-    //public AudioSource aud;
+    public AudioSource aud;
+
+    private void Start()
+    {
+        aud.clip = power.powerAudio;
+    }
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             gameManager.instance.playerScript.powerPickup(power);
-            //aud.PlayOneShot(aud.clip);
+            aud.Play(0);
             gameObject.SetActive(false);
 
             Invoke(nameof(ResetStats), power.effectDuration);
