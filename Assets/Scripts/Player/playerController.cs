@@ -421,11 +421,11 @@ public class playerController : MonoBehaviour
         }
         if (power.shootDmgBonus != 0)
         {
-            shootDamage *= power.shootDmgBonus;
+            shootDamage += power.shootDmgBonus;
         }
         if (power.meleeDmgBonus != 0)
         {
-            meleeDamage *= power.meleeDmgBonus;
+            meleeDamage += power.meleeDmgBonus;
         }
         if (power.goldBonus != 0)
         {
