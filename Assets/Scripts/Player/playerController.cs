@@ -472,7 +472,7 @@ public class playerController : MonoBehaviour
 
         if (power.healthBonus != 0)
         {
-            StartCoroutine(healOverTime((int)power.effectDuration, power.healthBonus));
+            StartCoroutine(healOverTime(power.effectDuration, power.healthBonus));
             gameManager.instance.healingIcon.SetActive(true);
         }
     }
@@ -639,22 +639,29 @@ public class playerController : MonoBehaviour
 
             isPlayingSteps = false;
         }
+        
     }
-
-    IEnumerator healOverTime(int duration, int amount)
+    IEnumerator healOverTime(float effectDuration, int healStep)
     {
+        if (HP + 1 > HPOrig)
+        {
+            HP = HPOrig;
+            updatePlayerHP();
+            
+        }
         if (getHP() < HPOrig)
         {
-            for (int i = 0; i < duration; i++)
+            for (int i = 0; i < effectDuration; i++)
             {
-                HP += amount;
+                if (HP + 1 > HPOrig)
+                {
+                    HP = HPOrig;
+                    break;
+                }
+                yield return new WaitForSeconds(1.0f);
+                HP += healStep;
                 updatePlayerHP();
-                new WaitForSeconds(0.5f);
             }
         }
-
-        yield return new WaitForSeconds(duration);
-    }
-
-    
+    } 
 }
