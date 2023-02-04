@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: PWSwrd1_Prefab
   m_EditorClassIdentifier: 
   Model: {fileID: 5241038399627876825, guid: 699fe54fc4976fe4db80efe59f00c6b4, type: 3}
+  weaponType: 1
   meleeLevel: 1
-  meleeDamage: 5
+  damage: 5
   meleeReach: 12
   knockbackForce: 10
   swingSpeed: 1.8633927

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: PWDagg_Prefab
   m_EditorClassIdentifier: 
   Model: {fileID: 6394265855340178909, guid: eb9dafa9e5da01d42b66221bf515416a, type: 3}
+  weaponType: 1
   meleeLevel: 1
-  meleeDamage: 8
+  damage: 5
   meleeReach: 64
   knockbackForce: 59
   swingSpeed: 2.9492676

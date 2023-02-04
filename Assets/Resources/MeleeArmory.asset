@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 709f70b05b8f933408529a4ba5d31229, type: 3}
+  m_Name: MeleeArmory
+  m_EditorClassIdentifier: 
+  MasterWeaponList:
+  - {fileID: 11400000, guid: d59adb0356b387949aa178f5e46a89ce, type: 2}
+  - {fileID: 11400000, guid: 471e25766a7ebda4e976b4868cac1972, type: 2}
+  - {fileID: 11400000, guid: a4f4a09b9ecef6d40be0202a1deea74c, type: 2}
+  - {fileID: 11400000, guid: 521714b85b7969d45a511603ace3b37f, type: 2}
+  - {fileID: 11400000, guid: 504e944048d948049b8843c7e31a8a8a, type: 2}
+  - {fileID: 11400000, guid: c9c3ec12297a6404297ea0f6b1b3ee09, type: 2}
+  - {fileID: 11400000, guid: 17ac5c0003eab4e43ac573efb7d41411, type: 2}

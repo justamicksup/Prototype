@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: PirateKnife_Prefab
   m_EditorClassIdentifier: 
   Model: {fileID: 2990741783873607454, guid: f647333a4bdc4c1408fc4cecc2a739cf, type: 3}
+  weaponType: 1
   meleeLevel: 1
-  meleeDamage: 6
+  damage: 5
   meleeReach: 72
   knockbackForce: 34
   swingSpeed: 2.4526215

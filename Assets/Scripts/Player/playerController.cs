@@ -63,6 +63,8 @@ public class playerController : MonoBehaviour
     [SerializeField] int meleeReach;
     [SerializeField] float knockbackForce;
     [SerializeField] float swingSpeed;
+    private bool canMeleeAttack = true;
+    [SerializeField] private LayerMask meleeMask;
 
 
     //public GameObject viewModel;
@@ -423,9 +425,10 @@ public class playerController : MonoBehaviour
             StartCoroutine(shoot((ProjectileWeaponScriptableObjects)weaponList[currentWeapon]));
         }
         // else if current weapon is a melee
-        else if (weaponList[currentWeapon].GetType() == typeof(MeleeWeaponScriptableObjects))
+        else if (weaponList[currentWeapon].GetType() == typeof(MeleeWeaponScriptableObjects) && canMeleeAttack)
         {
             Debug.Log("Call Melee attack");
+            StartCoroutine(MeleeAttack());
             //call melee logic
         }
 
@@ -471,6 +474,24 @@ public class playerController : MonoBehaviour
             StartCoroutine(healOverTime((int)power.effectDuration, power.healthBonus));
             gameManager.instance.healingIcon.SetActive(true);
         }
+    }
+
+    IEnumerator MeleeAttack()
+    {
+        canMeleeAttack = false;
+        Collider[] cols = Physics.OverlapSphere(transform.position, meleeReach, meleeMask);
+        //RaycastHit[] hits = Physics.SphereCastAll(transform.position, meleeReach, transform.forward, meleeMask);
+        for (int i = 0; i < cols.Length; i++)
+        {
+            IDamage enemy = cols[i].GetComponent<IDamage>();
+            if (enemy != null)
+            {
+                enemy.takeDamage(meleeDamage);
+            }
+        }
+        yield return new WaitForSeconds(0.5f);
+        canMeleeAttack = true;
+        yield break;
     }
 
 

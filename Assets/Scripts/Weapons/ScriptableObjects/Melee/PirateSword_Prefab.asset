@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: PirateSword_Prefab
   m_EditorClassIdentifier: 
   Model: {fileID: 5994430548458635609, guid: 8743c4a277ff81541bf091363ac5068b, type: 3}
+  weaponType: 1
   meleeLevel: 1
-  meleeDamage: 3
+  damage: 5
   meleeReach: 72
   knockbackForce: 73
   swingSpeed: 2.9518101

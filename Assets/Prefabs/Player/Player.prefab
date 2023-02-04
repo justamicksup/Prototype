@@ -232,11 +232,17 @@ MonoBehaviour:
   ammoCapacity: 0
   ammoRemaining: 0
   reloadTime: 0
+  bullet: {fileID: 0}
+  bulletSpeed: 0
+  muzzle: {fileID: 0}
   meleeLevel: 0
   meleeDamage: 0
   meleeReach: 0
   knockbackForce: 0
   swingSpeed: 0
+  meleeMask:
+    serializedVersion: 2
+    m_Bits: 128
   weaponList: []
   currentWeapon: 0
   WeaponSlots:

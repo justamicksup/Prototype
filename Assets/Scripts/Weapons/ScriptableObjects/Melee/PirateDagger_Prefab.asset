@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: PirateDagger_Prefab
   m_EditorClassIdentifier: 
   Model: {fileID: 949889774532150666, guid: 9c8c4c66d54ec8d4293cfcde9445f3b2, type: 3}
-  meleeDamage: 4
+  weaponType: 1
+  meleeLevel: 1
+  damage: 5
   meleeReach: 29
   knockbackForce: 43
   swingSpeed: 0.70570785
