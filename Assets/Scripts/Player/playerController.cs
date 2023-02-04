@@ -54,6 +54,7 @@ public class playerController : MonoBehaviour
     [SerializeField] float reloadTime;
     [SerializeField] GameObject bullet;
     [SerializeField] public int bulletSpeed;
+    public Transform muzzle;
 
     [Header("----- Melee Stats -----")] 
     
@@ -70,24 +71,21 @@ public class playerController : MonoBehaviour
     [SerializeField] public List<MasterWeapon> weaponList = new List<MasterWeapon>();
 
     [SerializeField] public int currentWeapon;
-
-  //[SerializeField] List<ProjectileWeaponScriptableObjects> gunList = new List<ProjectileWeaponScriptableObjects>();
     
+    //[SerializeField] List<ProjectileWeaponScriptableObjects> gunList = new List<ProjectileWeaponScriptableObjects>();
+
     //[SerializeField] List<MeleeWeaponScriptableObjects> meleeList = new List<MeleeWeaponScriptableObjects>();
 
  
 
     [SerializeField] private List<GameObject> WeaponSlots;
-    
-    
-    
+
 
     int HPOrig;
     float staminaOrig;
     public Vector3 pushBack;
     [SerializeField] int pushBackTime;
-    
-    
+
 
     bool isShooting;
     bool isReloading;
@@ -114,7 +112,6 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
         //Code to turn on if we use the pirate player with animation
         //  animator.SetFloat("Speed", move.normalized.magnitude);
         //
@@ -184,19 +181,18 @@ public class playerController : MonoBehaviour
 
         if (Input.GetButtonDown("Weapon1"))
         {
-            if(weaponList.Count > 0 && weaponList[0] != null)
+            if (weaponList.Count > 0 && weaponList[0] != null)
             {
                 changeWeapon(0);
                 try
                 {
                     SetGunStats((ProjectileWeaponScriptableObjects)weaponList[0], 0);
                 }
-                catch(InvalidCastException)
+                catch (InvalidCastException)
                 {
                     SetMeleeStats((MeleeWeaponScriptableObjects)weaponList[0], 0);
                 }
-                
-            }       
+            }
         }
 
         if (Input.GetButtonDown("Weapon2"))
@@ -230,7 +226,8 @@ public class playerController : MonoBehaviour
                 }
             }
         }
-        if(Input.GetButtonDown("Reload") && currentWeapon > 0)
+
+        if (Input.GetButtonDown("Reload") && currentWeapon > 0)
         {
             StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon]));
         }
@@ -242,6 +239,7 @@ public class playerController : MonoBehaviour
 
     IEnumerator shoot(ProjectileWeaponScriptableObjects projectileWeaponScriptableObjects)
     {
+      
         isAttacking = true;
         RaycastHit hit;
         gameManager.instance.UpdateUI();
@@ -251,16 +249,39 @@ public class playerController : MonoBehaviour
         if (projectileWeaponScriptableObjects.ammoRemaining > 0 && !isReloading)
         {
             
-            aud.PlayOneShot(projectileWeaponScriptableObjects.audGunShot, projectileWeaponScriptableObjects.audGunShotVol);
-
+            aud.PlayOneShot(projectileWeaponScriptableObjects.audGunShot,
+                projectileWeaponScriptableObjects.audGunShotVol);
 
             projectileWeaponScriptableObjects.ammoRemaining -= 1;
+                    // if bullet prefab is a collection of bullets 
+            if (bullet.transform.childCount > 0)
+            {
+                for (int i = 0; i < bullet.transform.childCount; i++)
+                {
+                    GameObject BuckShot = Instantiate(bullet, muzzle.position, bullet.transform.rotation);
+                    Rigidbody[] buckShotRigidbodies = BuckShot.GetComponentsInChildren<Rigidbody>();
+                    foreach (Rigidbody buckShotRigidbody in buckShotRigidbodies)
+                    {
+                        
+                        buckShotRigidbody.velocity = Camera.main.transform.forward  * bulletSpeed;
+                        buckShotRigidbody.GetComponent<bullet>().bulletDamage = shootDamage;
+                    }
+                }
+            } // regular single bullet weapon
+            else
+            {
+                 GameObject bulletClone = Instantiate(bullet, muzzle.position, bullet.transform.rotation);
+                            bulletClone.GetComponent<Rigidbody>().velocity =
+                              Camera.main.transform.forward * bulletSpeed;
+                            bulletClone.GetComponent<bullet>().bulletDamage = shootDamage;
+            }
+           
+           
+           
             if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit,
                     projectileWeaponScriptableObjects.range))
             {
-                GameObject bulletClone = Instantiate(bullet, transform.position, bullet.transform.rotation);
-                bulletClone.GetComponent<Rigidbody>().velocity = (hit.transform.position - transform.position).normalized * bulletSpeed;
-                bulletClone.GetComponent<bullet>().bulletDamage = shootDamage;
+                
                 if (hit.collider.GetComponent<IDamage>() != null)
                 {
                     hit.collider.GetComponent<IDamage>().takeDamage(shootDamage);
@@ -268,7 +289,8 @@ public class playerController : MonoBehaviour
 
                 if (hit.rigidbody != null)
                 {
-                    hit.rigidbody.AddForceAtPosition(transform.forward * projectileWeaponScriptableObjects.shootForce,
+                    hit.rigidbody.AddForceAtPosition(
+                        transform.forward * projectileWeaponScriptableObjects.shootForce,
                         hit.point);
                 }
             }
@@ -293,7 +315,7 @@ public class playerController : MonoBehaviour
         isReloading = false;
     }
 
-    
+
     public void takeDamage(int damage)
     {
         HP -= damage;
@@ -398,7 +420,7 @@ public class playerController : MonoBehaviour
         {
             //call shoot logic
             Debug.Log("Call Shoot attack");
-            StartCoroutine(shoot((ProjectileWeaponScriptableObjects)weaponList[currentWeapon]));           
+            StartCoroutine(shoot((ProjectileWeaponScriptableObjects)weaponList[currentWeapon]));
         }
         // else if current weapon is a melee
         else if (weaponList[currentWeapon].GetType() == typeof(MeleeWeaponScriptableObjects))
@@ -421,25 +443,30 @@ public class playerController : MonoBehaviour
             playerSpeed += power.speedBonus;
             gameManager.instance.speedBoostIcon.SetActive(true);
         }
+
         if (power.staminaBonus != 0)
         {
             stamina += power.staminaBonus;
         }
+
         if (power.shootDmgBonus != 0)
         {
             shootDamage += power.shootDmgBonus;
             gameManager.instance.instaKillIcon.SetActive(true);
         }
+
         if (power.meleeDmgBonus != 0)
         {
             meleeDamage += power.meleeDmgBonus;
             gameManager.instance.instaKillIcon.SetActive(true);
         }
+
         if (power.goldBonus != 0)
         {
-            coins+= power.goldBonus;
+            coins += power.goldBonus;
         }
-        if(power.healthBonus != 0)
+
+        if (power.healthBonus != 0)
         {
             StartCoroutine(healOverTime((int)power.effectDuration, power.healthBonus));
             gameManager.instance.healingIcon.SetActive(true);
@@ -480,7 +507,7 @@ public class playerController : MonoBehaviour
         ammoRemaining = projectileWeaponScriptableObjects.ammoRemaining;
         reloadTime = projectileWeaponScriptableObjects.reloadTime;
 
-        if(projectileWeaponScriptableObjects.bullet != null)
+        if (projectileWeaponScriptableObjects.bullet != null)
         {
             bullet = projectileWeaponScriptableObjects.bullet;
             bulletSpeed = projectileWeaponScriptableObjects.bulletSpeed;
@@ -492,11 +519,12 @@ public class playerController : MonoBehaviour
 
         WeaponSlots[index].GetComponent<MeshRenderer>().sharedMaterials =
             projectileWeaponScriptableObjects.Model.GetComponent<MeshRenderer>().sharedMaterials;
-        
+
         WeaponSlots[index].transform.localScale = projectileWeaponScriptableObjects.Model.transform.localScale;
         WeaponSlots[index].transform.localRotation = projectileWeaponScriptableObjects.Model.transform.rotation;
 
-       
+        muzzle.transform.localPosition = projectileWeaponScriptableObjects.GetMuzzleLocation().localPosition;
+        
         ammo = projectileWeaponScriptableObjects.ammoRemaining;
     }
 
@@ -518,7 +546,6 @@ public class playerController : MonoBehaviour
 
         WeaponSlots[index].transform.localScale = meleeWeaponScriptableObjects.Model.transform.localScale;
         WeaponSlots[index].transform.localRotation = meleeWeaponScriptableObjects.Model.transform.rotation;
-       
     }
 
     public void GetWeaponType(MasterWeapon tempArmoryListOfWeapon, int index)
@@ -570,7 +597,7 @@ public class playerController : MonoBehaviour
             WeaponSlots[currentWeapon].SetActive(true);
         }
     }
-    
+
     IEnumerator playSteps()
     {
         if (controller.isGrounded)
@@ -588,8 +615,8 @@ public class playerController : MonoBehaviour
 
             isPlayingSteps = false;
         }
-        
     }
+
     IEnumerator healOverTime(int duration, int amount)
     {
         if (getHP() < HPOrig)
@@ -601,8 +628,9 @@ public class playerController : MonoBehaviour
                 new WaitForSeconds(0.5f);
             }
         }
+
         yield return new WaitForSeconds(duration);
     }
+
     
-   
 }

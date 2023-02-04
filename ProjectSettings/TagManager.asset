@@ -17,6 +17,7 @@ TagManager:
   - Projectile
   - Sun
   - FxTemporaire
+  - Muzzle
   layers:
   - Default
   - TransparentFX

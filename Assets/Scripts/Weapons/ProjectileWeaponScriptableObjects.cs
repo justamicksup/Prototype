@@ -22,7 +22,6 @@ public class ProjectileWeaponScriptableObjects : MasterWeapon
     public ParticleSystem muzzleFlash;
     public GameObject bullet;
     public int bulletSpeed;
-    
     public void Randomize()
     {
         
@@ -34,5 +33,10 @@ public class ProjectileWeaponScriptableObjects : MasterWeapon
         ammoCapacity =Random.Range(5, 30);
         ammoRemaining = ammoCapacity;
         reloadTime = Random.Range(0.1f, 2f);
+    }
+
+    public Transform GetMuzzleLocation()
+    {
+        return Model.transform.Find("Muzzle");
     }
 }

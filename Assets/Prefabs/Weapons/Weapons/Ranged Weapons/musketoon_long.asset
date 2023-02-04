@@ -15,13 +15,15 @@ MonoBehaviour:
   Model: {fileID: 746614221169972677, guid: 322066efe6c02cd4a975b0d74a52d0a6, type: 3}
   weaponType: 3
   gunLevel: 1
-  damage: 20
-  range: 50
-  shootRate: 2
+  damage: 100
+  range: 200
+  shootRate: 0.8
   shootForce: 1
   ammoCapacity: 1
   ammoRemaining: 0
-  reloadTime: 1
+  reloadTime: 0.5
   audGunShot: {fileID: 8300000, guid: 22284098b1541dc4fae2ccc076508260, type: 3}
-  audGunShotVol: 0.1
+  audGunShotVol: 0.4
   muzzleFlash: {fileID: 0}
+  bullet: {fileID: 5245255688520990098, guid: 2e622fc3b9bedfa45bf778dccc584963, type: 3}
+  bulletSpeed: 30
