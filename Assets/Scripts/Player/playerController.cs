@@ -379,6 +379,7 @@ public class playerController : MonoBehaviour
     public void addCoins(int amount)
     {
         coins += amount;
+        gameManager.instance.updateCoinUI();
     }
 
     public void changeWeapon(int weapon)
@@ -467,7 +468,7 @@ public class playerController : MonoBehaviour
 
         if (power.goldBonus != 0)
         {
-            coins += power.goldBonus;
+            addCoins(power.goldBonus);
         }
 
         if (power.healthBonus != 0)
