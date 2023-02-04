@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ca8ea7698aad546ba30bd172e960d4, type: 3}
   m_Name: PowerUp - 10 coins
   m_EditorClassIdentifier: 
-  effectDuration: 0.1
+  effectDuration: 3
+  healthBonus: 0
   speedBonus: 0
   staminaBonus: 0
   shootDmgBonus: 0
