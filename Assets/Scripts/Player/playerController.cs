@@ -14,6 +14,7 @@ public class playerController : MonoBehaviour
     CharacterController controller;
     [SerializeField] AudioSource aud;
     [SerializeField] Animator animator;
+    [SerializeField] private Animation anim;
     
     
     [Header("----- Player Stats -----")] [Range(1, 100)] [SerializeField]
@@ -478,6 +479,7 @@ public class playerController : MonoBehaviour
 
     IEnumerator MeleeAttack()
     {
+        anim.Play();
         canMeleeAttack = false;
         Collider[] cols = Physics.OverlapSphere(transform.position, meleeReach, meleeMask);
         //RaycastHit[] hits = Physics.SphereCastAll(transform.position, meleeReach, transform.forward, meleeMask);
@@ -490,6 +492,7 @@ public class playerController : MonoBehaviour
             }
         }
         yield return new WaitForSeconds(0.5f);
+        anim.Stop();
         canMeleeAttack = true;
         yield break;
     }

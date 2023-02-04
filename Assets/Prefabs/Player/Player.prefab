@@ -189,6 +189,7 @@ MonoBehaviour:
   controller: {fileID: 2636245865579264848}
   aud: {fileID: 3734570729019460057}
   animator: {fileID: 0}
+  anim: {fileID: 1480038083}
   HP: 100
   stamina: 100
   playerSpeed: 10
@@ -347,6 +348,7 @@ GameObject:
   - component: {fileID: 7870094666108918742}
   - component: {fileID: 1734798111091131791}
   - component: {fileID: 4795851794963073903}
+  - component: {fileID: 1480038083}
   m_Layer: 0
   m_Name: WeaponCam
   m_TagString: MainCamera
@@ -448,6 +450,22 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!111 &1480038083
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4453129651912360981}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 7ee08cc539423d349b23ad8b81359bfc, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 7ee08cc539423d349b23ad8b81359bfc, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &4694620593319544535
 GameObject:
   m_ObjectHideFlags: 0
