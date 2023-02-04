@@ -19,6 +19,8 @@ public class chest : MonoBehaviour, actionObject
     private Transform target = null;
     public Armory tempArmory;
 
+    private bool showChest = false;
+
     bool hasCoins;
     bool openingChest;
     bool playerInRange;
@@ -45,6 +47,22 @@ public class chest : MonoBehaviour, actionObject
         else
         {
             hasCoins = false;
+        }
+
+        if(showChest)
+        {
+            if (Input.GetButtonDown("Action") && !isRerolling && hasCoins)
+            {
+                secondaryAction();
+                gameManager.instance.alertText.text = $"F: Purchase Weapon ({chestCost})\n E: Reroll ({rollCost})";
+                //StartCoroutine(Delay(.1f));
+            }
+
+            if (Input.GetButton("Submit") && wallet >= chestCost)
+            {
+                primaryAction();
+                gameManager.instance.alertText.text = "";
+            }
         }
     }
 
@@ -74,22 +92,8 @@ public class chest : MonoBehaviour, actionObject
         if (other.tag == "Player")
         {
             if (playerInRange)
-            { 
-                
-                if (Input.GetButtonDown("Action") && !isRerolling && hasCoins)
-                {
-                   gameManager.instance.alertText.text = $"F: Purchase Weapon ({chestCost})\n E: Reroll ({rollCost})";
-                    secondaryAction();
-                    //StartCoroutine(Delay(.1f));
-                }
-            
-            }
-
-
-            if (playerInRange && Input.GetButton("Submit") && wallet >= chestCost)
             {
-                primaryAction();
-                gameManager.instance.alertText.text = "";
+                showChest = true;
             }
         }
     }
@@ -99,6 +103,7 @@ public class chest : MonoBehaviour, actionObject
     {
         if (other.tag == "Player")
         {
+            showChest = false;
             target = null;
             weaponDisplay.SetActive(false);
             gameManager.instance.alertText.text = "";
