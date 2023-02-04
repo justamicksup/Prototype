@@ -15,7 +15,7 @@ public class PowerUp : MonoBehaviour
 
     public void Update()
     {
-        transform.Rotate(Vector3.up * (100 * Time.deltaTime));
+
     }
 
     public void OnTriggerEnter(Collider other)

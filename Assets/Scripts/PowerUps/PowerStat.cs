@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PowerStat : ScriptableObject
 {
-    [Range(0.1f, 30.0f)] [SerializeField] public float effectDuration;
+    [Range(0.1f, 100.0f)] [SerializeField] public float effectDuration;
     public int healthBonus;
     public int speedBonus;
     public int staminaBonus;
