@@ -52,6 +52,8 @@ public class playerController : MonoBehaviour
     [SerializeField] public int ammoCapacity;
     [SerializeField] public int ammoRemaining;
     [SerializeField] float reloadTime;
+    [SerializeField] GameObject bullet;
+    [SerializeField] public int bulletSpeed;
 
     [Header("----- Melee Stats -----")] 
     
@@ -256,6 +258,9 @@ public class playerController : MonoBehaviour
             if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit,
                     projectileWeaponScriptableObjects.range))
             {
+                GameObject bulletClone = Instantiate(bullet, transform.position, bullet.transform.rotation);
+                bulletClone.GetComponent<Rigidbody>().velocity = (hit.transform.position - transform.position).normalized * bulletSpeed;
+                bulletClone.GetComponent<bullet>().bulletDamage = shootDamage;
                 if (hit.collider.GetComponent<IDamage>() != null)
                 {
                     hit.collider.GetComponent<IDamage>().takeDamage(shootDamage);
@@ -474,6 +479,12 @@ public class playerController : MonoBehaviour
         ammoCapacity = projectileWeaponScriptableObjects.ammoCapacity;
         ammoRemaining = projectileWeaponScriptableObjects.ammoRemaining;
         reloadTime = projectileWeaponScriptableObjects.reloadTime;
+
+        if(projectileWeaponScriptableObjects.bullet != null)
+        {
+            bullet = projectileWeaponScriptableObjects.bullet;
+            bulletSpeed = projectileWeaponScriptableObjects.bulletSpeed;
+        }
 
 
         WeaponSlots[index].GetComponent<MeshFilter>().sharedMesh =

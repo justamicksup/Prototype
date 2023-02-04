@@ -20,6 +20,8 @@ public class ProjectileWeaponScriptableObjects : MasterWeapon
     public AudioClip audGunShot;
     [Range(0, 1)] public float audGunShotVol;
     public ParticleSystem muzzleFlash;
+    public GameObject bullet;
+    public int bulletSpeed;
     
     public void Randomize()
     {
