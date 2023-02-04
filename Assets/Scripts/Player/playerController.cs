@@ -414,6 +414,7 @@ public class playerController : MonoBehaviour
         if (power.speedBonus != 0)
         {
             playerSpeed += power.speedBonus;
+            gameManager.instance.speedBoostIcon.SetActive(true);
         }
         if (power.staminaBonus != 0)
         {
@@ -436,6 +437,7 @@ public class playerController : MonoBehaviour
         if(power.healthBonus != 0)
         {
             StartCoroutine(healOverTime((int)power.effectDuration, power.healthBonus));
+            gameManager.instance.healingIcon.SetActive(true);
         }
     }
 
