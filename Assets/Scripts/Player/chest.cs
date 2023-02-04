@@ -76,11 +76,11 @@ public class chest : MonoBehaviour, actionObject
             if (playerInRange)
             { 
                 
-                if (Input.GetButton("Action") && !isRerolling && hasCoins)
+                if (Input.GetButtonDown("Action") && !isRerolling && hasCoins)
                 {
                    gameManager.instance.alertText.text = $"F: Purchase Weapon ({chestCost})\n E: Reroll ({rollCost})";
                     secondaryAction();
-                    StartCoroutine(Delay(.1f));
+                    //StartCoroutine(Delay(.1f));
                 }
             
             }
@@ -129,17 +129,17 @@ public class chest : MonoBehaviour, actionObject
         
     }
 
-    IEnumerator Delay(float delay)
-    {
-        //Delay to not reroll weapon since registering multiple rolls in 1 frame
-        isRerolling = true;
-        yield return new WaitForSeconds(delay);
-        isRerolling = false;
-    }
+    //commented out because issue fixed with GetButtonDown
+    //IEnumerator Delay(float delay)
+    //{
+    //    //Delay to not reroll weapon since registering multiple rolls in 1 frame
+    //    isRerolling = true;
+    //    yield return new WaitForSeconds(delay);
+    //    isRerolling = false;
+    //}
 
     private void rollChest()
     {
-        gameManager.instance.playerScript.addCoins(-rollCost);
         seed = Random.Range(0, tempArmory.MasterWeaponList.Count);
         chestCost = (seed + 1) * 100;
 
