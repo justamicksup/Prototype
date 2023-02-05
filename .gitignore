@@ -66,3 +66,5 @@ TESTING SANDBOX
 .idea
 ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
 ProjectSettings/ShaderGraphSettings.asset
+ProjectSettings/Packages/com.unity.probuilder/Settings.json
+ProjectSettings/ProjectSettings.asset
