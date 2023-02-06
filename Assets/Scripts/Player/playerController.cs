@@ -141,9 +141,9 @@ public class playerController : MonoBehaviour
                 Attack();
             }
 
-            if (!isReloading && Input.GetButtonDown("Reload"))
+            if (!isReloading && Input.GetButtonDown("Reload") && ammoRemaining != ammoCapacity)
             {
-                //StartCoroutine(reload(projectileWeaponScriptableObjects));
+                StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon]));
             }
         }
     }
@@ -230,7 +230,7 @@ public class playerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Reload") && currentWeapon > 0)
+        if (Input.GetButtonDown("Reload") && currentWeapon > 0 && !isReloading)
         {
             StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon]));
         }
@@ -255,7 +255,6 @@ public class playerController : MonoBehaviour
             aud.PlayOneShot(projectileWeaponScriptableObjects.audGunShot,
                 projectileWeaponScriptableObjects.audGunShotVol);
 
-            projectileWeaponScriptableObjects.ammoRemaining -= 1;
                     // if bullet prefab is a collection of bullets 
             if (bullet.transform.childCount > 0)
             {
@@ -278,9 +277,10 @@ public class playerController : MonoBehaviour
                               Camera.main.transform.forward * bulletSpeed;
                             bulletClone.GetComponent<bullet>().bulletDamage = shootDamage;
             }
-           
-           
-           
+            projectileWeaponScriptableObjects.ammoRemaining -= 1;
+            ammoRemaining = projectileWeaponScriptableObjects.ammoRemaining;
+
+
             if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit,
                     projectileWeaponScriptableObjects.range))
             {
@@ -314,6 +314,7 @@ public class playerController : MonoBehaviour
 
         yield return new WaitForSeconds(projectileWeaponScriptableObjects.reloadTime);
         projectileWeaponScriptableObjects.ammoRemaining = projectileWeaponScriptableObjects.ammoCapacity;
+        ammoRemaining = projectileWeaponScriptableObjects.ammoRemaining;
         aud.PlayOneShot(audReload, audReloadVol);
         isReloading = false;
     }
