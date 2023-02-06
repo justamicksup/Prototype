@@ -239,9 +239,15 @@ public class gameManager : MonoBehaviour
         activeMenu.SetActive(true);
     }
     
-    public void updateAmmoUI()
+    public void updateAmmoUI(bool gun = true)
     {
-        ammoText.text = $"{playerScript.ammoRemaining} / {playerScript.ammoCapacity}";
+        if (gun)
+        {
+            ammoText.text = $"{playerScript.weaponList[playerScript.currentWeapon].currentClip} / {playerScript.ammoRemaining}";
+        }else
+        {
+            ammoText.text = $"\u221E / \u221E";
+        }
     }
 
     public void updateAmmo(int ammo)
@@ -277,7 +283,6 @@ public class gameManager : MonoBehaviour
         }        
         coinsText.text = playerScript.GetCoins().ToString();
         waveCountText.text = $" {waveCount}";
-        updateAmmoUI();
         
     }
     
