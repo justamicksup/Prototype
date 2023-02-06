@@ -18,6 +18,7 @@ TagManager:
   - Sun
   - FxTemporaire
   - Muzzle
+  - Destructible
   layers:
   - Default
   - TransparentFX
