@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Barricade : MonoBehaviour, IDamage, actionObject
 {
@@ -89,6 +90,7 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
         gameManager.instance.playerScript.addCoins(-gateCost);
         Gate1.SetActive(false); Gate2.SetActive(false);
         pillars.transform.parent.GetComponent<BoxCollider>().enabled = false;
+        pillars.transform.parent.GetComponent<NavMeshObstacle>().enabled = false;
     }
     public void secondaryAction()
     {
@@ -96,6 +98,7 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
         gameManager.instance.playerScript.addCoins(-repairCost);
         Gate1.SetActive(true); Gate2.SetActive(true);
         pillars.transform.parent.GetComponent<BoxCollider>().enabled = true;
+        pillars.transform.parent.GetComponent<NavMeshObstacle>().enabled = true;
         HP = HPOrig;
     }
     void cleanUpDebris()

@@ -19,6 +19,7 @@ TagManager:
   - FxTemporaire
   - Muzzle
   - Destructible
+  - Gate
   layers:
   - Default
   - TransparentFX
