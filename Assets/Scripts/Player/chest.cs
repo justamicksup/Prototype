@@ -38,7 +38,7 @@ public class chest : MonoBehaviour, actionObject
     void Update()
     {
         wallet = gameManager.instance.playerScript.GetCoins();
-        if (rollCost < wallet)
+        if (rollCost <= wallet)
         {
             hasCoins = true;
             weaponDisplay.SetActive(true);

@@ -18,6 +18,8 @@ TagManager:
   - Sun
   - FxTemporaire
   - Muzzle
+  - Destructible
+  - Gate
   layers:
   - Default
   - TransparentFX
