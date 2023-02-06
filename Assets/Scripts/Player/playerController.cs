@@ -319,6 +319,7 @@ public class playerController : MonoBehaviour
 
         yield return new WaitForSeconds(projectileWeaponScriptableObjects.shootRate);
         isAttacking = false;
+        StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon].weapon));
     }
 
     IEnumerator reload(ProjectileWeaponScriptableObjects projectileWeaponScriptableObjects)
@@ -653,6 +654,8 @@ public class playerController : MonoBehaviour
             SetMeleeStats((MeleeWeaponScriptableObjects)tempArmoryListOfWeapon, currentWeapon);
             gameManager.instance.updateAmmoUI(false);
         }
+
+        StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon].weapon));
 
     }
 
