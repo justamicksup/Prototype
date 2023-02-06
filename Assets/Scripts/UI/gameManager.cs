@@ -19,7 +19,7 @@ public class gameManager : MonoBehaviour
     [Header("----- Player -----")] public GameObject player;
     public playerController playerScript;
 
-    
+
 
     [Header("----- Game Goal -----")] public int enemiesRemaining;
     public int waveCount;
@@ -32,8 +32,8 @@ public class gameManager : MonoBehaviour
     public Armory armory;
     public bool nextWave;
     [SerializeField] private TextMeshProUGUI enemiesRemainingText;
-    
-    
+
+
     [Header("----- UI -----")]
     public GameObject activeMenu;
     public GameObject pauseMenu;
@@ -65,14 +65,14 @@ public class gameManager : MonoBehaviour
     [Range(0, 1)] [SerializeField] float levelVol;
     [Header("----- Game Settings -----]")]
     public int sensitivity;
-    
-    
+
+
     void Awake()
     {
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
         GameObject go = GameObject.FindGameObjectWithTag("Ships");
-        if(go != null)
+        if (go != null)
         {
             shipAnim = go.GetComponent<Animation>();
         }
@@ -80,31 +80,31 @@ public class gameManager : MonoBehaviour
         //HUD = transform.parent.gameObject.GetComponent<HUD>();
         playerScript = player.GetComponent<playerController>();
 
-          //****TURN ON FOR TESTING*****\\
+        //****TURN ON FOR TESTING*****\\
 
-         playerScript.addCoins(2000);
+        playerScript.addCoins(2000);
 
         //*******TURN ON FOR TESTING********\\
 
-        
+
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
         timeScaleOrig = Time.timeScale;
         waveController = Resources.Load("10 Waves (2Bosses)") as WaveController;
-        
+
         //ammoCountText[0].text = "";
         //ammoCountText[1].text = "";
         //ammoCountText[2].text = "";
         waveCountText.text = "";
         coinsText.text = playerScript.GetCoins().ToString();
-        
+
         if (audBackground != null)
         {
             audBackground.volume = levelVolBackground;
             audBackground.clip = levelMusicBackground[Random.Range(0, levelMusicBackground.Length)];
             audBackground.Play();
         }
-        
-        
+
+
     }
 
     void Update()
@@ -130,13 +130,13 @@ public class gameManager : MonoBehaviour
 
     private IEnumerator StartGameHelper()
     {
-        
-        if(shipAnim != null)
+
+        if (shipAnim != null)
         {
             shipAnim.clip = shipAnim.GetClip("ShipsLanding");
             shipAnim.Play();
         }
-        if(sun != null)
+        if (sun != null)
         {
             float time = 0;
             Quaternion startValue = transform.rotation;
@@ -167,13 +167,13 @@ public class gameManager : MonoBehaviour
         screenFlash.SetActive(true);
         yield return new WaitForSeconds(0.15f);
         screenFlash.SetActive(false);
-        
+
     }
 
     public void updateEnemyRemaining(int amount)
     {
         enemiesRemaining += amount;
-//        enemiesRemainingText.text = enemiesRemaining.ToString("F0");
+        //        enemiesRemainingText.text = enemiesRemaining.ToString("F0");
 
         // check to see if game is over based on enemy count <= 0
 
@@ -238,23 +238,30 @@ public class gameManager : MonoBehaviour
         activeMenu = loseMenu;
         activeMenu.SetActive(true);
     }
-    
-    public void updateAmmoUI()
+
+    public void updateAmmoUI(bool gun = true)
     {
-        ammoText.text = $"{playerScript.ammoRemaining} / {playerScript.ammoCapacity}";
+        if (gun)
+        {
+            ammoText.text = $"{playerScript.weaponList[playerScript.currentWeapon].currentClip} / {playerScript.ammoRemaining}";
+        }
+        else
+        {
+            ammoText.text = $"\u221E / \u221E";
+        }
     }
 
     public void updateAmmo(int ammo)
     {
         playerScript.ammo -= ammo;
-        
+
     }
 
-  
+
 
     public void UpdateUI()
     {
-        if(playerScript.weaponList.Count > 0)
+        if (playerScript.weaponList.Count > 0)
         {
             if (playerScript.currentWeapon == 0)
             {
@@ -274,13 +281,12 @@ public class gameManager : MonoBehaviour
                 weaponIcons[1].color = new Color(255, 255, 255, 0.2f);
                 weaponIcons[2].color = new Color(255, 255, 255, 1f);
             }
-        }        
+        }
         coinsText.text = playerScript.GetCoins().ToString();
         waveCountText.text = $" {waveCount}";
-        updateAmmoUI();
-        
+
     }
-    
+
     public void updateCoinUI()
     {
         coinsText.text = playerScript.GetCoins().ToString();

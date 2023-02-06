@@ -230,8 +230,8 @@ MonoBehaviour:
   range: 0
   shootRate: 0
   shootForce: 0
-  ammoCapacity: 0
-  ammoRemaining: 0
+  ammoRemaining: 50
+  clipAmount: 0
   reloadTime: 0
   bullet: {fileID: 0}
   bulletSpeed: 0
