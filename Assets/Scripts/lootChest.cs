@@ -22,7 +22,7 @@ public class lootChest : MonoBehaviour, actionObject
 
     void Update()
     {
-        if (Input.GetButton("Submit") && checkPlayerCoins())
+        if (Input.GetButtonDown("Submit") && checkPlayerCoins())
         {           
             primaryAction();
         }
