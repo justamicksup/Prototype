@@ -20,6 +20,10 @@ public class bullet : MonoBehaviour
         {
             gameManager.instance.playerScript.takeDamage(bulletDamage);
         }
+        if(other.CompareTag("Destructible"))
+        {
+            other.GetComponent<IDamage>().takeDamage(bulletDamage);
+        }
         Destroy(gameObject);
     }
 }
