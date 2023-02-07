@@ -406,12 +406,12 @@ public class playerController : MonoBehaviour
     {
         if (weaponList.Count > weapon)
         {
-            Debug.Log("Correct number");
+            //Debug.Log("Correct number");
             WeaponSlots[currentWeapon].SetActive(false);
             WeaponSlots[weapon].SetActive(true);
             currentWeapon = weapon;
             //change to infinity if melee weapon
-            Debug.Log(weaponList[currentWeapon].isGun);
+            //Debug.Log(weaponList[currentWeapon].isGun);
             if (weaponList[currentWeapon].isGun)
                 gameManager.instance.updateAmmoUI(true);
             else
@@ -419,7 +419,7 @@ public class playerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("bad math");
+            //Debug.Log("bad math");
         }
     }
 
@@ -449,13 +449,13 @@ public class playerController : MonoBehaviour
         if (weaponList[currentWeapon].isGun)
         {
             //call shoot logic
-            Debug.Log("Call Shoot attack");
+            //Debug.Log("Call Shoot attack");
             StartCoroutine(shoot((ProjectileWeaponScriptableObjects)weaponList[currentWeapon].weapon));
         }
         // else if current weapon is a melee
         else if (!weaponList[currentWeapon].isGun && canMeleeAttack)
         {
-            Debug.Log("Call Melee attack");
+            //Debug.Log("Call Melee attack");
             StartCoroutine(MeleeAttack());
             //call melee logic
         }
@@ -621,13 +621,13 @@ public class playerController : MonoBehaviour
     {
         if (tempArmoryListOfWeapon.GetType() == typeof(ProjectileWeaponScriptableObjects))
         {
-            Debug.Log("Projectile");
+            //Debug.Log("Projectile");
             return "Projectile";
         }
 
         else if (tempArmoryListOfWeapon.GetType() == typeof(MeleeWeaponScriptableObjects))
         {
-            Debug.Log("Melee");
+            //Debug.Log("Melee");
             return "Melee";
         }
         return "";

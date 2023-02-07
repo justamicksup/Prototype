@@ -165,7 +165,7 @@ using UnityEngine.AI;
         GameObject bulletClone = Instantiate(bullet, shootPos.position, bullet.transform.rotation);
         bulletClone.GetComponent<Rigidbody>().velocity = (gameManager.instance.player.transform.position - headPos.transform.position).normalized * bulletSpeed;
         bulletClone.GetComponent<bullet>().bulletDamage = shootDamage;
-        Debug.Log(bulletClone.GetComponent<bullet>().bulletDamage);
+        //Debug.Log(bulletClone.GetComponent<bullet>().bulletDamage);
 
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
@@ -196,7 +196,7 @@ using UnityEngine.AI;
         playerDir = gameManager.instance.player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(playerDir, transform.forward);
 
-        Debug.Log(angleToPlayer);
+        //Debug.Log(angleToPlayer);
 
 
         RaycastHit hit;
@@ -215,7 +215,7 @@ using UnityEngine.AI;
 
                 if (!isShooting && angleToPlayer <= shootAngle)
                 {
-                    Debug.Log("Shooting player");
+                    //Debug.Log("Shooting player");
                     StartCoroutine(shoot());
                 }
                 return true;
