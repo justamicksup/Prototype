@@ -1896,6 +1896,7 @@ GameObject:
   - component: {fileID: 7194625449818795360}
   - component: {fileID: 8239809913347350534}
   - component: {fileID: -1427508704116150443}
+  - component: {fileID: 9103919525943553694}
   m_Layer: 7
   m_Name: Enemy( Projectile)
   m_TagString: Range
@@ -2056,6 +2057,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 0}
+--- !u!114 &9103919525943553694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7824966144815336657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221748aa8c402a84d8a5d92d8eb229e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 7823621491475406671}
+  separationDistance: 1
+  separationStrength: 0.1
 --- !u!1 &7824969141768778923
 GameObject:
   m_ObjectHideFlags: 0

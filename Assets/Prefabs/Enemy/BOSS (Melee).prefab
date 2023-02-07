@@ -1737,6 +1737,7 @@ GameObject:
   - component: {fileID: 7251034603172202659}
   - component: {fileID: 8440035157549090245}
   - component: {fileID: 7774542116866290456}
+  - component: {fileID: 3871526681555672862}
   m_Layer: 7
   m_Name: BOSS (Melee)
   m_TagString: Melee
@@ -1891,6 +1892,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 0}
+--- !u!114 &3871526681555672862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7777564237960259858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221748aa8c402a84d8a5d92d8eb229e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 7776518621719362188}
+  separationDistance: 1
+  separationStrength: 0.1
 --- !u!1 &7777566809712972136
 GameObject:
   m_ObjectHideFlags: 0

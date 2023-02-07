@@ -833,6 +833,7 @@ GameObject:
   - component: {fileID: 4905960908961672905}
   - component: {fileID: 6166738214821061551}
   - component: {fileID: 7997706699107158453}
+  - component: {fileID: -9082182179058349022}
   m_Layer: 7
   m_Name: BOSS (Explosive)
   m_TagString: Explosive
@@ -990,6 +991,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 0}
+--- !u!114 &-9082182179058349022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6546838859403903518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221748aa8c402a84d8a5d92d8eb229e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 6548163807444963712}
+  separationDistance: 1
+  separationStrength: 0.1
 --- !u!1 &6546848179140970944
 GameObject:
   m_ObjectHideFlags: 0

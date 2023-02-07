@@ -491,6 +491,7 @@ GameObject:
   - component: {fileID: 7292553168433975648}
   - component: {fileID: 8409773804851076102}
   - component: {fileID: 5754664444915332636}
+  - component: {fileID: 2527936147383256751}
   m_Layer: 7
   m_Name: Enemy (Explosive)
   m_TagString: Explosive
@@ -648,6 +649,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 0}
+--- !u!114 &2527936147383256751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8933497125020024247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221748aa8c402a84d8a5d92d8eb229e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 8934828601399275049}
+  separationDistance: 1
+  separationStrength: 0.1
 --- !u!1 &8933500040356480461
 GameObject:
   m_ObjectHideFlags: 0
