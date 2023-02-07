@@ -186,15 +186,15 @@ using UnityEngine.AI;
             playerInRange = false;
         }
     }
-    
+
     bool CanSeePlayer()
     {
         playerDir = gameManager.instance.player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(playerDir, transform.forward);
-        
+
         Debug.Log(angleToPlayer);
-        
-        
+
+
         RaycastHit hit;
 
         if (Physics.Raycast(headPos.position, playerDir, out hit))
@@ -209,20 +209,14 @@ using UnityEngine.AI;
                 }
 
                 if (!isShooting && angleToPlayer <= shootAngle)
-                { 
+                {
                     Debug.Log("Shooting player");
                     StartCoroutine(shoot());
                 }
-
                 return true;
             }
         }
-        
-
         return false;
     }
-    
-   
-    
 }
     
