@@ -16,6 +16,7 @@ public class buttonFunctions : MonoBehaviour
     public void restart()
     {
         gameManager.instance.unpauseGame();
+        gameManager.instance.LoadScreen.SetActive(true);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

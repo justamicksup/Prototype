@@ -52,6 +52,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] private Text waveCountText;
     public Text alertText;
     public GameObject TitleScreen;
+    public GameObject LoadScreen;
+    public Image LoadBar;
     [Header("----- Weapons and Ammo -----")]
     public int ammoRemaining;
     public int weaponsInLevel;
