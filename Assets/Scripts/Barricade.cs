@@ -70,10 +70,12 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
 
     public void takeDamage(int damage)
     {
-        if(HP > 0) {
+        if(HP > 0) 
+        {
             HP-= damage;
         }
-        if(HP <= 0) {
+        if(HP <= 0) 
+        {
             brokenGate1.SetActive(true); brokenGate2.SetActive(true);
             pillars.transform.parent.GetComponent<BoxCollider>().enabled = false;
             //Destroy(Gate1);
