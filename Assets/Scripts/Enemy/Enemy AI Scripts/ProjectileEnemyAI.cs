@@ -63,8 +63,7 @@ using UnityEngine.AI;
         
         if (playerInRange)
         {
-            CanSeePlayer();
-           
+            CanSeePlayer();           
         }
     }
     // Need to adjust this in all AI to work like lecture

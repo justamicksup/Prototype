@@ -26,7 +26,6 @@ public class PowerUp : MonoBehaviour
             StartCoroutine(playAud());
 
             Invoke(nameof(ResetStats), power.effectDuration);
-
         }
     }
     private void ResetStats()

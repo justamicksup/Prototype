@@ -22,6 +22,9 @@ public class ProjectileWeaponScriptableObjects : MasterWeapon
     public ParticleSystem muzzleFlash;
     public GameObject bullet;
     public int bulletSpeed;
+
+    //We need clip size, current clip count, max carry amount, and current carry count
+
     public void Randomize()
     {
         

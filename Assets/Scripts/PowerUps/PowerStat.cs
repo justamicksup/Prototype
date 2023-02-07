@@ -13,5 +13,6 @@ public class PowerStat : ScriptableObject
     [Range(0, 2147483000)]public int shootDmgBonus;
     [Range(0, 2147483000)]public int meleeDmgBonus;
     public int goldBonus;
+    public int ammoBonus;
     public AudioClip powerAudio;
 }

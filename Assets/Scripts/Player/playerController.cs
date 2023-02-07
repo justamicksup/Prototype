@@ -54,6 +54,7 @@ public class playerController : MonoBehaviour
     [SerializeField] float shootRate;
     [SerializeField] float shootForce;
     [SerializeField] public int ammoRemaining;
+    [SerializeField] public int maxAmmo;
     //[SerializeField] public int weaponList[currentWeapon].currentClip;
     [SerializeField] float reloadTime;
     [SerializeField] GameObject bullet;
@@ -470,33 +471,49 @@ public class playerController : MonoBehaviour
             playerSpeed += power.speedBonus;
             gameManager.instance.speedBoostIcon.SetActive(true);
         }
-
         if (power.staminaBonus != 0)
         {
             stamina += power.staminaBonus;
         }
-
         if (power.shootDmgBonus != 0)
         {
             shootDamage += power.shootDmgBonus;
             gameManager.instance.instaKillIcon.SetActive(true);
         }
-
         if (power.meleeDmgBonus != 0)
         {
             meleeDamage += power.meleeDmgBonus;
             gameManager.instance.instaKillIcon.SetActive(true);
         }
-
         if (power.goldBonus != 0)
         {
             addCoins(power.goldBonus);
         }
-
         if (power.healthBonus != 0)
         {
             StartCoroutine(healOverTime(power.effectDuration, power.healthBonus));
             gameManager.instance.healingIcon.SetActive(true);
+        }
+        if(power.ammoBonus != 0) {
+            for (int i = 0; i < weaponList.Count; i++)
+            {
+                if (weaponList[i].isGun)
+                {
+                    if (ammoRemaining >= maxAmmo)
+                    {
+                        ammoRemaining = maxAmmo;
+                    }
+                    else if(ammoRemaining + power.ammoBonus >=maxAmmo)
+                    {
+                        ammoRemaining = maxAmmo;
+                    }
+                    else
+                    {
+                        ammoRemaining += power.ammoBonus;
+                    }
+                    gameManager.instance.updateAmmoUI();
+                }
+            }
         }
     }
 
