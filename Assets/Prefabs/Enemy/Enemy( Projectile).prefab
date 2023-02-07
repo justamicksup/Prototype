@@ -1952,7 +1952,7 @@ MonoBehaviour:
   animator: {fileID: 7908567486035732233}
   agent: {fileID: 7823621491475406671}
   headPos: {fileID: 7826532922156539233}
-  shootPos: {fileID: 0}
+  shootPos: {fileID: 4086146769069070772}
   bullet: {fileID: 5245255688520990098, guid: 2e622fc3b9bedfa45bf778dccc584963, type: 3}
   model: {fileID: 7886939071975061047}
   aud: {fileID: 7165698963279513722}

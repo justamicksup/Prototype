@@ -70,20 +70,23 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
 
     public void takeDamage(int damage)
     {
-        if(HP > 0) 
+        if (Gate1.activeSelf && Gate2.activeSelf)
         {
-            HP-= damage;
-        }
-        if(HP <= 0) 
-        {
-            brokenGate1.SetActive(true); brokenGate2.SetActive(true);
-            pillars.transform.parent.GetComponent<BoxCollider>().enabled = false;
-            //Destroy(Gate1);
-            Gate1.SetActive(false);
-            //Destroy(Gate2);
-            Gate2.SetActive(false);
+            if (HP > 0)
+            {
+                HP -= damage;
+            }
+            if (HP <= 0)
+            {
+                brokenGate1.SetActive(true); brokenGate2.SetActive(true);
+                pillars.transform.parent.GetComponent<BoxCollider>().enabled = false;
+                //Destroy(Gate1);
+                Gate1.SetActive(false);
+                //Destroy(Gate2);
+                Gate2.SetActive(false);
 
-            Invoke(nameof(cleanUpDebris), cleanUpTimer);
+                Invoke(nameof(cleanUpDebris), cleanUpTimer);
+            }
         }
     }
 
@@ -98,6 +101,7 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
     {
         Debug.Log("REPAIRING");
         gameManager.instance.playerScript.addCoins(-repairCost);
+        pillars.transform.parent.GetComponent<NavMeshObstacle>().enabled = true;
         Gate1.SetActive(true); Gate2.SetActive(true);
         pillars.transform.parent.GetComponent<BoxCollider>().enabled = true;
         pillars.transform.parent.GetComponent<NavMeshObstacle>().enabled = true;
@@ -105,6 +109,7 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
     }
     void cleanUpDebris()
     {
+        pillars.transform.parent.GetComponent<NavMeshObstacle>().enabled = false;
         brokenGate1.SetActive(false);
         brokenGate2.SetActive(false);
         
@@ -126,4 +131,5 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
         }
         return hasCoin;
     }
+    public int GetHP() { return HP; }
 }

@@ -177,6 +177,10 @@ using UnityEngine.AI;
         {
             playerInRange = true;
         }
+        if (other.CompareTag("Destructible") && other.GetComponent<Barricade>().GetHP() > 0)
+        {
+            StartCoroutine(shoot());
+        }
     }
 
     public void OnTriggerExit(Collider other)
@@ -199,6 +203,7 @@ using UnityEngine.AI;
 
         if (Physics.Raycast(headPos.position, playerDir, out hit))
         {
+            
             if (hit.collider.CompareTag("Player"))
             {
                 agent.SetDestination(gameManager.instance.player.transform.position);
