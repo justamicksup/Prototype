@@ -4,57 +4,55 @@ using UnityEngine;
 
 public class SpawnWave : MonoBehaviour
 {
-    [SerializeField] WaveController nextWave;
-    [SerializeField] private GameObject spawnPoint;
-    private float xPos;
-    private float zPos;
-    [SerializeField] private float interval;
-    private int enemyCount;
+    [SerializeField] private int enemiesToSpawn;
+    [SerializeField] private float timer;
+    [SerializeField] private Wave wave;
+    [SerializeField] private BoxCollider area;
+    bool isSpawing;
+    bool triggerSet;
+    int enemiesSpawned;
+    public float yMin = 0f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.instance.enemiesRemaining == 0 && gameManager.instance.nextWave)
+        if (triggerSet && !isSpawing && enemiesSpawned < enemiesToSpawn)
         {
-            StartCoroutine(SpawnEnemy(interval));
-            gameManager.instance.nextWave = false;
+            StartCoroutine(spawn());
         }
+
+        if (enemiesSpawned == enemiesToSpawn)
+        {
+            Destroy(gameObject);
+        }
+       
     }
 
-    //ReSharper disable Unity.PerformanceAnalysis
-    IEnumerator SpawnEnemy(float interval)
+    public void spawnTheWave()
     {
-        var wave = nextWave.CreateWave();
-        foreach (var enemy in wave)
+        triggerSet = true;
+    }
+    
+    IEnumerator spawn()
+    {
+        var _enemy = wave.EnemiesInWave[Random.Range(0, wave.EnemiesInWave.Count - 1)];
+        isSpawing = true;
+        Vector3 areaMin = area.bounds.min;
+        Vector3 areaMax = area.bounds.max;
+        float x = Random.Range(areaMin.x, areaMax.x);
+        float z = Random.Range(areaMin.z, areaMax.z);
+        float y = area.transform.position.y;
+        Vector3 spawnPosition = new Vector3(x, y, z);
+        RaycastHit hit;
+        if (Physics.Raycast(spawnPosition, Vector3.down, out hit, Mathf.Infinity))
         {
-            
-            // Randomize x and z offset
-            float xOffset = Random.Range(-1, 1f);
-            float zOffset = Random.Range(-1, 1f);
-            
-            //Spawn Position
-            Vector3 position = spawnPoint.transform.position;
-            
-            //Spawn Point Local Scale
-            Vector3 scale = spawnPoint.transform.localScale;
-            
-            //Max bounds of the Spawn Point
-            Vector3 max = spawnPoint.GetComponent<MeshFilter>().mesh.bounds.max;
-            
-            // X and Z position offset within the max bounds
-            xPos = position.x + max.x * xOffset * scale.x;
-            zPos = position.z + max.z * zOffset * scale.z;
-            
-            //Generate GameObject
-            Instantiate(enemy, new Vector3(xPos, position.y, zPos), Quaternion.identity);
-            yield return new WaitForSeconds(interval);
-            
+            spawnPosition.y = Mathf.Max(yMin, hit.point.y);
         }
+        Instantiate(_enemy, spawnPosition, Quaternion.identity);
+
+        enemiesSpawned++;
+        yield return new WaitForSeconds(timer);
+        isSpawing = false;
     }
 }

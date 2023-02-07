@@ -6,14 +6,9 @@ using UnityEngine;
 public class TriggerEnemyWave : MonoBehaviour
 {
     bool playerInRange;
-    public GameObject chestTrigger;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
+    [SerializeField] GameObject chestTrigger;
+    [SerializeField] SpawnWave enemySpawnPoint;
+    
     // Update is called once per frame
     void Update()
     {
@@ -24,7 +19,8 @@ public class TriggerEnemyWave : MonoBehaviour
             {
                 gameManager.instance.alertText.text = "";
                 Destroy(chestTrigger);
-                gameManager.instance.StartGame();
+                enemySpawnPoint.spawnTheWave();
+                //gameManager.instance.StartGame();
             }
         }
     }
