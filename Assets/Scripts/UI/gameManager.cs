@@ -9,6 +9,7 @@ using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using Cursor = UnityEngine.Cursor;
 
 public class gameManager : MonoBehaviour
