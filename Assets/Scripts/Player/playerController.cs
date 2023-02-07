@@ -268,8 +268,7 @@ public class playerController : MonoBehaviour
                 projectileWeaponScriptableObjects.audGunShotVol);
 
             //projectileWeaponScriptableObjects.ammoRemaining -= 1;
-            ammoRemaining--;
-            weaponList[currentWeapon].currentClip--;
+            weaponList[currentWeapon].currentClip -= projectileWeaponScriptableObjects.ammoCapacity;
             gameManager.instance.updateAmmoUI();
             // if bullet prefab is a collection of bullets 
             if (bullet.transform.childCount > 0)
@@ -312,27 +311,31 @@ public class playerController : MonoBehaviour
                         hit.point);
                 }
             }
-        }
-        else
-        {
-            StartCoroutine(reload(projectileWeaponScriptableObjects));
-        }
 
-        yield return new WaitForSeconds(projectileWeaponScriptableObjects.shootRate);
+            yield return new WaitForSeconds(projectileWeaponScriptableObjects.shootRate);
+            StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon].weapon));
+        }
         isAttacking = false;
-        StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon].weapon));
+        //else
+        //{
+        //    StartCoroutine(reload(projectileWeaponScriptableObjects));
+        //}
     }
 
     IEnumerator reload(ProjectileWeaponScriptableObjects projectileWeaponScriptableObjects)
     {
         isReloading = true;
 
-        yield return new WaitForSeconds(projectileWeaponScriptableObjects.reloadTime);
-        //projectileWeaponScriptableObjects.ammoRemaining = projectileWeaponScriptableObjects.ammoCapacity;
-        weaponList[currentWeapon].currentClip = projectileWeaponScriptableObjects.ammoCapacity;
-        aud.PlayOneShot(audReload, audReloadVol);
+        if (ammoRemaining >= projectileWeaponScriptableObjects.ammoCapacity)
+        {
+            yield return new WaitForSeconds(projectileWeaponScriptableObjects.reloadTime);
+            //projectileWeaponScriptableObjects.ammoRemaining = projectileWeaponScriptableObjects.ammoCapacity;
+            weaponList[currentWeapon].currentClip = projectileWeaponScriptableObjects.ammoCapacity;
+            aud.PlayOneShot(audReload, audReloadVol);
+            ammoRemaining -= projectileWeaponScriptableObjects.ammoCapacity;
+            gameManager.instance.updateAmmoUI();
+        }
         isReloading = false;
-        gameManager.instance.updateAmmoUI();
     }
 
 
@@ -672,7 +675,8 @@ public class playerController : MonoBehaviour
             gameManager.instance.updateAmmoUI(false);
         }
 
-        StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon].weapon));
+        if(weaponList[currentWeapon].isGun)
+            StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon].weapon));
 
     }
 
