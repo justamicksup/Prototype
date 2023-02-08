@@ -571,6 +571,7 @@ public class playerController : MonoBehaviour
         muzzle.transform.localPosition = projectileWeaponScriptableObjects.GetMuzzleLocation().localPosition;
 
         ammo = projectileWeaponScriptableObjects.ammoRemaining;
+        maxAmmo = ammoRemaining - 1;
     }
 
     public void SetMeleeStats(MeleeWeaponScriptableObjects meleeWeaponScriptableObjects, int index)
