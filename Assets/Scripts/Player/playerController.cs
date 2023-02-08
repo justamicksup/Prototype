@@ -514,6 +514,11 @@ public class playerController : MonoBehaviour
                 gameManager.instance.updateAmmoUI();
             }
         }
+        if(power.weapon != null)
+        {
+            AddWeaponToInventory(power.weapon);
+        }
+        
     }
 
     IEnumerator MeleeAttack()
