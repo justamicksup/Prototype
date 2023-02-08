@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 519e39e8641e41fc872f5db2cd354efe, type: 3}
+  m_Name: Enemy (BOSS)
+  m_EditorClassIdentifier: 
+  name: Black Beard
+  health: 100
+  defense: 0
+  isBoss: 1
+  Model: {fileID: 7275824995431297771, guid: e77697f580cf90540a503e6b6f427ea1, type: 3}
+  navMesh: {fileID: 11400000, guid: 672b3309c95ed5542a413243f8235a79, type: 2}
+  throwingDistance: 20
+  bomb: {fileID: 6182639289201271482, guid: ee552b3e7cb86874d8ebe3c3863ec48e, type: 3}
+  throwAngle: 45
+  viewAngle: 60
+  forceForward: 500
+  forceUpward: 250
+  torque: 500
+  rotationSpeed: 50
+  deathEffect: {fileID: 100006, guid: 28ccd38a41e256a4e8fea96f5a8d039d, type: 3}
+  attack: 0
+  swingRate: 3
+  swingAngle: 60
+  hasWeapon: 1
+  audWeaponSwing:
+  - {fileID: 8300000, guid: cab105fac4cec034096fd7b006f6148e, type: 3}
+  - {fileID: 8300000, guid: 779c09f47f58dfe408ba85dcabf489be, type: 3}
+  - {fileID: 8300000, guid: db219d5cc29c0ba4ea2a54bb58856005, type: 3}
+  - {fileID: 8300000, guid: a6aa1e37905c4c4499e347dfbaa63940, type: 3}
+  - {fileID: 8300000, guid: 4ba44a8720ef69742af8b54416e1ad87, type: 3}
+  - {fileID: 8300000, guid: 8d50859c687877e49945ff34cef186a5, type: 3}
+  - {fileID: 8300000, guid: 7d1e1cbcb72b0b7438491e85d270a686, type: 3}
+  shootDamage: 0
+  range: 100
+  shootRate: 2
+  shootForce: 1
+  bulletSpeed: 50
+  ammoCapacity: 6
+  ammoRemaining: 6
+  reloadTime: 0.1
+  shootAngle: 45
+  audGunShot:
+  - {fileID: 8300000, guid: 22284098b1541dc4fae2ccc076508260, type: 3}
+  - {fileID: 8300000, guid: 985ecd38338cc1e4184cdea24de2cdc3, type: 3}
+  - {fileID: 8300000, guid: b1d9cc2e6e473a643a0f6a695c9cb5ac, type: 3}
+  - {fileID: 8300000, guid: e2cfe3447afef774ca1f6027cdd8a0ea, type: 3}
