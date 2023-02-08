@@ -13319,7 +13319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesToSpawn: 15
   timer: 2
-  wave: {fileID: 11400000, guid: 5c83e739049e2d64ea7c61c0bed55710, type: 2}
+  wave: {fileID: 11400000, guid: d563088f8f4e2e8468ea57bc5e888d05, type: 2}
   area: {fileID: 633146900}
   yMin: 0
 --- !u!65 &633146900
@@ -18947,7 +18947,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesToSpawn: 15
   timer: 2
-  wave: {fileID: 11400000, guid: 5c83e739049e2d64ea7c61c0bed55710, type: 2}
+  wave: {fileID: 11400000, guid: 6de42274acbdc604a841ecc7cb087a86, type: 2}
   area: {fileID: 869159630}
   yMin: 0
 --- !u!1 &874432554
@@ -20663,7 +20663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesToSpawn: 15
   timer: 2
-  wave: {fileID: 11400000, guid: 5c83e739049e2d64ea7c61c0bed55710, type: 2}
+  wave: {fileID: 11400000, guid: c62e0c6fe6fe178439eb84d5c4b4c57d, type: 2}
   area: {fileID: 929350311}
   yMin: 0
 --- !u!1 &939153467
