@@ -32,8 +32,9 @@ using UnityEngine.AI;
     [SerializeField] GameObject bullet;
     [SerializeField] Renderer model;
     public AudioSource aud;
+    [SerializeField] GameObject weaponDrop;
 
-    
+
     [Header("----- Variables -----")]
     Vector3 playerDir;
     bool isShooting;
@@ -81,6 +82,7 @@ using UnityEngine.AI;
             deathEffect.DeathByEffects();
 
             Destroy(gameObject);
+            gameManager.instance.DropLoot(transform, weaponDrop, true, true);
         }
     }
     

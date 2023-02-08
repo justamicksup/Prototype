@@ -1121,6 +1121,7 @@ MonoBehaviour:
   weapon: {fileID: 314427886}
   model: {fileID: 703160931509607400}
   aud: {fileID: 522429501}
+  weaponDrop: {fileID: 7785865396609551097, guid: b2e315dd9e9f5e24ab7452da62b73dbf, type: 3}
   audWeaponSwingtVol: 0.1
 --- !u!95 &681952652266162902
 Animator:

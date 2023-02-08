@@ -30,6 +30,7 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
     public MeleeWeapon weapon;
     [SerializeField] Renderer model;
     public AudioSource aud;
+    [SerializeField] GameObject weaponDrop;
 
     
     [Header("----- Variables -----")]
@@ -81,10 +82,10 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
         {
             gameManager.instance.updateEnemyRemaining(-1);
             gameManager.instance.playerScript.addCoins(lootValue);
-    
-                deathEffect.DeathByEffects();
+            deathEffect.DeathByEffects();
             
             Destroy(gameObject);
+            gameManager.instance.DropLoot(transform, weaponDrop, true, true);
         }
     }
     

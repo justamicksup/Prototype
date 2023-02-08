@@ -1957,6 +1957,7 @@ MonoBehaviour:
   bullet: {fileID: 5245255688520990098, guid: 2e622fc3b9bedfa45bf778dccc584963, type: 3}
   model: {fileID: 7886939071975061047}
   aud: {fileID: 7165698963279513722}
+  weaponDrop: {fileID: 3994718407844185182, guid: c9ab19a24eca4cd4281ca79595853bc2, type: 3}
   stoppingDistOrig: 0
   audGunShotVol: 0.1
 --- !u!95 &7908567486035732233
