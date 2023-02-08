@@ -20,7 +20,7 @@ public class TriggerEnemyWave : MonoBehaviour
                 gameManager.instance.alertText.text = "";
                 Destroy(chestTrigger);
                 enemySpawnPoint.spawnTheWave();
-                //gameManager.instance.StartGame();
+                gameManager.instance.StartGame();
             }
         }
     }

@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: Boss (NavMesh)
   m_EditorClassIdentifier: 
   baseOffset: 0.5
-  speed: 3.5
+  speed: 5
   angularSpeed: 120
   acceleration: 8
   stoppingDistance: 2
   autoBraking: 0
   radius: 0.5
   height: 1
+  AvoidancePriority: 50
+  AutoTraverseOffMeshLink: 1
+  AutoRepath: 1
