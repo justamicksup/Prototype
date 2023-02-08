@@ -500,27 +500,12 @@ public class playerController : MonoBehaviour
         }
         if (power.ammoBonus != 0)
         {
-            int temp = maxAmmo - ammoRemaining;
-
             if(ammoRemaining + power.ammoBonus <= maxAmmo) {
                 AddAmmo(power.ammoBonus);
             }else
             {
                 ammoRemaining = maxAmmo;
             }
-
-            //if (temp <= 0)
-            //{
-            //    ammoRemaining = maxAmmo;
-            //}
-            //else if (temp > power.ammoBonus)
-            //{
-            //    AddAmmo(temp);
-            //}
-            //else
-            //{
-            //    AddAmmo(power.ammoBonus);
-            //}
             gameManager.instance.updateAmmoUI();
         }
     }
@@ -545,26 +530,6 @@ public class playerController : MonoBehaviour
         yield break;
     }
 
-
-    // public void gunPickup(ProjectileWeaponScriptableObjects projectileWeaponScriptableObjects)
-    // {
-    //     gunList.Add(projectileWeaponScriptableObjects);
-    //
-    //     gunLevel = projectileWeaponScriptableObjects.gunLevel;
-    //     shootDamage = projectileWeaponScriptableObjects.shootDamage;
-    //     range = projectileWeaponScriptableObjects.range;
-    //     shootRate = projectileWeaponScriptableObjects.shootRate;
-    //     shootForce = projectileWeaponScriptableObjects.shootForce;
-    //     ammoCapacity = projectileWeaponScriptableObjects.ammoCapacity;
-    //     ammoRemaining = projectileWeaponScriptableObjects.ammoRemaining;
-    //     reloadTime = projectileWeaponScriptableObjects.reloadTime;
-    //
-    //     gunModel.GetComponent<MeshFilter>().sharedMesh =
-    //         projectileWeaponScriptableObjects.gunModel.GetComponent<MeshFilter>().sharedMesh;
-    //     
-    //      gunModel.GetComponent<MeshRenderer>().sharedMaterial =
-    //          projectileWeaponScriptableObjects.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-    // }
 
     public void SetGunStats(ProjectileWeaponScriptableObjects projectileWeaponScriptableObjects, int index, bool newWeapon = true)
     {
