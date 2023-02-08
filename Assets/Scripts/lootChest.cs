@@ -34,7 +34,7 @@ public class lootChest : MonoBehaviour, actionObject
         {            
             if(checkPlayerCoins()) 
             {
-                gameManager.instance.playerScript.WeaponPickup(weapon);
+                gameManager.instance.playerScript.AddWeaponToInventory(weapon);
                 gameManager.instance.playerScript.addCoins(-lootCost);
             }
         }

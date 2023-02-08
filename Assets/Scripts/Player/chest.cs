@@ -118,7 +118,7 @@ public class chest : MonoBehaviour, actionObject
     public void primaryAction()
     {
         //Take the weapon you bought
-        gameManager.instance.playerScript.WeaponPickup(tempArmory.MasterWeaponList[seed]);
+        gameManager.instance.playerScript.AddWeaponToInventory(tempArmory.MasterWeaponList[seed]);
         gameManager.instance.playerScript.addCoins(-chestCost);
         // Destroy chest
         Destroy(gameObject);

@@ -497,26 +497,23 @@ public class playerController : MonoBehaviour
             StartCoroutine(healOverTime(power.effectDuration, power.healthBonus));
             gameManager.instance.healingIcon.SetActive(true);
         }
-        if(power.ammoBonus != 0) {
-            for (int i = 0; i < weaponList.Count; i++)
+        if (power.ammoBonus != 0)
+        {
+            int temp = maxAmmo - ammoRemaining;
+
+            if (temp <= 0)
             {
-                if (weaponList[i].isGun)
-                {
-                    if (ammoRemaining >= maxAmmo)
-                    {
-                        ammoRemaining = maxAmmo;
-                    }
-                    else if(ammoRemaining + power.ammoBonus >=maxAmmo)
-                    {
-                        ammoRemaining = maxAmmo;
-                    }
-                    else
-                    {
-                        ammoRemaining += power.ammoBonus;
-                    }
-                    gameManager.instance.updateAmmoUI();
-                }
+                ammoRemaining = maxAmmo;
             }
+            else if (temp > power.ammoBonus)
+            {
+                AddAmmo(temp);
+            }
+            else
+            {
+                AddAmmo(power.ammoBonus);
+            }
+            gameManager.instance.updateAmmoUI();
         }
     }
 
@@ -631,12 +628,6 @@ public class playerController : MonoBehaviour
             return "Melee";
         }
         return "";
-    }
-
-
-    public void WeaponPickup(MasterWeapon masterWeapon)
-    {
-        AddWeaponToInventory(masterWeapon);
     }
 
     public void AddWeaponToInventory(MasterWeapon tempArmoryListOfWeapon)

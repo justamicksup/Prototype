@@ -10,7 +10,7 @@ public class WeaponPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            gameManager.instance.playerScript.WeaponPickup(weapon);
+            gameManager.instance.playerScript.AddWeaponToInventory(weapon);
             Destroy(gameObject);
         }
     }
