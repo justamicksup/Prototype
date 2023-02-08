@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Boss Wave
   m_EditorClassIdentifier: 
   <EnemiesInWave>k__BackingField:
-  - {fileID: 7777564237960259858, guid: 68efba89ed6ea694ea0022adb4af6414, type: 3}
+  - {fileID: 7275824995431297771, guid: e77697f580cf90540a503e6b6f427ea1, type: 3}

@@ -179,7 +179,6 @@ public class BossAI : MonoBehaviour, IDamage
 
                 if (healthPercentage > 0.7f)
                 {
-                    StartCoroutine(TransitionToNextAttack());
                     animator.SetInteger("WeaponType", 2);
                     if (!isShooting && angleToPlayer <= shootAngle)
                     {

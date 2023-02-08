@@ -30,7 +30,8 @@ public class TriggerEnemyWave : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
-            gameManager.instance.alertText.text = "E: Start Wave";
+            gameManager.instance.alertText.text = "E: Take The Key";
+            gameManager.instance.updateKey();
         }
     }
     public void OnTriggerExit(Collider other)

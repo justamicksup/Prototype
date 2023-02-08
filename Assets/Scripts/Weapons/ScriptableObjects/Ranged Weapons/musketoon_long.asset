@@ -19,8 +19,8 @@ MonoBehaviour:
   range: 200
   shootRate: 0.8
   shootForce: 1
-  ammoCapacity: 1
-  ammoRemaining: 0
+  magMax: 1
+  carryAmount: 0
   reloadTime: 0.5
   audGunShot: {fileID: 8300000, guid: 22284098b1541dc4fae2ccc076508260, type: 3}
   audGunShotVol: 0.4

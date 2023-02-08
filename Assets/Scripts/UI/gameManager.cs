@@ -33,7 +33,7 @@ public class gameManager : MonoBehaviour
     public Armory armory;
     public bool nextWave;
     [SerializeField] private TextMeshProUGUI enemiesRemainingText;
-
+    public int key;
 
     [Header("----- UI -----")]
     public GameObject activeMenu;
@@ -111,7 +111,7 @@ public class gameManager : MonoBehaviour
             audBackground.Play();
         }
 
-
+        key = 0;
     }
 
     void Update()
@@ -330,5 +330,10 @@ public class gameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void updateKey()
+    {
+        key += 1;
     }
 }
