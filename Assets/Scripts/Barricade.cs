@@ -11,6 +11,7 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
     [SerializeField] int gateCost;
     [SerializeField] int repairCost;
     [SerializeField] float cleanUpTimer;
+    [SerializeField] bool canTakeDamage;
 
     [Header("----- Components -----")]
     [SerializeField] GameObject pillars;
@@ -70,7 +71,7 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
 
     public void takeDamage(int damage)
     {
-        if (Gate1.activeSelf && Gate2.activeSelf)
+        if (Gate1.activeSelf && Gate2.activeSelf && canTakeDamage)
         {
             if (HP > 0)
             {
