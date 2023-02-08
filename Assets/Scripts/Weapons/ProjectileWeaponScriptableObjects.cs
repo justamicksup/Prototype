@@ -14,8 +14,8 @@ public class ProjectileWeaponScriptableObjects : MasterWeapon
     public int range = 5;
     public float shootRate = 1f;
     public float shootForce = 1;
-    public int ammoCapacity = 6;
-    public int ammoRemaining = 6;
+    public int magMax;
+    public int carryAmount;
     public float reloadTime = 0.1f;
     public AudioClip audGunShot;
     [Range(0, 1)] public float audGunShotVol;
@@ -33,8 +33,8 @@ public class ProjectileWeaponScriptableObjects : MasterWeapon
         range = Random.Range(10, 100);
         shootRate = Random.Range(0.1f, 1);
         shootForce =Random.Range(1, 5);
-        ammoCapacity =Random.Range(5, 30);
-        ammoRemaining = ammoCapacity;
+        magMax =Random.Range(5, 30);
+        carryAmount = Random.Range(10, 100);
         reloadTime = Random.Range(0.1f, 2f);
     }
 

@@ -19,7 +19,7 @@ MonoBehaviour:
   range: 40
   shootRate: 0.8
   shootForce: 1
-  ammoCapacity: 1
+  ammoCapacity: 2
   ammoRemaining: 0
   reloadTime: 0.5
   audGunShot: {fileID: 8300000, guid: 985ecd38338cc1e4184cdea24de2cdc3, type: 3}
