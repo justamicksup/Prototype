@@ -34,7 +34,8 @@ public class ExplosiveEnemyAI : MonoBehaviour, IDamage
     public Transform headPos;
     public Transform throwingHand;
     public GameObject bomb;
-   
+    [SerializeField] GameObject weaponDrop;
+
 
     [Header("----- Variables -----")] Vector3 playerDir;
     bool isThrowing;
@@ -82,6 +83,7 @@ public class ExplosiveEnemyAI : MonoBehaviour, IDamage
             deathEffect.DeathByEffects();
 
             Destroy(gameObject);
+            gameManager.instance.DropLoot(transform, weaponDrop, true, true);
         }
     }
 

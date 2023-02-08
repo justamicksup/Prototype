@@ -58,6 +58,10 @@ public class gameManager : MonoBehaviour
     [Header("----- Weapons and Ammo -----")]
     public int ammoRemaining;
     public int weaponsInLevel;
+    [Header("----- Enemy Loot Drops -----")]
+    [SerializeField] GameObject speedPowerUp;
+    [SerializeField] GameObject healthPowerUp;
+    [SerializeField] GameObject oneShotPowerUp;
     [Header("----- Background -----")]
     public AudioSource audBackground;
     public AudioClip[] levelMusicBackground;
@@ -293,5 +297,38 @@ public class gameManager : MonoBehaviour
     public void updateCoinUI()
     {
         coinsText.text = playerScript.GetCoins().ToString();
+    }
+
+    public void DropLoot(Transform trans, GameObject weapon = null, bool doesDropWeapon = false, bool doesDropPowerUp = false)
+    {
+        if (doesDropWeapon)
+        {
+            int rand = Random.Range(1, 100);
+            if (rand <= 5)
+            {
+                Instantiate(weapon, trans.position, trans.rotation);
+            }
+        }
+
+        if (doesDropPowerUp)
+        {
+            int rand = Random.Range(1, 100);
+            if (rand <= 5)
+            {
+                rand = Random.Range(1, 3);
+                switch (rand)
+                {
+                    case 1:
+                        Instantiate(speedPowerUp, trans.position, trans.rotation);
+                        break;
+                    case 2:
+                        Instantiate(healthPowerUp, trans.position, trans.rotation);
+                        break;
+                    case 3:
+                        Instantiate(oneShotPowerUp, trans.position, trans.rotation);
+                        break;
+                }
+            }
+        }
     }
 }
