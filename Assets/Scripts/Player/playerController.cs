@@ -136,21 +136,23 @@ public class playerController : MonoBehaviour
         // {
         //     animator.SetTrigger("MeleeAttack");
         // }
-
-        if (move.normalized.magnitude > 0.3f && !isPlayingSteps)
-            StartCoroutine(playSteps());
-        movement();
-
-        if (weaponList.Count > 0)
+        if (!gameManager.instance.isPaused)
         {
-            if (!isAttacking && Input.GetButton("Shoot"))
-            {
-                Attack();
-            }
+            if (move.normalized.magnitude > 0.3f && !isPlayingSteps)
+                StartCoroutine(playSteps());
+            movement();
 
-            if (!isReloading && Input.GetButtonDown("Reload"))
+            if (weaponList.Count > 0)
             {
-                StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon].weapon));
+                if (!isAttacking && Input.GetButton("Shoot"))
+                {
+                    Attack();
+                }
+
+                if (!isReloading && Input.GetButtonDown("Reload"))
+                {
+                    StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon].weapon));
+                }
             }
         }
     }
@@ -469,7 +471,6 @@ public class playerController : MonoBehaviour
 
     public void powerPickup(PowerStat power)
     {
-        Debug.Log("klasdhfliasdhjfaksdjf");
         if (power.speedBonus != 0)
         {
             playerSpeed += power.speedBonus;
