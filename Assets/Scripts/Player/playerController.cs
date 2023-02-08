@@ -469,6 +469,7 @@ public class playerController : MonoBehaviour
 
     public void powerPickup(PowerStat power)
     {
+        Debug.Log("klasdhfliasdhjfaksdjf");
         if (power.speedBonus != 0)
         {
             playerSpeed += power.speedBonus;
