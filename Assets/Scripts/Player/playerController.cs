@@ -502,18 +502,25 @@ public class playerController : MonoBehaviour
         {
             int temp = maxAmmo - ammoRemaining;
 
-            if (temp <= 0)
+            if(ammoRemaining + power.ammoBonus <= maxAmmo) {
+                AddAmmo(power.ammoBonus);
+            }else
             {
                 ammoRemaining = maxAmmo;
             }
-            else if (temp > power.ammoBonus)
-            {
-                AddAmmo(temp);
-            }
-            else
-            {
-                AddAmmo(power.ammoBonus);
-            }
+
+            //if (temp <= 0)
+            //{
+            //    ammoRemaining = maxAmmo;
+            //}
+            //else if (temp > power.ammoBonus)
+            //{
+            //    AddAmmo(temp);
+            //}
+            //else
+            //{
+            //    AddAmmo(power.ammoBonus);
+            //}
             gameManager.instance.updateAmmoUI();
         }
     }
