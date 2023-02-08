@@ -205,6 +205,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7983660002129285433}
+  - component: {fileID: 1721162808}
   m_Layer: 0
   m_Name: Walls
   m_TagString: Untagged
@@ -234,6 +235,19 @@ Transform:
   m_Father: {fileID: 7983660002566596467}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1721162808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7983660002129285434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb0126f2077741af28b161fd64d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activationRadius: 200
 --- !u!1 &7983660002293054182
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,7 +649,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7983660002566596467}
-  - component: {fileID: 7983660002566596476}
   m_Layer: 0
   m_Name: Grave Yard
   m_TagString: Untagged
@@ -650,7 +663,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7983660002566596468}
-  m_LocalRotation: {x: -0, y: -0.9693896, z: -0, w: 0.24552783}
+  m_LocalRotation: {x: 0, y: -0.9693897, z: 0, w: 0.24552737}
   m_LocalPosition: {x: 405.9, y: 81.4, z: 1267.9}
   m_LocalScale: {x: 1.15145, y: 1.15145, z: 1.200732}
   m_ConstrainProportionsScale: 1
@@ -661,19 +674,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -151.574, z: 0}
---- !u!114 &7983660002566596476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7983660002566596468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3eb0126f2077741af28b161fd64d60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activationRadius: 200
 --- !u!1 &7983660002718685799
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,6 +879,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7983660002962789574}
+  - component: {fileID: 1872656662}
   m_Layer: 0
   m_Name: Objects
   m_TagString: Untagged
@@ -908,6 +909,19 @@ Transform:
   m_Father: {fileID: 7983660002566596467}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1872656662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7983660002962789575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb0126f2077741af28b161fd64d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activationRadius: 200
 --- !u!1 &7983660003423485446
 GameObject:
   m_ObjectHideFlags: 0
