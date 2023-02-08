@@ -500,13 +500,18 @@ public class playerController : MonoBehaviour
         }
         if (power.ammoBonus != 0)
         {
-            if(ammoRemaining + power.ammoBonus <= maxAmmo) {
-                AddAmmo(power.ammoBonus);
-            }else
+            if (weaponList.Count > 0 && weaponList[currentWeapon].isGun)
             {
-                ammoRemaining = maxAmmo;
+                if (ammoRemaining + power.ammoBonus <= maxAmmo)
+                {
+                    AddAmmo(power.ammoBonus);
+                }
+                else
+                {
+                    ammoRemaining = maxAmmo;
+                }
+                gameManager.instance.updateAmmoUI();
             }
-            gameManager.instance.updateAmmoUI();
         }
     }
 
