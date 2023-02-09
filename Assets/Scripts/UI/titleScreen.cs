@@ -11,7 +11,6 @@ public class titleScreen : MonoBehaviour
     public Image StartMenu;
     public Button StartButton;
     public GameObject LevelSelect;
-    public Button LevelButton;
     public Button ScaryScene;
     public Button CaveScene;
     public GameObject LoadScreen;
@@ -26,7 +25,6 @@ public class titleScreen : MonoBehaviour
     void Start()
     {
         StartButton.onClick.AddListener(clickedStart);
-        LevelButton.onClick.AddListener(clickedLevel);
         ScaryScene.onClick.AddListener(clickedOne);
         CaveScene.onClick.AddListener(clickedTwo);
         StartCoroutine(PlayIntro());
@@ -63,12 +61,7 @@ public class titleScreen : MonoBehaviour
     void clickedStart()
     {
         LoadScreen.SetActive(true);
-        StartCoroutine(StartGame(sceneNdx));
-    }
-    void clickedLevel()
-    {
-        StartScreen.SetActive(false);
-        LevelSelect.SetActive(true);
+        StartCoroutine(StartGame(1));
     }
     void clickedOne()
     {

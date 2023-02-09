@@ -48,4 +48,14 @@ public class buttonFunctions : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+    public void open(GameObject gameObject)
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void close(GameObject gameObject)
+    {
+        gameObject.SetActive(false);
+    }    
 }
