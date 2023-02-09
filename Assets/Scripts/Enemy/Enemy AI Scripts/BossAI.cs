@@ -202,7 +202,7 @@ public class BossAI : MonoBehaviour, IDamage
                 {
                     animator.SetInteger("WeaponType", 3);
                     agent.stoppingDistance = 10;
-                    GetComponent<SphereCollider>().radius = 15;
+                    GetComponent<SphereCollider>().radius = 50;
                     if (!isThrowing)
                     {
                         StartCoroutine(ThrowBomb());
