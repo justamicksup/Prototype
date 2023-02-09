@@ -7,29 +7,35 @@ using UnityEngine.SceneManagement;
 public class titleScreen : MonoBehaviour
 {
     public Image TeamLogo;
-    public Image StartScreen;
+    public GameObject StartScreen;
+    public Image StartMenu;
     public Button StartButton;
+    public GameObject LevelSelect;
+    public Button LevelButton;
+    public Button ScaryScene;
+    public Button CaveScene;
     public GameObject LoadScreen;
     public Image LoadBar;
     public float fadeSpeed = 1f;
     bool isFading = false;
+    int sceneNdx;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        StartButton.onClick.AddListener(clicked);
+        StartButton.onClick.AddListener(clickedStart);
+        LevelButton.onClick.AddListener(clickedLevel);
+        ScaryScene.onClick.AddListener(clickedOne);
+        CaveScene.onClick.AddListener(clickedTwo);
         StartCoroutine(PlayIntro());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Submit"))
-        {
-            clicked();
-        }
+
     }
 
     IEnumerator PlayIntro()
@@ -44,7 +50,7 @@ public class titleScreen : MonoBehaviour
             startScreenTransparency += Time.deltaTime * fadeSpeed;
 
             TeamLogo.color = new Color(1, 1, 1, teamLogoTransparency);
-            StartScreen.color = new Color(1, 1, 1, startScreenTransparency);
+            StartMenu.color = new Color(1, 1, 1, startScreenTransparency);
             yield return null;
         }
 
@@ -54,15 +60,33 @@ public class titleScreen : MonoBehaviour
 
     }
 
-    void clicked()
+    void clickedStart()
     {
         LoadScreen.SetActive(true);
-        StartCoroutine(StartGame());
+        StartCoroutine(StartGame(sceneNdx));
+    }
+    void clickedLevel()
+    {
+        StartScreen.SetActive(false);
+        LevelSelect.SetActive(true);
+    }
+    void clickedOne()
+    {
+        sceneNdx = 1;
+        LoadScreen.SetActive(true);
+        LevelSelect.SetActive(false);
+        StartCoroutine(StartGame(sceneNdx));
+    }
+    void clickedTwo()
+    {
+        sceneNdx = 2;
+        LoadScreen.SetActive(true);
+        StartCoroutine(StartGame(sceneNdx));
     }
 
-    IEnumerator StartGame()
+    IEnumerator StartGame(int index)
     {
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(1);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(index);
 
         while (!asyncOperation.isDone)
         {
