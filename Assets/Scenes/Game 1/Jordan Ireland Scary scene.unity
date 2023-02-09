@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18230176, g: 0.22487107, b: 0.2891168, a: 1}
+  m_IndirectSpecularColor: {r: 0.18230158, g: 0.2248708, b: 0.28911623, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -955,6 +955,22 @@ PrefabInstance:
       propertyPath: enemySpawnPoint
       value: 
       objectReference: {fileID: 475447959}
+    - target: {fileID: 7936286989772304038, guid: 34f63170157053648a939e54a8c15152, type: 3}
+      propertyPath: obstacleText
+      value: Open Gate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7936286990539895779, guid: 34f63170157053648a939e54a8c15152, type: 3}
+      propertyPath: obstacleText
+      value: Open Gate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7936286991077530813, guid: 34f63170157053648a939e54a8c15152, type: 3}
+      propertyPath: obstacleText
+      value: Open Gate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7936286991084453899, guid: 34f63170157053648a939e54a8c15152, type: 3}
+      propertyPath: obstacleText
+      value: Open Gate
+      objectReference: {fileID: 0}
     - target: {fileID: 8011638297858443500, guid: 34f63170157053648a939e54a8c15152, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.42
@@ -1037,6 +1053,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8011638298451116271, guid: 34f63170157053648a939e54a8c15152, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011638298803534724, guid: 34f63170157053648a939e54a8c15152, type: 3}
+      propertyPath: m_Convex
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
