@@ -147,7 +147,8 @@ public class BossAI : MonoBehaviour, IDamage
 
     void GetStats(BossScriptableObject _bossScriptableObject)
     {
-        attack = _bossScriptableObject.attack;
+        weapon.damage = _bossScriptableObject.attack;
+        attack = weapon.damage;
         bulletSpeed = _bossScriptableObject.bulletSpeed;
         maxHealth = _bossScriptableObject.health;
         //store all the stats needed for all sequences
@@ -210,7 +211,9 @@ public class BossAI : MonoBehaviour, IDamage
                 }
                 else if (healthPercentage > 0.0f)
                 {
+                    GetComponent<SphereCollider>().radius = 50;
                     //explosives but faster
+                    agent.stoppingDistance = 10;
                     animator.SetInteger("WeaponType", 3);
                     coolDown = .1f;
                     if (!isThrowing)

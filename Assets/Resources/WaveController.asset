@@ -15,11 +15,3 @@ MonoBehaviour:
   waves:
   - enemiesInWave: 5
     wave: {fileID: 11400000, guid: 58aea525604005646b468763ccdc4ea3, type: 2}
-  - enemiesInWave: 10
-    wave: {fileID: 11400000, guid: 58aea525604005646b468763ccdc4ea3, type: 2}
-  - enemiesInWave: 15
-    wave: {fileID: 11400000, guid: 58aea525604005646b468763ccdc4ea3, type: 2}
-  - enemiesInWave: 1
-    wave: {fileID: 11400000, guid: 9cc1bbe8b5c31114990922ab2b5abeec, type: 2}
-  - enemiesInWave: 10
-    wave: {fileID: 11400000, guid: 58aea525604005646b468763ccdc4ea3, type: 2}

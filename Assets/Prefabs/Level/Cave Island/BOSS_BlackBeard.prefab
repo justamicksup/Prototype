@@ -169,6 +169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1813115758}
   - component: {fileID: 1813115757}
+  - component: {fileID: 193511682}
   m_Layer: 0
   m_Name: Weapon Collider
   m_TagString: Untagged
@@ -201,10 +202,23 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.2
+  m_Radius: 0.35
   m_Height: 1.5
   m_Direction: 0
   m_Center: {x: 0.42, y: 0, z: 0}
+--- !u!114 &193511682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813115756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e23ded5fd9984e5bbc56ec271fcf982d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
 --- !u!1 &1852332428
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,8 +377,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 8515790770355426056}
   m_AABB:
-    m_Center: {x: 0.325925, y: -0.034253508, z: 0.010032892}
-    m_Extent: {x: 0.50188124, y: 0.3172844, z: 0.306949}
+    m_Center: {x: 0.3500411, y: 0.028703526, z: -0.0024556518}
+    m_Extent: {x: 0.4904651, y: 0.21365674, z: 0.30622298}
   m_DirtyAABB: 0
 --- !u!183 &7510180747096264140
 Cloth:
@@ -8744,7 +8758,7 @@ MonoBehaviour:
   shootAngle: 45
   bulletSpeed: 0
   stoppingDistOrig: 0
-  attack: 0
+  attack: 10
   swingRate: 0.1
   audWeaponSwing: {fileID: 0}
   swingAngle: 0
@@ -8763,7 +8777,7 @@ MonoBehaviour:
   agent: {fileID: 6507397317306634385}
   headPos: {fileID: 8629978515825483291}
   weaponCollider: {fileID: 1813115757}
-  weapon: {fileID: 0}
+  weapon: {fileID: 193511682}
   model:
   - {fileID: 7995375221262214887}
   - {fileID: 4568658143035366216}

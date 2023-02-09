@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Game 1/Jordan Ireland Scary scene.unity
     guid: 7ae805a2ff4513a4a860dca945488fe1
   - enabled: 1
-    path: Assets/Scenes/Jestin McMahon.unity
+    path: Assets/Scenes/Game 1/Jestin McMahon.unity
     guid: 68bf5d941f70cc2479eb2c65c988167e
   m_configObjects: {}

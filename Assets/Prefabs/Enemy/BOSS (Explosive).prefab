@@ -892,6 +892,7 @@ MonoBehaviour:
   headPos: {fileID: 6544214285300077486}
   throwingHand: {fileID: 2387227813710840521}
   bomb: {fileID: 6182639289201271482, guid: ee552b3e7cb86874d8ebe3c3863ec48e, type: 3}
+  weaponDrop: {fileID: 6182639289201271482, guid: ee552b3e7cb86874d8ebe3c3863ec48e, type: 3}
   stoppingDistOrig: 0
 --- !u!95 &6596707184410520006
 Animator:

@@ -96,7 +96,7 @@ public class gameManager : MonoBehaviour
 
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
         timeScaleOrig = Time.timeScale;
-        waveController = Resources.Load("10 Waves (2Bosses)") as WaveController;
+        waveController = Resources.Load("WaveController") as WaveController;
 
         //ammoCountText[0].text = "";
         //ammoCountText[1].text = "";
