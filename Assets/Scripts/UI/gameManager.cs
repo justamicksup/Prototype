@@ -62,6 +62,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject speedPowerUp;
     [SerializeField] GameObject healthPowerUp;
     [SerializeField] GameObject oneShotPowerUp;
+    [SerializeField] GameObject ammoPowerUp;
     [Header("----- Background -----")]
     public AudioSource audBackground;
     public AudioClip[] levelMusicBackground;
@@ -315,7 +316,7 @@ public class gameManager : MonoBehaviour
             int rand = Random.Range(1, 100);
             if (rand <= 5)
             {
-                rand = Random.Range(1, 3);
+                rand = Random.Range(1, 4);
                 switch (rand)
                 {
                     case 1:
@@ -326,6 +327,9 @@ public class gameManager : MonoBehaviour
                         break;
                     case 3:
                         Instantiate(oneShotPowerUp, trans.position, trans.rotation);
+                        break;
+                    case 4:
+                        Instantiate(ammoPowerUp, trans.position, trans.rotation);
                         break;
                 }
             }

@@ -5953,6 +5953,7 @@ MonoBehaviour:
   armory: {fileID: 0}
   nextWave: 0
   enemiesRemainingText: {fileID: 0}
+  key: 0
   activeMenu: {fileID: 0}
   pauseMenu: {fileID: 7701256236916525116}
   winMenu: {fileID: 1749450336}
@@ -5976,6 +5977,10 @@ MonoBehaviour:
   LoadBar: {fileID: 8998715811777187719}
   ammoRemaining: 0
   weaponsInLevel: 0
+  speedPowerUp: {fileID: 4032007767309016680, guid: b5a298b7612a1f74c9759b2188d87c52, type: 3}
+  healthPowerUp: {fileID: 4432341785629206657, guid: 42b70af4f35f9f343a3a353915384a40, type: 3}
+  oneShotPowerUp: {fileID: 3826195125837836763, guid: db0cf68515e898d4e89b30cfc55f724a, type: 3}
+  ammoPowerUp: {fileID: 717865950685555876, guid: 500c8d4a86cd1a34d8cee8e24412464c, type: 3}
   audBackground: {fileID: 4235209193291710853}
   levelMusicBackground:
   - {fileID: 8300000, guid: c7bacb7473211d047a9403618998b896, type: 3}
