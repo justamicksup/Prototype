@@ -113,6 +113,11 @@ public class gameManager : MonoBehaviour
         }
 
         key = 0;
+
+        if (PlayerPrefs.HasKey("sensitivity"))
+        {
+            sensitivity = (int)PlayerPrefs.GetFloat("sensitivity");
+        }
     }
 
     void Update()

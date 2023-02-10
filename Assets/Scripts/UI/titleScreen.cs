@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Timeline;
+using UnityEngine.Audio;
 
 public class titleScreen : MonoBehaviour
 {
@@ -16,6 +18,7 @@ public class titleScreen : MonoBehaviour
     public GameObject LoadScreen;
     public Image LoadBar;
     public float fadeSpeed = 1f;
+    [SerializeField] AudioMixer mixer;
     bool isFading = false;
     int sceneNdx;
 
@@ -28,6 +31,10 @@ public class titleScreen : MonoBehaviour
         ScaryScene.onClick.AddListener(clickedOne);
         CaveScene.onClick.AddListener(clickedTwo);
         StartCoroutine(PlayIntro());
+
+        mixer.SetFloat("Master", Mathf.Log10(PlayerPrefs.GetFloat("master")) * 20);
+        mixer.SetFloat("Music", Mathf.Log10(PlayerPrefs.GetFloat("music")) * 20);
+        mixer.SetFloat("SFX", Mathf.Log10(PlayerPrefs.GetFloat("SFX")) * 20);
     }
 
     // Update is called once per frame

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
+using UnityEngine.Rendering;
 
 public class settingsMenu : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class settingsMenu : MonoBehaviour
     [SerializeField] Slider musicSlider;
     [SerializeField] Slider SFXSlider;
     [SerializeField] Slider masterSlider;
+    [SerializeField] AudioMixer mixer;
 
     float sensitivity;
     float music;
@@ -51,6 +54,10 @@ public class settingsMenu : MonoBehaviour
         music = musicSlider.value;
         SFX = SFXSlider.value;
         master = masterSlider.value;
+
+        mixer.SetFloat("Master", Mathf.Log10(master) * 20);
+        mixer.SetFloat("Music", Mathf.Log10(music) * 20);
+        mixer.SetFloat("SFX", Mathf.Log10(SFX) * 20);
     }
 
     public void Save()
@@ -59,5 +66,10 @@ public class settingsMenu : MonoBehaviour
         PlayerPrefs.SetFloat("music", music);
         PlayerPrefs.SetFloat("sfx", SFX);
         PlayerPrefs.SetFloat("master", master);
+
+        if(gameManager.instance != null)
+        {
+            gameManager.instance.sensitivity = (int)sensitivity;
+        }
     }
 }

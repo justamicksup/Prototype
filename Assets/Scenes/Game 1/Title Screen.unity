@@ -867,6 +867,7 @@ MonoBehaviour:
   musicSlider: {fileID: 459080985}
   SFXSlider: {fileID: 2002574259}
   masterSlider: {fileID: 1549906515}
+  mixer: {fileID: 24100000, guid: d56f5fbf4581b4a119a7a863f773c059, type: 2}
 --- !u!1 &226048914
 GameObject:
   m_ObjectHideFlags: 0
@@ -2328,7 +2329,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1070341398}
   m_HandleRect: {fileID: 2033641902}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -3140,7 +3141,8 @@ MonoBehaviour:
   CaveScene: {fileID: 2109905267}
   LoadScreen: {fileID: 2117854480}
   LoadBar: {fileID: 310143330}
-  fadeSpeed: 0.3
+  fadeSpeed: 1
+  mixer: {fileID: 24100000, guid: d56f5fbf4581b4a119a7a863f773c059, type: 2}
 --- !u!82 &564064146
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3150,7 +3152,7 @@ AudioSource:
   m_GameObject: {fileID: 564064138}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1574254653680237504, guid: d56f5fbf4581b4a119a7a863f773c059, type: 2}
   m_audioClip: {fileID: 8300000, guid: e601abac045aaaa40933ab2316aac274, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -6565,7 +6567,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 105626696}
   m_HandleRect: {fileID: 961526571}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -7987,7 +7989,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1410843865}
   m_HandleRect: {fileID: 671921117}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -40612,6 +40614,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 910325849}
     m_Modifications:
+    - target: {fileID: 4611302377990593063, guid: 21ec0fc95ef9e9b47b16a93482a34e55, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 3570412987089810430, guid: d56f5fbf4581b4a119a7a863f773c059, type: 2}
     - target: {fileID: 7196193325239382125, guid: 21ec0fc95ef9e9b47b16a93482a34e55, type: 3}
       propertyPath: m_RootOrder
       value: 0
