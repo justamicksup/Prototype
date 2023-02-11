@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class cameraController : MonoBehaviour
 {
+    [SerializeField] private Transform[] armTransform = new Transform[2];
     //camera rotation limit
     [SerializeField] int lockVerMin;
     [SerializeField] int lockVerMax;
@@ -41,5 +42,12 @@ public class cameraController : MonoBehaviour
 
         //rotate playerY
         transform.parent.Rotate(Vector3.up * mouseX);
+    }
+
+    private void LateUpdate()
+    {
+        //transform.localRotation = Quaternion.Euler(125, 0, 90);
+        armTransform[0].transform.localRotation = Quaternion.Euler(xRotation, armTransform[0].transform.localRotation.eulerAngles.y, armTransform[0].transform.localRotation.eulerAngles.z);
+        armTransform[1].transform.localRotation = Quaternion.Euler(-xRotation, armTransform[1].transform.localRotation.eulerAngles.y, armTransform[1].transform.localRotation.eulerAngles.z);
     }
 }
