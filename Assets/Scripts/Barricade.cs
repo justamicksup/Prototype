@@ -86,13 +86,13 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
         }
     }
 
-    public void takeDamage(int damage)
+    public void takeDamage(float damage)
     {
         if (Gate1.activeSelf && Gate2.activeSelf && canTakeDamage)
         {
             if (HP > 0)
             {
-                HP -= damage;
+                HP -= (int)damage;
             }
 
             if (HP <= 0)

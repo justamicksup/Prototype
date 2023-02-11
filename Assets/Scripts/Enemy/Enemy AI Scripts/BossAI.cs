@@ -259,12 +259,12 @@ public class BossAI : MonoBehaviour, IDamage
         }
     }
 
-    public void takeDamage(int damage)
+    public void takeDamage(float damage)
     {
         if (!isInvincible)
         {
             weaponColliderOff();
-            currentHealth -= damage;
+            currentHealth -= (int)damage;
             StartCoroutine(flashDamage());
         }
     }

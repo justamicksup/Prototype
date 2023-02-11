@@ -30,8 +30,8 @@ public class PowerUp : MonoBehaviour
     }
     private void ResetStats()
     {
-        gameManager.instance.playerScript.playerSpeed -= power.speedBonus;
-        gameManager.instance.playerScript.stamina -= power.staminaBonus;
+        gameManager.instance.playerScript.playerBaseSpeed -= power.speedBonus;
+        gameManager.instance.playerScript.currentStamina -= power.staminaBonus;
         gameManager.instance.playerScript.shootDamage -= power.shootDmgBonus;
         gameManager.instance.playerScript.meleeDamage -= power.meleeDmgBonus;
 

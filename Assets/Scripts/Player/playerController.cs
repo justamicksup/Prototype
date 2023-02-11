@@ -1,13 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
+public enum UpgradeTypes { PlayerSpeed, PlayerHealth, PlayerStamina, GunDmg, GunReload, GunRange, GunMamAmmo }
 public class playerController : MonoBehaviour
 {
     [Header("----- Components -----")]
@@ -19,13 +16,13 @@ public class playerController : MonoBehaviour
 
 
     [Header("----- Player Stats -----")]
-    [Range(1, 100)]
-    [SerializeField]
-    int HP;
+    [Range(1,100)] [SerializeField] private float playerBaseHealth;
+    [Range(1, 100)] [SerializeField] private float playerBaseStamina;
+    private float currentHealth;
+    public float currentStamina;
 
     private Coroutine staminaRegen;
-    [Range(1, 100)] [SerializeField] public float stamina;
-    [SerializeField] public int playerSpeed;
+    [SerializeField] public int playerBaseSpeed;
     [SerializeField] int jumpVelocity;
     [SerializeField] int gravity;
     [SerializeField] int jumpMax;
@@ -35,6 +32,14 @@ public class playerController : MonoBehaviour
     int jumpTimes;
     Vector3 move;
     Vector3 playerVelocity;
+    [SerializeField] private float playerSpeedMultiplier = 1;
+    [SerializeField] private float playerStaminaMultiplier = 1;
+    [SerializeField] private float playerHealthMultiplier = 1;
+
+    private float PlayerSpeed { get { return playerBaseSpeed * playerSpeedMultiplier; } }
+    private float PlayerMaxStamina { get { return playerBaseStamina * playerStaminaMultiplier; } }
+    private float PlayerMaxHealth { get { return playerBaseHealth * playerHealthMultiplier; } }
+
 
     [Header("----- Audio -----")]
     [SerializeField] AudioClip[] audPlayerDamage;
@@ -55,11 +60,20 @@ public class playerController : MonoBehaviour
     [SerializeField] float shootForce;
     [SerializeField] public int ammoRemaining;
     [SerializeField] public int maxAmmo;
-    //[SerializeField] public int weaponList[currentWeapon].currentClip;
     [SerializeField] float reloadTime;
     [SerializeField] GameObject bullet;
     [SerializeField] public int bulletSpeed;
     public Transform muzzle;
+    [SerializeField] private float gunDmgMultiplier = 1;
+    [SerializeField] private float gunReloadMultiplier = 1;
+    [SerializeField] private float gunRangeMultiplier = 1;
+    [SerializeField] private int maxAmmoMultiplier = 1;
+
+    private float GunDamage { get { return shootDamage * gunDmgMultiplier; } }
+    private float GunReloadTime { get { return (gunReloadMultiplier - 1) * reloadTime; } }
+    private float GunShootRange { get { return range * gunRangeMultiplier; } }
+    private int MaxAmmo { get { return maxAmmo + maxAmmoMultiplier; } }
+
 
 
     [Header("----- Melee Stats -----")]
@@ -90,9 +104,6 @@ public class playerController : MonoBehaviour
 
     [SerializeField] private List<GameObject> WeaponSlots;
 
-
-    int HPOrig;
-    float staminaOrig;
     public Vector3 pushBack;
     [SerializeField] int pushBackTime;
 
@@ -108,8 +119,8 @@ public class playerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HPOrig = HP;
-        staminaOrig = stamina;
+        currentHealth = PlayerMaxHealth;
+        currentStamina = playerBaseStamina;
         updatePlayerHP();
         updatePlayerStamina();
         respawnPlayer();
@@ -171,16 +182,16 @@ public class playerController : MonoBehaviour
         move = (transform.right * Input.GetAxis("Horizontal")) +
                (transform.forward * Input.GetAxis("Vertical"));
         //move character
-        if (Input.GetButton("Sprint") && stamina > 0)
+        if (Input.GetButton("Sprint") && currentStamina > 0)
         {
             isSprinting = true;
-            controller.Move(move * Time.deltaTime * playerSpeed * 2);
+            controller.Move(move * Time.deltaTime * PlayerSpeed * 2);
             useStamina(0.5f);
         }
         else
         {
             isSprinting = false;
-            controller.Move(move * Time.deltaTime * playerSpeed);
+            controller.Move(move * Time.deltaTime * PlayerSpeed);
         }
 
         //jump
@@ -283,7 +294,7 @@ public class playerController : MonoBehaviour
                     {
 
                         buckShotRigidbody.velocity = Camera.main.transform.forward * bulletSpeed;
-                        buckShotRigidbody.GetComponent<bullet>().bulletDamage = shootDamage;
+                        buckShotRigidbody.GetComponent<bullet>().bulletDamage = GunDamage;
                     }
                 }
             } // regular single bullet weapon
@@ -292,18 +303,17 @@ public class playerController : MonoBehaviour
                 GameObject bulletClone = Instantiate(bullet, muzzle.position, bullet.transform.rotation);
                 bulletClone.GetComponent<Rigidbody>().velocity =
                   Camera.main.transform.forward * bulletSpeed;
-                bulletClone.GetComponent<bullet>().bulletDamage = shootDamage;
+                bulletClone.GetComponent<bullet>().bulletDamage = GunDamage;
             }
 
 
 
-            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit,
-                    projectileWeaponScriptableObjects.range))
+            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, GunShootRange))
             {
 
                 if (hit.collider.GetComponent<IDamage>() != null)
                 {
-                    hit.collider.GetComponent<IDamage>().takeDamage(shootDamage);
+                    hit.collider.GetComponent<IDamage>().takeDamage(GunDamage);
                 }
 
                 if (hit.rigidbody != null)
@@ -328,7 +338,7 @@ public class playerController : MonoBehaviour
 
         if (ammoRemaining >= projectileWeaponScriptableObjects.magMax && weaponList[currentWeapon].currentClip != projectileWeaponScriptableObjects.magMax)
         {
-            yield return new WaitForSeconds(projectileWeaponScriptableObjects.reloadTime);
+            yield return new WaitForSeconds(GunReloadTime);
             //projectileWeaponScriptableObjects.ammoRemaining = projectileWeaponScriptableObjects.ammoCapacity;
             weaponList[currentWeapon].currentClip = projectileWeaponScriptableObjects.magMax;
             aud.PlayOneShot(audReload, audReloadVol);
@@ -339,13 +349,13 @@ public class playerController : MonoBehaviour
     }
 
 
-    public void takeDamage(int damage)
+    public void takeDamage(float damage)
     {
-        HP -= damage;
+        currentHealth -= damage;
         updatePlayerHP();
         StartCoroutine(gameManager.instance.flash());
         aud.PlayOneShot(audPlayerDamage[Random.Range(0, audPlayerDamage.Length)], audPlayerDamageVol);
-        if (HP <= 0)
+        if (currentHealth <= 0)
         {
             gameManager.instance.youLose();
         }
@@ -353,9 +363,9 @@ public class playerController : MonoBehaviour
 
     public void useStamina(float energy)
     {
-        if (stamina - energy >= 0)
+        if (currentStamina - energy >= 0)
         {
-            stamina -= energy;
+            currentStamina -= energy;
             updatePlayerStamina();
         }
 
@@ -371,9 +381,9 @@ public class playerController : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
 
-        while (stamina < staminaOrig && !Input.GetButtonDown("Sprint"))
+        while (currentStamina < PlayerMaxStamina && !Input.GetButtonDown("Sprint"))
         {
-            stamina += staminaOrig / 100;
+            currentStamina += PlayerMaxStamina / 100;
             updatePlayerStamina();
             yield return new WaitForSeconds(.1f);
         }
@@ -386,14 +396,14 @@ public class playerController : MonoBehaviour
         return coins;
     }
 
-    public int getHP()
+    public float getHP()
     {
-        return HP;
+        return currentHealth;
     }
 
     public float getStamina()
     {
-        return stamina;
+        return PlayerMaxStamina;
     }
 
     public void addCoins(int amount)
@@ -425,12 +435,12 @@ public class playerController : MonoBehaviour
 
     public void updatePlayerHP()
     {
-        gameManager.instance.playerHPBar.fillAmount = (float)HP / (float)HPOrig;
+        gameManager.instance.playerHPBar.fillAmount = (float)currentHealth / (float)PlayerMaxHealth;
     }
 
     public void updatePlayerStamina()
     {
-        gameManager.instance.playerStaminaBar.fillAmount = (float)stamina / (float)staminaOrig;
+        gameManager.instance.playerStaminaBar.fillAmount = (float)currentStamina / (float)PlayerMaxStamina;
     }
 
     public void respawnPlayer()
@@ -471,12 +481,12 @@ public class playerController : MonoBehaviour
     {
         if (power.speedBonus != 0)
         {
-            playerSpeed += power.speedBonus;
+            playerBaseSpeed += power.speedBonus;
             gameManager.instance.speedBoostIcon.SetActive(true);
         }
         if (power.staminaBonus != 0)
         {
-            stamina += power.staminaBonus;
+            currentStamina += power.staminaBonus;
         }
         if (power.shootDmgBonus != 0)
         {
@@ -501,13 +511,13 @@ public class playerController : MonoBehaviour
         {
             if (weaponList.Count > 0 && weaponList[currentWeapon].isGun)
             {
-                if (ammoRemaining + power.ammoBonus <= maxAmmo)
+                if (ammoRemaining + power.ammoBonus <= MaxAmmo)
                 {
                     AddAmmo(power.ammoBonus);
                 }
                 else
                 {
-                    ammoRemaining = maxAmmo;
+                    ammoRemaining = MaxAmmo;
                 }
                 gameManager.instance.updateAmmoUI();
             }
@@ -674,23 +684,23 @@ public class playerController : MonoBehaviour
     }
     IEnumerator healOverTime(float effectDuration, int healStep)
     {
-        if (HP + 1 > HPOrig)
+        if (currentHealth + 1 > PlayerMaxHealth)
         {
-            HP = HPOrig;
+            currentHealth = PlayerMaxHealth;
             updatePlayerHP();
 
         }
-        if (getHP() < HPOrig)
+        if (currentHealth < PlayerMaxHealth)
         {
             for (int i = 0; i < effectDuration; i++)
             {
-                if (HP + 1 > HPOrig)
+                if (currentHealth + 1 > PlayerMaxHealth)
                 {
-                    HP = HPOrig;
+                    currentHealth = PlayerMaxHealth;
                     break;
                 }
                 yield return new WaitForSeconds(1.0f);
-                HP += healStep;
+                currentHealth += healStep;
                 updatePlayerHP();
             }
         }

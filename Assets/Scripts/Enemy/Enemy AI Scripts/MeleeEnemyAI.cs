@@ -70,9 +70,9 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
         }
     }
     // Need to adjust this in all AI to work like lecture
-    public void takeDamage(int damage)
+    public void takeDamage(float damage)
     {
-        HP -= damage;
+        HP -= (int)damage;
         animator.SetTrigger("Hit1");
         weaponColliderOff();
         StartCoroutine(flashDamage());
