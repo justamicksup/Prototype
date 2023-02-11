@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Model: {fileID: 2353156475887692673, guid: 849e3af6bd97d5148a8fa8e23cb53bd8, type: 3}
   weaponType: 2
+  rotationOffset: {x: 10, y: 5, z: 165}
+  positionOffset: {x: 0, y: -0.03, z: -0.03}
   gunLevel: 1
   damage: 30
   range: 40

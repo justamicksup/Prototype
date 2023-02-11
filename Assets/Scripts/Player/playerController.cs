@@ -258,6 +258,7 @@ public class playerController : MonoBehaviour
         //add gravity
         playerVelocity.y -= gravity * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+        animator.SetFloat("Speed", move.magnitude);
     }
 
     public void AddAmmo(int amount)
@@ -608,12 +609,16 @@ public class playerController : MonoBehaviour
             projectileWeaponScriptableObjects.Model.GetComponent<MeshRenderer>().sharedMaterials;
 
         WeaponSlots[index].transform.localScale = projectileWeaponScriptableObjects.Model.transform.localScale;
-        WeaponSlots[index].transform.localRotation = projectileWeaponScriptableObjects.Model.transform.rotation;
+        //WeaponSlots[index].transform.rotation = projectileWeaponScriptableObjects.Model.transform.rotation;
+        WeaponSlots[index].transform.localRotation = Quaternion.Euler(projectileWeaponScriptableObjects.rotationOffset);
+        WeaponSlots[index].transform.localPosition = projectileWeaponScriptableObjects.positionOffset;
 
         muzzle.transform.localPosition = projectileWeaponScriptableObjects.GetMuzzleLocation().localPosition;
 
         ammo = projectileWeaponScriptableObjects.magMax;
         maxAmmo = projectileWeaponScriptableObjects.carryAmount - 1;
+
+        animator.SetInteger("WeaponType", 2);
     }
 
     public void SetMeleeStats(MeleeWeaponScriptableObjects meleeWeaponScriptableObjects, int index)
@@ -634,6 +639,8 @@ public class playerController : MonoBehaviour
 
         WeaponSlots[index].transform.localScale = meleeWeaponScriptableObjects.Model.transform.localScale;
         WeaponSlots[index].transform.localRotation = meleeWeaponScriptableObjects.Model.transform.rotation;
+
+        animator.SetInteger("WeaponType", 1);
     }
 
     public string GetWeaponType(MasterWeapon tempArmoryListOfWeapon, int index)
