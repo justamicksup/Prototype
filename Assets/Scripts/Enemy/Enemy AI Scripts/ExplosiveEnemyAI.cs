@@ -83,7 +83,7 @@ public class ExplosiveEnemyAI : MonoBehaviour, IDamage
             deathEffect.DeathByEffects();
 
             Destroy(gameObject);
-            gameManager.instance.DropLoot(transform, weaponDrop, true, true);
+            gameManager.instance.DropLoot(transform, weaponDrop, true, true, true);
         }
     }
 

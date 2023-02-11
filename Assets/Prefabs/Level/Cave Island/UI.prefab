@@ -4866,6 +4866,7 @@ MonoBehaviour:
   armory: {fileID: 0}
   nextWave: 0
   enemiesRemainingText: {fileID: 0}
+  key: 0
   activeMenu: {fileID: 0}
   pauseMenu: {fileID: 8532239391719620909}
   winMenu: {fileID: 2056105691724560241}
@@ -4889,6 +4890,14 @@ MonoBehaviour:
   LoadBar: {fileID: 6947116204591629974}
   ammoRemaining: 0
   weaponsInLevel: 0
+  coin10: {fileID: 2415728535143994528, guid: c5fbf9cfb5af3e64d8575c318af6bbf0, type: 3}
+  coin25: {fileID: 3129925147036517503, guid: cf42651e10163ed42909f45700dada41, type: 3}
+  coin50: {fileID: 8771921454403100126, guid: 33f39b48c6bafde4a99c22f97261d4d5, type: 3}
+  coin500: {fileID: 7086524919657854735, guid: 644fdfc3743c88145b67c09d6ac19e6b, type: 3}
+  speedPowerUp: {fileID: 4032007767309016680, guid: b5a298b7612a1f74c9759b2188d87c52, type: 3}
+  healthPowerUp: {fileID: 4355383137363859639, guid: c2b12039789b5f04f8c40fa5115b322f, type: 3}
+  oneShotPowerUp: {fileID: 48549426843458150, guid: 1bf25d16ad65f8d47949a21c93335c12, type: 3}
+  ammoPowerUp: {fileID: 717865950685555876, guid: 500c8d4a86cd1a34d8cee8e24412464c, type: 3}
   audBackground: {fileID: 2760351882646898836}
   levelMusicBackground:
   - {fileID: 8300000, guid: c7bacb7473211d047a9403618998b896, type: 3}

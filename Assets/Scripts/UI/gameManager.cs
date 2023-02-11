@@ -59,6 +59,10 @@ public class gameManager : MonoBehaviour
     public int ammoRemaining;
     public int weaponsInLevel;
     [Header("----- Enemy Loot Drops -----")]
+    [SerializeField] GameObject coin10;
+    [SerializeField] GameObject coin25;
+    [SerializeField] GameObject coin50;
+    [SerializeField] GameObject coin500;
     [SerializeField] GameObject speedPowerUp;
     [SerializeField] GameObject healthPowerUp;
     [SerializeField] GameObject oneShotPowerUp;
@@ -305,12 +309,35 @@ public class gameManager : MonoBehaviour
         coinsText.text = playerScript.GetCoins().ToString();
     }
 
-    public void DropLoot(Transform trans, GameObject weapon = null, bool doesDropWeapon = false, bool doesDropPowerUp = false)
+    public void DropLoot(Transform trans, GameObject weapon = null, bool doesDropWeapon = false, bool doesDropPowerUp = false, bool doesDropCoins = false)
     {
+        int rand;
+        if (doesDropCoins)
+        {
+            rand = Random.Range(1, 100);
+            if (rand == 1) // 1% change for 500 coins
+            {
+                Instantiate(coin500, trans.position, trans.rotation);
+            }
+            else if (rand > 1 && rand <= 5) // 4% chance for 50 coins
+            {
+                Instantiate(coin50, trans.position, trans.rotation);
+            }
+            else if (rand > 5 && rand <= 15) // 10% chance for 25 coins
+            {
+                Instantiate(coin25, trans.position, trans.rotation);
+            }
+            else if (rand > 15 && rand <= 40) // 25% chance for 10 coins
+            {
+                Instantiate(coin10, trans.position, trans.rotation);
+            }
+            // 60% chance for no coins
+        }
+
         if (doesDropWeapon)
         {
-            int rand = Random.Range(1, 100);
-            if (rand <= 5)
+            rand = Random.Range(1, 100);
+            if (rand <= 5) // 5% chance to drop weapon
             {
                 Instantiate(weapon, trans.position, trans.rotation);
             }
@@ -318,8 +345,8 @@ public class gameManager : MonoBehaviour
 
         if (doesDropPowerUp)
         {
-            int rand = Random.Range(1, 100);
-            if (rand <= 5)
+            rand = Random.Range(1, 100);
+            if (rand <= 5) // 5% chance to drop power up
             {
                 rand = Random.Range(1, 4);
                 switch (rand)
