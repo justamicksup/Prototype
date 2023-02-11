@@ -13,8 +13,8 @@ public class WaveController : ScriptableObject
     {
         get { return waves.Length; }
     }
-    //public Wave waves;
-
+    
+    
 
     public List<GameObject> CreateWave()
     {

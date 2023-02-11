@@ -5,5 +5,6 @@ using UnityEngine;
 public class Wave : ScriptableObject
 {
    [field: SerializeField] public List<GameObject> EnemiesInWave { get; private set; }
+   [field: SerializeField] public int EnemyCount { get; private set; }
    
 }

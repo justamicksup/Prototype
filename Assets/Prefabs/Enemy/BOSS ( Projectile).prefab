@@ -712,6 +712,7 @@ MonoBehaviour:
   model: {fileID: 1479842234508647920}
   aud: {fileID: 1913133579535377341}
   weaponDrop: {fileID: 746614221169972677, guid: 322066efe6c02cd4a975b0d74a52d0a6, type: 3}
+  waveStats: {fileID: 0}
   stoppingDistOrig: 0
   audGunShotVol: 0.1
 --- !u!95 &1458495428040838350

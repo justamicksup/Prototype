@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Enemy Wave General Purpose
   m_EditorClassIdentifier: 
   <EnemiesInWave>k__BackingField:
-  - {fileID: 8933497125020024247, guid: 647452330745e5e438a35226953b1055, type: 3}
   - {fileID: 7824966144815336657, guid: 2b6f2a1a1ac18494bba3af57d35ef085, type: 3}
-  - {fileID: 586018981929148686, guid: d8cf69971f13b234194cf9afa5a6bbb8, type: 3}
   - {fileID: 7824966144815336657, guid: c2c92ed6a521f2d4f920eadc944dcbfa, type: 3}
+  - {fileID: 586018981929148686, guid: d8cf69971f13b234194cf9afa5a6bbb8, type: 3}
+  - {fileID: 6546838859403903518, guid: d18fd7a2c1515ca4da918a289b97b727, type: 3}
+  <EnemyCount>k__BackingField: 2

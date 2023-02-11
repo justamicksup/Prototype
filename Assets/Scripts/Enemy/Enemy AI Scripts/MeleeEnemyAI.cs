@@ -101,13 +101,14 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
     
     void GetStats(EnemyMeleeScriptableObject _enemyMeleeScriptableObject)
     {
-        HP = _enemyMeleeScriptableObject.health;
+        HP = (int)(_enemyMeleeScriptableObject.health * gameManager.instance.enemyWaveSystem.difficultyMultiplier * (gameManager.instance.enemyWaveSystem.currentWaveIndex + 1));
+        //HP = _enemyMeleeScriptableObject.health;
         swingRate = _enemyMeleeScriptableObject.swingRate;
         swingAngle = _enemyMeleeScriptableObject.swingAngle;
         viewAngle = _enemyMeleeScriptableObject.viewAngle;
         rotationSpeed = _enemyMeleeScriptableObject.rotationSpeed;
         audWeaponSwing = _enemyMeleeScriptableObject.audWeaponSwing[Random.Range(0,_enemyMeleeScriptableObject.audWeaponSwing.Length)];
-        weapon.damage = _enemyMeleeScriptableObject.attack;
+        weapon.damage = (int)(_enemyMeleeScriptableObject.attack * gameManager.instance.enemyWaveSystem.difficultyMultiplier * (gameManager.instance.enemyWaveSystem.currentWaveIndex + 1));
         attack = weapon.damage;
       
         deathEffect.SetDeathEffect(_enemyMeleeScriptableObject.deathEffect);

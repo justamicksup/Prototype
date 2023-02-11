@@ -99,7 +99,7 @@ public class ExplosiveEnemyAI : MonoBehaviour, IDamage
 
     void GetStats(EnemyExplosiveScriptableObjects _enemyExplosiveScriptableObject)
     {
-        HP = _enemyExplosiveScriptableObject.health;
+        HP = (int)(_enemyExplosiveScriptableObject.health * gameManager.instance.enemyWaveSystem.difficultyMultiplier * (gameManager.instance.enemyWaveSystem.currentWaveIndex + 1));
         bomb = _enemyExplosiveScriptableObject.bomb;
         throwAngle = _enemyExplosiveScriptableObject.throwAngle;
         viewAngle = _enemyExplosiveScriptableObject.viewAngle;

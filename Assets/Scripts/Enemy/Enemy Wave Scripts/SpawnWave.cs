@@ -8,6 +8,7 @@ public class SpawnWave : MonoBehaviour
     [SerializeField] private float timer;
     [SerializeField] private Wave wave;
     [SerializeField] private BoxCollider area;
+    
     bool isSpawing;
     bool triggerSet;
     int enemiesSpawned;
