@@ -433,6 +433,34 @@ public class playerController : MonoBehaviour
         }
     }
 
+    public void UpgradeStat(UpgradeTypes type, float amount)
+    {
+        switch (type)
+        {
+            case UpgradeTypes.PlayerSpeed:
+                playerSpeedMultiplier += amount;
+                break;
+            case UpgradeTypes.PlayerHealth:
+                playerHealthMultiplier += amount;
+                break;
+            case UpgradeTypes.PlayerStamina:
+                playerStaminaMultiplier += amount;
+                break;
+            case UpgradeTypes.GunDmg:
+                gunDmgMultiplier += amount;
+                break;
+            case UpgradeTypes.GunReload:
+                gunReloadMultiplier += amount;
+                break;
+            case UpgradeTypes.GunRange:
+                gunRangeMultiplier += amount;
+                break;
+            case UpgradeTypes.GunMamAmmo:
+                maxAmmoMultiplier += (int)amount;
+                break;
+        }
+    }
+
     public void updatePlayerHP()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)currentHealth / (float)PlayerMaxHealth;
