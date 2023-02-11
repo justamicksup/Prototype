@@ -190,15 +190,19 @@ MonoBehaviour:
   aud: {fileID: 3734570729019460057}
   animator: {fileID: 0}
   anim: {fileID: 1480038083}
-  HP: 100
-  stamina: 100
-  playerSpeed: 10
+  playerBaseHealth: 100
+  playerBaseStamina: 100
+  currentStamina: 0
+  playerBaseSpeed: 0
   jumpVelocity: 12
   gravity: 25
   jumpMax: 1
   coins: 0
   actionRange: 3
   ammo: 0
+  playerSpeedMultiplier: 1
+  playerStaminaMultiplier: 1
+  playerHealthMultiplier: 1
   audPlayerDamage:
   - {fileID: 8300000, guid: fa7c638d62cc05349bdac7c659f7f874, type: 3}
   - {fileID: 8300000, guid: 1e805138f585ae941b73f4e2000d2b71, type: 3}
@@ -236,6 +240,10 @@ MonoBehaviour:
   bullet: {fileID: 0}
   bulletSpeed: 0
   muzzle: {fileID: 6902496133635729546}
+  gunDmgMultiplier: 1
+  gunReloadMultiplier: 1
+  gunRangeMultiplier: 1
+  maxAmmoMultiplier: 1
   meleeLevel: 0
   meleeDamage: 0
   meleeReach: 0
@@ -252,6 +260,7 @@ MonoBehaviour:
   pushBack: {x: 0, y: 0, z: 0}
   pushBackTime: 0
   inActionRange: 0
+  t: 3
 --- !u!143 &2636245865579264848
 CharacterController:
   m_ObjectHideFlags: 0

@@ -16,8 +16,8 @@ public class playerController : MonoBehaviour
 
 
     [Header("----- Player Stats -----")]
-    [Range(1,100)] [SerializeField] private float playerBaseHealth;
-    [Range(1, 100)] [SerializeField] private float playerBaseStamina;
+    [Range(1,100)] [SerializeField] private float playerBaseHealth = 100;
+    [Range(1, 100)] [SerializeField] private float playerBaseStamina = 100;
     private float currentHealth;
     public float currentStamina;
 
@@ -433,8 +433,10 @@ public class playerController : MonoBehaviour
         }
     }
 
-    public void UpgradeStat(UpgradeTypes type, float amount)
+    public void UpgradeStat(UpgradeTypes type, int goldCost, float amount)
     {
+        if (coins < goldCost) return;
+        coins -= goldCost;
         switch (type)
         {
             case UpgradeTypes.PlayerSpeed:
