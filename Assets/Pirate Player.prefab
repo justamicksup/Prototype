@@ -429,7 +429,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8575185036756165397}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &2881898442246238899
 SkinnedMeshRenderer:
@@ -674,7 +674,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8575185036756165397}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &96012875902415902
 SkinnedMeshRenderer:
@@ -760,7 +760,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8575185036756165397}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &6560200300615608870
 SkinnedMeshRenderer:
@@ -1032,7 +1032,7 @@ Transform:
   m_Children:
   - {fileID: 473486208724601625}
   m_Father: {fileID: 8575185036756165397}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2847862124988545382
 GameObject:
@@ -1064,7 +1064,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8575185036756165397}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &7446703655268971521
 SkinnedMeshRenderer:
@@ -1219,7 +1219,7 @@ Transform:
   m_Children:
   - {fileID: 2506605407415751891}
   m_Father: {fileID: 8575185036756165397}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3467983140079722855
 GameObject:
@@ -1466,14 +1466,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3788204955517085342}
-  m_LocalRotation: {x: 0.13882773, y: 0, z: 0, w: 0.99031657}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.75, z: 0.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8789411408446548238}
   m_Father: {fileID: 8575185036756165397}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8786901588987546950
 MonoBehaviour:
@@ -1487,6 +1487,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e872d863c0574bf4ebb1daa12e244e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  armTransform:
+  - {fileID: 3150511645703027019}
+  - {fileID: 2170841819504887604}
   lockVerMin: -75
   lockVerMax: 75
   invertX: 0
@@ -1703,7 +1706,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8575185036756165397}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &3247089284032488216
 SkinnedMeshRenderer:
@@ -1819,7 +1822,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8575185036756165397}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &8548655017996590269
 SkinnedMeshRenderer:
@@ -2239,7 +2242,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5273532759066643330}
-  m_LocalRotation: {x: 0.06034053, y: 0.02128997, z: 0.08597548, w: 0.9942404}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.10808877, y: -0.008514166, z: 0.000000015832484}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2499,7 +2502,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8575185036756165397}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &6714576026038172017
 SkinnedMeshRenderer:
@@ -2785,7 +2788,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8575185036756165397}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &2284623277219668441
 SkinnedMeshRenderer:
@@ -3172,6 +3175,7 @@ Transform:
   m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1008347931289733934}
   - {fileID: 3307169229564885062}
   - {fileID: 9019437347845228171}
   - {fileID: 3712612561918307844}
@@ -3183,7 +3187,6 @@ Transform:
   - {fileID: 556939245491013324}
   - {fileID: 1926971367075260628}
   - {fileID: 6963054115324268641}
-  - {fileID: 1008347931289733934}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3453,7 +3456,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8575185036756165397}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &5512903528012982684
 SkinnedMeshRenderer:
