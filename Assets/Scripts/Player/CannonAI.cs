@@ -68,7 +68,7 @@ public class CannonAI : MonoBehaviour
             if (target != null)
             {
                 //update direction to enemy each frame
-                enemyDir = transform.position - target.transform.position;
+                enemyDir = cannon.transform.position - target.transform.position;
                 //face enemy ignores y
                 faceEnemy();
             }
@@ -144,8 +144,9 @@ public class CannonAI : MonoBehaviour
         enemyDir.y = 0;
         //Quaternion for a rotation to player
         Quaternion rot = Quaternion.LookRotation(enemyDir);
+        rot.eulerAngles = new Vector3(rot.eulerAngles.x, rot.eulerAngles.y + 180, rot.eulerAngles.z);
         //make rotation smooth with Lerp
-        cannon.transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * rotSpeed);
+        cannon.transform.rotation = Quaternion.Lerp(cannon.transform.rotation, rot, Time.deltaTime * rotSpeed);
     }
     IEnumerator idle(int range)
     {
