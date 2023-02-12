@@ -13,6 +13,7 @@ public class playerController : MonoBehaviour
     [SerializeField] AudioSource aud;
     [SerializeField] Animator animator;
     [SerializeField] private Animation anim;
+    [SerializeField] public ParticleSystem speedPart;
 
 
     [Header("----- Player Stats -----")]
@@ -514,6 +515,8 @@ public class playerController : MonoBehaviour
         {
             playerBaseSpeed += power.speedBonus;
             gameManager.instance.speedBoostIcon.SetActive(true);
+            speedPart.gameObject.SetActive(true);
+            speedPart.Play();
         }
         if (power.staminaBonus != 0)
         {

@@ -39,6 +39,9 @@ public class PowerUp : MonoBehaviour
         gameManager.instance.speedBoostIcon.SetActive(false);
         gameManager.instance.healingIcon.SetActive(false);
 
+        gameManager.instance.playerScript.speedPart.Stop();
+        gameManager.instance.playerScript.speedPart.gameObject.SetActive(false);
+
         Destroy(gameObject);
     }
 
