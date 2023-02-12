@@ -20,10 +20,10 @@ public class CannonAI : MonoBehaviour
 
     [Header("----- Shooting -----")]
     [SerializeField] Transform shootPos;
-    [Range(0, 100)][SerializeField] int cannSpeed;//cannonball speed
-    [Range(0, 2)][SerializeField] float shootRate;
-    [Range(0, 100)][SerializeField] int shootDist;
-    [Range(0, 180)][SerializeField] int shootAngle;//is this the same as view angle?
+    [Range(0, 100)] [SerializeField] int cannSpeed;//cannonball speed
+    [Range(0, 2)] [SerializeField] float shootRate;
+    [Range(0, 100)] [SerializeField] int shootDist;
+    [Range(0, 180)] [SerializeField] int shootAngle;//is this the same as view angle?
     [SerializeField] int upForce;
     [SerializeField] int forwardForce;
     [SerializeField] int explosiveDamage;
@@ -49,7 +49,7 @@ public class CannonAI : MonoBehaviour
 
     //invert rotation
     bool rotPositive;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -113,7 +113,7 @@ public class CannonAI : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.transform == target)
+        if (other.gameObject.transform == target)
         {
             target = null;
             enemyInRange = false;
@@ -151,9 +151,9 @@ public class CannonAI : MonoBehaviour
     IEnumerator idle(int range)
     {
         //starting the rotation
-        isRotating= true;        
+        isRotating = true;
         //clamp current angle for rotation range
-        currAngle = Mathf.Clamp(currAngle+(float)rotSpeed*Time.deltaTime,-range, range);
+        currAngle = Mathf.Clamp(currAngle + (float)rotSpeed * Time.deltaTime, -range, range);
         //get change in angle
         lookRot = Quaternion.AngleAxis(currAngle, Vector3.up);
         //assign the rotation
@@ -161,9 +161,9 @@ public class CannonAI : MonoBehaviour
         //scan for enemy
         canSeeEnemy();
         //10 degrees a second? 
-        yield return new WaitForSeconds(0.1f);        
+        yield return new WaitForSeconds(0.1f);
         //stopping rotation
-        isRotating= false;
+        isRotating = false;
     }
     IEnumerator shoot()
     {
