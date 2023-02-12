@@ -17,6 +17,7 @@ public class CannonAI : MonoBehaviour
     [SerializeField] int viewAngle;//is this the same as shoot angle?
     [SerializeField] int activeTime;
     [SerializeField] float waitTime;//pause before rotating back
+    [SerializeField] int direction = 1;
 
     [Header("----- Shooting -----")]
     [SerializeField] Transform shootPos;
@@ -74,25 +75,31 @@ public class CannonAI : MonoBehaviour
             }
             else
             {
-                //if no targets, idle rotate and scan for enemies
-                if (!isRotating)
-                {
-                    StartCoroutine(idle(rotRange));
-                }
-                rotPositive = !rotPositive;
-                currAngle = 0f;
-                cannon.transform.rotation = Quaternion.identity;
-                //time before rotation to other side
-                //**need to account for rotation time?
-                new WaitForSeconds(waitTime);
+                currAngle += Time.deltaTime * rotSpeed * direction;
 
-                //rotate opposite way?
-                if (!isRotating && !rotPositive)
-                {
-                    StopCoroutine(idle(rotRange));
-                    StartCoroutine(idle(-rotRange));
-                    rotPositive = !rotPositive;
-                }
+                if (currAngle >= rotRange) direction = -1;
+                else if (currAngle <= -rotRange) direction = 1;
+
+                cannon.transform.rotation = Quaternion.Euler(0, currAngle, 0);
+                //if no targets, idle rotate and scan for enemies
+                //if (!isRotating)
+                //{
+                //    StartCoroutine(idle(rotRange));
+                //}
+                //rotPositive = !rotPositive;
+                //currAngle = 0f;
+                //cannon.transform.rotation = Quaternion.identity;
+                ////time before rotation to other side
+                ////**need to account for rotation time?
+                //new WaitForSeconds(waitTime);
+
+                ////rotate opposite way?
+                //if (!isRotating && !rotPositive)
+                //{
+                //    StopCoroutine(idle(rotRange));
+                //    StartCoroutine(idle(-rotRange));
+                //    rotPositive = !rotPositive;
+                //}
             }
         }
     }
