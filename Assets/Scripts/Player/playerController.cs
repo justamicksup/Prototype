@@ -14,6 +14,7 @@ public class playerController : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] private Animation anim;
     [SerializeField] public ParticleSystem speedPart;
+    [SerializeField] public ParticleSystem healthPart;
 
 
     [Header("----- Player Stats -----")]
@@ -539,6 +540,8 @@ public class playerController : MonoBehaviour
         if (power.healthBonus != 0)
         {
             StartCoroutine(healOverTime(power.effectDuration, power.healthBonus));
+            healthPart.gameObject.SetActive(true);
+            healthPart.Play();
             gameManager.instance.healingIcon.SetActive(true);
         }
         if (power.ammoBonus != 0)

@@ -24,7 +24,13 @@ public class PowerUp : MonoBehaviour
         {
             aud.Play();
             StartCoroutine(playAud());
-
+            try
+            {
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
+            }
+            catch
+            {
+            }
             Invoke(nameof(ResetStats), power.effectDuration);
         }
     }
@@ -40,6 +46,7 @@ public class PowerUp : MonoBehaviour
         gameManager.instance.healingIcon.SetActive(false);
 
         gameManager.instance.playerScript.speedPart.Stop();
+        //gameManager.instance.playerScript.healthPart.Stop();
         gameManager.instance.playerScript.speedPart.gameObject.SetActive(false);
 
         Destroy(gameObject);

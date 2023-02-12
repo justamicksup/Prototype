@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ca8ea7698aad546ba30bd172e960d4, type: 3}
   m_Name: PowerUp - Speed
   m_EditorClassIdentifier: 
-  effectDuration: 5
+  effectDuration: 10
+  healthBonus: 0
   speedBonus: 15
   staminaBonus: 0
   shootDmgBonus: 0
   meleeDmgBonus: 0
   goldBonus: 5
+  ammoBonus: 0
+  weapon: {fileID: 0}
   powerAudio: {fileID: 8300000, guid: 7bd6b897eb5ca4b7d88a205c4a51640c, type: 3}
