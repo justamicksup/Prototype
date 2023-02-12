@@ -30192,7 +30192,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   speedPart: {fileID: 1152340674}
   healthPart: {fileID: 2526192350045218479}
-  killPart: {fileID: 0}
+  killPart: {fileID: 7452114086235122011}
   playerBaseHealth: 100
   playerBaseStamina: 100
   currentStamina: 0
