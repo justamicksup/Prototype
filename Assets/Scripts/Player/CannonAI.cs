@@ -80,6 +80,8 @@ public class CannonAI : MonoBehaviour
                     StartCoroutine(idle(rotRange));
                 }
                 rotPositive = !rotPositive;
+                currAngle = 0f;
+                cannon.transform.rotation = Quaternion.identity;
                 //time before rotation to other side
                 //**need to account for rotation time?
                 new WaitForSeconds(waitTime);
@@ -87,6 +89,7 @@ public class CannonAI : MonoBehaviour
                 //rotate opposite way?
                 if (!isRotating && !rotPositive)
                 {
+                    StopCoroutine(idle(rotRange));
                     StartCoroutine(idle(-rotRange));
                     rotPositive = !rotPositive;
                 }
@@ -150,11 +153,6 @@ public class CannonAI : MonoBehaviour
         isRotating= true;        
         //clamp current angle for rotation range
         currAngle = Mathf.Clamp(currAngle+(float)rotSpeed*Time.deltaTime,-range, range);
-        //invert rotation?
-        if (!rotPositive)
-        {
-            currAngle *= -1;
-        }
         //get change in angle
         lookRot = Quaternion.AngleAxis(currAngle, Vector3.up);
         //assign the rotation
