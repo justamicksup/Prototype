@@ -15,6 +15,7 @@ public class playerController : MonoBehaviour
     [SerializeField] private Animation anim;
     [SerializeField] public ParticleSystem speedPart;
     [SerializeField] public ParticleSystem healthPart;
+    [SerializeField] public ParticleSystem killPart;
 
 
     [Header("----- Player Stats -----")]
@@ -526,6 +527,8 @@ public class playerController : MonoBehaviour
         if (power.shootDmgBonus != 0)
         {
             shootDamage += power.shootDmgBonus;
+            killPart.gameObject.SetActive(true);
+            killPart.Play();
             gameManager.instance.instaKillIcon.SetActive(true);
         }
         if (power.meleeDmgBonus != 0)
