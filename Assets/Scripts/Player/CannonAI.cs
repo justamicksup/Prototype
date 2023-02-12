@@ -80,26 +80,7 @@ public class CannonAI : MonoBehaviour
                 if (currAngle >= rotRange) direction = -1;
                 else if (currAngle <= -rotRange) direction = 1;
 
-                cannon.transform.rotation = Quaternion.Euler(0, currAngle, 0);
-                //if no targets, idle rotate and scan for enemies
-                //if (!isRotating)
-                //{
-                //    StartCoroutine(idle(rotRange));
-                //}
-                //rotPositive = !rotPositive;
-                //currAngle = 0f;
-                //cannon.transform.rotation = Quaternion.identity;
-                ////time before rotation to other side
-                ////**need to account for rotation time?
-                //new WaitForSeconds(waitTime);
-
-                ////rotate opposite way?
-                //if (!isRotating && !rotPositive)
-                //{
-                //    StopCoroutine(idle(rotRange));
-                //    StartCoroutine(idle(-rotRange));
-                //    rotPositive = !rotPositive;
-                //}
+                cannon.transform.rotation = Quaternion.Euler(0, currAngle, 0);                
             }
         }
     }
@@ -154,23 +135,6 @@ public class CannonAI : MonoBehaviour
         rot.eulerAngles = new Vector3(rot.eulerAngles.x, rot.eulerAngles.y + 180, rot.eulerAngles.z);
         //make rotation smooth with Lerp
         cannon.transform.rotation = Quaternion.Lerp(cannon.transform.rotation, rot, Time.deltaTime * rotSpeed);
-    }
-    IEnumerator idle(int range)
-    {
-        //starting the rotation
-        isRotating = true;
-        //clamp current angle for rotation range
-        currAngle = Mathf.Clamp(currAngle + (float)rotSpeed * Time.deltaTime, -range, range);
-        //get change in angle
-        lookRot = Quaternion.AngleAxis(currAngle, Vector3.up);
-        //assign the rotation
-        cannon.transform.rotation = lookRot;
-        //scan for enemy
-        canSeeEnemy();
-        //10 degrees a second? 
-        yield return new WaitForSeconds(0.1f);
-        //stopping rotation
-        isRotating = false;
     }
     IEnumerator shoot()
     {
