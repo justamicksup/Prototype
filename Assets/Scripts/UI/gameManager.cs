@@ -320,23 +320,36 @@ public class gameManager : MonoBehaviour
 
     public void DropLoot(Transform trans, GameObject weapon = null, bool doesDropWeapon = false, bool doesDropPowerUp = false, bool doesDropCoins = false)
     {
+        // for drop rates the number is percent chance it will drop, e.g. 5 is 5% chance to drop
+        int coin500DropRate = 1;
+        int coin50DropRate = 4;
+        int coin25DropRate = 10;
+        int coin10DropRate = 25;
+        int weaponDropRate = 5;
+        int powerUpDropRate = 5;
+
+        int coin50Var = coin500DropRate + coin50DropRate;
+        int coin25Var = coin50Var + coin25DropRate;
+        int coin10Var = coin25Var + coin10DropRate;
+
         int rand;
+
         if (doesDropCoins)
         {
             rand = Random.Range(1, 100);
-            if (rand == 1) // 1% change for 500 coins
+            if (rand == coin500DropRate) // 1% change for 500 coins
             {
                 Instantiate(coin500, trans.position, trans.rotation);
             }
-            else if (rand > 1 && rand <= 5) // 4% chance for 50 coins
+            else if (rand > coin500DropRate && rand <= coin50Var) // 4% chance for 50 coins
             {
                 Instantiate(coin50, trans.position, trans.rotation);
             }
-            else if (rand > 5 && rand <= 15) // 10% chance for 25 coins
+            else if (rand > coin50Var && rand <= coin25Var) // 10% chance for 25 coins
             {
                 Instantiate(coin25, trans.position, trans.rotation);
             }
-            else if (rand > 15 && rand <= 40) // 25% chance for 10 coins
+            else if (rand > coin25Var && rand <= coin10Var) // 25% chance for 10 coins
             {
                 Instantiate(coin10, trans.position, trans.rotation);
             }
@@ -346,7 +359,7 @@ public class gameManager : MonoBehaviour
         if (doesDropWeapon)
         {
             rand = Random.Range(1, 100);
-            if (rand <= 5) // 5% chance to drop weapon
+            if (rand <= weaponDropRate)
             {
                 Instantiate(weapon, trans.position, trans.rotation);
             }
@@ -355,7 +368,7 @@ public class gameManager : MonoBehaviour
         if (doesDropPowerUp)
         {
             rand = Random.Range(1, 100);
-            if (rand <= 5) // 5% chance to drop power up
+            if (rand <= powerUpDropRate)
             {
                 rand = Random.Range(1, 4);
                 switch (rand)
