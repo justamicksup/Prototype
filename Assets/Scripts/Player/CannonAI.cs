@@ -80,7 +80,7 @@ public class CannonAI : MonoBehaviour
                 if (currAngle >= rotRange) direction = -1;
                 else if (currAngle <= -rotRange) direction = 1;
 
-                cannon.transform.rotation = Quaternion.Euler(0, currAngle, 0);                
+                cannon.transform.localRotation = Quaternion.Euler(0, currAngle, 0);                
             }
         }
     }
