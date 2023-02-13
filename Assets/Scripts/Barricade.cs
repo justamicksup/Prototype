@@ -9,20 +9,12 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
     int HP;
 
     private int HPOrig;
-    [SerializeField] int gateCost;
-    [SerializeField] int repairCost;
-    [SerializeField] float cleanUpTimer;
-    [SerializeField] bool canTakeDamage;
 
-    [Header("----- Components -----")] [SerializeField]
-    GameObject pillars;
-
-    [SerializeField] GameObject brokenGate1;
-    [SerializeField] GameObject brokenGate2;
-    [SerializeField] Transform _brokenGate1;
-    [SerializeField] Transform _brokenGate2;
-    [SerializeField] GameObject Gate1;
-    [SerializeField] GameObject Gate2;
+    [Header("----- Components -----")]
+    [SerializeField] GameObject barricade;
+    [SerializeField] Transform _barricade;
+    [SerializeField] GameObject brokenBarricade;
+    [SerializeField] Transform _brokenBarricade;
 
     private bool hasCoin = false;
     private bool playerInRange;
