@@ -187,6 +187,7 @@ MonoBehaviour:
   weaponDisplay: {fileID: 8330052421567631519}
   seed: 0
   tempArmory: {fileID: 11400000, guid: 8a506621b14f7964b8a4063ed5aa8437, type: 2}
+  wallet: 0
 --- !u!33 &8354027623936128328
 MeshFilter:
   m_ObjectHideFlags: 0

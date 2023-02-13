@@ -8358,13 +8358,13 @@ MonoBehaviour:
   TitleScreen: {fileID: 0}
   LoadScreen: {fileID: 3435519091236413284}
   LoadBar: {fileID: 8998715811777187719}
-  timer: {fileID: 0}
+  timer: {fileID: 3258901336190518701}
   ammoRemaining: 0
   weaponsInLevel: 0
-  coin10: {fileID: 0}
-  coin25: {fileID: 0}
-  coin50: {fileID: 0}
-  coin500: {fileID: 0}
+  coin10: {fileID: 2415728535143994528, guid: c5fbf9cfb5af3e64d8575c318af6bbf0, type: 3}
+  coin25: {fileID: 3129925147036517503, guid: cf42651e10163ed42909f45700dada41, type: 3}
+  coin50: {fileID: 8771921454403100126, guid: 33f39b48c6bafde4a99c22f97261d4d5, type: 3}
+  coin500: {fileID: 7086524919657854735, guid: 644fdfc3743c88145b67c09d6ac19e6b, type: 3}
   speedPowerUp: {fileID: 4032007767309016680, guid: b5a298b7612a1f74c9759b2188d87c52, type: 3}
   healthPowerUp: {fileID: 4432341785629206657, guid: 42b70af4f35f9f343a3a353915384a40, type: 3}
   oneShotPowerUp: {fileID: 3826195125837836763, guid: db0cf68515e898d4e89b30cfc55f724a, type: 3}

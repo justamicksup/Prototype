@@ -61,8 +61,8 @@ MonoBehaviour:
   - {fileID: 6546838859403903518, guid: d18fd7a2c1515ca4da918a289b97b727, type: 3}
   - {fileID: 7777564237960259858, guid: 68efba89ed6ea694ea0022adb4af6414, type: 3}
   boss: {fileID: 7275824995431297771, guid: e77697f580cf90540a503e6b6f427ea1, type: 3}
-  waveDuration: 3
-  coolDownDuration: 1
+  waveDuration: 120
+  coolDownDuration: 30
   difficultyMultiplier: 1
   spawnLocations:
   - {fileID: 0}

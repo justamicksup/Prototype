@@ -48,6 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e872d863c0574bf4ebb1daa12e244e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  armTransform:
+  - {fileID: 0}
+  - {fileID: 0}
   lockVerMin: -75
   lockVerMax: 75
   invertX: 0
@@ -156,7 +159,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2636245865579264813
 Transform:
   m_ObjectHideFlags: 0
@@ -190,6 +193,9 @@ MonoBehaviour:
   aud: {fileID: 3734570729019460057}
   animator: {fileID: 0}
   anim: {fileID: 1480038083}
+  speedPart: {fileID: 0}
+  healthPart: {fileID: 0}
+  killPart: {fileID: 0}
   playerBaseHealth: 100
   playerBaseStamina: 100
   currentStamina: 0
@@ -252,6 +258,11 @@ MonoBehaviour:
   meleeMask:
     serializedVersion: 2
     m_Bits: 128
+  explosive: {fileID: 0}
+  explosiveDamage: 0
+  explosiveTimer: 0
+  explosiveRange: 0
+  explosiveForce: 0
   currentWeapon: 0
   WeaponSlots:
   - {fileID: 7096514263383103223}
@@ -260,7 +271,6 @@ MonoBehaviour:
   pushBack: {x: 0, y: 0, z: 0}
   pushBackTime: 0
   inActionRange: 0
-  t: 3
 --- !u!143 &2636245865579264848
 CharacterController:
   m_ObjectHideFlags: 0

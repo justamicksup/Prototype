@@ -173,6 +173,7 @@ MonoBehaviour:
   viewAngle: 85
   activeTime: 180
   waitTime: 8
+  direction: 1
   shootPos: {fileID: 350312441533669812}
   cannSpeed: 10
   shootRate: 1

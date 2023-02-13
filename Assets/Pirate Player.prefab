@@ -3260,6 +3260,9 @@ MonoBehaviour:
   aud: {fileID: 788778224197705382}
   animator: {fileID: 264239649935745849}
   anim: {fileID: 0}
+  speedPart: {fileID: 0}
+  healthPart: {fileID: 0}
+  killPart: {fileID: 0}
   playerBaseHealth: 100
   playerBaseStamina: 100
   currentStamina: 100
@@ -3322,6 +3325,11 @@ MonoBehaviour:
   meleeMask:
     serializedVersion: 2
     m_Bits: 128
+  explosive: {fileID: 0}
+  explosiveDamage: 0
+  explosiveTimer: 0
+  explosiveRange: 0
+  explosiveForce: 0
   currentWeapon: 0
   WeaponSlots:
   - {fileID: 3726816452823696184}
