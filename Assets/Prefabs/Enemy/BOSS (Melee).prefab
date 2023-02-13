@@ -1795,6 +1795,7 @@ MonoBehaviour:
   aud: {fileID: 1090031533}
   weaponDrop: {fileID: 7785865396609551097, guid: b2e315dd9e9f5e24ab7452da62b73dbf, type: 3}
   audWeaponSwingtVol: 0.1
+  offSetPlayerDir: {x: 0, y: 1, z: 0}
 --- !u!95 &7689975587143090890
 Animator:
   serializedVersion: 5

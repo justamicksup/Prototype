@@ -42,7 +42,8 @@ public class ExplosiveEnemyAI : MonoBehaviour, IDamage
     bool playerInRange;
     float angleToPlayer;
     public float stoppingDistOrig;
-
+    [SerializeField] private Vector3 offSetPlayerDir = new Vector3(0, 1, 0);
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -50,13 +51,14 @@ public class ExplosiveEnemyAI : MonoBehaviour, IDamage
         GetStats((EnemyExplosiveScriptableObjects)masterEnemyScriptableObject);
         GetNavMesh();
         stoppingDistOrig = agent.stoppingDistance;
+        
+     
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerDir = gameManager.instance.player.transform.position - headPos.position;
-
+        playerDir = gameManager.instance.player.transform.position + offSetPlayerDir - headPos.position;
         agent.SetDestination(gameManager.instance.player.transform.position);
         animator.SetFloat("Speed", agent.velocity.normalized.magnitude);
 
@@ -192,7 +194,7 @@ public class ExplosiveEnemyAI : MonoBehaviour, IDamage
 
     bool CanSeePlayer()
     {
-        playerDir = gameManager.instance.player.transform.position - headPos.position;
+        playerDir = gameManager.instance.player.transform.position + offSetPlayerDir - headPos.position;
         angleToPlayer = Vector3.Angle(playerDir, transform.forward);
 
         

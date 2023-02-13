@@ -1958,8 +1958,10 @@ MonoBehaviour:
   model: {fileID: 7886939071975061047}
   aud: {fileID: 7165698963279513722}
   weaponDrop: {fileID: 3994718407844185182, guid: c9ab19a24eca4cd4281ca79595853bc2, type: 3}
+  waveStats: {fileID: 0}
   stoppingDistOrig: 0
   audGunShotVol: 0.1
+  offSetPlayerDir: {x: 0, y: 1, z: 0}
 --- !u!95 &7908567486035732233
 Animator:
   serializedVersion: 5

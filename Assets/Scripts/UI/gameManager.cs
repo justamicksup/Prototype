@@ -36,7 +36,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI enemiesRemainingText;
     public int key;
     public EnemyWaveSystem enemyWaveSystem;
-    
+
     [Header("----- UI -----")] public GameObject activeMenu;
     public GameObject pauseMenu;
     public GameObject winMenu;
@@ -58,20 +58,21 @@ public class gameManager : MonoBehaviour
     public GameObject TitleScreen;
     public GameObject LoadScreen;
     public Image LoadBar;
+    public Text timer;
 
     [Header("----- Weapons and Ammo -----")]
     public int ammoRemaining;
 
     public int weaponsInLevel;
 
-    [Header("----- Enemy Loot Drops -----")]
-    [SerializeField] GameObject coin10;
+    [Header("----- Enemy Loot Drops -----")] [SerializeField]
+    GameObject coin10;
+
     [SerializeField] GameObject coin25;
     [SerializeField] GameObject coin50;
     [SerializeField] GameObject coin500;
     [SerializeField] GameObject speedPowerUp;
 
-    
 
     [SerializeField] GameObject healthPowerUp;
     [SerializeField] GameObject oneShotPowerUp;
@@ -115,6 +116,7 @@ public class gameManager : MonoBehaviour
         //ammoCountText[2].text = "";
         waveCountText.text = "";
         coinsText.text = playerScript.GetCoins().ToString();
+        timer.text = "";
 
         if (audBackground != null)
         {
@@ -308,8 +310,10 @@ public class gameManager : MonoBehaviour
         }
 
         coinsText.text = playerScript.GetCoins().ToString();
-        waveCountText.text = $" {waveCount}";
-        
+        if (waveCount > 0)
+        {
+            waveCountText.text = $" {waveCount}";
+        }
     }
 
     public void updateCoinUI()
@@ -318,7 +322,8 @@ public class gameManager : MonoBehaviour
     }
 
 
-    public void DropLoot(Transform trans, GameObject weapon = null, bool doesDropWeapon = false, bool doesDropPowerUp = false, bool doesDropCoins = false)
+    public void DropLoot(Transform trans, GameObject weapon = null, bool doesDropWeapon = false,
+        bool doesDropPowerUp = false, bool doesDropCoins = false)
     {
         // for drop rates the number is percent chance it will drop, e.g. 5 is 5% chance to drop
         int coin500DropRate = 1;

@@ -4856,6 +4856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   playerScript: {fileID: 0}
+  currentLevel: 0
   enemiesRemaining: 0
   waveCount: 0
   playerSpawnPos: {fileID: 0}
@@ -4867,6 +4868,7 @@ MonoBehaviour:
   nextWave: 0
   enemiesRemainingText: {fileID: 0}
   key: 0
+  enemyWaveSystem: {fileID: 0}
   activeMenu: {fileID: 0}
   pauseMenu: {fileID: 8532239391719620909}
   winMenu: {fileID: 2056105691724560241}
@@ -4888,6 +4890,7 @@ MonoBehaviour:
   TitleScreen: {fileID: 0}
   LoadScreen: {fileID: 3685540241895642741}
   LoadBar: {fileID: 6947116204591629974}
+  timer: {fileID: 3580696248460397756}
   ammoRemaining: 0
   weaponsInLevel: 0
   coin10: {fileID: 2415728535143994528, guid: c5fbf9cfb5af3e64d8575c318af6bbf0, type: 3}

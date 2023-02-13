@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1948663780679458876}
   - component: {fileID: 1948663780679458877}
+  - component: {fileID: 1370930154}
   m_Layer: 0
   m_Name: TestWave
   m_TagString: Untagged
@@ -55,3 +56,24 @@ MonoBehaviour:
   coolDownDuration: 5
   difficultyMultiplier: 1
   currentWaveIndex: 0
+  yMin: 0
+  area: {fileID: 1370930154}
+  timer: 0.1
+  enemiesToSpawn: 0
+  enemiesSpawned: 0
+  currentWave: 0
+  waveDurationCountDown: 0
+  coolDownCountDown: 0
+--- !u!65 &1370930154
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948663780679458878}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 1, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}

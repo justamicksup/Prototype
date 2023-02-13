@@ -40,6 +40,7 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
     float angleToPlayer;
     bool hasWeapon;
     [Range(0, 1)] [SerializeField] float audWeaponSwingtVol;
+    [SerializeField] private Vector3 offSetPlayerDir = new Vector3(0, 1, 0);
     
     // Start is called before the first frame update
     void Start()
@@ -48,13 +49,15 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
         GetStats((EnemyMeleeScriptableObject)masterEnemyScriptableObject);
         GetNavMesh();
         stoppingDistOrig = agent.stoppingDistance;
+       
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerDir = gameManager.instance.player.transform.position - headPos.position;
-
+        playerDir = gameManager.instance.player.transform.position + offSetPlayerDir - headPos.position;
+       
        
         agent.SetDestination(gameManager.instance.player.transform.position);
        
@@ -188,7 +191,7 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
     }
     bool CanSeePlayer()
     {
-        playerDir = gameManager.instance.player.transform.position - headPos.position;
+        playerDir = gameManager.instance.player.transform.position + offSetPlayerDir - headPos.position;
         angleToPlayer = Vector3.Angle(playerDir, transform.forward);
         
 

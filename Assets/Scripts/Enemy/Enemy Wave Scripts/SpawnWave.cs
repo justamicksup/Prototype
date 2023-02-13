@@ -28,6 +28,7 @@ public class SpawnWave : MonoBehaviour
             Destroy(gameObject);
         }
        
+        
     }
 
     public void spawnTheWave()

@@ -7,7 +7,7 @@ public class TriggerEnemyWave : MonoBehaviour
 {
     bool playerInRange;
     [SerializeField] GameObject chestTrigger;
-    [SerializeField] SpawnWave enemySpawnPoint;
+    [SerializeField] EnemyWaveSystem enemySpawnPoint;
     
     // Update is called once per frame
     void Update()
