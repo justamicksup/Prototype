@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public enum UpgradeTypes { PlayerSpeed, PlayerHealth, PlayerStamina, GunDmg, GunReload, GunRange, GunMamAmmo }
+public enum UpgradeTypes { PlayerSpeed, PlayerHealth, PlayerStamina, GunDmg, GunReload, GunRange, GunMaxAmmo }
 public class playerController : MonoBehaviour
 {
     [Header("----- Components -----")]
@@ -443,9 +443,9 @@ public class playerController : MonoBehaviour
         }
     }
 
-    public void UpgradeStat(UpgradeTypes type, int goldCost, float amount)
+    public bool UpgradeStat(UpgradeTypes type, int goldCost, float amount)
     {
-        if (coins < goldCost) return;
+        if (coins < goldCost) return false;
         coins -= goldCost;
         switch (type)
         {
@@ -467,10 +467,11 @@ public class playerController : MonoBehaviour
             case UpgradeTypes.GunRange:
                 gunRangeMultiplier += amount;
                 break;
-            case UpgradeTypes.GunMamAmmo:
+            case UpgradeTypes.GunMaxAmmo:
                 maxAmmoMultiplier += (int)amount;
                 break;
         }
+        return true;
     }
 
     public void updatePlayerHP()
