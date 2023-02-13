@@ -319,8 +319,13 @@ public class gameManager : MonoBehaviour
             {
                 waveCountText.text = "";
             }
+            else if (enemyWaveSystem.isMiniBossSpawned)
+            {
+                waveCountText.text = "";
+            }
             else
             {
+                waveText.SetActive(true);
                  waveCountText.text = $" {waveCount}";
             }
            

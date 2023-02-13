@@ -13,7 +13,7 @@ public class EnemyWaveSystem : MonoBehaviour
     [Header("----- Enemy Info -----")] [SerializeField]
     Wave[] waves;
 
-    [SerializeField] GameObject miniBoss;
+    [SerializeField] GameObject[] miniBoss;
     [SerializeField] GameObject boss;
     [SerializeField] float waveDuration = 120.0f; // 2 minutes
     [SerializeField] float coolDownDuration = 30.0f;
@@ -29,7 +29,8 @@ public class EnemyWaveSystem : MonoBehaviour
     private bool isTriggerSet;
     private bool isSpawning;
     internal bool isBossSpawned;
-
+    internal bool isMiniBossSpawned;
+    
     //Current wave enemy tracker
     private int enemiesToSpawn;
     private int enemiesSpawned = 1;
@@ -76,6 +77,12 @@ public class EnemyWaveSystem : MonoBehaviour
             gameManager.instance.timer.text = "  Boss Wave";
             gameManager.instance.waveText.SetActive(false);
             Destroy(gameObject);
+        }
+
+        if (isMiniBossSpawned)
+        {
+            gameManager.instance.timer.text = "  Mini Boss ";
+            gameManager.instance.waveText.SetActive(false);
         }
     }
 
@@ -132,11 +139,13 @@ public class EnemyWaveSystem : MonoBehaviour
                     
                 }
                 // Check if it's time for a mini boss wave
-                else if ((currentWaveIndex + 1) % 5 == 0)
+                if ((currentWaveIndex + 1) % 5 == 0 && !isMiniBossSpawned)
                 {
+                    Debug.Log("MiniBoss Spawned");
                     // Spawn the mini boss
-                    Instantiate(miniBoss, spawnPosition, Quaternion.identity);
-                    
+                    Instantiate(miniBoss[Random.Range(0, miniBoss.Length)], spawnPosition, Quaternion.identity);
+                    isMiniBossSpawned = true;
+
                 }
                 else
                 {
@@ -165,6 +174,7 @@ public class EnemyWaveSystem : MonoBehaviour
                     enemiesSpawned = 0;
                     currentWaveIndex++;
                     gameManager.instance.updateWave();
+                    isMiniBossSpawned = false;
                 }
                 else
                 {
