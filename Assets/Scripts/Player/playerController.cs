@@ -39,9 +39,9 @@ public class playerController : MonoBehaviour
     [SerializeField] private float playerStaminaMultiplier = 1;
     [SerializeField] private float playerHealthMultiplier = 1;
 
-    private float PlayerSpeed { get { return playerBaseSpeed * playerSpeedMultiplier; } }
-    private float PlayerMaxStamina { get { return playerBaseStamina * playerStaminaMultiplier; } }
-    private float PlayerMaxHealth { get { return playerBaseHealth * playerHealthMultiplier; } }
+    public float PlayerSpeed { get { return playerBaseSpeed * playerSpeedMultiplier; } }
+    public float PlayerMaxStamina { get { return playerBaseStamina * playerStaminaMultiplier; } }
+    public float PlayerMaxHealth { get { return playerBaseHealth * playerHealthMultiplier; } }
 
 
     [Header("----- Audio -----")]
@@ -72,10 +72,10 @@ public class playerController : MonoBehaviour
     [SerializeField] private float gunRangeMultiplier = 1;
     [SerializeField] private int maxAmmoMultiplier = 1;
 
-    private float GunDamage { get { return shootDamage * gunDmgMultiplier; } }
-    private float GunReloadTime { get { return (gunReloadMultiplier - 1) * reloadTime; } }
-    private float GunShootRange { get { return range * gunRangeMultiplier; } }
-    private int MaxAmmo { get { return maxAmmo + maxAmmoMultiplier; } }
+    public float GunDamage { get { return shootDamage * gunDmgMultiplier; } }
+    public float GunReloadTime { get { return (gunReloadMultiplier - 1) * reloadTime; } }
+    public float GunShootRange { get { return range * gunRangeMultiplier; } }
+    public int MaxAmmo { get { return maxAmmo + maxAmmoMultiplier; } }
 
 
 
