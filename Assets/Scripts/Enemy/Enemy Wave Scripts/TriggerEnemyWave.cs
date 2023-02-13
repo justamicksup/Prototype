@@ -18,9 +18,9 @@ public class TriggerEnemyWave : MonoBehaviour
             if (Input.GetButtonDown("Action"))
             {
                 gameManager.instance.alertText.text = "";
-                Destroy(chestTrigger);
-                enemySpawnPoint.spawnTheWave();
+                Destroy(chestTrigger); 
                 gameManager.instance.StartGame();
+               
             }
         }
     }

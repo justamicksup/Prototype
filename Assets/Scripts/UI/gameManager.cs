@@ -186,6 +186,7 @@ public class gameManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1.5f);
+        enemyWaveSystem.spawnTheWave();
         instance.updateWave();
         instance.UpdateUI();
     }
