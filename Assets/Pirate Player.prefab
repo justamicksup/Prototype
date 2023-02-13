@@ -3293,9 +3293,9 @@ MonoBehaviour:
   aud: {fileID: 788778224197705382}
   animator: {fileID: 264239649935745849}
   anim: {fileID: 0}
-  speedPart: {fileID: 0}
-  healthPart: {fileID: 0}
-  killPart: {fileID: 0}
+  speedPart: {fileID: 7739562293397656492, guid: f6499bf472e9f054b9df9d993959987a, type: 3}
+  healthPart: {fileID: 1016113140367916605, guid: 372b1f1dd6301dc4f9f52aadc45116f1, type: 3}
+  killPart: {fileID: 3183234136551169686, guid: 07749dca7331bf14cb7407e25acf92c6, type: 3}
   playerBaseHealth: 100
   playerBaseStamina: 100
   currentStamina: 100
