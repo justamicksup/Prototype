@@ -223,7 +223,8 @@ public class BossAI : MonoBehaviour, IDamage
                 }
                 else
                 { 
-                    gameManager.instance.alertText.text = "Calling the animation to destroy Ships";
+                   
+                    StartCoroutine(gameManager.instance.rescueShipWin());
                     Destroy(gameObject);
                    
                 }

@@ -17,6 +17,7 @@ public class gameManager : MonoBehaviour
 {
     public static gameManager instance;
     public static Animation shipAnim;
+    public static Animation rescueAnim;
     public static GameObject sun;
     [Header("----- Player -----")] public GameObject player;
     public playerController playerScript;
@@ -96,7 +97,11 @@ public class gameManager : MonoBehaviour
         {
             shipAnim = go.GetComponent<Animation>();
         }
-
+        GameObject rescueShip = GameObject.FindGameObjectWithTag("Rescue Ship");
+        if (rescueShip != null)
+        {
+            rescueAnim = rescueShip.GetComponent<Animation>();
+        }
         sun = GameObject.FindGameObjectWithTag("Sun");
         //HUD = transform.parent.gameObject.GetComponent<HUD>();
         playerScript = player.GetComponent<playerController>();
@@ -414,5 +419,15 @@ public class gameManager : MonoBehaviour
     public void updateKey()
     {
         key += 1;
+    }
+
+    public IEnumerator rescueShipWin()
+    {
+        if (rescueAnim != null)
+        {
+            rescueAnim.clip = rescueAnim.GetClip("ShipsRescue");
+            rescueAnim.Play();
+        }
+        yield return new WaitForSeconds(1.5f);
     }
 }
