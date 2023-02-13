@@ -342,20 +342,21 @@ public class playerController : MonoBehaviour
         }
         isAttacking = false;
     }
-
     IEnumerator reload(ProjectileWeaponScriptableObjects projectileWeaponScriptableObjects)
     {
         isReloading = true;
+        animator.SetBool("Reloading", true);
 
         if (ammoRemaining >= projectileWeaponScriptableObjects.magMax && weaponList[currentWeapon].currentClip != projectileWeaponScriptableObjects.magMax)
         {
+            aud.PlayOneShot(audReload, audReloadVol);
             yield return new WaitForSeconds(GunReloadTime);
             //projectileWeaponScriptableObjects.ammoRemaining = projectileWeaponScriptableObjects.ammoCapacity;
             weaponList[currentWeapon].currentClip = projectileWeaponScriptableObjects.magMax;
-            aud.PlayOneShot(audReload, audReloadVol);
             ammoRemaining -= projectileWeaponScriptableObjects.magMax;
             gameManager.instance.updateAmmoUI();
         }
+        animator.SetBool("Reloading", false);
         isReloading = false;
     }
 
