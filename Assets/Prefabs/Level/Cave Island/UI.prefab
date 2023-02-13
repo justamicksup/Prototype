@@ -4886,6 +4886,7 @@ MonoBehaviour:
   ammoText: {fileID: 3142108360342142464}
   coinsText: {fileID: 6576427833270378932}
   waveCountText: {fileID: 6420823347814656334}
+  waveText: {fileID: 3869290674201406728}
   alertText: {fileID: 1229166139662685634}
   TitleScreen: {fileID: 0}
   LoadScreen: {fileID: 3685540241895642741}

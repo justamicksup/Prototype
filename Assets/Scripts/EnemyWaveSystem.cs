@@ -10,32 +10,40 @@ using Random = UnityEngine.Random;
 
 public class EnemyWaveSystem : MonoBehaviour
 {
-   
-    [SerializeField] Wave[] waves;
+    [Header("----- Enemy Info -----")] [SerializeField]
+    Wave[] waves;
+
     [SerializeField] GameObject miniBoss;
     [SerializeField] GameObject boss;
-    [SerializeField] float waveDuration = 10.0f; // 2 minutes
-    [SerializeField] float coolDownDuration = 5.0f;
+    [SerializeField] float waveDuration = 120.0f; // 2 minutes
+    [SerializeField] float coolDownDuration = 30.0f;
     [SerializeField] internal float difficultyMultiplier = 1.0f;
-    internal int currentWaveIndex = 0;
-    private bool waveActive;
-    
-
-    private float yMin = 0f;
     [SerializeField] private BoxCollider[] spawnLocations;
     [SerializeField] private float spawnInterval;
+
+
+    private float yMin = 0f;
+    internal int currentWaveIndex = 0;
+
+    private bool waveActive;
     private bool isTriggerSet;
     private bool isSpawning;
+    internal bool isBossSpawned;
+
+    //Current wave enemy tracker
     private int enemiesToSpawn;
     private int enemiesSpawned = 1;
-   
+
+    //CountDown clock
     private float waveDurationCountDown;
     private float coolDownCountDown;
 
 
     private void Update()
     {
+        //set current wave enemies that need to spawn
         enemiesToSpawn = waves[currentWaveIndex].EnemyCount;
+
         if (enemiesSpawned < enemiesToSpawn)
         {
             waveActive = true;
@@ -62,15 +70,18 @@ public class EnemyWaveSystem : MonoBehaviour
             gameManager.instance.timer.text = coolDownCountDown.ToString("0:00.00");
         }
 
-        if (currentWaveIndex == waves.Length - 1)
+        //After Boss is Spawned, Destroy spawn System, get rid of countdown
+        if (isBossSpawned)
         {
-            gameManager.instance.timer.text = "";
+            gameManager.instance.timer.text = "  Boss Wave";
+            gameManager.instance.waveText.SetActive(false);
             Destroy(gameObject);
         }
     }
 
     public void spawnTheWave()
     {
+        gameManager.instance.waveText.SetActive(true);
         isTriggerSet = true;
     }
 
@@ -109,29 +120,29 @@ public class EnemyWaveSystem : MonoBehaviour
                 // Check if it's the last wave
                 if (currentWaveIndex == waves.Length - 1)
                 {
-                    // Spawn the boss
-                    Instantiate(boss, spawnPosition,
-                        Quaternion.LookRotation(gameManager.instance.player.transform.position));
-
+                    Debug.Log("BOSS Spawned");
+                    
+                    Instantiate(boss, spawnPosition, Quaternion.LookRotation(gameManager.instance.player.transform.position));
+                    isBossSpawned = true;
+                    
                     // Wait for the boss to be defeated
 
 
                     // Boss defeated, call the ship to come
+                    
                 }
                 // Check if it's time for a mini boss wave
                 else if ((currentWaveIndex + 1) % 5 == 0)
                 {
                     // Spawn the mini boss
                     Instantiate(miniBoss, spawnPosition, Quaternion.identity);
-
-                    // Wait for the mini boss to be defeated
-
-                    // Mini boss defeated, continue with next wave
+                    
                 }
                 else
                 {
                     Instantiate(
-                        waves[currentWaveIndex].EnemiesInWave[Random.Range(0, waves[currentWaveIndex].EnemiesInWave.Count)],
+                        waves[currentWaveIndex]
+                            .EnemiesInWave[Random.Range(0, waves[currentWaveIndex].EnemiesInWave.Count)],
                         spawnPosition, Quaternion.LookRotation(gameManager.instance.player.transform.position));
                 }
 
@@ -160,11 +171,9 @@ public class EnemyWaveSystem : MonoBehaviour
                     enemiesSpawned++;
                     yield return new WaitForSeconds(spawnInterval);
                 }
-
             }
         }
-        isSpawning = false;
 
-        
+        isSpawning = false;
     }
 }

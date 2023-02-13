@@ -8353,10 +8353,12 @@ MonoBehaviour:
   ammoText: {fileID: 3968731046309705489}
   coinsText: {fileID: 5173769001204082853}
   waveCountText: {fileID: 5013520045522165855}
+  waveText: {fileID: 2970891850902234137}
   alertText: {fileID: 974502844435045587}
   TitleScreen: {fileID: 0}
   LoadScreen: {fileID: 3435519091236413284}
   LoadBar: {fileID: 8998715811777187719}
+  timer: {fileID: 0}
   ammoRemaining: 0
   weaponsInLevel: 0
   coin10: {fileID: 0}

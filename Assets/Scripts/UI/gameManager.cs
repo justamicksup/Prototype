@@ -53,7 +53,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] Image[] weaponIcons;
     [SerializeField] Text ammoText;
     [SerializeField] private Text coinsText;
-    [SerializeField] private Text waveCountText;
+    [SerializeField] internal Text waveCountText;
+    [SerializeField] internal GameObject waveText;
     public Text alertText;
     public GameObject TitleScreen;
     public GameObject LoadScreen;
@@ -115,6 +116,7 @@ public class gameManager : MonoBehaviour
         //ammoCountText[1].text = "";
         //ammoCountText[2].text = "";
         waveCountText.text = "";
+        waveText.SetActive(false);
         coinsText.text = playerScript.GetCoins().ToString();
         timer.text = "";
 
@@ -313,7 +315,15 @@ public class gameManager : MonoBehaviour
         coinsText.text = playerScript.GetCoins().ToString();
         if (waveCount > 0)
         {
-            waveCountText.text = $" {waveCount}";
+            if (enemyWaveSystem.isBossSpawned)
+            {
+                waveCountText.text = "";
+            }
+            else
+            {
+                 waveCountText.text = $" {waveCount}";
+            }
+           
         }
     }
 
