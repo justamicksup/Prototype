@@ -89,6 +89,12 @@ public class playerController : MonoBehaviour
     private bool canMeleeAttack = true;
     [SerializeField] private LayerMask meleeMask;
 
+    [Header("----- Explosive Stats -----")]
+    [SerializeField] GameObject explosive;
+    [SerializeField] int explosiveDamage;
+    [SerializeField] int explosiveTimer;
+    [SerializeField] int explosiveRange;
+    [SerializeField] int explosiveForce;
 
     //public GameObject viewModel;
 
@@ -118,6 +124,7 @@ public class playerController : MonoBehaviour
     public bool inActionRange;
     bool isPlayingSteps;
     bool isSprinting;
+    bool isExplosiveAttacking;
 
     // Start is called before the first frame update
     void Start()
@@ -271,7 +278,6 @@ public class playerController : MonoBehaviour
 
     IEnumerator shoot(ProjectileWeaponScriptableObjects projectileWeaponScriptableObjects)
     {
-
         isAttacking = true;
         RaycastHit hit;
         //gameManager.instance.UpdateUI();
@@ -503,8 +509,11 @@ public class playerController : MonoBehaviour
             StartCoroutine(MeleeAttack());
             //call melee logic
         }
-
         //if current weapon is a explosive
+        else if (weaponList[currentWeapon].isExplosive)
+        {
+            StartCoroutine(ExplosiveAttack());
+        }
         // call explosive logic
 
         //if current weapon is a heal
@@ -588,6 +597,14 @@ public class playerController : MonoBehaviour
         yield break;
     }
 
+    IEnumerator ExplosiveAttack()
+    {
+        isExplosiveAttacking = true;
+        GameObject explosiveClone = Instantiate(explosive, muzzle.position, explosive.transform.rotation);
+        explosiveClone.GetComponent<Rigidbody>().velocity = (Camera.main.transform.forward + new Vector3(0, 30, 0)) * 10;
+        yield return new WaitForSeconds(1f);
+        isExplosiveAttacking = false;
+    }
 
     public void SetGunStats(ProjectileWeaponScriptableObjects projectileWeaponScriptableObjects, int index, bool newWeapon = true)
     {
@@ -757,6 +774,8 @@ public class Weapon
 {
     public MasterWeapon weapon;
     public bool isGun;
+    public bool isMelee;
+    public bool isExplosive;
     public int currentClip;
 
     public Weapon(MasterWeapon weapon, bool isGun, int currentClip)
