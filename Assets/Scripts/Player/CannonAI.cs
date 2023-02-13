@@ -117,9 +117,9 @@ public class CannonAI : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(shootPos.position, enemyDir, out hit))
         {
-            if ((hit.collider.CompareTag("Range") || hit.collider.CompareTag("Melee") || hit.collider.CompareTag("Enemy")) && angleToEnemy <= viewAngle)
+            if ((hit.collider.CompareTag("Range") || hit.collider.CompareTag("Melee") || hit.collider.CompareTag("Enemy")))
             {
-                if (!isShooting && angleToEnemy <= shootAngle)
+                if (!isShooting && angleToEnemy <= viewAngle)
                 {
                     StartCoroutine(shoot());
                 }
@@ -148,8 +148,10 @@ public class CannonAI : MonoBehaviour
     }
     public void createBall()
     {
-        GameObject cannBall = Instantiate(cannball, shootPos.position, shootPos.rotation);
+        GameObject cannBall = Instantiate(cannball, shootPos.position, cannon.transform.rotation);
         Rigidbody ballRigidbody = cannBall.GetComponent<Rigidbody>();
+        cannBall.GetComponent<Rigidbody>().velocity =
+            (enemyDir - cannon.transform.position).normalized * cannSpeed;
         ballRigidbody.AddForce(transform.forward * forwardForce + transform.up * upForce);
 
         explosiveDamage = cannBall.GetComponent<explosiveWeapon>().damage;
