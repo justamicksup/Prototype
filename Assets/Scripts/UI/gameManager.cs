@@ -62,6 +62,16 @@ public class gameManager : MonoBehaviour
     public Image LoadBar;
     public Text timer;
 
+    [Header("----- Upgrade Menu -----")]
+    public Text speed;
+    public Text health;
+    public Text stamina;
+    public Text dmg;
+    public Text maxammo;
+    public Text reload;
+    public Text range;
+    public Text cost;
+
     [Header("----- Weapons and Ammo -----")]
     public int ammoRemaining;
 
@@ -335,6 +345,18 @@ public class gameManager : MonoBehaviour
             }
            
         }
+
+        //Upgrade Menu
+        health.text = $"Health: {playerScript.PlayerMaxHealth}";
+        stamina.text = $"Stamina: {playerScript.PlayerMaxStamina}";
+        speed.text = $"Speed: {playerScript.PlayerSpeed}";
+
+        dmg.text = $"Damage: {playerScript.GunDamage}";
+        range.text = $"Range: {playerScript.GunShootRange}";
+        reload.text = $"Reload Time: {playerScript.GunReloadTime}";
+        maxammo.text = $"Max Ammo{playerScript.GunShootRange}";
+
+        cost.text = $"Cost to Upgrade: {playerScript.upgradeCost}";
     }
 
     public void updateCoinUI()

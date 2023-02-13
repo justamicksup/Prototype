@@ -30,6 +30,7 @@ public class playerController : MonoBehaviour
     [SerializeField] int gravity;
     [SerializeField] int jumpMax;
     [SerializeField] int coins;
+    [SerializeField] public int upgradeCost = 100;
     [Range(0.01f, 5)] [SerializeField] float actionRange;
     public int ammo;
     int jumpTimes;
@@ -443,10 +444,10 @@ public class playerController : MonoBehaviour
         }
     }
 
-    public bool UpgradeStat(UpgradeTypes type, int goldCost, float amount)
+    public bool UpgradeStat(UpgradeTypes type, float amount)
     {
-        if (coins < goldCost) return false;
-        coins -= goldCost;
+        if (coins < upgradeCost) return false;
+        coins -= upgradeCost;
         switch (type)
         {
             case UpgradeTypes.PlayerSpeed:
@@ -471,6 +472,8 @@ public class playerController : MonoBehaviour
                 maxAmmoMultiplier += (int)amount;
                 break;
         }
+        upgradeCost += 50;
+        
         return true;
     }
 

@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class buttonFunctions : MonoBehaviour
 {
     private CharacterController controller;
+    int upgradeCount;
+
     public void resume()
     {
         gameManager.instance.unpauseGame();
@@ -57,5 +59,11 @@ public class buttonFunctions : MonoBehaviour
     public void close(GameObject gameObject)
     {
         gameObject.SetActive(false);
-    }    
+    }
+
+    public void upgrade(int type)
+    {
+        gameManager.instance.playerScript.UpgradeStat((UpgradeTypes)type, 5 * upgradeCount);
+
+    }
 }
