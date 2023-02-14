@@ -200,9 +200,13 @@ public class gameManager : MonoBehaviour
             }
             else
             {
-                isPaused = true;
-                upgradeMenu.SetActive(true);
-                pauseGame();
+                if(!pauseMenu.activeSelf)
+                {
+                    isPaused = true;
+                    upgradeMenu.SetActive(true);
+                    pauseGame();
+                }
+                
             }
 
         }
