@@ -1841,6 +1841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 0}
+  delay: 0.5
 --- !u!114 &-4052773043157334780
 MonoBehaviour:
   m_ObjectHideFlags: 0

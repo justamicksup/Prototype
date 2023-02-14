@@ -1157,6 +1157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 0}
+  delay: 0.5
 --- !u!195 &586943647562871440
 NavMeshAgent:
   m_ObjectHideFlags: 0

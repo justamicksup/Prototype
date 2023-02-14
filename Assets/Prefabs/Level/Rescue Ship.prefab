@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 571353593998784088}
   - component: {fileID: 1539731269447575307}
+  - component: {fileID: 160791430}
+  - component: {fileID: 160791429}
   m_Layer: 0
   m_Name: Rescue Ship
   m_TagString: Rescue Ship
@@ -49,6 +51,34 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!135 &160791430
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5468933368841907316}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 80
+  m_Center: {x: -0.11704754, y: -0.56359506, z: 22.97528}
+--- !u!114 &160791429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5468933368841907316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9bd613e9f9fb724d8219ecbe99d5826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pirateShips:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &7881140099212348626
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,3 +204,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9bd613e9f9fb724d8219ecbe99d5826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pirateShips: []

@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &12955151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 12955152}
+  m_Layer: 0
+  m_Name: Explosion Spot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &12955152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12955151}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.8, y: 40.7, z: -7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2896460833084798081}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &239573695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 239573696}
+  m_Layer: 0
+  m_Name: Explosion Spot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &239573696
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239573695}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.5, y: 47.4, z: -8.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2896460833684521778}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &415309330960617117
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,6 +208,48 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3063866224279355589, guid: cfe687521d5f4714983df44dde56959f, type: 3}
+--- !u!135 &405452430
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556245120045898120}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 200
+  m_Center: {x: -0.117041044, y: -200, z: 22.975311}
+--- !u!114 &405452422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556245120045898120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac4559ee3e18ff44bee7be687cfd28f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _deathEffect: {fileID: 405452423}
+  delay: 1
+--- !u!114 &405452423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556245120045898120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7bf94edc75328e4298fa91afece3e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathEffect: {fileID: 100012, guid: 1f1aa87040db08846a4332981b0a6fa7, type: 3}
+  deathEffectLocation: {fileID: 239573696}
+  delay: 3
 --- !u!4 &2896460833684521778 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cfe687521d5f4714983df44dde56959f, type: 3}
@@ -188,19 +292,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cfe687521d5f4714983df44dde56959f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70897907
+      value: 0.7532389
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cfe687521d5f4714983df44dde56959f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.59761757
+      value: -0.63492495
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cfe687521d5f4714983df44dde56959f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.28629404
+      value: 0.13132827
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cfe687521d5f4714983df44dde56959f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.24132496
+      value: 0.11069988
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cfe687521d5f4714983df44dde56959f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -208,7 +312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cfe687521d5f4714983df44dde56959f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 43.979
+      value: 19.78
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cfe687521d5f4714983df44dde56959f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -247,6 +351,48 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3063866224279355589, guid: cfe687521d5f4714983df44dde56959f, type: 3}
+--- !u!135 &405452434
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556245119714569787}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 150
+  m_Center: {x: -0.117108576, y: -200, z: 22.975311}
+--- !u!114 &405452424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556245119714569787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac4559ee3e18ff44bee7be687cfd28f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _deathEffect: {fileID: 405452425}
+  delay: 1
+--- !u!114 &405452425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556245119714569787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7bf94edc75328e4298fa91afece3e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathEffect: {fileID: 100012, guid: 1f1aa87040db08846a4332981b0a6fa7, type: 3}
+  deathEffectLocation: {fileID: 12955152}
+  delay: 3
 --- !u!4 &2896460833084798081 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cfe687521d5f4714983df44dde56959f, type: 3}
