@@ -3304,6 +3304,7 @@ MonoBehaviour:
   gravity: 25
   jumpMax: 1
   coins: 1300
+  upgradeCost: 100
   actionRange: 3
   ammo: 1
   playerSpeedMultiplier: 1
