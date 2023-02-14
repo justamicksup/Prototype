@@ -11191,6 +11191,7 @@ MonoBehaviour:
   coin50: {fileID: 8771921454403100126, guid: 33f39b48c6bafde4a99c22f97261d4d5, type: 3}
   coin500: {fileID: 7086524919657854735, guid: 644fdfc3743c88145b67c09d6ac19e6b, type: 3}
   speedPowerUp: {fileID: 4032007767309016680, guid: b5a298b7612a1f74c9759b2188d87c52, type: 3}
+  ammoPickup: {fileID: 3392102517889441937, guid: 67acf3b2502a0e54d821f51faf165c22, type: 3}
   healthPowerUp: {fileID: 4432341785629206657, guid: 42b70af4f35f9f343a3a353915384a40, type: 3}
   oneShotPowerUp: {fileID: 3826195125837836763, guid: db0cf68515e898d4e89b30cfc55f724a, type: 3}
   ammoPowerUp: {fileID: 717865950685555876, guid: 500c8d4a86cd1a34d8cee8e24412464c, type: 3}
@@ -11205,6 +11206,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6f4cd8476ae007341b5161f16ef687e3, type: 3}
   levelVol: 0.1
   sensitivity: 300
+  skyboxes:
+  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 97637a2a763b7f24b8da4e139e4144ca, type: 2}
 --- !u!1 &8958223625740865911
 GameObject:
   m_ObjectHideFlags: 0

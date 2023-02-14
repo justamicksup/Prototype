@@ -87,6 +87,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject coin50;
     [SerializeField] GameObject coin500;
     [SerializeField] GameObject speedPowerUp;
+    [SerializeField] GameObject ammoPickup;
 
 
     [SerializeField] GameObject healthPowerUp;
@@ -98,7 +99,9 @@ public class gameManager : MonoBehaviour
     [Header("----- Fight Music -----")] public AudioSource aud;
     public AudioClip[] levelMusic;
     [Range(0, 1)] [SerializeField] float levelVol;
-    [Header("----- Game Settings -----]")] public int sensitivity;
+    [Header("----- Game Settings -----]")] 
+    public int sensitivity;
+    public Material[] skyboxes = new Material[2];
 
 
     void Awake()
@@ -227,12 +230,14 @@ public class gameManager : MonoBehaviour
 
         if (sun != null)
         {
+            RenderSettings.skybox = skyboxes[1];
             float time = 0;
             Quaternion startValue = transform.rotation;
             Quaternion endValue = Quaternion.Euler(-52, 4, -145);
             while (time < 1.5f)
             {
                 sun.transform.rotation = Quaternion.Lerp(startValue, endValue, time / 1.5f);
+                RenderSettings.ambientIntensity = Mathf.Lerp(RenderSettings.ambientIntensity, 0, time / 1.5f);
                 time += Time.deltaTime;
                 yield return null;
             }
@@ -420,6 +425,8 @@ public class gameManager : MonoBehaviour
         int weaponDropRate = 5;
         int powerUpDropRate = 5;
 
+        int ammoDropRate = 50;
+
         int coin50Var = coin500DropRate + coin50DropRate;
         int coin25Var = coin50Var + coin25DropRate;
         int coin10Var = coin25Var + coin10DropRate;
@@ -480,6 +487,10 @@ public class gameManager : MonoBehaviour
                 }
             }
         }
+
+        rand = Random.Range(0, 100);
+        if(rand <= ammoDropRate)
+            Instantiate(ammoPickup, trans.position, trans.rotation);
     }
 
     public void updateKey()

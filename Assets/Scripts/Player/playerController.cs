@@ -71,7 +71,7 @@ public class playerController : MonoBehaviour
     [SerializeField] private float gunDmgMultiplier = 1;
     [SerializeField] private float gunReloadMultiplier = 1;
     [SerializeField] private float gunRangeMultiplier = 1;
-    [SerializeField] private int maxAmmoMultiplier = 1;
+    [SerializeField] private int maxAmmoMultiplier = 0;
 
     public float GunDamage { get { return shootDamage * gunDmgMultiplier; } }
     public float GunReloadTime { get { return (gunReloadMultiplier - 1) * reloadTime; } }
@@ -335,6 +335,11 @@ public class playerController : MonoBehaviour
                 }
             }
             yield return new WaitForSeconds(projectileWeaponScriptableObjects.shootRate);
+
+            if(!isReloading)
+            {
+                StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon].weapon));
+            }
         }
         else if(weaponList[currentWeapon].currentClip <= 0 && !isReloading)
         {
@@ -563,16 +568,16 @@ public class playerController : MonoBehaviour
         }
         if (power.ammoBonus != 0)
         {
+            if (ammoRemaining + power.ammoBonus <= MaxAmmo)
+            {
+                AddAmmo(power.ammoBonus);
+            }
+            else
+            {
+                ammoRemaining = MaxAmmo;
+            }
             if (weaponList.Count > 0 && weaponList[currentWeapon].isGun)
             {
-                if (ammoRemaining + power.ammoBonus <= MaxAmmo)
-                {
-                    AddAmmo(power.ammoBonus);
-                }
-                else
-                {
-                    ammoRemaining = MaxAmmo;
-                }
                 gameManager.instance.updateAmmoUI();
             }
         }
@@ -647,7 +652,6 @@ public class playerController : MonoBehaviour
         muzzle.transform.localPosition = projectileWeaponScriptableObjects.GetMuzzleLocation().localPosition;
 
         ammo = projectileWeaponScriptableObjects.magMax;
-        maxAmmo = projectileWeaponScriptableObjects.carryAmount - 1;
 
         animator.SetInteger("WeaponType", 2);
     }
