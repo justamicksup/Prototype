@@ -10,6 +10,7 @@ public class CannonAI : MonoBehaviour
     //if parent is used, transform is offset for circular rotation
     public GameObject cannon;
     [SerializeField] GameObject cannball;
+    [SerializeField] ParticleSystem smokeParticle;
 
     [Header("----- Cannon Stats -----")]
     [SerializeField] int rotSpeed;

@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class Barricade : MonoBehaviour, IDamage, actionObject
 {
     [Header("----- Barricade Stats -----")] 
-    [SerializeField] int HP;
-    private int HPOrig;
+    [SerializeField] float HP;
+    private float HPOrig;
     [SerializeField] int repairCost;
     [SerializeField] int damage;
     [SerializeField] int pushBackForce;
@@ -123,7 +123,7 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
         return hasCoin;
     }
 
-    public int GetHP()
+    public float GetHP()
     {
         return HP;
     }
