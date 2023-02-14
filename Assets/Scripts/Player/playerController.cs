@@ -311,9 +311,9 @@ public class playerController : MonoBehaviour
             } // regular single bullet weapon
             else
             {
-                GameObject bulletClone = Instantiate(bullet, muzzle.position, bullet.transform.rotation);
+                GameObject bulletClone = Instantiate(bullet, muzzle.position, Camera.main.transform.rotation);
                 bulletClone.GetComponent<Rigidbody>().velocity =
-                  Camera.main.transform.forward * bulletSpeed;
+                  bulletClone.transform.forward * bulletSpeed;
                 bulletClone.GetComponent<bullet>().bulletDamage = GunDamage;
             }
 
