@@ -188,7 +188,8 @@ public class ProjectileEnemyAI : MonoBehaviour, IDamage
             playerInRange = true;
         }
 
-        if (other.CompareTag("Destructible") && other.GetComponent<Barricade>().GetHP() > 0)
+        Barricade b = other.GetComponent<Barricade>();
+        if (other.CompareTag("Destructible") && b != null &&  b.GetHP() > 0)
         {
             StartCoroutine(shoot());
         }

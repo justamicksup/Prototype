@@ -118,7 +118,7 @@ public class CannonAI : MonoBehaviour
         }
         if (playerInRange && !coolTimerOn)
         {
-            if (Input.GetButtonDown("Action"))
+            if (Input.GetButtonDown("Action") && gameManager.instance.playerScript.GetCoins() >= activateCost)
             {
                 gameManager.instance.alertText.text = "";
                 gameManager.instance.playerScript.addCoins(-activateCost);

@@ -56,7 +56,7 @@ public class EnemyWaveSystem : MonoBehaviour
             {
                 coolDownCountDown -= Time.deltaTime;
                 coolDownCountDown = Mathf.Max(coolDownCountDown, 0);
-                gameManager.instance.timer.text = coolDownCountDown.ToString("0:00.00");
+                gameManager.instance.timer.text = coolDownCountDown.ToString("0:00.00 - Rest");
             }
             
             if (waveDurationCountDown > 0 && !onCoolDown && !isSpawning)
