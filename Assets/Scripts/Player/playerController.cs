@@ -445,7 +445,7 @@ public class playerController : MonoBehaviour
         }
     }
 
-    public bool UpgradeStat(UpgradeTypes type, float amount)
+    public bool UpgradeStat(UpgradeTypes type, float amount = 0.1f)
     {
         if (coins < upgradeCost) return false;
         coins -= upgradeCost;

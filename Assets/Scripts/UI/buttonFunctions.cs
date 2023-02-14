@@ -68,7 +68,10 @@ public class buttonFunctions : MonoBehaviour
 
     public void upgrade(int type)
     {
-        gameManager.instance.playerScript.UpgradeStat((UpgradeTypes)type, 1 * upgradeCount);
+        if(type == 6)
+            gameManager.instance.playerScript.UpgradeStat((UpgradeTypes)type, 5);
+        else
+            gameManager.instance.playerScript.UpgradeStat((UpgradeTypes)type);
         upgradeCount++;
 
     }
