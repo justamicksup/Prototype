@@ -12,6 +12,7 @@ public class CannonAI : MonoBehaviour
     public GameObject cannon;
     [SerializeField] GameObject cannball;
     [SerializeField] ParticleSystem smokeParticle;
+    [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject noCircle;
     [SerializeField] Image shootTime;
     [SerializeField] Image shootTimeFill;
@@ -98,6 +99,7 @@ public class CannonAI : MonoBehaviour
         }
         if (cannonActive)
         {
+            gameManager.instance.alertText.text = "";
             //target should be assigned when
             //Enemy, Range, Melee tags enter trigger
             if (target != null && enemyInRange)
@@ -165,7 +167,6 @@ public class CannonAI : MonoBehaviour
         }
         if (cannonActive && target == null)
         {
-            //not grabbing target
             if (other.CompareTag("Enemy") || other.CompareTag("Range") || other.CompareTag("Melee") || other.CompareTag("No Weapon") || other.CompareTag("Explosive"))
             {
                 enemyInRange = true;
@@ -189,7 +190,8 @@ public class CannonAI : MonoBehaviour
         RaycastHit hit;
         if (Physics.SphereCast(shootPos.position, 1, enemyDir, out hit))
         {
-            if (hit.collider.CompareTag("Range") || hit.collider.CompareTag("Melee") || hit.collider.CompareTag("Enemy") || hit.collider.CompareTag("No Weapon") || hit.collider.CompareTag("Explosive"))
+            if (hit.collider.CompareTag("Range") || hit.collider.CompareTag("Melee") || hit.collider.CompareTag("Enemy") 
+                || hit.collider.CompareTag("No Weapon") || hit.collider.CompareTag("Explosive"))
             {
                 if (!isShooting && angleToEnemy <= viewAngle)
                 {
@@ -211,7 +213,7 @@ public class CannonAI : MonoBehaviour
     IEnumerator shoot()
     {
         isShooting = true;
-
+        muzzleFlash.Play();
         createBall();
 
         shootTime.gameObject.SetActive(true);
@@ -219,6 +221,7 @@ public class CannonAI : MonoBehaviour
         yield return new WaitForSeconds(shootRate);
 
         isShooting = false;
+        muzzleFlash.Stop();
     }
 
     IEnumerator UpdateUI()
