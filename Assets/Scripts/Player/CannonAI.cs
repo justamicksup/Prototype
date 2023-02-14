@@ -221,6 +221,7 @@ public class CannonAI : MonoBehaviour
         yield return new WaitForSeconds(shootRate);
 
         isShooting = false;
+        muzzleFlash.Stop();
     }
 
     IEnumerator UpdateUI()
