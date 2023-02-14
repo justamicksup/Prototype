@@ -398,7 +398,7 @@ public class gameManager : MonoBehaviour
         dmg.text = $"Damage: {playerScript.GunDamage}";
         range.text = $"Range: {playerScript.GunShootRange}";
         reload.text = $"Reload Time: {playerScript.GunReloadTime}";
-        maxammo.text = $"Max Ammo: {playerScript.maxAmmo}";
+        maxammo.text = $"Max Ammo: {playerScript.MaxAmmo}";
 
         cost.text = $"Cost to Upgrade: {playerScript.upgradeCost}";
     }
