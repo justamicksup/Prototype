@@ -200,7 +200,7 @@ public class gameManager : MonoBehaviour
             }
             else
             {
-                if(!pauseMenu.activeSelf)
+                if(!pauseMenu.activeSelf && !controlScreen.activeSelf && !settingsScreen.activeSelf)
                 {
                     isPaused = true;
                     upgradeMenu.SetActive(true);
