@@ -28,8 +28,6 @@ public class titleScreen : MonoBehaviour
     void Start()
     {
         StartButton.onClick.AddListener(clickedStart);
-        ScaryScene.onClick.AddListener(clickedOne);
-        CaveScene.onClick.AddListener(clickedTwo);
         StartCoroutine(PlayIntro());
 
         mixer.SetFloat("Master", Mathf.Log10(PlayerPrefs.GetFloat("master")) * 20);
