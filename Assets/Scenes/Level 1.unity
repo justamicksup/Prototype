@@ -4375,10 +4375,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6685727199014318558, guid: 0afedfbd6b28a374bbecd09da526e330, type: 3}
-      propertyPath: m_FillAmount
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8958223624579302840, guid: 0afedfbd6b28a374bbecd09da526e330, type: 3}
       propertyPath: m_Name
       value: UI
@@ -4471,14 +4467,6 @@ PrefabInstance:
       propertyPath: enemyWaveSystem
       value: 
       objectReference: {fileID: 42109262}
-    - target: {fileID: 8958223624893116687, guid: 0afedfbd6b28a374bbecd09da526e330, type: 3}
-      propertyPath: skyboxes.Array.data[0]
-      value: 
-      objectReference: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 8958223624893116687, guid: 0afedfbd6b28a374bbecd09da526e330, type: 3}
-      propertyPath: skyboxes.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 97637a2a763b7f24b8da4e139e4144ca, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0afedfbd6b28a374bbecd09da526e330, type: 3}
 --- !u!1001 &1879736793

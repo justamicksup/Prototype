@@ -87,6 +87,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject coin50;
     [SerializeField] GameObject coin500;
     [SerializeField] GameObject speedPowerUp;
+    [SerializeField] GameObject ammoPickup;
 
 
     [SerializeField] GameObject healthPowerUp;
@@ -424,6 +425,8 @@ public class gameManager : MonoBehaviour
         int weaponDropRate = 5;
         int powerUpDropRate = 5;
 
+        int ammoDropRate = 50;
+
         int coin50Var = coin500DropRate + coin50DropRate;
         int coin25Var = coin50Var + coin25DropRate;
         int coin10Var = coin25Var + coin10DropRate;
@@ -484,6 +487,10 @@ public class gameManager : MonoBehaviour
                 }
             }
         }
+
+        rand = Random.Range(0, 100);
+        if(rand <= ammoDropRate)
+            Instantiate(ammoPickup, trans.position, trans.rotation);
     }
 
     public void updateKey()

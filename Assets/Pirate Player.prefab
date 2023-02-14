@@ -3341,8 +3341,8 @@ MonoBehaviour:
   range: 40
   shootRate: 0.8
   shootForce: 1
-  ammoRemaining: 47
-  maxAmmo: -1
+  ammoRemaining: 50
+  maxAmmo: 50
   reloadTime: 0.5
   bullet: {fileID: 5245255688520990098, guid: 2e622fc3b9bedfa45bf778dccc584963, type: 3}
   bulletSpeed: 30
@@ -3350,7 +3350,7 @@ MonoBehaviour:
   gunDmgMultiplier: 1
   gunReloadMultiplier: 1
   gunRangeMultiplier: 1
-  maxAmmoMultiplier: 1
+  maxAmmoMultiplier: 0
   meleeLevel: 0
   meleeDamage: 0
   meleeReach: 0
