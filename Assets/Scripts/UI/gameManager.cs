@@ -59,10 +59,13 @@ public class gameManager : MonoBehaviour
     public Text alertText;
     public GameObject TitleScreen;
     public GameObject LoadScreen;
+    public GameObject settingsScreen;
+    public GameObject controlScreen;
     public Image LoadBar;
     public Text timer;
 
     [Header("----- Upgrade Menu -----")]
+    public GameObject upgradeMenu;
     public Text speed;
     public Text health;
     public Text stamina;
@@ -155,14 +158,53 @@ public class gameManager : MonoBehaviour
         UpdateUI();
         if (Input.GetButtonDown("Cancel"))
         {
-            isPaused = !isPaused;
-            activeMenu = pauseMenu;
-            activeMenu.SetActive(isPaused);
+
+            if(upgradeMenu.activeSelf)
+            {
+                upgradeMenu.SetActive(false);
+                isPaused = false;
+            }
+            else if(settingsScreen.activeSelf)
+            {
+                settingsScreen.SetActive(false);
+                pauseMenu.SetActive(true);
+            }
+            else if(controlScreen.activeSelf)
+            {
+                controlScreen.SetActive(false);
+                pauseMenu.SetActive(true);
+            }
+            else if(pauseMenu.activeSelf)
+            {
+                pauseMenu.SetActive(false);
+                isPaused = false;
+            }
+            else
+            {
+                pauseMenu.SetActive(true);
+                isPaused = true;
+            }
 
             if (isPaused)
                 pauseGame();
             else
                 unpauseGame();
+        }
+        if(Input.GetButtonDown("Stats"))
+        {
+            if(upgradeMenu.activeSelf)
+            {
+                upgradeMenu.SetActive(false);
+                unpauseGame();
+                isPaused = false;
+            }
+            else
+            {
+                isPaused = true;
+                upgradeMenu.SetActive(true);
+                pauseGame();
+            }
+
         }
     }
 
@@ -253,7 +295,7 @@ public class gameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void unpauseGame()
@@ -261,15 +303,13 @@ public class gameManager : MonoBehaviour
         Time.timeScale = timeScaleOrig;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        activeMenu.SetActive(false);
-        activeMenu = null;
     }
 
     public void youWin()
     {
         Time.timeScale = 0;
         Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
         activeMenu = winMenu;
         activeMenu.SetActive(true);
     }
@@ -278,7 +318,7 @@ public class gameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
         pauseGame();
         activeMenu = loseMenu;
         activeMenu.SetActive(true);
@@ -354,7 +394,7 @@ public class gameManager : MonoBehaviour
         dmg.text = $"Damage: {playerScript.GunDamage}";
         range.text = $"Range: {playerScript.GunShootRange}";
         reload.text = $"Reload Time: {playerScript.GunReloadTime}";
-        maxammo.text = $"Max Ammo{playerScript.GunShootRange}";
+        maxammo.text = $"Max Ammo: {playerScript.maxAmmo}";
 
         cost.text = $"Cost to Upgrade: {playerScript.upgradeCost}";
     }

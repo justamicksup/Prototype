@@ -11,8 +11,13 @@ public class buttonFunctions : MonoBehaviour
 
     public void resume()
     {
+        gameManager.instance.isPaused = false;
         gameManager.instance.unpauseGame();
-        gameManager.instance.isPaused = !gameManager.instance.isPaused;
+        if(gameManager.instance.pauseMenu.activeSelf)
+        {
+            gameManager.instance.pauseMenu.SetActive(false);
+        }
+
     }
 
     public void restart()
