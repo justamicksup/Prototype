@@ -20,9 +20,9 @@ public class bullet : MonoBehaviour
         {
             gameManager.instance.playerScript.takeDamage(bulletDamage);
         }
-        if(other.CompareTag("Destructible") && other.GetComponent<Barricade>().GetHP() > 0)
+        if(other.CompareTag("Destructible"))
         {
-            other.GetComponent<IDamage>().takeDamage(bulletDamage);
+            other.GetComponentInChildren<IDamage>().takeDamage(bulletDamage);
         }
         else
         {
