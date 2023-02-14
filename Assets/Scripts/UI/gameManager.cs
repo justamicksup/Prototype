@@ -232,16 +232,22 @@ public class gameManager : MonoBehaviour
         {
             RenderSettings.skybox = skyboxes[1];
             float time = 0;
+            Light l = sun.GetComponent<Light>();
             Quaternion startValue = transform.rotation;
             Quaternion endValue = Quaternion.Euler(-52, 4, -145);
             while (time < 1.5f)
             {
                 sun.transform.rotation = Quaternion.Lerp(startValue, endValue, time / 1.5f);
-                RenderSettings.ambientIntensity = Mathf.Lerp(RenderSettings.ambientIntensity, 0, time / 1.5f);
+                RenderSettings.ambientIntensity = Mathf.Lerp(1, 0.5f, time / 1.5f);
+                l.color = Color.Lerp(new Color(255f / 255f, 244f / 255f, 214f / 255f), new Color(129f / 255f, 182f / 255f, 255f / 255f), time / 1.5f);
+                l.intensity = Mathf.Lerp(1, 0.5f, time / 1.5f);
                 time += Time.deltaTime;
                 yield return null;
             }
 
+            RenderSettings.ambientIntensity = 0.5f;
+            l.color = new Color(129f / 255f, 182f / 255f, 255f / 255f);
+            l.intensity = 0.5f;
             sun.transform.rotation = endValue;
         }
 
