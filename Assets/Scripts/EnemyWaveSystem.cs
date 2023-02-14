@@ -25,14 +25,16 @@ public class EnemyWaveSystem : MonoBehaviour
     private float yMin = 0f;
     internal int currentWaveIndex = 0;
 
-    private bool waveActive;
+    //private bool waveActive;
     private bool isTriggerSet;
     private bool isSpawning;
     internal bool isBossSpawned;
     internal bool isMiniBossSpawned;
-    
+
+    private bool onCoolDown;
+
     //Current wave enemy tracker
-    private int enemiesToSpawn;
+    // private int enemiesToSpawn;
     private int enemiesSpawned = 1;
 
     //CountDown clock
@@ -42,35 +44,34 @@ public class EnemyWaveSystem : MonoBehaviour
 
     private void Update()
     {
-        //set current wave enemies that need to spawn
-        enemiesToSpawn = waves[currentWaveIndex].EnemyCount;
-
-        if (enemiesSpawned < enemiesToSpawn)
+        if (isTriggerSet)
         {
-            waveActive = true;
-        }
+            if (!onCoolDown)
+            {
+                waveDurationCountDown -= Time.deltaTime;
+                waveDurationCountDown = Mathf.Max(waveDurationCountDown, 0);
+                gameManager.instance.timer.text = waveDurationCountDown.ToString("0:00.00");
+            }
+            else
+            {
+                coolDownCountDown -= Time.deltaTime;
+                coolDownCountDown = Mathf.Max(coolDownCountDown, 0);
+                gameManager.instance.timer.text = coolDownCountDown.ToString("0:00.00");
+            }
+            
+            if (waveDurationCountDown > 0 && !onCoolDown && !isSpawning)
+            {
+                 StartCoroutine(SpawnWaves());
+            }
 
-        if (isTriggerSet && !isSpawning && waveActive)
-        {
-            StartCoroutine(SpawnWaves());
+            if (waveDurationCountDown <= 0)
+            {
+                onCoolDown = true;
+                StartCoroutine(CoolDown());
+                resetWaveClock();
+            }
         }
-
-        // Wave Count Down doesn't start until all enemies are spawned
-        if (waveActive && enemiesSpawned == enemiesToSpawn)
-        {
-            waveDurationCountDown -= Time.deltaTime;
-            waveDurationCountDown = Mathf.Max(waveDurationCountDown, 0);
-            gameManager.instance.timer.text = waveDurationCountDown.ToString("0:00.00");
-        }
-
-        //Cool Down Timer
-        if (!waveActive && isTriggerSet)
-        {
-            coolDownCountDown -= Time.deltaTime;
-            coolDownCountDown = Mathf.Max(coolDownCountDown, 0);
-            gameManager.instance.timer.text = coolDownCountDown.ToString("0:00.00");
-        }
-
+        
         //After Boss is Spawned, Destroy spawn System, get rid of countdown
         if (isBossSpawned)
         {
@@ -89,6 +90,8 @@ public class EnemyWaveSystem : MonoBehaviour
     public void spawnTheWave()
     {
         gameManager.instance.waveText.SetActive(true);
+        waveDurationCountDown = waveDuration;
+        coolDownCountDown = coolDownDuration;
         isTriggerSet = true;
     }
 
@@ -96,94 +99,91 @@ public class EnemyWaveSystem : MonoBehaviour
     IEnumerator SpawnWaves()
     {
         isSpawning = true;
-        //waveActive = true;
-
+        
         if (spawnLocations != null)
         {
-            BoxCollider box = spawnLocations[Random.Range(0, spawnLocations.Length)];
 
-
-            Vector3 areaMin = box.bounds.min;
-            Vector3 areaMax = box.bounds.max;
-            float x = Random.Range(areaMin.x, areaMax.x);
-            float z = Random.Range(areaMin.z, areaMax.z);
-            float y = box.transform.position.y;
-            Vector3 spawnPosition = new Vector3(x, y, z);
-            RaycastHit hit;
-            if (Physics.Raycast(spawnPosition, Vector3.down, out hit, Mathf.Infinity))
-            {
-                spawnPosition.y = Mathf.Max(yMin, hit.point.y);
-            }
-
-
+            Vector3 spawnPosition = box();
+          
+            
             if (currentWaveIndex < waves.Length)
             {
-                //reset clock
-                if (waveDurationCountDown <= 0)
-                {
-                    waveDurationCountDown = waveDuration;
-                }
-
+                
                 // Check if it's the last wave
                 if (currentWaveIndex == waves.Length - 1)
                 {
                     Debug.Log("BOSS Spawned");
-                    
-                    Instantiate(boss, spawnPosition, Quaternion.LookRotation(gameManager.instance.player.transform.position));
+
+                    Instantiate(boss, spawnPosition, Quaternion.identity);
                     isBossSpawned = true;
-                    
-                    // Wait for the boss to be defeated
-
-
-                    // Boss defeated, call the ship to come
                     
                 }
                 // Check if it's time for a mini boss wave
-                if ((currentWaveIndex + 1) % 5 == 0 && !isMiniBossSpawned)
+                else if ((currentWaveIndex + 1) % 5 == 0 && !isMiniBossSpawned)
                 {
                     Debug.Log("MiniBoss Spawned");
                     // Spawn the mini boss
-                    Instantiate(miniBoss[Random.Range(0, miniBoss.Length)], spawnPosition, Quaternion.identity);
+                    for (int i = 0; i < miniBoss.Length; i++)
+                    {
+                        Instantiate(miniBoss[i], spawnPosition, Quaternion.identity);
+                    }
+                    
                     isMiniBossSpawned = true;
-
                 }
                 else
                 {
                     Instantiate(
                         waves[currentWaveIndex]
                             .EnemiesInWave[Random.Range(0, waves[currentWaveIndex].EnemiesInWave.Count)],
-                        spawnPosition, Quaternion.LookRotation(gameManager.instance.player.transform.position));
+                        spawnPosition, Quaternion.identity);
                 }
+                
+                yield return new WaitForSeconds(spawnInterval);
 
-                if (enemiesSpawned == enemiesToSpawn)
-                {
-                    // Wait for the wave duration
-                    yield return new WaitForSeconds(waveDuration);
-
-                    // Wave is over, set waveActive to false
-                    waveActive = false;
-
-                    //reset clock
-                    if (coolDownCountDown <= 0)
-                    {
-                        coolDownCountDown = coolDownDuration;
-                    }
-
-                    // Wait for the cool down
-                    yield return new WaitForSeconds(coolDownDuration);
-                    enemiesSpawned = 0;
-                    currentWaveIndex++;
-                    gameManager.instance.updateWave();
-                    isMiniBossSpawned = false;
-                }
-                else
-                {
-                    enemiesSpawned++;
-                    yield return new WaitForSeconds(spawnInterval);
-                }
+            
             }
         }
 
         isSpawning = false;
+    }
+
+    IEnumerator CoolDown()
+    {
+       resetCoolDownClock();
+       yield return new WaitForSeconds(coolDownDuration);
+       onCoolDown = false;
+        enemiesSpawned = 0;
+        currentWaveIndex++;
+        gameManager.instance.updateWave();
+        isMiniBossSpawned = false;
+    }
+    void resetCoolDownClock()
+    {
+        coolDownCountDown = coolDownDuration;
+    }
+
+    void resetWaveClock()
+    {
+        waveDurationCountDown = waveDuration;
+    }
+
+    Vector3 box()
+    {
+        BoxCollider box = spawnLocations[Random.Range(0, spawnLocations.Length)];
+
+
+        Vector3 areaMin = box.bounds.min;
+        Vector3 areaMax = box.bounds.max;
+        float x = Random.Range(areaMin.x, areaMax.x);
+        float z = Random.Range(areaMin.z, areaMax.z);
+        float y = box.transform.position.y;
+        Vector3 spawnPosition = new Vector3(x, y, z);
+        RaycastHit hit;
+        if (Physics.Raycast(spawnPosition, Vector3.down, out hit, Mathf.Infinity))
+        {
+            spawnPosition.y = Mathf.Max(yMin, hit.point.y);
+        }
+
+        return spawnPosition;
     }
 }

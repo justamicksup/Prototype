@@ -6,18 +6,9 @@ using UnityEngine;
 public class WinCondition : MonoBehaviour
 {
     private bool isPlayer;
-    //[SerializeField] private SphereCollider rescueShip;
+   
     public DestroyPirateShip[] pirateShips;
-    // private void Start()
-    // {
-    //     if (pirateShips != null)
-    //     {
-    //         for (int i = 0; i < pirateShips.Length; i++)
-    //         {
-    //             pirateShips[i].sinkTheShip();
-    //         }
-    //     }
-    // }
+   
 
 
     private void Update()

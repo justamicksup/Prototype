@@ -52,19 +52,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 58aea525604005646b468763ccdc4ea3, type: 2}
   - {fileID: 11400000, guid: 58aea525604005646b468763ccdc4ea3, type: 2}
   - {fileID: 11400000, guid: 58aea525604005646b468763ccdc4ea3, type: 2}
-  - {fileID: 11400000, guid: 58aea525604005646b468763ccdc4ea3, type: 2}
-  - {fileID: 11400000, guid: 58aea525604005646b468763ccdc4ea3, type: 2}
-  - {fileID: 11400000, guid: 58aea525604005646b468763ccdc4ea3, type: 2}
-  - {fileID: 11400000, guid: 58aea525604005646b468763ccdc4ea3, type: 2}
   miniBoss:
   - {fileID: 1543222463336802070, guid: f5b53f428deda514988d4702f3132559, type: 3}
   - {fileID: 6546838859403903518, guid: d18fd7a2c1515ca4da918a289b97b727, type: 3}
   - {fileID: 7777564237960259858, guid: 68efba89ed6ea694ea0022adb4af6414, type: 3}
   boss: {fileID: 7275824995431297771, guid: e77697f580cf90540a503e6b6f427ea1, type: 3}
-  waveDuration: 120
-  coolDownDuration: 30
-  difficultyMultiplier: 1
+  waveDuration: 10
+  coolDownDuration: 5
+  difficultyMultiplier: 0.5
   spawnLocations:
   - {fileID: 0}
   - {fileID: 0}
-  spawnInterval: 0
+  spawnInterval: 1
