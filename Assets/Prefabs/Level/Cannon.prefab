@@ -84,7 +84,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &727174953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5002,7 +5002,7 @@ GameObject:
   - component: {fileID: 4548347289059482547}
   - component: {fileID: 4826354854572582104}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5061,7 +5061,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -5316,18 +5316,19 @@ MonoBehaviour:
   cannball: {fileID: 2119203057018113378, guid: 2710a32a68b158b49828b51f8ee87ffe, type: 3}
   smokeParticle: {fileID: 1779936557}
   noCircle: {fileID: 765928441}
-  shootTime: {fileID: 4826354854572582104}
+  shootTime: {fileID: 4018877995455043231}
+  shootTimeFill: {fileID: 4826354854572582104}
   rotSpeed: 50
   rotRange: 70
   viewAngle: 85
-  activeTime: 10
+  activeTime: 30
   activateCost: 1000
-  coolTime: 10
+  coolTime: 1
   direction: 1
   shootPos: {fileID: 350312441533669812}
   cannSpeed: 25
   shootRate: 2
-  shootDist: 0
+  shootDist: 7
   shootAngle: 0
   upForce: 5
   forwardForce: 20

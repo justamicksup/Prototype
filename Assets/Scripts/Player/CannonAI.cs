@@ -14,6 +14,7 @@ public class CannonAI : MonoBehaviour
     [SerializeField] ParticleSystem smokeParticle;
     [SerializeField] GameObject noCircle;
     [SerializeField] Image shootTime;
+    [SerializeField] Image shootTimeFill;
 
     [Header("----- Cannon Stats -----")]
     [SerializeField] int rotSpeed;
@@ -127,18 +128,21 @@ public class CannonAI : MonoBehaviour
                 activeTimerOn= true;
             }
         }
+        if(cannonActive && target != null)
+        {
+            canSeeEnemy();
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (cannonActive)
         {
             //not grabbing target
-            if (other.CompareTag("Enemy") || other.CompareTag("Range") || other.CompareTag("Melee"))
+            if (other.CompareTag("Enemy") || other.CompareTag("Range") || other.CompareTag("Melee") || other.CompareTag("No Weapon") || other.CompareTag("Explosive"))
             {
                 enemyInRange = true;
                 enemyDir = other.transform.position;
                 target = other.transform;
-
                 canSeeEnemy();
             }
         }
@@ -159,6 +163,16 @@ public class CannonAI : MonoBehaviour
             }
 
         }
+        if (cannonActive && target == null)
+        {
+            //not grabbing target
+            if (other.CompareTag("Enemy") || other.CompareTag("Range") || other.CompareTag("Melee") || other.CompareTag("No Weapon") || other.CompareTag("Explosive"))
+            {
+                enemyInRange = true;
+                enemyDir = other.transform.position;
+                target = other.transform;
+            }
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -170,12 +184,12 @@ public class CannonAI : MonoBehaviour
     }
     void canSeeEnemy()
     {
-        angleToEnemy = Vector3.Angle(enemyDir, transform.forward);
+        angleToEnemy = Vector3.Angle(enemyDir, cannon.transform.forward);
 
         RaycastHit hit;
-        if (Physics.Raycast(shootPos.position, enemyDir, out hit))
+        if (Physics.SphereCast(shootPos.position, 1, enemyDir, out hit))
         {
-            if ((hit.collider.CompareTag("Range") || hit.collider.CompareTag("Melee") || hit.collider.CompareTag("Enemy")))
+            if (hit.collider.CompareTag("Range") || hit.collider.CompareTag("Melee") || hit.collider.CompareTag("Enemy") || hit.collider.CompareTag("No Weapon") || hit.collider.CompareTag("Explosive"))
             {
                 if (!isShooting && angleToEnemy <= viewAngle)
                 {
@@ -200,9 +214,25 @@ public class CannonAI : MonoBehaviour
 
         createBall();
 
+        shootTime.gameObject.SetActive(true);
+        StartCoroutine(UpdateUI());
         yield return new WaitForSeconds(shootRate);
 
         isShooting = false;
+    }
+
+    IEnumerator UpdateUI()
+    {
+        float time = 0;
+        shootTimeFill.fillAmount = 0;
+        while (time < shootRate)
+        {
+            shootTimeFill.fillAmount = Mathf.Lerp(0, 1, time / shootRate);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        shootTime.gameObject.SetActive(false);
+        yield break;
     }
     public void createBall()
     {
