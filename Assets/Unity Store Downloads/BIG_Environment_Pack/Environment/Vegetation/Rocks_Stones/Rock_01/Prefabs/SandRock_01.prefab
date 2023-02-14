@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 400000}
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
-  - component: {fileID: 6400000}
+  - component: {fileID: 7299223422380395487}
   m_Layer: 0
   m_Name: SandRock_01
   m_TagString: Untagged
@@ -28,7 +28,8 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -0.05005922, y: -0.52720094, z: 0.044835407, w: -0.84707916}
   m_LocalPosition: {x: 1074.1826, y: 80.55009, z: 1239.4128}
-  m_LocalScale: {x: 1.428227, y: 1.428227, z: 1.428227}
+  m_LocalScale: {x: 5.35428, y: 5.35428, z: 5.35428}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -52,6 +53,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
@@ -82,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6400000
-MeshCollider:
+--- !u!65 &7299223422380395487
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -92,7 +94,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ce892c2199eddc7468a26e6ba15e6da7, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.293827, y: 3.9258242, z: 2.4049377}
+  m_Center: {x: 0.044975515, y: -0.115248024, z: 0.012117024}
