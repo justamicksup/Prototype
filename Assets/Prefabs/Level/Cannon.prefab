@@ -23,14 +23,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350312441533669813}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.751, y: 1.004, z: 0.903}
+  m_LocalRotation: {x: -0, y: 0.9481095, z: -0, w: 0.3179438}
+  m_LocalPosition: {x: -0.046, y: 1.39, z: 1.342}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8386987061246409585}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 136702092536612735}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 142.923, z: 0}
 --- !u!1 &2214661114990288214
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +60,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 350312441533669812}
   m_Father: {fileID: 8386987061246409585}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 40.125, z: 0}
@@ -150,7 +151,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 136702092536612735}
-  - {fileID: 350312441533669812}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cannon: {fileID: 2214661114990288214}
-  cannball: {fileID: 3059545344676545123, guid: 1f4818403b07b744eb850073b9e47dc3, type: 3}
+  cannball: {fileID: 2119203057018113378, guid: 2710a32a68b158b49828b51f8ee87ffe, type: 3}
   rotSpeed: 50
   rotRange: 70
   viewAngle: 85
@@ -175,12 +175,12 @@ MonoBehaviour:
   waitTime: 8
   direction: 1
   shootPos: {fileID: 350312441533669812}
-  cannSpeed: 10
-  shootRate: 1
+  cannSpeed: 25
+  shootRate: 2
   shootDist: 0
   shootAngle: 0
-  upForce: 1
-  forwardForce: 1
+  upForce: 5
+  forwardForce: 20
   explosiveDamage: 0
   explosionRadius: 0
   explosionForce: 0

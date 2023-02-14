@@ -1,57 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Barricade : MonoBehaviour, IDamage, actionObject
 {
-    [Header("----- Gate Stats -----")] [SerializeField]
-    int HP;
-
+    [Header("----- Barricade Stats -----")] 
+    [SerializeField] int HP;
     private int HPOrig;
-    [SerializeField] int gateCost;
     [SerializeField] int repairCost;
-    [SerializeField] float cleanUpTimer;
-    [SerializeField] bool canTakeDamage;
+    [SerializeField] int damage;
+    [SerializeField] int pushBackForce;
+    public Image HPBar;
 
-    [Header("----- Components -----")] [SerializeField]
-    GameObject pillars;
 
-    [SerializeField] GameObject brokenGate1;
-    [SerializeField] GameObject brokenGate2;
-    [SerializeField] Transform _brokenGate1;
-    [SerializeField] Transform _brokenGate2;
-    [SerializeField] GameObject Gate1;
-    [SerializeField] GameObject Gate2;
+    [Header("----- Components -----")]
+    [SerializeField] GameObject barricade;
+    [SerializeField] GameObject brokenBarricade;
+    [SerializeField] BoxCollider _boxCollider;
 
     private bool hasCoin = false;
     private bool playerInRange;
+    private bool barricadeActive;
     private Transform target = null;
-    [SerializeField] bool isBossDoor;
 
     // Start is called before the first frame update
     void Start()
     {
-        brokenGate1.SetActive(false);
-        brokenGate2.SetActive(false);
-        _brokenGate1 = brokenGate1.transform;
-        _brokenGate2 = brokenGate2.transform;
+        brokenBarricade.SetActive(false);
         HPOrig = HP;
+        updateHPBar();
+        HPBar.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha9))
-        {
-            gameManager.instance.key = 6;
-        }
-        if (Input.GetButtonDown("Action") && CheckPlayerCoins(repairCost) && !Gate1.activeSelf)
-        {
-            secondaryAction();
-        }
-
-        if (Input.GetButtonDown("Submit") && CheckPlayerCoins(gateCost) && Gate1.activeSelf)
+        if (Input.GetButtonDown("Action") && CheckPlayerCoins(repairCost))
         {
             primaryAction();
         }
@@ -61,18 +48,23 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
     {
         if (other.tag == "Player")
         {
-            if (isBossDoor)
+            target = other.transform;
+            playerInRange = true;
+            if (!barricadeActive)
             {
-                target = other.transform;
-                playerInRange = true;
-                gameManager.instance.alertText.text = $"F: 6 Keys are needed to Open Gate)";
+                gameManager.instance.alertText.text = $"E: Rebuild: ({repairCost})";
             }
-            else
-            {
-                target = other.transform;
-                playerInRange = true;
-                gameManager.instance.alertText.text = $"F: Open Gates ({gateCost})\n E: Close Gates ({repairCost})";
-            }
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if  (collision.gameObject.CompareTag("Range")
+            || collision.gameObject.CompareTag("Melee")
+            || collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<IDamage>().takeDamage(damage);
+            collision.gameObject.GetComponent<Rigidbody>().AddForce(-transform.forward * pushBackForce);
+            takeDamage(damage / 2);
         }
     }
 
@@ -88,78 +80,37 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
 
     public void takeDamage(float damage)
     {
-        if (Gate1.activeSelf && Gate2.activeSelf && canTakeDamage)
+        if (HP > 0)
         {
-            if (HP > 0)
-            {
-                HP -= (int)damage;
-            }
-
-            if (HP <= 0)
-            {
-                brokenGate1.SetActive(true);
-                brokenGate2.SetActive(true);
-                pillars.transform.parent.GetComponent<BoxCollider>().enabled = false;
-                //Destroy(Gate1);
-                Gate1.SetActive(false);
-                //Destroy(Gate2);
-                Gate2.SetActive(false);
-
-                Invoke(nameof(cleanUpDebris), cleanUpTimer);
-            }
+            HP -= (int)damage;
+            updateHPBar();
         }
+        if (HP <= 0)
+        {
+            barricade.SetActive(false);
+            barricadeActive = false;
+            brokenBarricade.SetActive(true);
+            _boxCollider.enabled = false;
+            HPBar.enabled= false;
+        }        
     }
 
     public void primaryAction()
     {
-        if (isBossDoor)
-        {
-            if (gameManager.instance.key == 6)
-            {
-                Gate1.SetActive(false);
-                Gate2.SetActive(false);
-                pillars.transform.parent.GetComponent<BoxCollider>().enabled = false;
-                pillars.transform.parent.GetComponent<NavMeshObstacle>().enabled = false;
-            }
-        }
-        else
-        {
-            gameManager.instance.playerScript.addCoins(-gateCost);
-            Gate1.SetActive(false);
-            Gate2.SetActive(false);
-            pillars.transform.parent.GetComponent<BoxCollider>().enabled = false;
-            pillars.transform.parent.GetComponent<NavMeshObstacle>().enabled = false;
-        }
+        gameManager.instance.playerScript.addCoins(-repairCost);
+        brokenBarricade.SetActive(false);
+        barricadeActive = true;
+        barricade.SetActive(true);
+        _boxCollider.enabled = true;
+        HP = HPOrig;
+        HPBar.enabled = true;
+        updateHPBar();
+        gameManager.instance.alertText.text = "";
     }
 
     public void secondaryAction()
     {
-        Debug.Log("REPAIRING");
-        gameManager.instance.playerScript.addCoins(-repairCost);
-        pillars.transform.parent.GetComponent<NavMeshObstacle>().enabled = true;
-        Gate1.SetActive(true);
-        Gate2.SetActive(true);
-        pillars.transform.parent.GetComponent<BoxCollider>().enabled = true;
-        pillars.transform.parent.GetComponent<NavMeshObstacle>().enabled = true;
-        HP = HPOrig;
-    }
-
-    void cleanUpDebris()
-    {
-        pillars.transform.parent.GetComponent<NavMeshObstacle>().enabled = false;
-        brokenGate1.SetActive(false);
-        brokenGate2.SetActive(false);
-
-        //Destroy(brokenGate1);
-
-        //Destroy(brokenGate2);
-    }
-
-    GameObject buildGate(GameObject gate, Transform gateTran)
-    {
-        GameObject bg = Instantiate(gate, gateTran.position, gateTran.rotation, pillars.transform);
-        bg.SetActive(false);
-        return bg;
+        primaryAction();
     }
 
     private bool CheckPlayerCoins(int cost)
@@ -175,5 +126,10 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
     public int GetHP()
     {
         return HP;
+    }
+
+    public void updateHPBar()
+    {
+        HPBar.fillAmount = HP / HPOrig;
     }
 }
