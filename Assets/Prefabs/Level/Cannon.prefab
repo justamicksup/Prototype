@@ -5316,7 +5316,7 @@ MonoBehaviour:
   cannball: {fileID: 2119203057018113378, guid: 2710a32a68b158b49828b51f8ee87ffe, type: 3}
   smokeParticle: {fileID: 1779936557}
   noCircle: {fileID: 765928441}
-  shootTime: {fileID: 0}
+  shootTime: {fileID: 4826354854572582104}
   rotSpeed: 50
   rotRange: 70
   viewAngle: 85
