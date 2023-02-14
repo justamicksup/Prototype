@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.ProBuilder.Shapes;
+using UnityEngine.UI;
 
 public class CannonAI : MonoBehaviour
 {
@@ -11,22 +12,26 @@ public class CannonAI : MonoBehaviour
     public GameObject cannon;
     [SerializeField] GameObject cannball;
     [SerializeField] ParticleSystem smokeParticle;
+    [SerializeField] GameObject noCircle;
+    [SerializeField] Image shootTime;
 
     [Header("----- Cannon Stats -----")]
     [SerializeField] int rotSpeed;
     [SerializeField] int rotRange;
     [SerializeField] int viewAngle;//is this the same as shoot angle?
-    [SerializeField] int activeTime;
+    [SerializeField] float activeTime;
     [SerializeField] int activateCost;
-    [SerializeField] float waitTime;//pause before rotating back
+    [SerializeField] float coolTime;
     [SerializeField] int direction = 1;
 
     [Header("----- Shooting -----")]
     [SerializeField] Transform shootPos;
     [Range(0, 100)] [SerializeField] int cannSpeed;//cannonball speed
-    [Range(0, 2)] [SerializeField] float shootRate;
+    [Range(0, 10)] [SerializeField] float shootRate;
     [Range(0, 100)] [SerializeField] int shootDist;
     [Range(0, 180)] [SerializeField] int shootAngle;//is this the same as view angle?
+
+    [Header("----- Bomba -----")]
     [SerializeField] int upForce;
     [SerializeField] int forwardForce;
     [SerializeField] int explosiveDamage;
@@ -49,10 +54,10 @@ public class CannonAI : MonoBehaviour
     float currAngle = 0f;
     public bool cannonActive;
     public bool playerInRange;
-    bool isRotating;
-
-    //invert rotation
-    bool rotPositive;
+    bool activeTimerOn;
+    bool coolTimerOn;
+    float actTimeOrig;
+    float coolTimeOrig;
 
 
     // Start is called before the first frame update
@@ -60,16 +65,41 @@ public class CannonAI : MonoBehaviour
     {
         //so distance will be set to the cannon's radius
         shootDist = (int)GetComponent<SphereCollider>().radius;
+        actTimeOrig = activeTime;
+        coolTimeOrig = coolTime;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (activeTimerOn)
+        {
+            activeTime -= Time.deltaTime;
+            if(activeTime <= 0)
+            {
+                activeTimerOn= false;
+                cannonActive= false;
+                activeTime = actTimeOrig;
+                coolTimerOn = true;
+                smokeParticle.Play();
+            }
+        }
+        if (coolTimerOn)
+        {
+            noCircle.SetActive(true);
+            coolTime -= Time.deltaTime;
+            if(coolTime <= 0)
+            {
+                coolTimerOn= false;
+                coolTime = coolTimeOrig;
+                noCircle.SetActive(false);
+            }
+        }
         if (cannonActive)
         {
             //target should be assigned when
             //Enemy, Range, Melee tags enter trigger
-            if (target != null)
+            if (target != null && enemyInRange)
             {
                 //update direction to enemy each frame
                 enemyDir = cannon.transform.position - target.transform.position;
@@ -83,7 +113,18 @@ public class CannonAI : MonoBehaviour
                 if (currAngle >= rotRange) direction = -1;
                 else if (currAngle <= -rotRange) direction = 1;
 
-                cannon.transform.localRotation = Quaternion.Euler(0, currAngle, 0);                
+                cannon.transform.localRotation = Quaternion.Euler(0, currAngle, 0);
+            }
+        }
+        if (playerInRange && !coolTimerOn)
+        {
+            if (Input.GetButtonDown("Action"))
+            {
+                gameManager.instance.alertText.text = "";
+                gameManager.instance.playerScript.addCoins(-activateCost);
+                smokeParticle.Stop();
+                cannonActive = true;
+                activeTimerOn= true;
             }
         }
     }
@@ -101,10 +142,22 @@ public class CannonAI : MonoBehaviour
                 canSeeEnemy();
             }
         }
-        if(!cannonActive && Vector3.Distance(cannon.transform.position, gameManager.instance.player.transform.position) <= transform.gameObject.GetComponent<SphereCollider>().radius /3)
-        {        
-            playerInRange = true;
-            gameManager.instance.alertText.text = $"E: Rebuild: ({activateCost})";
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (!coolTimerOn && Vector3.Distance(cannon.transform.position, gameManager.instance.player.transform.position) <= 2f)
+            {
+                playerInRange = true;
+                gameManager.instance.alertText.text = $"E: Activate Cannon: ({activateCost})";
+            }
+            else
+            {
+                playerInRange= false;
+                gameManager.instance.alertText.text = "";
+            }
+
         }
     }
     private void OnTriggerExit(Collider other)
@@ -118,9 +171,6 @@ public class CannonAI : MonoBehaviour
     void canSeeEnemy()
     {
         angleToEnemy = Vector3.Angle(enemyDir, transform.forward);
-
-        Debug.Log(angleToEnemy);
-        Debug.DrawRay(shootPos.position, enemyDir);
 
         RaycastHit hit;
         if (Physics.Raycast(shootPos.position, enemyDir, out hit))
