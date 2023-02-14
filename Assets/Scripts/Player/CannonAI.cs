@@ -17,6 +17,7 @@ public class CannonAI : MonoBehaviour
     [SerializeField] int rotRange;
     [SerializeField] int viewAngle;//is this the same as shoot angle?
     [SerializeField] int activeTime;
+    [SerializeField] int activateCost;
     [SerializeField] float waitTime;//pause before rotating back
     [SerializeField] int direction = 1;
 
@@ -47,6 +48,7 @@ public class CannonAI : MonoBehaviour
     //origin angle
     float currAngle = 0f;
     public bool cannonActive;
+    public bool playerInRange;
     bool isRotating;
 
     //invert rotation
@@ -98,6 +100,11 @@ public class CannonAI : MonoBehaviour
 
                 canSeeEnemy();
             }
+        }
+        if(!cannonActive && Vector3.Distance(cannon.transform.position, gameManager.instance.player.transform.position) <= transform.gameObject.GetComponent<SphereCollider>().radius /3)
+        {        
+            playerInRange = true;
+            gameManager.instance.alertText.text = $"E: Rebuild: ({activateCost})";
         }
     }
     private void OnTriggerExit(Collider other)
