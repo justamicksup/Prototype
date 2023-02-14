@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Barricade : MonoBehaviour, IDamage, actionObject
 {
-    [Header("----- Gate Stats -----")] 
+    [Header("----- Barricade Stats -----")] 
     [SerializeField] int HP;
     private int HPOrig;
     [SerializeField] int repairCost;
     [SerializeField] int damage;
     [SerializeField] int pushBackForce;
+    public Image HPBar;
+
 
     [Header("----- Components -----")]
     [SerializeField] GameObject barricade;
-    [SerializeField] Transform _barricade;
     [SerializeField] GameObject brokenBarricade;
-    [SerializeField] Transform _brokenBarricade;
     [SerializeField] BoxCollider _boxCollider;
 
     private bool hasCoin = false;
@@ -29,8 +30,9 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
     void Start()
     {
         brokenBarricade.SetActive(false);
-        _brokenBarricade = _barricade;
         HPOrig = HP;
+        updateHPBar();
+        HPBar.enabled = true;
     }
 
     // Update is called once per frame
@@ -81,6 +83,7 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
         if (HP > 0)
         {
             HP -= (int)damage;
+            updateHPBar();
         }
         if (HP <= 0)
         {
@@ -88,6 +91,7 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
             barricadeActive = false;
             brokenBarricade.SetActive(true);
             _boxCollider.enabled = false;
+            HPBar.enabled= false;
         }        
     }
 
@@ -99,6 +103,8 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
         barricade.SetActive(true);
         _boxCollider.enabled = true;
         HP = HPOrig;
+        HPBar.enabled = true;
+        updateHPBar();
         gameManager.instance.alertText.text = "";
     }
 
@@ -120,5 +126,10 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
     public int GetHP()
     {
         return HP;
+    }
+
+    public void updateHPBar()
+    {
+        HPBar.fillAmount = HP / HPOrig;
     }
 }
