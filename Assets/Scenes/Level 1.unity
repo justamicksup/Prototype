@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 1332c9be3a1ebc54bbeeab06b882cc57, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1539587710}
-  m_IndirectSpecularColor: {r: 0.18230176, g: 0.22487107, b: 0.2891168, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1043,6 +1043,14 @@ PrefabInstance:
       propertyPath: enemyWaveSystem
       value: 
       objectReference: {fileID: 42109262}
+    - target: {fileID: 8958223624893116687, guid: 0afedfbd6b28a374bbecd09da526e330, type: 3}
+      propertyPath: skyboxes.Array.data[0]
+      value: 
+      objectReference: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 8958223624893116687, guid: 0afedfbd6b28a374bbecd09da526e330, type: 3}
+      propertyPath: skyboxes.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 97637a2a763b7f24b8da4e139e4144ca, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0afedfbd6b28a374bbecd09da526e330, type: 3}
 --- !u!1001 &1890048917

@@ -335,6 +335,11 @@ public class playerController : MonoBehaviour
                 }
             }
             yield return new WaitForSeconds(projectileWeaponScriptableObjects.shootRate);
+
+            if(!isReloading)
+            {
+                StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon].weapon));
+            }
         }
         else if(weaponList[currentWeapon].currentClip <= 0 && !isReloading)
         {
