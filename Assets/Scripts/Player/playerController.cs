@@ -311,9 +311,9 @@ public class playerController : MonoBehaviour
             } // regular single bullet weapon
             else
             {
-                GameObject bulletClone = Instantiate(bullet, muzzle.position, Camera.main.transform.rotation);
+                GameObject bulletClone = Instantiate(bullet, muzzle.position, bullet.transform.rotation);
                 bulletClone.GetComponent<Rigidbody>().velocity =
-                  bulletClone.transform.forward * bulletSpeed;
+                  Camera.main.transform.forward * bulletSpeed;
                 bulletClone.GetComponent<bullet>().bulletDamage = GunDamage;
             }
 
@@ -334,12 +334,12 @@ public class playerController : MonoBehaviour
                         hit.point);
                 }
             }
-            yield return new WaitForSeconds(projectileWeaponScriptableObjects.shootRate);
 
-            if(!isReloading)
+            if (!isReloading)
             {
                 StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon].weapon));
             }
+            yield return new WaitForSeconds(projectileWeaponScriptableObjects.shootRate);
         }
         else if(weaponList[currentWeapon].currentClip <= 0 && !isReloading)
         {
