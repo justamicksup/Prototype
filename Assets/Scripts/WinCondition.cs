@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WinCondition : MonoBehaviour
 {
-    private bool isPlayer;
+    private bool _isPlayer;
    
     public DestroyPirateShip[] pirateShips;
    
@@ -10,7 +10,7 @@ public class WinCondition : MonoBehaviour
 
     private void Update()
     {
-        if (isPlayer)
+        if (_isPlayer)
         {
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F))
             {
@@ -24,19 +24,19 @@ public class WinCondition : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            isPlayer = true;
+            _isPlayer = true;
            
         }
     }
 
-    void SearchAndDestroy()
-    {
-        if (pirateShips != null)
-        {
-            for (int i = 0; i < pirateShips.Length; i++)
-            {
-                pirateShips[i].sinkTheShip();
-            }
-        }
-    }
+    // void SearchAndDestroy()
+    // {
+    //     if (pirateShips != null)
+    //     {
+    //         for (int i = 0; i < pirateShips.Length; i++)
+    //         {
+    //             pirateShips[i].sinkTheShip();
+    //         }
+    //     }
+    // }
 }

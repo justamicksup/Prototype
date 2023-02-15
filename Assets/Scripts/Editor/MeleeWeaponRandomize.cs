@@ -2,21 +2,24 @@
 using UnityEditor;
 #endif
 using UnityEngine;
- 
-[CustomEditor(typeof(MeleeWeaponScriptableObjects))]
 
-
-public class MeleeWeaponRandomize : Editor
+namespace Editor
 {
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(MeleeWeaponScriptableObjects))]
+
+
+    public class MeleeWeaponRandomize : UnityEditor.Editor
     {
-        base.OnInspectorGUI();
-        var meleeWeaponScriptableObjects = (MeleeWeaponScriptableObjects)target;
-    
-        if(GUILayout.Button("Randomize", GUILayout.Height(20)))
+        public override void OnInspectorGUI()
         {
-            meleeWeaponScriptableObjects.Randomize();
-        }
+            base.OnInspectorGUI();
+            var meleeWeaponScriptableObjects = (MeleeWeaponScriptableObjects)target;
+    
+            if(GUILayout.Button("Randomize", GUILayout.Height(20)))
+            {
+                meleeWeaponScriptableObjects.Randomize();
+            }
          
+        }
     }
 }

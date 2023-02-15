@@ -1,5 +1,7 @@
-using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
+using UnityEngine;
 using System.Collections;
 
 // Cartoon FX  - (c) 2012-2016 Jean Moreno
@@ -7,7 +9,7 @@ using System.Collections;
 // CFX Spawn System Editor interface
 
 [CustomEditor(typeof(CFX_SpawnSystem))]
-public class CFX_SpawnSystemEditor : Editor
+public class CFX_SpawnSystemEditor : UnityEditor.Editor
 {
 	private SerializedProperty _hideObjectsInHierarchy;
 	private SerializedProperty p_hideObjectsInHierarchy
