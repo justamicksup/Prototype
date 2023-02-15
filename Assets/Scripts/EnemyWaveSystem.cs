@@ -5,64 +5,64 @@ using Random = UnityEngine.Random;
 public class EnemyWaveSystem : MonoBehaviour
 {
     [Header("----- Enemy Info -----")] [SerializeField]
-    Wave[] waves;
+    private Wave[] waves;
 
-    [SerializeField] GameObject[] miniBoss;
-    [SerializeField] GameObject boss;
-    [SerializeField] float waveDuration = 120.0f; // 2 minutes
-    [SerializeField] float coolDownDuration = 30.0f;
+    [SerializeField] private GameObject[] miniBoss;
+    [SerializeField] private GameObject boss;
+    [SerializeField] private float waveDuration = 120.0f; // 2 minutes
+    [SerializeField] private float coolDownDuration = 30.0f;
     [SerializeField] internal float difficultyMultiplier = 1.0f;
     [SerializeField] private BoxCollider[] spawnLocations;
     [SerializeField] private float spawnInterval;
 
 
-    private float yMin = 0f;
-    internal int currentWaveIndex = 0;
+    private const float YMin = 0f;
+    internal int currentWaveIndex;
 
     //private bool waveActive;
-    private bool isTriggerSet;
-    private bool isSpawning;
+    private bool _isTriggerSet;
+    private bool _isSpawning;
     internal bool isBossSpawned;
     internal bool isMiniBossSpawned;
 
-    private bool onCoolDown;
+    private bool _onCoolDown;
 
     //Current wave enemy tracker
     // private int enemiesToSpawn;
-    private int enemiesSpawned = 1;
+   // [SerializeField] private int _enemiesSpawned = 1;
 
     //CountDown clock
-    private float waveDurationCountDown;
-    private float coolDownCountDown;
+    private float _waveDurationCountDown;
+    private float _coolDownCountDown;
 
 
     private void Update()
     {
-        if (isTriggerSet)
+        if (_isTriggerSet)
         {
-            if (!onCoolDown)
+            if (!_onCoolDown)
             {
-                waveDurationCountDown -= Time.deltaTime;
-                waveDurationCountDown = Mathf.Max(waveDurationCountDown, 0);
-                gameManager.instance.timer.text = waveDurationCountDown.ToString("0:00.00");
+                _waveDurationCountDown -= Time.deltaTime;
+                _waveDurationCountDown = Mathf.Max(_waveDurationCountDown, 0);
+                gameManager.instance.timer.text = _waveDurationCountDown.ToString("0:00.00");
             }
             else
             {
-                coolDownCountDown -= Time.deltaTime;
-                coolDownCountDown = Mathf.Max(coolDownCountDown, 0);
-                gameManager.instance.timer.text = coolDownCountDown.ToString("0:00.00 - Rest");
+                _coolDownCountDown -= Time.deltaTime;
+                _coolDownCountDown = Mathf.Max(_coolDownCountDown, 0);
+                gameManager.instance.timer.text = _coolDownCountDown.ToString("0:00.00 - Rest");
             }
             
-            if (waveDurationCountDown > 0 && !onCoolDown && !isSpawning)
+            if (_waveDurationCountDown > 0 && !_onCoolDown && !_isSpawning)
             {
                  StartCoroutine(SpawnWaves());
             }
 
-            if (waveDurationCountDown <= 0)
+            if (_waveDurationCountDown <= 0)
             {
-                onCoolDown = true;
+                _onCoolDown = true;
                 StartCoroutine(CoolDown());
-                resetWaveClock();
+                ResetWaveClock();
             }
         }
         
@@ -81,23 +81,23 @@ public class EnemyWaveSystem : MonoBehaviour
         }
     }
 
-    public void spawnTheWave()
+    public void SpawnTheWave()
     {
         gameManager.instance.waveText.SetActive(true);
-        waveDurationCountDown = waveDuration;
-        coolDownCountDown = coolDownDuration;
-        isTriggerSet = true;
+        _waveDurationCountDown = waveDuration;
+        _coolDownCountDown = coolDownDuration;
+        _isTriggerSet = true;
     }
 
 
-    IEnumerator SpawnWaves()
+    private IEnumerator SpawnWaves()
     {
-        isSpawning = true;
+        _isSpawning = true;
         
         if (spawnLocations != null)
         {
 
-            Vector3 spawnPosition = box();
+            Vector3 spawnPosition = Box();
           
             
             if (currentWaveIndex < waves.Length)
@@ -117,11 +117,11 @@ public class EnemyWaveSystem : MonoBehaviour
                 {
                     // Debug.Log("MiniBoss Spawned");
                     // Spawn the mini boss
-                    for (int i = 0; i < miniBoss.Length; i++)
+                    foreach (var mini in miniBoss)
                     {
-                        Instantiate(miniBoss[i], spawnPosition, Quaternion.identity);
+                        Instantiate(mini, spawnPosition, Quaternion.identity);
                     }
-                    
+
                     isMiniBossSpawned = true;
                 }
                 else
@@ -138,44 +138,44 @@ public class EnemyWaveSystem : MonoBehaviour
             }
         }
 
-        isSpawning = false;
+        _isSpawning = false;
     }
 
-    IEnumerator CoolDown()
+    private IEnumerator CoolDown()
     {
-       resetCoolDownClock();
+       ResetCoolDownClock();
        yield return new WaitForSeconds(coolDownDuration);
-       onCoolDown = false;
-        enemiesSpawned = 0;
+       _onCoolDown = false;
+        //_enemiesSpawned = 0;
         currentWaveIndex++;
         gameManager.instance.updateWave();
         isMiniBossSpawned = false;
     }
-    void resetCoolDownClock()
+    void ResetCoolDownClock()
     {
-        coolDownCountDown = coolDownDuration;
+        _coolDownCountDown = coolDownDuration;
     }
 
-    void resetWaveClock()
+    void ResetWaveClock()
     {
-        waveDurationCountDown = waveDuration;
+        _waveDurationCountDown = waveDuration;
     }
 
-    Vector3 box()
+    Vector3 Box()
     {
         BoxCollider box = spawnLocations[Random.Range(0, spawnLocations.Length)];
 
 
-        Vector3 areaMin = box.bounds.min;
-        Vector3 areaMax = box.bounds.max;
+        var bounds = box.bounds;
+        Vector3 areaMin = bounds.min;
+        Vector3 areaMax = bounds.max;
         float x = Random.Range(areaMin.x, areaMax.x);
         float z = Random.Range(areaMin.z, areaMax.z);
         float y = box.transform.position.y;
         Vector3 spawnPosition = new Vector3(x, y, z);
-        RaycastHit hit;
-        if (Physics.Raycast(spawnPosition, Vector3.down, out hit, Mathf.Infinity))
+        if (Physics.Raycast(spawnPosition, Vector3.down, out var hit, Mathf.Infinity))
         {
-            spawnPosition.y = Mathf.Max(yMin, hit.point.y);
+            spawnPosition.y = Mathf.Max(YMin, hit.point.y);
         }
 
         return spawnPosition;
