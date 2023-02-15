@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "Enemies In Wave", menuName = "Scriptable Objects/Wave/Create Enemy List In Wave")]

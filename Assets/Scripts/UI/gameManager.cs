@@ -1,16 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
-#if UNITY_EDITOR
-using UnityEditor;
-using UnityEditor.Build.Content;
-#endif
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 using Cursor = UnityEngine.Cursor;
 
 public class gameManager : MonoBehaviour

@@ -1,9 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.Timeline;
 using UnityEngine.Audio;
 
 public class titleScreen : MonoBehaviour
@@ -19,7 +17,7 @@ public class titleScreen : MonoBehaviour
     public Image LoadBar;
     public float fadeSpeed = 1f;
     [SerializeField] AudioMixer mixer;
-    bool isFading = false;
+  
     int sceneNdx;
 
 
@@ -34,16 +32,10 @@ public class titleScreen : MonoBehaviour
         mixer.SetFloat("Music", Mathf.Log10(PlayerPrefs.GetFloat("music")) * 20);
         mixer.SetFloat("SFX", Mathf.Log10(PlayerPrefs.GetFloat("SFX")) * 20);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    
     IEnumerator PlayIntro()
     {
-        isFading = true;
+       
         float teamLogoTransparency = 1;
         float startScreenTransparency = 0;
 
@@ -58,7 +50,7 @@ public class titleScreen : MonoBehaviour
         }
 
 
-        isFading = false;
+       
         TeamLogo.enabled = false;
 
     }

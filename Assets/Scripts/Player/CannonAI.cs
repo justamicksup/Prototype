@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.UI;
 
 public class CannonAI : MonoBehaviour

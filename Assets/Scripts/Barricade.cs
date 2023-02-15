@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class Barricade : MonoBehaviour, IDamage, actionObject
