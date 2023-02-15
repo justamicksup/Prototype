@@ -15,7 +15,7 @@ MonoBehaviour:
   Model: {fileID: 6390890313830275547, guid: 6bd1f17741e1bea438b61a59497f5027, type: 3}
   weaponType: 3
   rotationOffset: {x: 289.99997, y: 0, z: 190.87701}
-  positionOffset: {x: 0.242, y: -0.043, z: 0.01}
+  positionOffset: {x: 0.5, y: -0.043, z: 0.01}
   gunLevel: 1
   damage: 5
   range: 50
