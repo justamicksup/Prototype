@@ -195,7 +195,7 @@ public class BossAI : MonoBehaviour, IDamage
 
                     if (!isSwinging)
                     {
-                        Debug.Log("Melee");
+                        // Debug.Log("Melee");
                         StartCoroutine(MeleeHit());
                     }
                 }
@@ -310,7 +310,7 @@ public class BossAI : MonoBehaviour, IDamage
         bulletClone.GetComponent<Rigidbody>().velocity =
             (gameManager.instance.player.transform.position - headPos.transform.position).normalized * bulletSpeed;
         bulletClone.GetComponent<bullet>().bulletDamage = shootDamage;
-        Debug.Log(bulletClone.GetComponent<bullet>().bulletDamage);
+        // Debug.Log(bulletClone.GetComponent<bullet>().bulletDamage);
 
         yield return new WaitForSeconds(shootRate);
 
