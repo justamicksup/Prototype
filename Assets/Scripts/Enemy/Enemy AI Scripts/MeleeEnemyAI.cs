@@ -1,203 +1,209 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-public class MeleeEnemyAI : MonoBehaviour, IDamage
+namespace Enemy.Enemy_AI_Scripts
 {
-    [Header("----- Melee Enemy Stats From SO -----")]
-    [SerializeField] int HP;
-    [SerializeField] int rotationSpeed;
-    [Range(10, 1000)] [SerializeField] int lootValue;
-    [SerializeField] public int attack = 1;
-    public float swingRate = 0.1f;
-    public AudioClip audWeaponSwing;
-    //Need to put in SO
-    public int swingAngle;
-    public float stoppingDistOrig;
-    public int viewAngle;
-    public DeathEffect deathEffect;
+    public class MeleeEnemyAI : MonoBehaviour, IDamage
+    {
+        [FormerlySerializedAs("HP")]
+        [Header("----- Melee Enemy Stats From SO -----")]
+        [SerializeField] int hp;
+        [SerializeField] int rotationSpeed;
+        [Range(10, 1000)] [SerializeField] int lootValue;
+        [SerializeField] public int attack = 1;
+        public float swingRate = 0.1f;
+        public AudioClip audWeaponSwing;
+        //Need to put in SO
+        public int swingAngle;
+        public float stoppingDistOrig;
+        public int viewAngle;
+        public DeathEffect deathEffect;
     
     
-    [Header("----- Needed References -----")]
-    public MasterEnemy masterEnemyScriptableObject;
-    public Animator animator;
-    public NavMeshAgent agent;
-    public Transform headPos;
-    public Collider weaponCollider;
-    public MeleeWeapon weapon;
-    [SerializeField] Renderer model;
-    public AudioSource aud;
-    [SerializeField] GameObject weaponDrop;
+        [Header("----- Needed References -----")]
+        public MasterEnemy masterEnemyScriptableObject;
+        public Animator animator;
+        public NavMeshAgent agent;
+        public Transform headPos;
+        public Collider weaponCollider;
+        public MeleeWeapon weapon;
+        [SerializeField] Renderer model;
+        public AudioSource aud;
+        [SerializeField] GameObject weaponDrop;
 
     
-    [Header("----- Variables -----")]
-    Vector3 playerDir;
-    bool isSwinging;
-    bool playerInRange;
-    float angleToPlayer;
-    bool hasWeapon;
-    [Range(0, 1)] [SerializeField] float audWeaponSwingtVol;
-    [SerializeField] private Vector3 offSetPlayerDir = new Vector3(0, 1, 0);
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        gameManager.instance.updateEnemyRemaining(1);
-        GetStats((EnemyMeleeScriptableObject)masterEnemyScriptableObject);
-        GetNavMesh();
-        stoppingDistOrig = agent.stoppingDistance;
-       
-       
-    }
+        [Header("----- Variables -----")]
+        Vector3 _playerDir;
+        bool _isSwinging;
+        bool _playerInRange;
+        float _angleToPlayer;
+        bool _hasWeapon;
+        [Range(0, 1)] [SerializeField] float audWeaponSwingVol;
+        [SerializeField] private Vector3 offSetPlayerDir = new Vector3(0, 1, 0);
+        private static readonly int Attack1H1 = Animator.StringToHash("Attack1h1");
+        private static readonly int Hit1 = Animator.StringToHash("Hit1");
+        private static readonly int Speed = Animator.StringToHash("Speed");
 
-    // Update is called once per frame
-    void Update()
-    {
-        playerDir = gameManager.instance.player.transform.position + offSetPlayerDir - headPos.position;
+        // Start is called before the first frame update
+        void Start()
+        {
+            gameManager.instance.updateEnemyRemaining(1);
+            GetStats((EnemyMeleeScriptableObject)masterEnemyScriptableObject);
+            GetNavMesh();
+            stoppingDistOrig = agent.stoppingDistance;
        
        
-        agent.SetDestination(gameManager.instance.player.transform.position);
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            var position = gameManager.instance.player.transform.position;
+            _playerDir = position + offSetPlayerDir - headPos.position;
        
-        animator.SetFloat("Speed", agent.velocity.normalized.magnitude);
+       
+            agent.SetDestination(position);
+       
+            animator.SetFloat(Speed, agent.velocity.normalized.magnitude);
         
        
        
 
-        if (playerInRange)
-        {
-            CanSeePlayer();
+            if (_playerInRange)
+            {
+                CanSeePlayer();
             
+            }
         }
-    }
-    // Need to adjust this in all AI to work like lecture
-    public void takeDamage(float damage)
-    {
-        HP -= (int)damage;
-        animator.SetTrigger("Hit1");
-        weaponColliderOff();
-        StartCoroutine(flashDamage());
-        facePlayer();
-        agent.SetDestination(gameManager.instance.player.transform.position);
-        if (HP <= 0)
+        // Need to adjust this in all AI to work like lecture
+        public void takeDamage(float damage)
         {
-            gameManager.instance.updateEnemyRemaining(-1);
-            gameManager.instance.playerScript.addCoins(lootValue);
-            deathEffect.DeathByEffects();
+            hp -= (int)damage;
+            animator.SetTrigger(Hit1);
+            WeaponColliderOff();
+            StartCoroutine(FlashDamage());
+            FacePlayer();
+            agent.SetDestination(gameManager.instance.player.transform.position);
+            if (hp <= 0)
+            {
+                gameManager.instance.updateEnemyRemaining(-1);
+                gameManager.instance.playerScript.addCoins(lootValue);
+                deathEffect.DeathByEffects();
             
-            Destroy(gameObject);
-            gameManager.instance.DropLoot(transform, weaponDrop, true, true, true);
+                Destroy(gameObject);
+                gameManager.instance.DropLoot(transform, weaponDrop, true, true, true);
+            }
         }
-    }
     
-    void facePlayer()
-    {
-        //don't rotate up or down (Y)
-        playerDir.y = 0;
-        //Quaternion for a rotation to player
-        Quaternion rot = Quaternion.LookRotation(playerDir);
-        //make rotation smooth with Lerp
-        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * rotationSpeed);
-    }
+        void FacePlayer()
+        {
+            //don't rotate up or down (Y)
+            _playerDir.y = 0;
+            //Quaternion for a rotation to player
+            Quaternion rot = Quaternion.LookRotation(_playerDir);
+            //make rotation smooth with Lerp
+            transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * rotationSpeed);
+        }
     
-    void GetStats(EnemyMeleeScriptableObject _enemyMeleeScriptableObject)
-    {
-        HP = (int)(_enemyMeleeScriptableObject.health * gameManager.instance.enemyWaveSystem.difficultyMultiplier * (gameManager.instance.enemyWaveSystem.currentWaveIndex + 1));
-        //HP = _enemyMeleeScriptableObject.health;
-        swingRate = _enemyMeleeScriptableObject.swingRate;
-        swingAngle = _enemyMeleeScriptableObject.swingAngle;
-        viewAngle = _enemyMeleeScriptableObject.viewAngle;
-        rotationSpeed = _enemyMeleeScriptableObject.rotationSpeed;
-        audWeaponSwing = _enemyMeleeScriptableObject.audWeaponSwing[Random.Range(0,_enemyMeleeScriptableObject.audWeaponSwing.Length)];
-        weapon.damage = (int)(_enemyMeleeScriptableObject.attack * gameManager.instance.enemyWaveSystem.difficultyMultiplier * (gameManager.instance.enemyWaveSystem.currentWaveIndex + 1));
-        attack = weapon.damage;
+        void GetStats(EnemyMeleeScriptableObject enemyMeleeScriptableObject)
+        {
+            hp = (int)(enemyMeleeScriptableObject.health * gameManager.instance.enemyWaveSystem.difficultyMultiplier * (gameManager.instance.enemyWaveSystem.currentWaveIndex + 1));
+            //HP = _enemyMeleeScriptableObject.health;
+            swingRate = enemyMeleeScriptableObject.swingRate;
+            swingAngle = enemyMeleeScriptableObject.swingAngle;
+            viewAngle = enemyMeleeScriptableObject.viewAngle;
+            rotationSpeed = enemyMeleeScriptableObject.rotationSpeed;
+            audWeaponSwing = enemyMeleeScriptableObject.audWeaponSwing[Random.Range(0,enemyMeleeScriptableObject.audWeaponSwing.Length)];
+            weapon.damage = (int)(enemyMeleeScriptableObject.attack * gameManager.instance.enemyWaveSystem.difficultyMultiplier * (gameManager.instance.enemyWaveSystem.currentWaveIndex + 1));
+            attack = weapon.damage;
       
-        deathEffect.SetDeathEffect(_enemyMeleeScriptableObject.deathEffect);
-        // Haven't implemented defense yet
-        // Haven't implemented boss check yet
-    }
+            deathEffect.SetDeathEffect(enemyMeleeScriptableObject.deathEffect);
+            // Haven't implemented defense yet
+            // Haven't implemented boss check yet
+        }
     
-    void GetNavMesh()
-    {
-        // Overwrites attached NavMeshAgent with Scriptable Object NavMesh
-        // Only variables not included 
-        // Agent Type, Quality, Area Mask. (Set these in Nav Mesh Agent)
+        void GetNavMesh()
+        {
+            // Overwrites attached NavMeshAgent with Scriptable Object NavMesh
+            // Only variables not included 
+            // Agent Type, Quality, Area Mask. (Set these in Nav Mesh Agent)
         
-        // OffSet
-        agent.baseOffset = masterEnemyScriptableObject.navMesh.baseOffset;
+            // OffSet
+            agent.baseOffset = masterEnemyScriptableObject.navMesh.baseOffset;
        
-        // Steering
-        agent.speed = masterEnemyScriptableObject.navMesh.speed;
-        agent.angularSpeed = masterEnemyScriptableObject.navMesh.angularSpeed;
-        agent.acceleration = masterEnemyScriptableObject.navMesh.acceleration;
-        agent.stoppingDistance = masterEnemyScriptableObject.navMesh.stoppingDistance;
-        agent.autoBraking = masterEnemyScriptableObject.navMesh.autoBraking;
+            // Steering
+            agent.speed = masterEnemyScriptableObject.navMesh.speed;
+            agent.angularSpeed = masterEnemyScriptableObject.navMesh.angularSpeed;
+            agent.acceleration = masterEnemyScriptableObject.navMesh.acceleration;
+            agent.stoppingDistance = masterEnemyScriptableObject.navMesh.stoppingDistance;
+            agent.autoBraking = masterEnemyScriptableObject.navMesh.autoBraking;
       
-        // Obstacle Avoidance
-        agent.radius = masterEnemyScriptableObject.navMesh.radius;
-        agent.height = masterEnemyScriptableObject.navMesh.height;
-        agent.avoidancePriority = masterEnemyScriptableObject.navMesh.AvoidancePriority;
+            // Obstacle Avoidance
+            agent.radius = masterEnemyScriptableObject.navMesh.radius;
+            agent.height = masterEnemyScriptableObject.navMesh.height;
+            agent.avoidancePriority = masterEnemyScriptableObject.navMesh.AvoidancePriority;
         
-        // Path Finding
-        agent.autoTraverseOffMeshLink = masterEnemyScriptableObject.navMesh.AutoTraverseOffMeshLink;
-        agent.autoRepath = masterEnemyScriptableObject.navMesh.AutoRepath;
-    }
-    public IEnumerator flashDamage()
-    {
-        model.material.color = Color.red;
-        yield return new WaitForSeconds(0.15f);
-        model.material.color = Color.white;
-    }
-
-    IEnumerator MeleeHit()
-    {
-        
-        isSwinging = true;
-        animator.SetTrigger("Attack1h1");
-        
-        yield return new WaitForSeconds(swingRate);
-        
-        isSwinging = false;
-    }
-
-    
-    public void weaponColliderOn()
-    {
-        weaponCollider.enabled = true;
-        aud.PlayOneShot(audWeaponSwing, audWeaponSwingtVol);
-    }
-    
-    public void weaponColliderOff()
-    {
-        weaponCollider.enabled = false;
-    }
-    
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInRange = true;
+            // Path Finding
+            agent.autoTraverseOffMeshLink = masterEnemyScriptableObject.navMesh.AutoTraverseOffMeshLink;
+            agent.autoRepath = masterEnemyScriptableObject.navMesh.AutoRepath;
         }
-    }
 
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        private IEnumerator FlashDamage()
         {
-            playerInRange = false;
+            var material = model.material;
+            material.color = Color.red;
+            yield return new WaitForSeconds(0.15f);
+            material.color = Color.white;
         }
-    }
-    bool CanSeePlayer()
-    {
-        playerDir = gameManager.instance.player.transform.position + offSetPlayerDir - headPos.position;
-        angleToPlayer = Vector3.Angle(playerDir, transform.forward);
-        
 
-        RaycastHit hit;
-
-        if (Physics.Raycast(headPos.position, playerDir, out hit))
+        IEnumerator MeleeHit()
         {
+        
+            _isSwinging = true;
+            animator.SetTrigger(Attack1H1);
+        
+            yield return new WaitForSeconds(swingRate);
+        
+            _isSwinging = false;
+        }
+
+    
+        public void WeaponColliderOn()
+        {
+            weaponCollider.enabled = true;
+            aud.PlayOneShot(audWeaponSwing, audWeaponSwingVol);
+        }
+
+        private void WeaponColliderOff()
+        {
+            weaponCollider.enabled = false;
+        }
+    
+        public void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                _playerInRange = true;
+            }
+        }
+
+        public void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                _playerInRange = false;
+            }
+        }
+        void CanSeePlayer()
+        {
+            _playerDir = gameManager.instance.player.transform.position + offSetPlayerDir - headPos.position;
+            _angleToPlayer = Vector3.Angle(_playerDir, transform.forward);
+
+
+            if (!Physics.Raycast(headPos.position, _playerDir, out var hit)) return;
             if (hit.collider.CompareTag("Player"))
             {
                
@@ -205,21 +211,17 @@ public class MeleeEnemyAI : MonoBehaviour, IDamage
 
                 if (agent.remainingDistance < agent.stoppingDistance)
                 {
-                    facePlayer();
+                    FacePlayer();
                 }
 
-                if (!isSwinging && angleToPlayer <= swingAngle)
+                if (!_isSwinging && _angleToPlayer <= swingAngle)
                 {
                   
                     StartCoroutine(MeleeHit());
                 }
-
-                return true;
             }
         }
-        
-        return false;
-    }
 
     
+    }
 }

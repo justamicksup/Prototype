@@ -349,14 +349,14 @@ ModelImporter:
       curves: []
       events:
       - time: 0.48398197
-        functionName: weaponColliderOn
+        functionName: WeaponColliderOn
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.66156465
-        functionName: weaponColliderOff
+        functionName: WeaponColliderOff
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

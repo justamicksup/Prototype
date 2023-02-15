@@ -330,7 +330,7 @@ namespace Enemy.Enemy_AI_Scripts
             _isSwinging = false;
         }
 
-        public void weaponColliderOn()
+        private void WeaponColliderOn()
         {
             weaponCollider.enabled = true;
         }
