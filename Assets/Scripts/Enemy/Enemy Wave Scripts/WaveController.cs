@@ -1,43 +1,39 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-[CreateAssetMenu(fileName = "Wave Controller", menuName = "Scriptable Objects/Wave/Create Wave")]
-public class WaveController : ScriptableObject
+namespace Enemy.Enemy_Wave_Scripts
 {
-    [SerializeField] WaveStruct[] waves;
-
-    public int numWaves
+    [CreateAssetMenu(fileName = "Wave Controller", menuName = "Scriptable Objects/Wave/Create Wave")]
+    public class WaveController : ScriptableObject
     {
-        get { return waves.Length; }
-    }
-    
-    
+        [SerializeField] WaveStruct[] waves;
 
-    public List<GameObject> CreateWave()
-    {
-        int index = gameManager.instance.waveCount - 1;
-        int EnemyPoolSize = waves[index].wave.EnemiesInWave.Count - 1;
-        
 
-        var enemyCount = 0;
-        List<GameObject> nextWave = new List<GameObject>();
-
-        
-        while (enemyCount < waves[index].enemiesInWave)
+        public List<GameObject> CreateWave()
         {
-            nextWave.Add(waves[index].wave.EnemiesInWave[Random.Range(0, EnemyPoolSize)]);
-            enemyCount += 1;
+            int index = gameManager.instance.waveCount - 1;
+            int enemyPoolSize = waves[index].wave.EnemiesInWave.Count - 1;
+        
+
+            var enemyCount = 0;
+            List<GameObject> nextWave = new List<GameObject>();
+
+        
+            while (enemyCount < waves[index].enemiesInWave)
+            {
+                nextWave.Add(waves[index].wave.EnemiesInWave[Random.Range(0, enemyPoolSize)]);
+                enemyCount += 1;
+            }
+
+            return nextWave;
         }
-
-        return nextWave;
     }
-}
 
-[System.Serializable]
-public struct WaveStruct
-{
+    [System.Serializable]
+    public struct WaveStruct
+    {
     
-    public int enemiesInWave;
-    public Wave wave;
+        public int enemiesInWave;
+        public Wave wave;
+    }
 }

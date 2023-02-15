@@ -1,59 +1,62 @@
 using System.Collections;
 using UnityEngine;
 
-public class SpawnWave : MonoBehaviour
+namespace Enemy.Enemy_Wave_Scripts
 {
-    [SerializeField] private int enemiesToSpawn;
-    [SerializeField] private float timer;
-    [SerializeField] private Wave wave;
-    [SerializeField] private BoxCollider area;
-    
-    bool isSpawing;
-    bool triggerSet;
-    int enemiesSpawned;
-    public float yMin = 0f;
-
-    
-    // Update is called once per frame
-    void Update()
+    public class SpawnWave : MonoBehaviour
     {
-        if (triggerSet && !isSpawing && enemiesSpawned < enemiesToSpawn)
-        {
-            StartCoroutine(spawn());
-        }
+        [SerializeField] private int enemiesToSpawn;
+        [SerializeField] private float timer;
+        [SerializeField] private Wave wave;
+        [SerializeField] private BoxCollider area;
 
-        if (enemiesSpawned == enemiesToSpawn)
+        private bool _isSpawning;
+        private bool _triggerSet;
+        [SerializeField] int enemiesSpawned;
+        public float yMin;
+
+    
+        // Update is called once per frame
+        void Update()
         {
-            Destroy(gameObject);
-        }
+            if (_triggerSet && !_isSpawning && enemiesSpawned < enemiesToSpawn)
+            {
+                StartCoroutine(Spawn());
+            }
+
+            if (enemiesSpawned == enemiesToSpawn)
+            {
+                Destroy(gameObject);
+            }
        
         
-    }
-
-    public void spawnTheWave()
-    {
-        triggerSet = true;
-    }
-    
-    IEnumerator spawn()
-    {
-        var _enemy = wave.EnemiesInWave[Random.Range(0, wave.EnemiesInWave.Count - 1)];
-        isSpawing = true;
-        Vector3 areaMin = area.bounds.min;
-        Vector3 areaMax = area.bounds.max;
-        float x = Random.Range(areaMin.x, areaMax.x);
-        float z = Random.Range(areaMin.z, areaMax.z);
-        float y = area.transform.position.y;
-        Vector3 spawnPosition = new Vector3(x, y, z);
-        RaycastHit hit;
-        if (Physics.Raycast(spawnPosition, Vector3.down, out hit, Mathf.Infinity))
-        {
-            spawnPosition.y = Mathf.Max(yMin, hit.point.y);
         }
-        Instantiate(_enemy, spawnPosition, Quaternion.identity);
 
-        enemiesSpawned++;
-        yield return new WaitForSeconds(timer);
-        isSpawing = false;
+        public void SpawnTheWave()
+        {
+            _triggerSet = true;
+        }
+    
+        IEnumerator Spawn()
+        {
+            var enemy = wave.EnemiesInWave[Random.Range(0, wave.EnemiesInWave.Count - 1)];
+            _isSpawning = true;
+            var bounds = area.bounds;
+            Vector3 areaMin = bounds.min;
+            Vector3 areaMax = bounds.max;
+            float x = Random.Range(areaMin.x, areaMax.x);
+            float z = Random.Range(areaMin.z, areaMax.z);
+            float y = area.transform.position.y;
+            Vector3 spawnPosition = new Vector3(x, y, z);
+            if (Physics.Raycast(spawnPosition, Vector3.down, out var hit, Mathf.Infinity))
+            {
+                spawnPosition.y = Mathf.Max(yMin, hit.point.y);
+            }
+            Instantiate(enemy, spawnPosition, Quaternion.identity);
+
+            enemiesSpawned++;
+            yield return new WaitForSeconds(timer);
+            _isSpawning = false;
+        }
     }
 }

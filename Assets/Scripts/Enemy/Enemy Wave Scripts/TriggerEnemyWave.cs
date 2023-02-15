@@ -1,44 +1,47 @@
 using UnityEngine;
 
-public class TriggerEnemyWave : MonoBehaviour
+namespace Enemy.Enemy_Wave_Scripts
 {
-    bool playerInRange;
-    [SerializeField] GameObject chestTrigger;
-    [SerializeField] EnemyWaveSystem enemySpawnPoint;
-    
-    // Update is called once per frame
-    void Update()
+    public class TriggerEnemyWave : MonoBehaviour
     {
-        if (playerInRange)
+        private bool _playerInRange;
+        [SerializeField] GameObject chestTrigger;
+       // [SerializeField] private EnemyWaveSystem enemySpawnPoint;
+    
+        // Update is called once per frame
+        void Update()
         {
-
-            if (Input.GetButtonDown("Action"))
+            if (_playerInRange)
             {
-                gameManager.instance.alertText.text = "";
-                Destroy(chestTrigger); 
-                gameManager.instance.StartGame();
+
+                if (Input.GetButtonDown("Action"))
+                {
+                    gameManager.instance.alertText.text = "";
+                    Destroy(chestTrigger); 
+                    gameManager.instance.StartGame();
                
+                }
             }
         }
-    }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        public void OnTriggerEnter(Collider other)
         {
-            playerInRange = true;
-            gameManager.instance.alertText.text = "E: Take The Key";
-            gameManager.instance.updateKey();
+            if (other.CompareTag("Player"))
+            {
+                _playerInRange = true;
+                gameManager.instance.alertText.text = "E: Take The Key";
+                gameManager.instance.updateKey();
+            }
         }
-    }
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        public void OnTriggerExit(Collider other)
         {
-            playerInRange = false;
-            gameManager.instance.alertText.text = "";
+            if (other.CompareTag("Player"))
+            {
+                _playerInRange = false;
+                gameManager.instance.alertText.text = "";
+            }
         }
+
+
     }
-
-
 }
