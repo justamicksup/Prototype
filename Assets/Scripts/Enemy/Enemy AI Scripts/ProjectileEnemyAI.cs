@@ -168,7 +168,6 @@ public class ProjectileEnemyAI : MonoBehaviour, IDamage
         // {
         //     animator.SetTrigger("IdleShoot");
         // }
-        Debug.Log("Shoot");
         animator.SetTrigger("Shoot");
         aud.PlayOneShot(audGunShot, audGunShotVol);
         GameObject bulletClone = Instantiate(bullet, shootPos.position, bullet.transform.rotation);
@@ -207,9 +206,6 @@ public class ProjectileEnemyAI : MonoBehaviour, IDamage
     {
         playerDir = gameManager.instance.player.transform.position + offSetPlayerDir - headPos.position;
         angleToPlayer = Vector3.Angle(playerDir, transform.forward);
-
-        //Debug.Log(angleToPlayer);
-
 
         RaycastHit hit;
 
