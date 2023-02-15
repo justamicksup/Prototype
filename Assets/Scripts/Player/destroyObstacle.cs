@@ -46,7 +46,7 @@ public class destroyObstacle : MonoBehaviour, actionObject
             playerInRange= false;
         }
         gameManager.instance.alertText.text = "";
-        Debug.Log("NO PLAYER");
+        // Debug.Log("NO PLAYER");
     }
 
     public void primaryAction()
@@ -70,7 +70,7 @@ public class destroyObstacle : MonoBehaviour, actionObject
         else
         {
             //need UI here
-            Debug.Log("Not enough coins");
+            // Debug.Log("Not enough coins");
         }
     }
     public void secondaryAction()

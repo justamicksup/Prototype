@@ -168,7 +168,7 @@ public class ProjectileEnemyAI : MonoBehaviour, IDamage
         // {
         //     animator.SetTrigger("IdleShoot");
         // }
-        Debug.Log("Shoot");
+        // Debug.Log("Shoot");
         animator.SetTrigger("Shoot");
         aud.PlayOneShot(audGunShot, audGunShotVol);
         GameObject bulletClone = Instantiate(bullet, shootPos.position, bullet.transform.rotation);

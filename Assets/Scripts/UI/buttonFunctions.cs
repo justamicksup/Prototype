@@ -37,12 +37,12 @@ public class buttonFunctions : MonoBehaviour
         if(fs.isOn)
         {
             Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
-            Debug.Log("fullscreen");
+            // Debug.Log("fullscreen");
         }
         else
         {
             Screen.fullScreenMode = FullScreenMode.Windowed;
-            Debug.Log("windowed");
+            // Debug.Log("windowed");
         }
     }
 

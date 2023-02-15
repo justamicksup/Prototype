@@ -708,7 +708,7 @@ public class playerController : MonoBehaviour
         } //if weapon inventory is over max
         else if (weaponList.Count > 3)
         {
-            Debug.Log("Too Many Weapons in AddWeaponToInventory");
+            // Debug.Log("Too Many Weapons in AddWeaponToInventory");
         } //if weapon inventory is in between
         else
         {
