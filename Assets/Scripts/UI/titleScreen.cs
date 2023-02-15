@@ -68,19 +68,6 @@ public class titleScreen : MonoBehaviour
         LoadScreen.SetActive(true);
         StartCoroutine(StartGame(1));
     }
-    void clickedOne()
-    {
-        sceneNdx = 1;
-        LoadScreen.SetActive(true);
-        LevelSelect.SetActive(false);
-        StartCoroutine(StartGame(sceneNdx));
-    }
-    void clickedTwo()
-    {
-        sceneNdx = 2;
-        LoadScreen.SetActive(true);
-        StartCoroutine(StartGame(sceneNdx));
-    }
 
     IEnumerator StartGame(int index)
     {
