@@ -58,7 +58,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.9044368
-        functionName: createBomb
+        functionName: CreateBomb
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
