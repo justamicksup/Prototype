@@ -1,7 +1,8 @@
+using Player;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class destroyObstacle : MonoBehaviour, actionObject
+public class destroyObstacle : MonoBehaviour, IActionObject
 {
     [SerializeField] GameObject obstacleLeft;
     [SerializeField] GameObject obstacleRight;
@@ -28,7 +29,7 @@ public class destroyObstacle : MonoBehaviour, actionObject
             }
             if (playerInRange && Input.GetButton("Submit") && hasCoins)
             {
-                primaryAction();
+                PrimaryAction();
                 gameManager.instance.playerScript.addCoins(-obstacleCost);
             }
         }
@@ -46,7 +47,7 @@ public class destroyObstacle : MonoBehaviour, actionObject
         // Debug.Log("NO PLAYER");
     }
 
-    public void primaryAction()
+    public void PrimaryAction()
     {
         if (hasCoins)
         {
@@ -70,9 +71,9 @@ public class destroyObstacle : MonoBehaviour, actionObject
             // Debug.Log("Not enough coins");
         }
     }
-    public void secondaryAction()
+    public void SecondaryAction()
     {
         //no secondary action for doors
-        primaryAction();
+        PrimaryAction();
     }
 }

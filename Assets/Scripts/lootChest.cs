@@ -1,6 +1,7 @@
+using Player;
 using UnityEngine;
 
-public class lootChest : MonoBehaviour, actionObject
+public class lootChest : MonoBehaviour, IActionObject
 {
     [SerializeField] GameObject chest;
     [Range(1, 1000)][SerializeField] int lootCost;
@@ -22,11 +23,11 @@ public class lootChest : MonoBehaviour, actionObject
     {
         if (Input.GetButtonDown("Submit") && checkPlayerCoins())
         {           
-            primaryAction();
+            PrimaryAction();
         }
     }
 
-    public void primaryAction()
+    public void PrimaryAction()
     {
         if(inRange)
         {            
@@ -38,7 +39,7 @@ public class lootChest : MonoBehaviour, actionObject
         }
     }
 
-    public void secondaryAction() 
+    public void SecondaryAction() 
     { 
         //None - maybe can be upgrade actions?
     }

@@ -1,8 +1,9 @@
 
+using Player;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class chest : MonoBehaviour, actionObject
+public class chest : MonoBehaviour, IActionObject
 {
     [SerializeField] int chestCost;
     [SerializeField] int rollCost;
@@ -48,14 +49,14 @@ public class chest : MonoBehaviour, actionObject
         {
             if (Input.GetButtonDown("Action") && !isRerolling && hasCoins)
             {
-                secondaryAction();
+                SecondaryAction();
                 gameManager.instance.alertText.text = $"F: Purchase Weapon ({chestCost})\n E: Reroll ({rollCost})";
                 //StartCoroutine(Delay(.1f));
             }
 
             if (Input.GetButton("Submit") && wallet >= chestCost)
             {
-                primaryAction();
+                PrimaryAction();
                 gameManager.instance.alertText.text = "";
             }
         }
@@ -110,7 +111,7 @@ public class chest : MonoBehaviour, actionObject
 
     }
     
-    public void primaryAction()
+    public void PrimaryAction()
     {
         //Take the weapon you bought
         gameManager.instance.playerScript.AddWeaponToInventory(tempArmory.MasterWeaponList[seed]);
@@ -119,7 +120,7 @@ public class chest : MonoBehaviour, actionObject
         Destroy(gameObject);
     }
 
-    public void secondaryAction()
+    public void SecondaryAction()
     {
        //Deduct coins for roll
         gameManager.instance.playerScript.addCoins(-rollCost);

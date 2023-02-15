@@ -1,7 +1,10 @@
 
-public interface actionObject
+namespace Player
 {
-    void primaryAction();
+    public interface IActionObject
+    {
+        void PrimaryAction();
 
-    void secondaryAction();
+        void SecondaryAction();
+    }
 }

@@ -1,8 +1,9 @@
 using Enemy;
+using Player;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Barricade : MonoBehaviour, IDamage, actionObject
+public class Barricade : MonoBehaviour, IDamage, IActionObject
 {
     [Header("----- Barricade Stats -----")] 
     [SerializeField] float HP;
@@ -37,7 +38,7 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
     {
         if (Input.GetButtonDown("Action") && CheckPlayerCoins(repairCost))
         {
-            primaryAction();
+            PrimaryAction();
         }
     }
 
@@ -92,7 +93,7 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
         }        
     }
 
-    public void primaryAction()
+    public void PrimaryAction()
     {
         gameManager.instance.playerScript.addCoins(-repairCost);
         brokenBarricade.SetActive(false);
@@ -105,9 +106,9 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
         gameManager.instance.alertText.text = "";
     }
 
-    public void secondaryAction()
+    public void SecondaryAction()
     {
-        primaryAction();
+        PrimaryAction();
     }
 
     private bool CheckPlayerCoins(int cost)
