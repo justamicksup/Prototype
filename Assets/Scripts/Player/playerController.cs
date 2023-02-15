@@ -616,7 +616,7 @@ public class playerController : MonoBehaviour
         isExplosiveAttacking = true;
         GameObject explosiveClone = Instantiate(explosive, muzzle.position, Camera.main.transform.rotation);
         explosiveClone.GetComponent<Rigidbody>().velocity = (Camera.main.transform.forward + new Vector3(0, 1, 0)) * 7;
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         isExplosiveAttacking = false;
     }
 
