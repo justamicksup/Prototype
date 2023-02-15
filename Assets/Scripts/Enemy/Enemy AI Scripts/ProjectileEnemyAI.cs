@@ -76,7 +76,7 @@ namespace Enemy.Enemy_AI_Scripts
         }
 
         // Need to adjust this in all AI to work like lecture
-        public void takeDamage(float damage)
+        public void TakeDamage(float damage)
         {
             hp -= (int)damage;
             //animator.SetTrigger("Hit1");

@@ -1,3 +1,4 @@
+using Enemy;
 using UnityEngine;
 
 public class bullet : MonoBehaviour
@@ -21,7 +22,7 @@ public class bullet : MonoBehaviour
         Barricade b = other.GetComponent<Barricade>();
         if (other.CompareTag("Destructible") && b != null && b.GetHP() > 0)
         {
-            other.GetComponentInChildren<IDamage>().takeDamage(bulletDamage);
+            other.GetComponentInChildren<IDamage>().TakeDamage(bulletDamage);
         }
         else
         {

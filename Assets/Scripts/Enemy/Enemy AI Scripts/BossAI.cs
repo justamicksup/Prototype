@@ -260,7 +260,7 @@ namespace Enemy.Enemy_AI_Scripts
             }
         }
 
-        public void takeDamage(float damage)
+        public void TakeDamage(float damage)
         {
             if (!isInvincible)
             {

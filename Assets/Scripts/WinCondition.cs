@@ -1,3 +1,4 @@
+using Enemy;
 using UnityEngine;
 
 public class WinCondition : MonoBehaviour
@@ -29,14 +30,14 @@ public class WinCondition : MonoBehaviour
         }
     }
 
-    // void SearchAndDestroy()
-    // {
-    //     if (pirateShips != null)
-    //     {
-    //         for (int i = 0; i < pirateShips.Length; i++)
-    //         {
-    //             pirateShips[i].sinkTheShip();
-    //         }
-    //     }
-    // }
+    public void SearchAndDestroy()
+    {
+        if (pirateShips != null)
+        {
+            foreach (var t in pirateShips)
+            {
+                t.SinkTheShip();
+            }
+        }
+    }
 }

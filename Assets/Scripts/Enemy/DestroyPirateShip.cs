@@ -1,23 +1,26 @@
 using System.Collections;
 using UnityEngine;
 
-public class DestroyPirateShip : MonoBehaviour
+namespace Enemy
 {
-    
-    public  DeathEffect _deathEffect;
-    public float delay;
-   internal void sinkTheShip()
+    public class DestroyPirateShip : MonoBehaviour
     {
-        _deathEffect.DeathByEffects();
-        StartCoroutine(destroyDelay());
+    
+        public  DeathEffect deathEffect;
+        public float delay;
+        internal void SinkTheShip()
+        {
+            deathEffect.DeathByEffects();
+            StartCoroutine(DestroyDelay());
         
-    }
+        }
 
-   IEnumerator destroyDelay()
-   {
-       yield return new WaitForSeconds(delay);
-       Destroy(gameObject);
-   }
+        IEnumerator DestroyDelay()
+        {
+            yield return new WaitForSeconds(delay);
+            Destroy(gameObject);
+        }
 
    
+    }
 }

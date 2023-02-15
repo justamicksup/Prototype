@@ -1,3 +1,4 @@
+using Enemy;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -58,9 +59,9 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
             || collision.gameObject.CompareTag("Melee")
             || collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<IDamage>().takeDamage(damage);
+            collision.gameObject.GetComponent<IDamage>().TakeDamage(damage);
             collision.gameObject.GetComponent<Rigidbody>().AddForce(-transform.forward * pushBackForce);
-            takeDamage(damage / 2);
+            TakeDamage(damage / 2);
         }
     }
 
@@ -74,7 +75,7 @@ public class Barricade : MonoBehaviour, IDamage, actionObject
         }
     }
 
-    public void takeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         if (HP > 0)
         {

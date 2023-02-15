@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Enemy;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -328,7 +329,7 @@ public class playerController : MonoBehaviour
 
                 if (hit.collider.GetComponent<IDamage>() != null)
                 {
-                    hit.collider.GetComponent<IDamage>().takeDamage(GunDamage);
+                    hit.collider.GetComponent<IDamage>().TakeDamage(GunDamage);
                 }
 
                 if (hit.rigidbody != null)
@@ -602,7 +603,7 @@ public class playerController : MonoBehaviour
             IDamage enemy = cols[i].GetComponent<IDamage>();
             if (enemy != null)
             {
-                enemy.takeDamage(meleeDamage);
+                enemy.TakeDamage(meleeDamage);
             }
         }
         yield return new WaitForSeconds(0.5f);

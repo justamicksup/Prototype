@@ -1,4 +1,5 @@
 using System.Collections;
+using Enemy;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -52,7 +53,7 @@ public class explosiveWeapon : MonoBehaviour
            
             if (colliders[i].GetComponent<IDamage>() != null)
             {
-                colliders[i].GetComponent<IDamage>().takeDamage(damage);
+                colliders[i].GetComponent<IDamage>().TakeDamage(damage);
             }
         
             if (colliders[i].GetComponent<Rigidbody>() != null)

@@ -1,42 +1,38 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
-public class DeathEffect : MonoBehaviour
+namespace Enemy
 {
-    public GameObject deathEffect;
-    public Transform deathEffectLocation;
-    public float delay;
-    // Start is called before the first frame update
-
-    public void SetDeathEffect(GameObject _deathEffect)
+    public class DeathEffect : MonoBehaviour
     {
-        deathEffect = _deathEffect;
-    }
+        public GameObject deathEffect;
+        public Transform deathEffectLocation;
+        public float delay;
+        // Start is called before the first frame update
 
-    
-   public void DeathByEffects()
-    {
-        if (deathEffect != null)
+        public void SetDeathEffect(GameObject effect)
         {
-            if (deathEffectLocation != null)
-            {
-                Instantiate(deathEffect, deathEffectLocation.position, Quaternion.identity);
-            }
-            else
-            {
-                 Instantiate(deathEffect, transform.position, Quaternion.identity);
-            }
-           
+            deathEffect = effect;
         }
-        StartCoroutine(DestroyAfterDelay(deathEffect, delay));
+
+    
+        public void DeathByEffects()
+        {
+            if (deathEffect != null)
+            {
+                Instantiate(deathEffect,
+                    deathEffectLocation != null ? deathEffectLocation.position : transform.position,
+                    Quaternion.identity);
+            }
+            StartCoroutine(DestroyAfterDelay(deathEffect, delay));
+        }
+    
+        IEnumerator DestroyAfterDelay(GameObject effect, float delayDuration)
+        {
+            yield return new WaitForSeconds(delayDuration);
+            Destroy(effect);
+        }
+    
+    
     }
-    
-    IEnumerator DestroyAfterDelay(GameObject deathEffect, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        Destroy(deathEffect);
-    }
-    
-    
 }

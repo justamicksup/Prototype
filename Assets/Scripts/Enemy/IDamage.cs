@@ -1,5 +1,8 @@
 
-public interface IDamage 
+namespace Enemy
 {
-    void takeDamage(float damage);
+    public interface IDamage 
+    {
+        void TakeDamage(float damage);
+    }
 }
