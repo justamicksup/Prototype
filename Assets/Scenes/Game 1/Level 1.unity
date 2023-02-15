@@ -5940,10 +5940,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pirate Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8542757337769196722, guid: 9df4a6daa600e804598876402fdd9c85, type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 5245255688520990098, guid: b25f06003f4aa714ba3948eaef94e0df, type: 3}
     - target: {fileID: 8575185036756165397, guid: 9df4a6daa600e804598876402fdd9c85, type: 3}
       propertyPath: m_RootOrder
       value: 10

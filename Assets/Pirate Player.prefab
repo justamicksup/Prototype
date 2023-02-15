@@ -3296,6 +3296,7 @@ MonoBehaviour:
   speedPart: {fileID: 7739562293397656492, guid: f6499bf472e9f054b9df9d993959987a, type: 3}
   healthPart: {fileID: 1016113140367916605, guid: 372b1f1dd6301dc4f9f52aadc45116f1, type: 3}
   killPart: {fileID: 3183234136551169686, guid: 07749dca7331bf14cb7407e25acf92c6, type: 3}
+  mainCamera: {fileID: 3788204955517085342}
   playerBaseHealth: 100
   playerBaseStamina: 100
   currentStamina: 100
@@ -3344,7 +3345,7 @@ MonoBehaviour:
   ammoRemaining: 50
   maxAmmo: 50
   reloadTime: 0.5
-  bullet: {fileID: 5245255688520990098, guid: 2e622fc3b9bedfa45bf778dccc584963, type: 3}
+  bullet: {fileID: 5245255688520990098, guid: b25f06003f4aa714ba3948eaef94e0df, type: 3}
   bulletSpeed: 30
   muzzle: {fileID: 7593725237640124462}
   gunDmgMultiplier: 1

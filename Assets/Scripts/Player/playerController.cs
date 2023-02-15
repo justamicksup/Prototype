@@ -16,7 +16,7 @@ public class playerController : MonoBehaviour
     [SerializeField] public ParticleSystem speedPart;
     [SerializeField] public ParticleSystem healthPart;
     [SerializeField] public ParticleSystem killPart;
-
+    public GameObject mainCamera;
 
     [Header("----- Player Stats -----")]
     [Range(1,100)] [SerializeField] private float playerBaseHealth = 100;
@@ -312,8 +312,7 @@ public class playerController : MonoBehaviour
             else
             {
                 GameObject bulletClone = Instantiate(bullet, muzzle.position, bullet.transform.rotation);
-                bulletClone.GetComponent<Rigidbody>().velocity =
-                  Camera.main.transform.forward * bulletSpeed;
+                bulletClone.GetComponent<Rigidbody>().AddForce(mainCamera.transform.forward * bulletSpeed, ForceMode.Impulse);
                 bulletClone.GetComponent<bullet>().bulletDamage = GunDamage;
             }
 
@@ -341,10 +340,10 @@ public class playerController : MonoBehaviour
             }
             yield return new WaitForSeconds(projectileWeaponScriptableObjects.shootRate);
         }
-        else if(weaponList[currentWeapon].currentClip <= 0 && !isReloading)
-        {
-            StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon].weapon));
-        }
+        //else if(weaponList[currentWeapon].currentClip <= 0 && !isReloading)
+        //{
+        //    StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon].weapon));
+        //}
         isAttacking = false;
     }
     IEnumerator reload(ProjectileWeaponScriptableObjects projectileWeaponScriptableObjects)
