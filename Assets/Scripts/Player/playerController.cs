@@ -25,6 +25,7 @@ public class playerController : MonoBehaviour
     private float currentHealth;
     public float currentStamina;
 
+    [SerializeField] private LayerMask enemyMask;
     private Coroutine staminaRegen;
     [SerializeField] public int playerBaseSpeed;
     [SerializeField] int jumpVelocity;
@@ -324,7 +325,7 @@ public class playerController : MonoBehaviour
 
 
 
-            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, GunShootRange))
+            if (Physics.Raycast(mainCamera.GetComponent<Camera>().ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, GunShootRange, enemyMask))
             {
 
                 if (hit.collider.GetComponent<IDamage>() != null)

@@ -3335,6 +3335,9 @@ MonoBehaviour:
   playerBaseHealth: 100
   playerBaseStamina: 100
   currentStamina: 100
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 128
   playerBaseSpeed: 10
   jumpVelocity: 12
   gravity: 25
