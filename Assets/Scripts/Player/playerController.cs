@@ -91,11 +91,8 @@ public class playerController : MonoBehaviour
     [SerializeField] private LayerMask meleeMask;
 
     [Header("----- Explosive Stats -----")]
-    [SerializeField] GameObject explosive;
-    [SerializeField] int explosiveDamage;
-    [SerializeField] int explosiveTimer;
-    [SerializeField] int explosiveRange;
-    [SerializeField] int explosiveForce;
+    [SerializeField] public GameObject explosive;
+    public bool hasExplosive;
 
     //public GameObject viewModel;
 
@@ -174,6 +171,14 @@ public class playerController : MonoBehaviour
                 if (!isReloading && Input.GetButtonDown("Reload"))
                 {
                     StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon].weapon));
+                }
+            }
+
+            if (hasExplosive)
+            {
+                if (!isExplosiveAttacking && Input.GetButtonDown("Grenade"))
+                {
+                    StartCoroutine(ExplosiveAttack());
                 }
             }
         }
@@ -610,9 +615,9 @@ public class playerController : MonoBehaviour
     IEnumerator ExplosiveAttack()
     {
         isExplosiveAttacking = true;
-        GameObject explosiveClone = Instantiate(explosive, muzzle.position, explosive.transform.rotation);
-        explosiveClone.GetComponent<Rigidbody>().velocity = (Camera.main.transform.forward + new Vector3(0, 30, 0)) * 10;
-        yield return new WaitForSeconds(1f);
+        GameObject explosiveClone = Instantiate(explosive, muzzle.position, Camera.main.transform.rotation);
+        explosiveClone.GetComponent<Rigidbody>().velocity = (Camera.main.transform.forward + new Vector3(0, 1, 0)) * 7;
+        yield return new WaitForSeconds(5f);
         isExplosiveAttacking = false;
     }
 

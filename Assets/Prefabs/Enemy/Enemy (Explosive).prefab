@@ -550,7 +550,7 @@ MonoBehaviour:
   headPos: {fileID: 8930808710795488263}
   throwingHand: {fileID: 1352547680}
   bomb: {fileID: 6182639289201271482, guid: ee552b3e7cb86874d8ebe3c3863ec48e, type: 3}
-  weaponDrop: {fileID: 6182639289201271482, guid: ee552b3e7cb86874d8ebe3c3863ec48e, type: 3}
+  weaponDrop: {fileID: 1966086811846920754, guid: 68045ccb7be43bf458044efc8bddde4e, type: 3}
   stoppingDistOrig: 0
   offSetPlayerDir: {x: 0, y: 1, z: 0}
 --- !u!95 &8839744971792356975
@@ -651,6 +651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 0}
+  deathEffectLocation: {fileID: 0}
   delay: 0.5
 --- !u!114 &2527936147383256751
 MonoBehaviour:
