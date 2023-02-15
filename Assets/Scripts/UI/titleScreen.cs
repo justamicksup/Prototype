@@ -90,7 +90,7 @@ public class titleScreen : MonoBehaviour
         {
             //Output the current progress
             LoadBar.fillAmount = asyncOperation.progress;
-            // Debug.Log(asyncOperation.progress);
+            Debug.Log(asyncOperation.progress);
             yield return null;
 
         }

@@ -71,7 +71,7 @@ public class chest : MonoBehaviour, actionObject
         if (other.tag == "Player")
         {
             target = other.transform;
-            // Debug.Log("PLAYER");
+            Debug.Log("PLAYER");
             playerInRange = true;
             gameManager.instance.alertText.text = $"F: Purchase Weapon ({chestCost})\n E: Reroll ({rollCost})";
             // if (chestCost < wallet)
@@ -107,7 +107,7 @@ public class chest : MonoBehaviour, actionObject
             target = null;
             weaponDisplay.SetActive(false);
             gameManager.instance.alertText.text = "";
-            // Debug.Log("NO PLAYER");
+            Debug.Log("NO PLAYER");
             playerInRange = false;
             gameManager.instance.playerScript.inActionRange = false;
             hasCoins = false;

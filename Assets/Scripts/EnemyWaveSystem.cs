@@ -112,7 +112,7 @@ public class EnemyWaveSystem : MonoBehaviour
                 // Check if it's the last wave
                 if (currentWaveIndex == waves.Length - 1)
                 {
-                    // Debug.Log("BOSS Spawned");
+                    Debug.Log("BOSS Spawned");
 
                     Instantiate(boss, spawnPosition, Quaternion.identity);
                     isBossSpawned = true;
@@ -121,7 +121,7 @@ public class EnemyWaveSystem : MonoBehaviour
                 // Check if it's time for a mini boss wave
                 else if ((currentWaveIndex + 1) % 5 == 0 && !isMiniBossSpawned)
                 {
-                    // Debug.Log("MiniBoss Spawned");
+                    Debug.Log("MiniBoss Spawned");
                     // Spawn the mini boss
                     for (int i = 0; i < miniBoss.Length; i++)
                     {
