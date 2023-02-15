@@ -1,6 +1,8 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Enemy (NavMesh)", menuName = "Enemy Factory/Enemy (NavMesh)")]
+namespace Enemy.Enemy_Stats_Scripts
+{
+    [CreateAssetMenu(fileName = "Enemy (NavMesh)", menuName = "Enemy Factory/Enemy (NavMesh)")]
     public class NavMeshScriptableObject: ScriptableObject
     {
         // Need to Finish getting all the NavMesh info
@@ -11,16 +13,17 @@ using UnityEngine;
         public float speed = 3.5f;
         public float angularSpeed = 120f;
         public float acceleration = 8f;
-        public float stoppingDistance = 0f;
-        public bool autoBraking = false;
+        public float stoppingDistance;
+        public bool autoBraking;
         
         [Header("----- Obstacle Avoidance -----")]
         public float radius = .5f;
         public float height = 1f;
-        public int AvoidancePriority = 50;
+        public int avoidancePriority = 50;
 
-        [Header("----- Path Finding -----")] 
-        public bool AutoTraverseOffMeshLink = true;
-        public bool AutoRepath = true;
+       [Header("----- Path Finding -----")] 
+        public bool autoTraverseOffMeshLink = true;
+       public bool autoRepath = true;
 
     }
+}

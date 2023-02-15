@@ -1,7 +1,9 @@
 
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Enemy (Melee)", menuName = "Enemy Factory/Enemy (Melee)")]
+namespace Enemy.Enemy_Stats_Scripts
+{
+    [CreateAssetMenu(fileName = "Enemy (Melee)", menuName = "Enemy Factory/Enemy (Melee)")]
     public class EnemyMeleeScriptableObject: MasterEnemy
     {
         public int attack = 1;
@@ -9,7 +11,8 @@ using UnityEngine;
         public int swingAngle;
         public int viewAngle;
         public int rotationSpeed = 50;
-        public bool hasWeapon = false;
+        public bool hasWeapon;
         public AudioClip[] audWeaponSwing;
         public GameObject deathEffect;
     }
+}

@@ -1,4 +1,5 @@
 using System.Collections;
+using Enemy.Enemy_Stats_Scripts;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -144,11 +145,11 @@ namespace Enemy.Enemy_AI_Scripts
             // Obstacle Avoidance
             agent.radius = masterEnemyScriptableObject.navMesh.radius;
             agent.height = masterEnemyScriptableObject.navMesh.height;
-            agent.avoidancePriority = masterEnemyScriptableObject.navMesh.AvoidancePriority;
+            agent.avoidancePriority = masterEnemyScriptableObject.navMesh.avoidancePriority;
 
             // Path Finding
-            agent.autoTraverseOffMeshLink = masterEnemyScriptableObject.navMesh.AutoTraverseOffMeshLink;
-            agent.autoRepath = masterEnemyScriptableObject.navMesh.AutoRepath;
+            agent.autoTraverseOffMeshLink = masterEnemyScriptableObject.navMesh.autoTraverseOffMeshLink;
+            agent.autoRepath = masterEnemyScriptableObject.navMesh.autoRepath;
         }
 
         void GetStats(BossScriptableObject bossScriptableObject)

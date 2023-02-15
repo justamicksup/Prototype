@@ -1,6 +1,8 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Enemy (BOSS)", menuName = "Enemy Factory/Enemy (BOSS)")]
+namespace Enemy.Enemy_Stats_Scripts
+{
+    [CreateAssetMenu(fileName = "Enemy (BOSS)", menuName = "Enemy Factory/Enemy (BOSS)")]
     public class BossScriptableObject: MasterEnemy
     {
         public int throwingDistance;
@@ -16,7 +18,7 @@ using UnityEngine;
         public int attack = 1;
         public float swingRate = 0.1f;
         public int swingAngle;
-        public bool hasWeapon = false;
+        public bool hasWeapon;
         public AudioClip[] audWeaponSwing;
         
         
@@ -31,3 +33,4 @@ using UnityEngine;
         public int shootAngle = 45;
         public AudioClip[] audGunShot;
     }
+}

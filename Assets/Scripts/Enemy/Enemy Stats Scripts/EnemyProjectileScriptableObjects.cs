@@ -1,7 +1,10 @@
 
 using UnityEngine;
-[CreateAssetMenu(fileName = "Enemy (Projectile)", menuName = "Enemy Factory/Enemy (Projectile)")]
-public class EnemyProjectileScriptableObjects : MasterEnemy
+
+namespace Enemy.Enemy_Stats_Scripts
+{
+    [CreateAssetMenu(fileName = "Enemy (Projectile)", menuName = "Enemy Factory/Enemy (Projectile)")]
+    public class EnemyProjectileScriptableObjects : MasterEnemy
     {
         public int shootDamage = 5;
         public int range = 5;
@@ -17,3 +20,4 @@ public class EnemyProjectileScriptableObjects : MasterEnemy
         public AudioClip[] audGunShot;
         public GameObject deathEffect;
     }
+}
