@@ -10,6 +10,7 @@ public class settingsMenu : MonoBehaviour
     [SerializeField] Slider SFXSlider;
     [SerializeField] Slider masterSlider;
     [SerializeField] AudioMixer mixer;
+    [SerializeField] Toggle fullscreen;
 
     float sensitivity;
     float music;
@@ -40,6 +41,11 @@ public class settingsMenu : MonoBehaviour
         {
             master = PlayerPrefs.GetFloat("master");
             masterSlider.value = master;
+        }
+
+        if(Screen.fullScreenMode == FullScreenMode.FullScreenWindow)
+        {
+            fullscreen.enabled = true;
         }
         
     }

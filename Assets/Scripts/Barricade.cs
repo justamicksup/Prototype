@@ -95,15 +95,18 @@ public class Barricade : MonoBehaviour, IDamage, IActionObject
 
     public void PrimaryAction()
     {
-        gameManager.instance.playerScript.addCoins(-repairCost);
-        brokenBarricade.SetActive(false);
-        barricadeActive = true;
-        barricade.SetActive(true);
-        _boxCollider.enabled = true;
-        HP = HPOrig;
-        HPBar.enabled = true;
-        updateHPBar();
-        gameManager.instance.alertText.text = "";
+        if (gameManager.instance.playerScript.GetCoins() >= repairCost)
+        {
+            gameManager.instance.playerScript.addCoins(-repairCost);
+            brokenBarricade.SetActive(false);
+            barricadeActive = true;
+            barricade.SetActive(true);
+            _boxCollider.enabled = true;
+            HP = HPOrig;
+            HPBar.enabled = true;
+            updateHPBar();
+            gameManager.instance.alertText.text = "";
+        }      
     }
 
     public void SecondaryAction()

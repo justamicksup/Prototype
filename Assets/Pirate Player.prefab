@@ -409,7 +409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8624810184542123495}
   - component: {fileID: 2881898442246238899}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pirate_Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -654,7 +654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1168961409066132347}
   - component: {fileID: 96012875902415902}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pirate_Jaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -740,7 +740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 556939245491013324}
   - component: {fileID: 6560200300615608870}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pirate_Shoes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1075,7 +1075,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3712612561918307844}
   - component: {fileID: 7446703655268971521}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pirate_Belt_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1555,7 +1555,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 8159
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1717,7 +1717,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2974356826141734931}
   - component: {fileID: 3247089284032488216}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pirate_Cloth_Body_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1833,7 +1833,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2896005106044944851}
   - component: {fileID: 8548655017996590269}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pirate_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2514,7 +2514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9019437347845228171}
   - component: {fileID: 6714576026038172017}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pirate_Belt_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2800,7 +2800,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4377719643044019536}
   - component: {fileID: 2284623277219668441}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pirate_Mustache
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3528,7 +3528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3307169229564885062}
   - component: {fileID: 5512903528012982684}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pirate_Beard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
