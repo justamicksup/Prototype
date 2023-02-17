@@ -44,6 +44,7 @@ public class gameManager : MonoBehaviour
 
     //[SerializeField] private Text[] ammoCountText;
     [SerializeField] Image[] weaponIcons;
+    [SerializeField]  TextMeshProUGUI[] weaponSlotNumber;
     [SerializeField] Text ammoText;
     [SerializeField] private Text coinsText;
     [SerializeField] internal Text waveCountText;
@@ -354,23 +355,39 @@ public class gameManager : MonoBehaviour
     {
         if (playerScript.weaponList.Count > 0)
         {
+            weaponIcons[0].color = new Color(255, 255, 255, 255);
+            weaponIcons[1].color = new Color(255, 255, 255, 255);
+            weaponIcons[2].color = new Color(255, 255, 255, 255);
+            weaponIcons[0].color = new Color(255, 255, 255, 255);
+            weaponIcons[1].color = new Color(255, 255, 255, 255);
+            weaponIcons[2].color = new Color(255, 255, 255, 255);
+
             if (playerScript.currentWeapon == 0)
             {
-                weaponIcons[0].color = new Color(255, 255, 255, 1f);
-                weaponIcons[1].color = new Color(255, 255, 255, 0.2f);
-                weaponIcons[2].color = new Color(255, 255, 255, 0.2f);
+                 weaponIcons[0].color = new Color(0, 0, 0, 255);
+                 weaponSlotNumber[0].color = new Color(0, 0, 0, 255);
+                // weaponIcons[1].color = new Color(0, 0, 0, 255);
+                // weaponSlotNumber[1].color = new Color(255, 255, 255, 50);
+                // weaponIcons[2].color = new Color(0, 0, 0, 255);
+                // weaponSlotNumber[2].color = new Color(255, 255, 255, 50);
             }
             else if (playerScript.currentWeapon == 1)
             {
-                weaponIcons[0].color = new Color(255, 255, 255, 0.2f);
-                weaponIcons[1].color = new Color(255, 255, 255, 1f);
-                weaponIcons[2].color = new Color(255, 255, 255, 0.2f);
+               // weaponIcons[0].color = new Color(255, 255, 255, 255);
+               // weaponSlotNumber[0].color = new Color(255, 255, 255, 255);
+                weaponIcons[1].color = new Color(0, 0, 0, 255);
+                weaponSlotNumber[1].color = new Color(0, 0, 0, 255);
+               // weaponIcons[2].color = new Color(0, 0, 0, 255);
+               // weaponSlotNumber[2].color = new Color(255, 255, 255, 50);
             }
             else if (playerScript.currentWeapon == 2)
             {
-                weaponIcons[0].color = new Color(255, 255, 255, 0.2f);
-                weaponIcons[1].color = new Color(255, 255, 255, 0.2f);
-                weaponIcons[2].color = new Color(255, 255, 255, 1f);
+                 // weaponIcons[0].color = new Color(0, 0, 0, 255);
+                 // weaponSlotNumber[0].color = new Color(255, 255, 255, 50);
+                 // weaponIcons[1].color = new Color(0, 0, 0, 255);
+                 // weaponSlotNumber[1].color = new Color(255, 255, 255, 50);
+                weaponIcons[2].color = new Color(0, 0, 0, 255);
+                weaponSlotNumber[2].color = new Color(0, 0, 0, 255);
             }
         }
 
