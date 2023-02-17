@@ -29,7 +29,7 @@ public class lootChest : MonoBehaviour, IActionObject
 
     public void PrimaryAction()
     {
-        if(inRange)
+        if(inRange && !gameManager.instance.isPaused)
         {            
             if(checkPlayerCoins()) 
             {

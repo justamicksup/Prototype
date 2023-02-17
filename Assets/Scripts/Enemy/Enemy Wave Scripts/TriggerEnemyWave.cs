@@ -11,7 +11,7 @@ namespace Enemy.Enemy_Wave_Scripts
         // Update is called once per frame
         void Update()
         {
-            if (_playerInRange)
+            if (_playerInRange && !gameManager.instance.isPaused)
             {
 
                 if (Input.GetButtonDown("Action"))

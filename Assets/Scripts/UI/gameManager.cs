@@ -29,7 +29,9 @@ public class gameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI enemiesRemainingText;
     public int key;
     public EnemyWaveSystem enemyWaveSystem;
-
+    private bool didWin;
+    private bool didLose;
+    
     [Header("----- UI -----")] public GameObject activeMenu;
     public GameObject pauseMenu;
     public GameObject winMenu;
@@ -152,7 +154,7 @@ public class gameManager : MonoBehaviour
     void Update()
     {
         UpdateUI();
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel") && !didLose && !didWin)
         {
 
             if(upgradeMenu.activeSelf)
@@ -186,7 +188,7 @@ public class gameManager : MonoBehaviour
             else
                 unpauseGame();
         }
-        if(Input.GetButtonDown("Stats"))
+        if(Input.GetButtonDown("Stats") && !didLose && !didWin)
         {
             if(upgradeMenu.activeSelf)
             {
@@ -319,6 +321,7 @@ public class gameManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         activeMenu = winMenu;
+        didWin = true;
         activeMenu.SetActive(true);
     }
 
@@ -328,6 +331,7 @@ public class gameManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         pauseGame();
+        didLose = true;
         activeMenu = loseMenu;
         activeMenu.SetActive(true);
     }
