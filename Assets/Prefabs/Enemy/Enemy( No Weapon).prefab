@@ -1722,7 +1722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf4d628adb3dad4fa1b462d152bbc1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 0
+  hp: 0
   rotationSpeed: 0
   lootValue: 0
   attack: 1
@@ -1740,8 +1740,8 @@ MonoBehaviour:
   weapon: {fileID: 2058002611}
   model: {fileID: 7886939071975061047}
   aud: {fileID: 1841107106}
-  weaponDrop: {fileID: 5570532550025363648, guid: 8e50e5caee92b3d42ae709061d1531a6, type: 3}
-  audWeaponSwingtVol: 0.1
+  weaponDrop: {fileID: 0}
+  audWeaponSwingVol: 0
   offSetPlayerDir: {x: 0, y: 1, z: 0}
 --- !u!95 &7908567486035732233
 Animator:
@@ -1841,6 +1841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 0}
+  deathEffectLocation: {fileID: 0}
   delay: 0.5
 --- !u!114 &-4052773043157334780
 MonoBehaviour:

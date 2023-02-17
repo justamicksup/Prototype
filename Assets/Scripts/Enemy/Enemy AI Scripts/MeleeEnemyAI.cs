@@ -95,7 +95,7 @@ namespace Enemy.Enemy_AI_Scripts
                 deathEffect.DeathByEffects();
             
                 Destroy(gameObject);
-                gameManager.instance.DropLoot(transform, weaponDrop, true, true, true);
+                gameManager.instance.DropLoot(transform, weaponDrop, false, true, true);
             }
         }
     
