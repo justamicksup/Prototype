@@ -18,6 +18,7 @@ public class playerController : MonoBehaviour
     [SerializeField] public ParticleSystem healthPart;
     [SerializeField] public ParticleSystem killPart;
     public GameObject mainCamera;
+    public LayerMask groundLayer;
 
     [Header("----- Player Stats -----")]
     [Range(1,100)] [SerializeField] private float playerBaseHealth = 100;
@@ -120,6 +121,7 @@ public class playerController : MonoBehaviour
     bool isShooting;
     bool isReloading;
     bool staminaLeft;
+    private bool isJumping = false;
     bool isAttacking;
     public bool inActionRange;
     bool isPlayingSteps;
@@ -189,7 +191,8 @@ public class playerController : MonoBehaviour
     void movement()
     {
         //check if on ground
-        if (controller.isGrounded)
+        //if (controller.isGrounded)
+        if(IsGrounded() && !isJumping)
         {
             //reset jump and velocity
             jumpTimes = 0;
@@ -215,9 +218,11 @@ public class playerController : MonoBehaviour
         //jump
         if (Input.GetButtonDown("Jump") && jumpTimes < jumpMax)
         {
+            isJumping = true;
             playerVelocity.y = jumpVelocity;
             jumpTimes++;
             aud.PlayOneShot(audPlayerJump[Random.Range(0, audPlayerJump.Length)], audPlayerJumpVol);
+            StartCoroutine(Jumping());
         }
 
         if (Input.GetButtonDown("Weapon1"))
@@ -277,6 +282,23 @@ public class playerController : MonoBehaviour
         playerVelocity.y -= gravity * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
         animator.SetFloat("Speed", move.magnitude);
+    }
+
+    IEnumerator Jumping()
+    {
+        yield return new WaitForSeconds(0.1f);
+        isJumping = false;
+        yield break;
+    }
+
+    public bool IsGrounded()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + Vector3.up * 0.15f, Vector3.down, out hit, 0.2f, groundLayer))
+        {
+            return true;
+        }
+        return false;
     }
 
     public void AddAmmo(int amount)
@@ -743,7 +765,8 @@ public class playerController : MonoBehaviour
 
     IEnumerator playSteps()
     {
-        if (controller.isGrounded)
+        //if (controller.isGrounded)
+        if(IsGrounded())
         {
             isPlayingSteps = true;
             aud.PlayOneShot(audPlayerSteps[Random.Range(0, audPlayerSteps.Length)], audPlayerStepsVol);
