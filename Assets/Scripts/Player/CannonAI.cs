@@ -116,7 +116,7 @@ public class CannonAI : MonoBehaviour
                 cannon.transform.localRotation = Quaternion.Euler(0, currAngle, 0);
             }
         }
-        if (playerInRange && !coolTimerOn)
+        if (playerInRange && !coolTimerOn && !gameManager.instance.isPaused)
         {
             if (Input.GetButtonDown("Action") && gameManager.instance.playerScript.GetCoins() >= activateCost)
             {

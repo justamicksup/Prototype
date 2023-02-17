@@ -45,7 +45,7 @@ public class chest : MonoBehaviour, IActionObject
             hasCoins = false;
         }
 
-        if(showChest)
+        if(showChest && !gameManager.instance.isPaused)
         {
             if (Input.GetButtonDown("Action") && !isRerolling && hasCoins)
             {
