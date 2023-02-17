@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 5414315926804895428}
   - component: {fileID: 6850899301744671790}
   - component: {fileID: 6854461272095033636}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Slot 2
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -409,7 +409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8624810184542123495}
   - component: {fileID: 2881898442246238899}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Pirate_Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -654,7 +654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1168961409066132347}
   - component: {fileID: 96012875902415902}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Pirate_Jaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -740,7 +740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 556939245491013324}
   - component: {fileID: 6560200300615608870}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Pirate_Shoes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -961,7 +961,7 @@ GameObject:
   - component: {fileID: 4604139058434941541}
   - component: {fileID: 7907617815174717265}
   - component: {fileID: 4321766192868844900}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Slot 3
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -1075,7 +1075,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3712612561918307844}
   - component: {fileID: 7446703655268971521}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Pirate_Belt_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1389,7 +1389,7 @@ GameObject:
   - component: {fileID: 6010441315407872496}
   - component: {fileID: 7890521364411316075}
   - component: {fileID: 1344530682368675948}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Slot 1
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -1498,7 +1498,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3788204955517085342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.75, z: 0.15}
+  m_LocalPosition: {x: -0.1, y: 1.642, z: 0.083}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1522,7 +1522,7 @@ MonoBehaviour:
   - {fileID: 3150511645703027019}
   - {fileID: 2170841819504887604}
   lockVerMin: -75
-  lockVerMax: 75
+  lockVerMax: 50
   invertX: 0
 --- !u!20 &5805853731377477426
 Camera:
@@ -1555,7 +1555,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 8159
+    m_Bits: 16351
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1717,7 +1717,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2974356826141734931}
   - component: {fileID: 3247089284032488216}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Pirate_Cloth_Body_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1833,7 +1833,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2896005106044944851}
   - component: {fileID: 8548655017996590269}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Pirate_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2041,7 +2041,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4797214078585733048}
   m_LocalRotation: {x: -0.16554675, y: 0.0022911916, z: 0.008640034, w: 0.9861615}
-  m_LocalPosition: {x: -0.011599732, y: -0.21040931, z: 0.27080098}
+  m_LocalPosition: {x: -0.011599732, y: -0.052, z: -0.011}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2514,7 +2514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9019437347845228171}
   - component: {fileID: 6714576026038172017}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Pirate_Belt_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2735,7 +2735,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7593725237640124462}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2800,7 +2800,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4377719643044019536}
   - component: {fileID: 2284623277219668441}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Pirate_Mustache
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3292,7 +3292,7 @@ CharacterController:
   m_Height: 1.75
   m_Radius: 0.25
   m_SlopeLimit: 45
-  m_StepOffset: 0.5
+  m_StepOffset: 0.2
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
@@ -3332,6 +3332,9 @@ MonoBehaviour:
   healthPart: {fileID: 8555799057765643888}
   killPart: {fileID: 8169030407481606686}
   mainCamera: {fileID: 3788204955517085342}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 512
   playerBaseHealth: 100
   playerBaseStamina: 100
   currentStamina: 100
@@ -3528,7 +3531,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3307169229564885062}
   - component: {fileID: 5512903528012982684}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Pirate_Beard
   m_TagString: Untagged
   m_Icon: {fileID: 0}

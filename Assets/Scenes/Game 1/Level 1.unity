@@ -6700,21 +6700,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4317796631780129099, guid: 9df4a6daa600e804598876402fdd9c85, type: 3}
-      propertyPath: m_StepOffset
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5805853731377477426, guid: 9df4a6daa600e804598876402fdd9c85, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 16351
-      objectReference: {fileID: 0}
     - target: {fileID: 8232509961259550198, guid: 9df4a6daa600e804598876402fdd9c85, type: 3}
       propertyPath: m_Name
       value: Pirate Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8542757337769196722, guid: 9df4a6daa600e804598876402fdd9c85, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 8575185036756165397, guid: 9df4a6daa600e804598876402fdd9c85, type: 3}
       propertyPath: m_RootOrder
