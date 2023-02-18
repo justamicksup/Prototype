@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 459458}
   - component: {fileID: 3357120}
-  - component: {fileID: 13652762}
   - component: {fileID: 2321220}
-  m_Layer: 0
+  - component: {fileID: 1702170786}
+  m_Layer: 13
   m_Name: Coconut_Palm_Tree05_AFS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,20 +42,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118498}
   m_Mesh: {fileID: 4300000, guid: a7abdbdc306969943a5219f1b5bf045c, type: 2}
---- !u!136 &13652762
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 118498}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.75
-  m_Height: 4
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: -1.75}
 --- !u!23 &2321220
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -98,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1702170786
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118498}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: a7abdbdc306969943a5219f1b5bf045c, type: 2}
