@@ -3,7 +3,7 @@ using Player;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Barricade : MonoBehaviour, IDamage, IActionObject
+public class Barricade : MonoBehaviour, Odamage, IActionObject
 {
     [Header("----- Barricade Stats -----")] 
     [SerializeField] float HP;
@@ -21,7 +21,6 @@ public class Barricade : MonoBehaviour, IDamage, IActionObject
 
     private bool hasCoin = false;
     private bool playerInRange;
-    private bool barricadeActive;
     private Transform target = null;
 
     // Start is called before the first frame update
@@ -44,10 +43,10 @@ public class Barricade : MonoBehaviour, IDamage, IActionObject
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             target = other.transform;
-            if (!barricadeActive && Vector3.Distance(transform.position, target.position) <= 4f)
+            if (brokenBarricade.activeSelf && Vector3.Distance(transform.position, target.position) <= 4f)
             {
                 playerInRange = true;
                 gameManager.instance.alertText.text = $"E: Rebuild: ({repairCost})";
@@ -71,7 +70,7 @@ public class Barricade : MonoBehaviour, IDamage, IActionObject
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             playerInRange = false;
             hasCoin = false;
@@ -83,13 +82,12 @@ public class Barricade : MonoBehaviour, IDamage, IActionObject
     {
         if (HP > 0)
         {
-            HP -= (int)damage;
+            HP -= damage;
             updateHPBar();
         }
         if (HP <= 0)
         {
             barricade.SetActive(false);
-            barricadeActive = false;
             brokenBarricade.SetActive(true);
             _boxCollider.enabled = false;
             HPBar.enabled= false;
@@ -98,11 +96,11 @@ public class Barricade : MonoBehaviour, IDamage, IActionObject
 
     public void PrimaryAction()
     {
-        if (gameManager.instance.playerScript.GetCoins() >= repairCost)
+        int pCoin = gameManager.instance.playerScript.GetCoins();
+        if (pCoin >= repairCost)
         {
             gameManager.instance.playerScript.addCoins(-repairCost);
             brokenBarricade.SetActive(false);
-            barricadeActive = true;
             barricade.SetActive(true);
             _boxCollider.enabled = true;
             HP = HPOrig;
@@ -119,7 +117,8 @@ public class Barricade : MonoBehaviour, IDamage, IActionObject
 
     private bool CheckPlayerCoins(int cost)
     {
-        if (playerInRange && gameManager.instance.playerScript.GetCoins() >= cost)
+        int pCoin = gameManager.instance.playerScript.GetCoins();
+        if (playerInRange && pCoin >= cost)
         {
             hasCoin = true;
         }

@@ -208,8 +208,7 @@ namespace Enemy.Enemy_AI_Scripts
                 if (agent.remainingDistance < agent.stoppingDistance)
                 {
                     FacePlayer();
-                }
-                
+                }     
 
                 if (!_isThrowing && _angleToPlayer <= throwAngle)
                 {

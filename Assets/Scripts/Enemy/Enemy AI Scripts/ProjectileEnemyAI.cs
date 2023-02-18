@@ -193,13 +193,7 @@ namespace Enemy.Enemy_AI_Scripts
             if (other.CompareTag("Player"))
             {
                 _playerInRange = true;
-            }
-
-            Barricade b = other.GetComponent<Barricade>();
-            if (other.CompareTag("Destructible") && b != null &&  b.GetHP() > 0)
-            {
-                StartCoroutine(Shoot());
-            }
+            }            
         }
 
         public void OnTriggerExit(Collider other)
@@ -214,7 +208,6 @@ namespace Enemy.Enemy_AI_Scripts
         {
             _playerDir = gameManager.instance.player.transform.position + offSetPlayerDir - headPos.position;
             _angleToPlayer = Vector3.Angle(_playerDir, transform.forward);
-
             if (!Physics.Raycast(headPos.position, _playerDir, out var hit)) return;
             if (hit.collider.CompareTag("Player"))
             {
@@ -231,6 +224,7 @@ namespace Enemy.Enemy_AI_Scripts
                     StartCoroutine(Shoot());
                 }
             }
+            
         }
     }
 }

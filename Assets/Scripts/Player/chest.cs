@@ -47,14 +47,14 @@ public class chest : MonoBehaviour, IActionObject
 
         if(showChest && !gameManager.instance.isPaused)
         {
-            if (Input.GetButtonDown("Action") && !isRerolling && hasCoins)
+            if (Input.GetButtonDown("Submit") && !isRerolling && hasCoins)
             {
                 SecondaryAction();
                 gameManager.instance.alertText.text = "";
-                gameManager.instance.alertText.text = $"F: Purchase Weapon ({chestCost})\n E: Reroll ({rollCost})";
+                gameManager.instance.alertText.text = $"E: Purchase Weapon ({chestCost})\n F: Reroll ({rollCost})";
             }
 
-            if (Input.GetButton("Submit") && wallet >= chestCost)
+            if (Input.GetButton("Action") && wallet >= chestCost)
             {
                 PrimaryAction();
                 gameManager.instance.alertText.text = "";
@@ -71,7 +71,7 @@ public class chest : MonoBehaviour, IActionObject
             {
                 playerInRange = true;
                 showChest = true;
-                gameManager.instance.alertText.text = $"F: Purchase Weapon ({chestCost})\n E: Reroll ({rollCost})";
+                gameManager.instance.alertText.text = $"E: Purchase Weapon ({chestCost})\n F: Reroll ({rollCost})";
             }
         }
     }   

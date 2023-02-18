@@ -20,13 +20,9 @@ public class bullet : MonoBehaviour
             gameManager.instance.playerScript.takeDamage(bulletDamage);
         }
         Barricade b = other.GetComponent<Barricade>();
-        if (other.CompareTag("Destructible") && b != null && b.GetHP() > 0)
+        if (other.GetComponent<Barricade>() && b.GetHP() > 0)
         {
-            other.GetComponentInChildren<IDamage>().TakeDamage(bulletDamage);
-        }
-        else
-        {
-            Physics.IgnoreCollision(this.GetComponent<Collider>(), other.GetComponent<Collider>());
+            other.GetComponent<Odamage>().TakeDamage(bulletDamage);
         }
         Destroy(gameObject);
     }
