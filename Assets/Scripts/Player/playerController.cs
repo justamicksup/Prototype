@@ -203,17 +203,6 @@ public class playerController : MonoBehaviour
         move = (transform.right * Input.GetAxis("Horizontal")) +
                (transform.forward * Input.GetAxis("Vertical"));
         //move character
-        if (Input.GetButton("Sprint") && currentStamina > 0)
-        {
-            isSprinting = true;
-            controller.Move(move * Time.deltaTime * PlayerSpeed * 2);
-            useStamina(0.5f);
-        }
-        else
-        {
-            isSprinting = false;
-            controller.Move(move * Time.deltaTime * PlayerSpeed);
-        }
 
         //jump
         if (Input.GetButtonDown("Jump") && jumpTimes < jumpMax)
@@ -277,6 +266,18 @@ public class playerController : MonoBehaviour
         //{
         //    StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon]));
         //}
+        if (Input.GetButton("Sprint") && currentStamina > 0)
+        {
+            isSprinting = true;
+            controller.Move(move * Time.deltaTime * PlayerSpeed * 2);
+            useStamina(0.5f);
+        }
+        else
+        {
+            isSprinting = false; 
+            useStamina(0);
+            controller.Move(move * Time.deltaTime * PlayerSpeed);
+        }
 
         //add gravity
         playerVelocity.y -= gravity * Time.deltaTime;
@@ -426,7 +427,7 @@ public class playerController : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
 
-        while (currentStamina < PlayerMaxStamina && !Input.GetButtonDown("Sprint"))
+        while (currentStamina < PlayerMaxStamina && !Input.GetButton("Sprint"))
         {
             currentStamina += PlayerMaxStamina / 100;
             updatePlayerStamina();
