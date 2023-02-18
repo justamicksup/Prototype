@@ -17,7 +17,7 @@ MonoBehaviour:
   rotationOffset: {x: 0, y: 0, z: 180}
   positionOffset: {x: 0.183, y: -0.043, z: 0.068}
   gunLevel: 1
-  damage: 200
+  damage: 65
   range: 100
   shootRate: 0.8
   shootForce: 1
@@ -28,4 +28,4 @@ MonoBehaviour:
   audGunShotVol: 0.4
   muzzleFlash: {fileID: 0}
   bullet: {fileID: 5245255688520990098, guid: 2e622fc3b9bedfa45bf778dccc584963, type: 3}
-  bulletSpeed: 30
+  bulletSpeed: 350

@@ -28,4 +28,4 @@ MonoBehaviour:
   audGunShotVol: 0.4
   muzzleFlash: {fileID: 0}
   bullet: {fileID: 5245255688520990098, guid: 2e622fc3b9bedfa45bf778dccc584963, type: 3}
-  bulletSpeed: 30
+  bulletSpeed: 350

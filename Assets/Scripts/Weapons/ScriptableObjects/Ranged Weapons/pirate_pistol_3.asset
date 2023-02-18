@@ -16,16 +16,16 @@ MonoBehaviour:
   weaponType: 2
   rotationOffset: {x: 20.000004, y: 90, z: 99.99999}
   positionOffset: {x: 0.261, y: -0.117, z: 0.035}
-  gunLevel: 1
-  damage: 30
-  range: 40
+  gunLevel: 4
+  damage: 20
+  range: 50
   shootRate: 0.8
   shootForce: 1
   magMax: 1
-  carryAmount: 0
+  carryAmount: 50
   reloadTime: 0.5
   audGunShot: {fileID: 8300000, guid: b1d9cc2e6e473a643a0f6a695c9cb5ac, type: 3}
   audGunShotVol: 0.4
   muzzleFlash: {fileID: 0}
   bullet: {fileID: 5245255688520990098, guid: 2e622fc3b9bedfa45bf778dccc584963, type: 3}
-  bulletSpeed: 30
+  bulletSpeed: 350
