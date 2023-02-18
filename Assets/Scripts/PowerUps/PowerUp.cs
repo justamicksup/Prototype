@@ -38,11 +38,18 @@ public class PowerUp : MonoBehaviour
         gameManager.instance.playerScript.currentStamina -= power.staminaBonus;
         gameManager.instance.playerScript.shootDamage -= power.shootDmgBonus;
         gameManager.instance.playerScript.meleeDamage -= power.meleeDmgBonus;
-
-        gameManager.instance.instaKillIcon.SetActive(false);
-        gameManager.instance.speedBoostIcon.SetActive(false);
-        gameManager.instance.healingIcon.SetActive(false);
-
+        if (gameManager.instance.instaKillIcon.activeSelf)
+        {
+            gameManager.instance.instaKillIcon.SetActive(false);
+        }
+        if (gameManager.instance.speedBoostIcon.activeSelf)
+        {
+            gameManager.instance.speedBoostIcon.SetActive(false);
+        }
+        if (gameManager.instance.healingIcon.activeSelf)
+        {
+            gameManager.instance.healingIcon.SetActive(false);
+        }
         gameManager.instance.playerScript.speedPart.Stop();
         //gameManager.instance.playerScript.healthPart.Stop();
         gameManager.instance.playerScript.speedPart.gameObject.SetActive(false);

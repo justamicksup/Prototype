@@ -45,7 +45,7 @@ namespace Enemy.Enemy_AI_Scripts
         public float stoppingDistOrig;
         [Range(0, 1)] [SerializeField] float audGunShotVol;
 
-        [SerializeField] private Vector3 offSetPlayerDir = new Vector3(0, 1, 0);
+        [SerializeField] private Vector3 offSetPlayerDir = new Vector3(0, 2, 0);
 
         private static readonly int Speed = Animator.StringToHash("Speed");
         private static readonly int Shoot1 = Animator.StringToHash("Shoot");
@@ -182,7 +182,7 @@ namespace Enemy.Enemy_AI_Scripts
             aud.PlayOneShot(audGunShot, audGunShotVol);
             GameObject bulletClone = Instantiate(bullet, shootPos.position, bullet.transform.rotation);
             bulletClone.GetComponent<Rigidbody>().velocity =
-                (gameManager.instance.player.transform.position - headPos.transform.position).normalized * bulletSpeed;
+                ((gameManager.instance.player.transform.position+offSetPlayerDir) - headPos.transform.position).normalized * bulletSpeed;
             bulletClone.GetComponent<bullet>().bulletDamage = shootDamage;
             //Debug.Log(bulletClone.GetComponent<bullet>().bulletDamage);
 
