@@ -103,6 +103,8 @@ public class CannonAI : MonoBehaviour
         }
         if (playerInRange && !cannonActive && !gameManager.instance.isPaused)
         {
+
+            gameManager.instance.alertText.text = $"E: Activate Cannon: ({activateCost})";
             if (Input.GetButtonDown("Action") && gameManager.instance.playerScript.GetCoins() >= activateCost)
             {
                 gameManager.instance.alertText.text = "";
@@ -135,10 +137,9 @@ public class CannonAI : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (!coolTimerOn && Vector3.Distance(cannon.transform.position, gameManager.instance.player.transform.position) <= 2f)
+            if (!coolTimerOn && Vector3.Distance(cannon.transform.position, gameManager.instance.player.transform.position) <= 6f)
             {
                 playerInRange = true;
-                gameManager.instance.alertText.text = $"E: Activate Cannon: ({activateCost})";
             }
             else
             {
@@ -167,6 +168,7 @@ public class CannonAI : MonoBehaviour
         {
             target = null;
             enemyInRange = false;
+            
         }
     }
     void canSeeEnemy()

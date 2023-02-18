@@ -33,6 +33,7 @@ public class chest : MonoBehaviour, IActionObject
     {
         if (playerInRange)
         {
+            gameManager.instance.alertText.text = $"E: Purchase Weapon ({chestCost})\n F: Reroll ({rollCost})";
             wallet = gameManager.instance.playerScript.GetCoins();
             if (rollCost <= wallet)
             {
@@ -50,19 +51,24 @@ public class chest : MonoBehaviour, IActionObject
                 if (Input.GetButtonDown("Submit") && !isRerolling && hasCoins)
                 {
                     SecondaryAction();
-                    gameManager.instance.alertText.text = "";
-                    gameManager.instance.alertText.text = $"E: Purchase Weapon ({chestCost})\n F: Reroll ({rollCost})";
                 }
 
                 if (Input.GetButton("Action") && wallet >= chestCost)
                 {
                     PrimaryAction();
-                    gameManager.instance.alertText.text = "";
                 }
             }
         }
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            target = other.transform;
+            playerInRange= true;
+        }
+    }
     void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -72,10 +78,9 @@ public class chest : MonoBehaviour, IActionObject
             {
                 playerInRange = true;
                 showChest = true;
-                gameManager.instance.alertText.text = $"E: Purchase Weapon ({chestCost})\n F: Reroll ({rollCost})";
             }
         }
-    }   
+    }
 
     void OnTriggerExit(Collider other)
     {
