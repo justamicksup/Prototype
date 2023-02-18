@@ -50,8 +50,8 @@ public class chest : MonoBehaviour, IActionObject
             if (Input.GetButtonDown("Action") && !isRerolling && hasCoins)
             {
                 SecondaryAction();
+                gameManager.instance.alertText.text = "";
                 gameManager.instance.alertText.text = $"F: Purchase Weapon ({chestCost})\n E: Reroll ({rollCost})";
-                //StartCoroutine(Delay(.1f));
             }
 
             if (Input.GetButton("Submit") && wallet >= chestCost)
@@ -62,38 +62,19 @@ public class chest : MonoBehaviour, IActionObject
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             target = other.transform;
-            // Debug.Log("PLAYER");
-            playerInRange = true;
-            gameManager.instance.alertText.text = $"F: Purchase Weapon ({chestCost})\n E: Reroll ({rollCost})";
-            // if (chestCost < wallet)
-            // {
-            //     hasCoins = true;
-            //     weaponDisplay.SetActive(true);
-            //     gameManager.instance.playerScript.inActionRange = true;
-            // }
-            // else
-            // {
-            //     hasCoins = false;
-            // }
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            if (playerInRange)
+            if (target != null && Vector3.Distance(transform.position, target.position) <= 4f)
             {
+                playerInRange = true;
                 showChest = true;
+                gameManager.instance.alertText.text = $"F: Purchase Weapon ({chestCost})\n E: Reroll ({rollCost})";
             }
         }
-    }
-    
+    }   
 
     void OnTriggerExit(Collider other)
     {
@@ -130,15 +111,6 @@ public class chest : MonoBehaviour, IActionObject
         
     }
 
-    //commented out because issue fixed with GetButtonDown
-    //IEnumerator Delay(float delay)
-    //{
-    //    //Delay to not reroll weapon since registering multiple rolls in 1 frame
-    //    isRerolling = true;
-    //    yield return new WaitForSeconds(delay);
-    //    isRerolling = false;
-    //}
-
     private void rollChest()
     {
         seed = Random.Range(0, tempArmory.MasterWeaponList.Count);
@@ -148,17 +120,5 @@ public class chest : MonoBehaviour, IActionObject
             tempArmory.MasterWeaponList[seed].Model.GetComponent<MeshFilter>().sharedMesh;
         weaponDisplay.GetComponent<MeshRenderer>().sharedMaterials =
             tempArmory.MasterWeaponList[seed].Model.GetComponent<MeshRenderer>().sharedMaterials;
-    }
-
-    void checkWallet()
-    {
-        if (gameManager.instance.playerScript.GetCoins() >= chestCost)
-        {
-            hasCoins = true;
-        }
-        else
-        {
-            hasCoins = false;
-        }
     }
 }

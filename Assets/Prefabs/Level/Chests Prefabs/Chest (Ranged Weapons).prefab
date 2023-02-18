@@ -249,8 +249,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.5
-  m_Center: {x: -0.000000059604645, y: 0.346412, z: -0.008713961}
+  m_Radius: 2.15
+  m_Center: {x: 3.5206534e-12, y: 0.34640992, z: -0.008357451}
 --- !u!65 &8330052421548415241
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -309,7 +309,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.4, z: 1}
+  m_Size: {x: 0.75, y: 0.3, z: 0.5}
   m_Center: {x: 0, y: 0.15, z: 0}
 --- !u!33 &673927772
 MeshFilter:
