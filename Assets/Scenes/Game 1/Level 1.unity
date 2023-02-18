@@ -6357,6 +6357,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cannon (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 9164615129010266571, guid: e8de2b2e5c81d08499122b3e635409c5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8de2b2e5c81d08499122b3e635409c5, type: 3}
 --- !u!1001 &2012976609

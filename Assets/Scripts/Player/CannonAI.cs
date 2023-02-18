@@ -81,7 +81,6 @@ public class CannonAI : MonoBehaviour
         }
         if (cannonActive)
         {
-            gameManager.instance.alertText.text = "";
             //target should be assigned when
             //Enemy, Range, Melee tags enter trigger
             if (target != null && enemyInRange)
@@ -103,11 +102,9 @@ public class CannonAI : MonoBehaviour
         }
         if (playerInRange && !cannonActive && !gameManager.instance.isPaused)
         {
-
             gameManager.instance.alertText.text = $"E: Activate Cannon: ({activateCost})";
             if (Input.GetButtonDown("Action") && gameManager.instance.playerScript.GetCoins() >= activateCost)
             {
-                gameManager.instance.alertText.text = "";
                 gameManager.instance.playerScript.addCoins(-activateCost);
                 smokeParticle.Stop();
                 cannonActive = true;
