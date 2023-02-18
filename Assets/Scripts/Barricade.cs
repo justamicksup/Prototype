@@ -43,6 +43,10 @@ public class Barricade : MonoBehaviour, Odamage, IActionObject
         {
             PrimaryAction();
         }
+        if (brokenBarricade.activeSelf && Vector3.Distance(transform.position, target.position) <= 4f)
+        {            
+            gameManager.instance.alertText.text = $"E: Rebuild: ({repairCost})";
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -50,11 +54,7 @@ public class Barricade : MonoBehaviour, Odamage, IActionObject
         if (other.CompareTag("Player"))
         {
             target = other.transform;
-            if (brokenBarricade.activeSelf && Vector3.Distance(transform.position, target.position) <= 4f)
-            {
-                playerInRange = true;
-                gameManager.instance.alertText.text = $"E: Rebuild: ({repairCost})";
-            }
+            playerInRange = true;
         }
         if (barricade.activeSelf)
         {
@@ -77,7 +77,6 @@ public class Barricade : MonoBehaviour, Odamage, IActionObject
         {
             playerInRange = false;
             hasCoin = false;
-            gameManager.instance.alertText.text = "";
         }
     }
 
@@ -109,7 +108,6 @@ public class Barricade : MonoBehaviour, Odamage, IActionObject
             HP = HPOrig;
             HPBar.enabled = true;
             updateHPBar();
-            gameManager.instance.alertText.text = "";
         }      
     }
 
