@@ -8,7 +8,7 @@ namespace Enemy.Enemy_AI_Scripts
     public class ProjectileEnemyAI : MonoBehaviour, IDamage
     {
         [Header("----- Projectile Enemy Stats From SO -----")] [SerializeField]
-        int hp;
+        float hp;
 
         [SerializeField] int rotationSpeed;
         [Range(10, 1000)] [SerializeField] int lootValue;
@@ -68,7 +68,6 @@ namespace Enemy.Enemy_AI_Scripts
             agent.SetDestination(position);
             animator.SetFloat(Speed, agent.velocity.normalized.magnitude);
 
-
             if (_playerInRange)
             {
                 CanSeePlayer();
@@ -78,11 +77,14 @@ namespace Enemy.Enemy_AI_Scripts
         // Need to adjust this in all AI to work like lecture
         public void TakeDamage(float damage)
         {
-            hp -= (int)damage;
+            hp -= damage;
             //animator.SetTrigger("Hit1");
             StartCoroutine(FlashDamage());
             FacePlayer();
-            agent.SetDestination(gameManager.instance.player.transform.position);
+            if (agent.isActiveAndEnabled)
+            {
+                agent.SetDestination(gameManager.instance.player.transform.position);
+            }
             if (hp <= 0)
             {
                 gameManager.instance.updateEnemyRemaining(-1);

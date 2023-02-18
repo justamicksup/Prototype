@@ -10134,14 +10134,14 @@ MonoBehaviour:
   shootTimeFill: {fileID: 4826354854572582104}
   rotSpeed: 50
   rotRange: 70
-  viewAngle: 85
-  activeTime: 30
+  viewAngle: 60
+  activeTime: 120
   activateCost: 1000
-  coolTime: 30
+  coolTime: 0.1
   direction: 1
   shootPos: {fileID: 350312441533669812}
   cannSpeed: 25
-  shootRate: 10
+  shootRate: 7
   shootDist: 7
   shootAngle: 0
   upForce: 5

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6171834881381164773}
   - component: {fileID: 6171834881381164771}
   - component: {fileID: 2075074192}
-  - component: {fileID: 2871195637052748054}
   m_Layer: 0
   m_Name: Spike Barricade
   m_TagString: Destructible
@@ -50,14 +49,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 80
-  repairCost: 200
-  damage: 10
-  pushBackForce: 200
+  repairCost: 1500
+  damage: 20
+  pushBackForce: -100
   HPBar: {fileID: 7355931688235361644}
   barricade: {fileID: 2228144547013621503}
   brokenBarricade: {fileID: 3778993261642805768}
-  _boxCollider: {fileID: 5491126465545805341}
-  rb: {fileID: 2871195637052748054}
+  _boxCollider: {fileID: 6171834881381164771}
 --- !u!65 &6171834881381164771
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -67,7 +65,7 @@ BoxCollider:
   m_GameObject: {fileID: 6171834881381164772}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 8.813864, y: 2.8407526, z: 3}
   m_Center: {x: -0.07773161, y: 1.4203763, z: 1.7695712e-10}
@@ -84,22 +82,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &2871195637052748054
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6171834881381164772}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 1
 --- !u!1001 &4819415799046824021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -107,6 +89,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6171834881381164770}
     m_Modifications:
+    - target: {fileID: 1069155554247441992, guid: 99e808e6e2500434fbc907c01f06a29d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1486076522051103026, guid: 99e808e6e2500434fbc907c01f06a29d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -241,11 +227,6 @@ Transform:
 --- !u!1 &2228144547013621503 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6632100806532208298, guid: 99e808e6e2500434fbc907c01f06a29d, type: 3}
-  m_PrefabInstance: {fileID: 4819415799046824021}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &5491126465545805341 stripped
-BoxCollider:
-  m_CorrespondingSourceObject: {fileID: 1069155554247441992, guid: 99e808e6e2500434fbc907c01f06a29d, type: 3}
   m_PrefabInstance: {fileID: 4819415799046824021}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7355931688235361644 stripped

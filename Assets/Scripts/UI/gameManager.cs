@@ -1,6 +1,7 @@
 using System.Collections;
 using Enemy.Enemy_Wave_Scripts;
 using TMPro;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.UI;
 using Cursor = UnityEngine.Cursor;
@@ -11,6 +12,7 @@ public class gameManager : MonoBehaviour
     public static Animation shipAnim;
     public static Animation rescueAnim;
     public static GameObject sun;
+    [SerializeField] public NavMeshSurface surface;
     [Header("----- Player -----")] public GameObject player;
     public playerController playerScript;
     public int currentLevel;

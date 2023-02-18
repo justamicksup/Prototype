@@ -83,7 +83,10 @@ namespace Enemy.Enemy_AI_Scripts
             animator.SetTrigger(Hit1);
             StartCoroutine(FlashDamage());
             FacePlayer();
-            agent.SetDestination(gameManager.instance.player.transform.position);
+            if (agent.isActiveAndEnabled)
+            {
+                agent.SetDestination(gameManager.instance.player.transform.position);
+            }
             if (hp <= 0)
             {
                 gameManager.instance.updateEnemyRemaining(-1);

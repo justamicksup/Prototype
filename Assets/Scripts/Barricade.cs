@@ -26,10 +26,14 @@ public class Barricade : MonoBehaviour, Odamage, IActionObject
     // Start is called before the first frame update
     void Start()
     {
+        barricade.SetActive(false);
+        gameManager.instance.surface.BuildNavMesh();
+        barricade.SetActive(true);
         brokenBarricade.SetActive(false);
         HPOrig = HP;
         updateHPBar();
         HPBar.enabled = true;
+        
     }
 
     // Update is called once per frame
@@ -52,19 +56,18 @@ public class Barricade : MonoBehaviour, Odamage, IActionObject
                 gameManager.instance.alertText.text = $"E: Rebuild: ({repairCost})";
             }
         }
-        if ((other.gameObject.CompareTag("Range")
-            || other.gameObject.CompareTag("Melee")
-            || other.gameObject.CompareTag("Enemy")
-            || other.gameObject.CompareTag("No Weapon")) 
-            && Vector3.Distance(other.gameObject.transform.position, transform.position) <= 2f)
+        if (barricade.activeSelf)
         {
-            other.gameObject.GetComponent<IDamage>().TakeDamage(damage);
-            TakeDamage(damage / 2);
+            if ((other.gameObject.CompareTag("Range")
+                || other.gameObject.CompareTag("Melee")
+                || other.gameObject.CompareTag("Enemy")
+                || other.gameObject.CompareTag("No Weapon"))
+                && Vector3.Distance(other.gameObject.transform.position, transform.position) <= 4f)
+            {
+                other.gameObject.GetComponent<IDamage>().TakeDamage(damage);
+                TakeDamage(damage / 2);
+            }
         }
-    }
-    private void OnCollisionStay(Collision collision)
-    {
-        
     }
 
     private void OnTriggerExit(Collider other)

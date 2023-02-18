@@ -3342,7 +3342,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   playerBaseSpeed: 10
-  jumpVelocity: 12
+  jumpVelocity: 9
   gravity: 25
   jumpMax: 1
   coins: 1300
@@ -3387,7 +3387,7 @@ MonoBehaviour:
   maxAmmo: 50
   reloadTime: 0.5
   bullet: {fileID: 5245255688520990098, guid: b25f06003f4aa714ba3948eaef94e0df, type: 3}
-  bulletSpeed: 30
+  bulletSpeed: 90
   muzzle: {fileID: 7593725237640124462}
   gunDmgMultiplier: 1
   gunReloadMultiplier: 1
