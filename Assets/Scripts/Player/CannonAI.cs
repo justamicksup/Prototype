@@ -10,8 +10,8 @@ public class CannonAI : MonoBehaviour
     [SerializeField] GameObject cannball;
     [SerializeField] ParticleSystem smokeParticle;
     [SerializeField] ParticleSystem muzzleFlash;
-    [SerializeField] Image shootTime;
-    [SerializeField] Image shootTimeFill;
+    //[SerializeField] Image shootTime;
+    //[SerializeField] Image shootTimeFill;
 
     [Header("----- Cannon Stats -----")]
     [SerializeField] int rotSpeed;
@@ -202,8 +202,8 @@ public class CannonAI : MonoBehaviour
         muzzleFlash.Play();
         createBall();
 
-        shootTime.gameObject.SetActive(true);
-        StartCoroutine(UpdateUI());
+        //shootTime.gameObject.SetActive(true);
+        //StartCoroutine(UpdateUI());
         yield return new WaitForSeconds(shootRate);
 
         isShooting = false;
@@ -213,14 +213,14 @@ public class CannonAI : MonoBehaviour
     IEnumerator UpdateUI()
     {
         float time = 0;
-        shootTimeFill.fillAmount = 0;
+        //shootTimeFill.fillAmount = 0;
         while (time < shootRate)
         {
-            shootTimeFill.fillAmount = Mathf.Lerp(0, 1, time / shootRate);
+            //shootTimeFill.fillAmount = Mathf.Lerp(0, 1, time / shootRate);
             time += Time.deltaTime;
             yield return null;
         }
-        shootTime.gameObject.SetActive(false);
+        //shootTime.gameObject.SetActive(false);
         yield break;
     }
     public void createBall()
