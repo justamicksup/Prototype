@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 150
   timer: 1
-  range: 15
+  range: 7
   force: 10
   layerMask:
     serializedVersion: 2

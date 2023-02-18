@@ -10,7 +10,6 @@ public class CannonAI : MonoBehaviour
     [SerializeField] GameObject cannball;
     [SerializeField] ParticleSystem smokeParticle;
     [SerializeField] ParticleSystem muzzleFlash;
-    [SerializeField] GameObject noCircle;
     [SerializeField] Image shootTime;
     [SerializeField] Image shootTimeFill;
 
@@ -20,7 +19,6 @@ public class CannonAI : MonoBehaviour
     [SerializeField] int viewAngle;//is this the same as shoot angle?
     [SerializeField] float activeTime;
     [SerializeField] int activateCost;
-    [SerializeField] float coolTime;
     [SerializeField] int direction = 1;
 
     [Header("----- Shooting -----")]
@@ -56,7 +54,6 @@ public class CannonAI : MonoBehaviour
     bool activeTimerOn;
     bool coolTimerOn;
     float actTimeOrig;
-    float coolTimeOrig;
 
 
     // Start is called before the first frame update
@@ -65,7 +62,6 @@ public class CannonAI : MonoBehaviour
         //so distance will be set to the cannon's radius
         shootDist = (int)GetComponent<SphereCollider>().radius;
         actTimeOrig = activeTime;
-        coolTimeOrig = coolTime;
     }
 
     // Update is called once per frame
@@ -81,17 +77,6 @@ public class CannonAI : MonoBehaviour
                 activeTime = actTimeOrig;
                 coolTimerOn = true;
                 smokeParticle.Play();
-            }
-        }
-        if (coolTimerOn)
-        {
-            noCircle.SetActive(true);
-            coolTime -= Time.deltaTime;
-            if(coolTime <= 0)
-            {
-                coolTimerOn= false;
-                coolTime = coolTimeOrig;
-                noCircle.SetActive(false);
             }
         }
         if (cannonActive)
@@ -116,7 +101,7 @@ public class CannonAI : MonoBehaviour
                 cannon.transform.localRotation = Quaternion.Euler(0, currAngle, 0);
             }
         }
-        if (playerInRange && !coolTimerOn && !gameManager.instance.isPaused)
+        if (playerInRange && !cannonActive && !gameManager.instance.isPaused)
         {
             if (Input.GetButtonDown("Action") && gameManager.instance.playerScript.GetCoins() >= activateCost)
             {
@@ -127,25 +112,25 @@ public class CannonAI : MonoBehaviour
                 activeTimerOn= true;
             }
         }
-        if(cannonActive && target != null)
+        if(target != null && !isShooting)
         {
-            canSeeEnemy();
+            StartCoroutine(shoot());
         }
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (cannonActive)
-        {
-            //not grabbing target
-            if (other.CompareTag("Enemy") || other.CompareTag("Range") || other.CompareTag("Melee") || other.CompareTag("No Weapon") || other.CompareTag("Explosive"))
-            {
-                enemyInRange = true;
-                enemyDir = other.transform.position;
-                target = other.transform;
-                canSeeEnemy();
-            }
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (cannonActive)
+    //    {
+    //        //not grabbing target
+    //        if (other.CompareTag("Enemy") || other.CompareTag("Range") || other.CompareTag("Melee") || other.CompareTag("No Weapon") || other.CompareTag("Explosive"))
+    //        {
+    //            enemyInRange = true;
+    //            enemyDir = other.transform.position;
+    //            target = other.transform;
+    //            canSeeEnemy();
+    //        }
+    //    }
+    //}
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -162,9 +147,13 @@ public class CannonAI : MonoBehaviour
             }
 
         }
-        if (cannonActive && target == null)
+        if (cannonActive)
         {
-            if (other.CompareTag("Enemy") || other.CompareTag("Range") || other.CompareTag("Melee") || other.CompareTag("No Weapon") || other.CompareTag("Explosive"))
+            if (other.CompareTag("Enemy") 
+                || other.CompareTag("Range") 
+                || other.CompareTag("Melee") 
+                || other.CompareTag("No Weapon") 
+                || other.CompareTag("Explosive"))
             {
                 enemyInRange = true;
                 enemyDir = other.transform.position;

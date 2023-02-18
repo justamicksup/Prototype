@@ -61,7 +61,8 @@ public class Barricade : MonoBehaviour, Odamage, IActionObject
             if ((other.gameObject.CompareTag("Range")
                 || other.gameObject.CompareTag("Melee")
                 || other.gameObject.CompareTag("Enemy")
-                || other.gameObject.CompareTag("No Weapon"))
+                || other.gameObject.CompareTag("No Weapon")
+                || other.gameObject.CompareTag("Explosive"))
                 && Vector3.Distance(other.gameObject.transform.position, transform.position) <= 4f)
             {
                 other.gameObject.GetComponent<IDamage>().TakeDamage(damage);
