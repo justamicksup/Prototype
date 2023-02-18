@@ -42,26 +42,29 @@ public class Barricade : MonoBehaviour, IDamage, IActionObject
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
         {
             target = other.transform;
-            playerInRange = true;
-            if (!barricadeActive)
+            if (!barricadeActive && Vector3.Distance(transform.position, target.position) <= 4f)
             {
+                playerInRange = true;
                 gameManager.instance.alertText.text = $"E: Rebuild: ({repairCost})";
             }
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
+        Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
+        Vector3 enemyPos = -collision.transform.forward;
         if  (collision.gameObject.CompareTag("Range")
             || collision.gameObject.CompareTag("Melee")
-            || collision.gameObject.CompareTag("Enemy"))
+            || collision.gameObject.CompareTag("Enemy") 
+            || collision.gameObject.CompareTag("No Weapon"))
         {
             collision.gameObject.GetComponent<IDamage>().TakeDamage(damage);
-            collision.gameObject.GetComponent<Rigidbody>().AddForce(-transform.forward * pushBackForce);
+            rb.AddForce(enemyPos*pushBackForce);
             TakeDamage(damage / 2);
         }
     }
