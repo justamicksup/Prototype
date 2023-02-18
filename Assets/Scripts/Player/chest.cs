@@ -18,9 +18,7 @@ public class chest : MonoBehaviour, IActionObject
     private bool showChest = false;
 
     bool hasCoins;
-    bool openingChest;
     bool playerInRange;
-    bool choseWeapon;
     bool isRerolling;
 
     public int wallet;
@@ -33,31 +31,34 @@ public class chest : MonoBehaviour, IActionObject
 
     void Update()
     {
-        wallet = gameManager.instance.playerScript.GetCoins();
-        if (rollCost <= wallet)
+        if (playerInRange)
         {
-            hasCoins = true;
-            weaponDisplay.SetActive(true);
-            gameManager.instance.playerScript.inActionRange = true;
-        }
-        else
-        {
-            hasCoins = false;
-        }
-
-        if(showChest && !gameManager.instance.isPaused)
-        {
-            if (Input.GetButtonDown("Submit") && !isRerolling && hasCoins)
+            wallet = gameManager.instance.playerScript.GetCoins();
+            if (rollCost <= wallet)
             {
-                SecondaryAction();
-                gameManager.instance.alertText.text = "";
-                gameManager.instance.alertText.text = $"E: Purchase Weapon ({chestCost})\n F: Reroll ({rollCost})";
+                hasCoins = true;
+                weaponDisplay.SetActive(true);
+                gameManager.instance.playerScript.inActionRange = true;
+            }
+            else
+            {
+                hasCoins = false;
             }
 
-            if (Input.GetButton("Action") && wallet >= chestCost)
+            if (showChest && !gameManager.instance.isPaused)
             {
-                PrimaryAction();
-                gameManager.instance.alertText.text = "";
+                if (Input.GetButtonDown("Submit") && !isRerolling && hasCoins)
+                {
+                    SecondaryAction();
+                    gameManager.instance.alertText.text = "";
+                    gameManager.instance.alertText.text = $"E: Purchase Weapon ({chestCost})\n F: Reroll ({rollCost})";
+                }
+
+                if (Input.GetButton("Action") && wallet >= chestCost)
+                {
+                    PrimaryAction();
+                    gameManager.instance.alertText.text = "";
+                }
             }
         }
     }

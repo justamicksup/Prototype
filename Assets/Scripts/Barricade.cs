@@ -52,20 +52,19 @@ public class Barricade : MonoBehaviour, Odamage, IActionObject
                 gameManager.instance.alertText.text = $"E: Rebuild: ({repairCost})";
             }
         }
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
-        Vector3 enemyPos = -collision.transform.forward;
-        if  (collision.gameObject.CompareTag("Range")
-            || collision.gameObject.CompareTag("Melee")
-            || collision.gameObject.CompareTag("Enemy") 
-            || collision.gameObject.CompareTag("No Weapon"))
+        if ((other.gameObject.CompareTag("Range")
+            || other.gameObject.CompareTag("Melee")
+            || other.gameObject.CompareTag("Enemy")
+            || other.gameObject.CompareTag("No Weapon")) 
+            && Vector3.Distance(other.gameObject.transform.position, transform.position) <= 2f)
         {
-            collision.gameObject.GetComponent<IDamage>().TakeDamage(damage);
-            rb.AddForce(enemyPos*pushBackForce);
+            other.gameObject.GetComponent<IDamage>().TakeDamage(damage);
             TakeDamage(damage / 2);
         }
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        
     }
 
     private void OnTriggerExit(Collider other)
