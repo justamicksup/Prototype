@@ -266,11 +266,11 @@ public class playerController : MonoBehaviour
         //{
         //    StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon]));
         //}
-        if (Input.GetButton("Sprint") && currentStamina > 0)
+        if (Input.GetButton("Sprint") && (int)currentStamina > 0)
         {
             isSprinting = true;
             controller.Move(move * Time.deltaTime * PlayerSpeed * 2);
-            useStamina(0.5f);
+            useStamina(move.magnitude);
         }
         else
         {
@@ -427,13 +427,13 @@ public class playerController : MonoBehaviour
     }
     IEnumerator regainStamina()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2f);
 
         while (currentStamina < PlayerMaxStamina && !Input.GetButton("Sprint"))
         {
             currentStamina += PlayerMaxStamina / 100;
             updatePlayerStamina();
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(2f);
         }
 
         staminaRegen = null;

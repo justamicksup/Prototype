@@ -36,7 +36,7 @@ public class PowerUp : MonoBehaviour
     }
     private void ResetStats()
     {
-        Debug.Log("RESET STATS INVOKED AFTER " + time + " seconds " + power);
+        //Debug.Log("RESET STATS INVOKED AFTER " + time + " seconds " + power);
         gameManager.instance.playerScript.playerBaseSpeed -= power.speedBonus;
         gameManager.instance.playerScript.currentStamina -= power.staminaBonus;
         gameManager.instance.playerScript.shootDamage -= power.shootDmgBonus;        
