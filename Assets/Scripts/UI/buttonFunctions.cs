@@ -32,6 +32,10 @@ public class buttonFunctions : MonoBehaviour
 
     public void fullscreen(Toggle fs)
     {
+        if(Screen.fullScreenMode == FullScreenMode.FullScreenWindow || Screen.fullScreenMode == FullScreenMode.ExclusiveFullScreen)
+        {
+            fs.isOn = true;
+        }
         if(fs.isOn)
         {
             Screen.fullScreenMode = FullScreenMode.FullScreenWindow;

@@ -34,7 +34,8 @@ public class gameManager : MonoBehaviour
     private bool didWin;
     private bool didLose;
     
-    [Header("----- UI -----")] public GameObject activeMenu;
+    [Header("----- UI -----")] 
+    public GameObject activeMenu;
     public GameObject pauseMenu;
     public GameObject winMenu;
     public GameObject loseMenu;
