@@ -587,6 +587,8 @@ public class gameManager : MonoBehaviour
             timer3 = p.effectDuration;
             t3On = true;
             speedBoostIcon.SetActive(true);
+            playerScript.speedPart.Stop();
+            playerScript.speedPart.gameObject.SetActive(false);
         }
     }
     #endregion
