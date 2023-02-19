@@ -3,17 +3,18 @@ using Enemy.Enemy_Stats_Scripts;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace Enemy.Enemy_AI_Scripts
 {
     public class ExplosiveEnemyAI : MonoBehaviour, IDamage
     {
-        [FormerlySerializedAs("HP")]
-        [Header("----- Explosive Enemy Stats From SO -----")] 
-        [SerializeField] int hp;
+        [FormerlySerializedAs("HP")] [Header("----- Explosive Enemy Stats From SO -----")] [SerializeField]
+        int hp;
+
         [SerializeField] int rotationSpeed;
         [Range(10, 1000)] [SerializeField] int lootValue;
-        // [SerializeField] float throwingDistance = 10f;
+        //[SerializeField] float throwingDistance = 10f;
         [SerializeField] int forceForward = 1;
         [SerializeField] int forceUpward = 1;
         [SerializeField] int torque = 1;
@@ -21,16 +22,15 @@ namespace Enemy.Enemy_AI_Scripts
         public int throwAngle;
         public int viewAngle;
         public DeathEffect deathEffect;
-    
-        [Header("----- Bomb Stats -----")] 
+
+        [Header("----- Bomb Stats -----")]
         //   [SerializeField] int timer = 1;
         // [SerializeField] int explosionRadius = 1;
         //  [SerializeField] int explosionForce = 1;
         //[SerializeField] int explosiveDamage = 1;
-
-    
         [Header("----- Needed References -----")]
         public MasterEnemy masterEnemyScriptableObject;
+
         [SerializeField] Renderer model;
         public Animator animator;
         public NavMeshAgent agent;
@@ -38,7 +38,7 @@ namespace Enemy.Enemy_AI_Scripts
         public Transform throwingHand;
         public GameObject bomb;
         [SerializeField] GameObject weaponDrop;
-
+        [SerializeField] private GameObject[] relocatePositions;
 
         [Header("----- Variables -----")] Vector3 _playerDir;
         bool _isThrowing;
@@ -48,6 +48,8 @@ namespace Enemy.Enemy_AI_Scripts
         [SerializeField] private Vector3 offSetPlayerDir = new Vector3(0, 1, 0);
         private static readonly int Hit1 = Animator.StringToHash("Hit1");
         private static readonly int Speed = Animator.StringToHash("Speed");
+        private bool _hasRelocated;
+        private Vector3 _position;
 
         // Start is called before the first frame update
         void Start()
@@ -56,21 +58,26 @@ namespace Enemy.Enemy_AI_Scripts
             GetStats((EnemyExplosiveScriptableObjects)masterEnemyScriptableObject);
             GetNavMesh();
             stoppingDistOrig = agent.stoppingDistance;
-        
-     
+            _position = gameManager.instance.player.transform.position;
         }
 
         // Update is called once per frame
         void Update()
         {
-            var position = gameManager.instance.player.transform.position;
-            _playerDir = position + offSetPlayerDir - headPos.position;
-            agent.SetDestination(position);
+            //var position = gameManager.instance.player.transform.position;
+            _playerDir = _position + offSetPlayerDir - headPos.position;
+            agent.SetDestination(_position);
             animator.SetFloat(Speed, agent.velocity.normalized.magnitude);
 
-       
 
-            if (_playerInRange)
+
+            if (_playerInRange && !_hasRelocated)
+            {
+                _hasRelocated = true;
+                Relocate();
+                
+            }
+            else
             {
                 CanSeePlayer();
             }
@@ -87,6 +94,7 @@ namespace Enemy.Enemy_AI_Scripts
             {
                 agent.SetDestination(gameManager.instance.player.transform.position);
             }
+
             if (hp <= 0)
             {
                 gameManager.instance.updateEnemyRemaining(-1);
@@ -110,7 +118,9 @@ namespace Enemy.Enemy_AI_Scripts
 
         void GetStats(EnemyExplosiveScriptableObjects enemyExplosiveScriptableObject)
         {
-            hp = (int)(enemyExplosiveScriptableObject.health * gameManager.instance.enemyWaveSystem.difficultyMultiplier * (gameManager.instance.enemyWaveSystem.currentWaveIndex + 1));
+            hp = (int)(enemyExplosiveScriptableObject.health *
+                       gameManager.instance.enemyWaveSystem.difficultyMultiplier *
+                       (gameManager.instance.enemyWaveSystem.currentWaveIndex + 1));
             bomb = enemyExplosiveScriptableObject.bomb;
             throwAngle = enemyExplosiveScriptableObject.throwAngle;
             viewAngle = enemyExplosiveScriptableObject.viewAngle;
@@ -118,7 +128,7 @@ namespace Enemy.Enemy_AI_Scripts
             forceUpward = enemyExplosiveScriptableObject.forceUpward;
             torque = enemyExplosiveScriptableObject.torque;
             rotationSpeed = enemyExplosiveScriptableObject.rotationSpeed;
-            // throwingDistance = enemyExplosiveScriptableObject.throwingDistance;
+            //throwingDistance = enemyExplosiveScriptableObject.throwingDistance;
             deathEffect.SetDeathEffect(enemyExplosiveScriptableObject.deathEffect);
             // Haven't implemented defense yet
             // Haven't implemented boss check yet
@@ -155,14 +165,20 @@ namespace Enemy.Enemy_AI_Scripts
             if (other.CompareTag("Player"))
             {
                 _playerInRange = true;
+                _hasRelocated = false;
+
             }
         }
+
+       
 
         public void OnTriggerExit(Collider other)
         {
             if (other.CompareTag("Player"))
             {
                 _playerInRange = false;
+              
+
             }
         }
 
@@ -204,23 +220,31 @@ namespace Enemy.Enemy_AI_Scripts
 
 
             if (!Physics.Raycast(headPos.position, _playerDir, out var hit)) return;
-            if (hit.collider.CompareTag("Player")) 
+            if (hit.collider.CompareTag("Player"))
             {
-                agent.SetDestination(gameManager.instance.player.transform.position);
+                //agent.SetDestination(gameManager.instance.player.transform.position);
 
                 if (agent.remainingDistance < agent.stoppingDistance)
                 {
                     FacePlayer();
-                }     
+                }
 
                 if (!_isThrowing && _angleToPlayer <= throwAngle)
                 {
+                    _position = gameManager.instance.player.transform.position;
+                    _hasRelocated = false;
                     StartCoroutine(ThrowBomb());
                 }
             }
         }
-    
-   
-    
+
+        void Relocate()
+        {
+
+          
+            _position = relocatePositions[Random.Range(0, relocatePositions.Length)].transform.position;
+            
+            
+        }
     }
 }

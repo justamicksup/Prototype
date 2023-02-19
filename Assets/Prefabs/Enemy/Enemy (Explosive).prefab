@@ -528,7 +528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841a11eeea44b5a42ad54cae5e69717a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 0
+  hp: 0
   rotationSpeed: 0
   lootValue: 0
   throwingDistance: 5
@@ -539,10 +539,6 @@ MonoBehaviour:
   throwAngle: 0
   viewAngle: 0
   deathEffect: {fileID: 5754664444915332636}
-  timer: 100
-  explosionRadius: 5
-  explosionForce: 100
-  explosiveDamage: 1
   masterEnemyScriptableObject: {fileID: 11400000, guid: fcdf93a4076ad874a9dd7730ac3e7417, type: 2}
   model: {fileID: 8798340704051873617}
   animator: {fileID: 8839744971792356975}
@@ -551,6 +547,12 @@ MonoBehaviour:
   throwingHand: {fileID: 1352547680}
   bomb: {fileID: 6182639289201271482, guid: ee552b3e7cb86874d8ebe3c3863ec48e, type: 3}
   weaponDrop: {fileID: 1966086811846920754, guid: 68045ccb7be43bf458044efc8bddde4e, type: 3}
+  relocatePositions:
+  - {fileID: 7485344241601942866, guid: 0caee861f01776d47bd01149da2abbc7, type: 3}
+  - {fileID: 7100374704904863889, guid: c860411778672bf4f835730eb633fa26, type: 3}
+  - {fileID: 6593929554113636853, guid: 94d1095aad51c0f4cab4014c6dd46fc1, type: 3}
+  - {fileID: 549065245842923514, guid: e09566171dbbfc04ea144fb883f8e4bc, type: 3}
+  - {fileID: 5447228350615182864, guid: 6a3878f03fe5d9f4c8821b4909921c6f, type: 3}
   stoppingDistOrig: 0
   offSetPlayerDir: {x: 0, y: 1, z: 0}
 --- !u!95 &8839744971792356975

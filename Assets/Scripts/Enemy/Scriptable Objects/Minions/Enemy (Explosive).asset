@@ -16,9 +16,10 @@ MonoBehaviour:
   health: 200
   defense: 0
   isBoss: 0
-  Model: {fileID: 8933497125020024247, guid: 647452330745e5e438a35226953b1055, type: 3}
+  model: {fileID: 0}
   navMesh: {fileID: 11400000, guid: dc68a3f436874894a98651f3a3d62b01, type: 2}
-  throwingDistance: 10
+  coinValue: 10
+  throwingDistance: 25
   bomb: {fileID: 6182639289201271482, guid: ee552b3e7cb86874d8ebe3c3863ec48e, type: 3}
   throwAngle: 45
   viewAngle: 60
