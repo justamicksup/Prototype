@@ -43,9 +43,12 @@ public class Barricade : MonoBehaviour, Odamage, IActionObject
         {
             PrimaryAction();
         }
-        if (HP <=0 && Vector3.Distance(brokenBarricade.transform.position, target.position) <= 4f)
+        if (target != null)
         {
-            gameManager.instance.alertText.text = $"E: Rebuild: ({repairCost})";
+            if (HP <= 0 && Vector3.Distance(brokenBarricade.transform.position, target.position) <= 4f)
+            {
+                gameManager.instance.alertText.text = $"E: Rebuild: ({repairCost})";
+            }
         }
     }
 
