@@ -47,6 +47,10 @@ public class settingsMenu : MonoBehaviour
         {
             fullscreen.enabled = true;
         }
+        else
+        {
+            fullscreen.enabled = false;
+        }
         
     }
 
