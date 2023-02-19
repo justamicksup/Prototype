@@ -5,10 +5,12 @@ public class PowerUp : MonoBehaviour
 {
     [SerializeField] PowerStat power;
     public AudioSource aud;
+    float time;
 
     private void Start()
     {
         aud.clip = power.powerAudio;
+        time = power.effectDuration;
     }
 
     public void Update()
@@ -29,27 +31,16 @@ public class PowerUp : MonoBehaviour
             catch
             {
             }
-            Invoke(nameof(ResetStats), power.effectDuration);
+            Invoke(nameof(ResetStats), time);
         }
     }
     private void ResetStats()
     {
+        //Debug.Log("RESET STATS INVOKED " + time);
         gameManager.instance.playerScript.playerBaseSpeed -= power.speedBonus;
         gameManager.instance.playerScript.currentStamina -= power.staminaBonus;
-        gameManager.instance.playerScript.shootDamage -= power.shootDmgBonus;
-        gameManager.instance.playerScript.meleeDamage -= power.meleeDmgBonus;
-        if (gameManager.instance.instaKillIcon.activeSelf)
-        {
-            gameManager.instance.instaKillIcon.SetActive(false);
-        }
-        if (gameManager.instance.speedBoostIcon.activeSelf)
-        {
-            gameManager.instance.speedBoostIcon.SetActive(false);
-        }
-        if (gameManager.instance.healingIcon.activeSelf)
-        {
-            gameManager.instance.healingIcon.SetActive(false);
-        }
+        gameManager.instance.playerScript.shootDamage -= power.shootDmgBonus;        
+
         gameManager.instance.playerScript.speedPart.Stop();
         //gameManager.instance.playerScript.healthPart.Stop();
         gameManager.instance.playerScript.speedPart.gameObject.SetActive(false);

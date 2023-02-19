@@ -718,10 +718,24 @@ public class playerController : MonoBehaviour
     }
     public void powerPickup(PowerStat power)
     {
+        if (power.shootDmgBonus != 0)
+        {
+            shootDamage += power.shootDmgBonus;
+            killPart.gameObject.SetActive(true);
+            killPart.Play();
+            gameManager.instance.IconTimer(power);
+        }
+        if (power.healthBonus != 0)
+        {
+            StartCoroutine(healOverTime(power.effectDuration, power.healthBonus));
+            healthPart.gameObject.SetActive(true);
+            healthPart.Play();
+            gameManager.instance.IconTimer(power);
+        }
         if (power.speedBonus != 0)
         {
             playerBaseSpeed += power.speedBonus;
-            gameManager.instance.speedBoostIcon.SetActive(true);
+            gameManager.instance.IconTimer(power);
             speedPart.gameObject.SetActive(true);
             speedPart.Play();
         }
@@ -729,28 +743,9 @@ public class playerController : MonoBehaviour
         {
             currentStamina += power.staminaBonus;
         }
-        if (power.shootDmgBonus != 0)
-        {
-            shootDamage += power.shootDmgBonus;
-            killPart.gameObject.SetActive(true);
-            killPart.Play();
-            gameManager.instance.instaKillIcon.SetActive(true);
-        }
-        if (power.meleeDmgBonus != 0)
-        {
-            meleeDamage += power.meleeDmgBonus;
-            gameManager.instance.instaKillIcon.SetActive(true);
-        }
         if (power.goldBonus != 0)
         {
             addCoins(power.goldBonus);
-        }
-        if (power.healthBonus != 0)
-        {
-            StartCoroutine(healOverTime(power.effectDuration, power.healthBonus));
-            healthPart.gameObject.SetActive(true);
-            healthPart.Play();
-            gameManager.instance.healingIcon.SetActive(true);
         }
         if (power.ammoBonus != 0)
         {
@@ -767,7 +762,7 @@ public class playerController : MonoBehaviour
                 gameManager.instance.updateAmmoUI();
             }
         }
-        if(power.weapon != null)
+        if (power.weapon != null)
         {
             AddWeaponToInventory(power.weapon);
         }        

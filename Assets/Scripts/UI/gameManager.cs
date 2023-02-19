@@ -14,12 +14,13 @@ public class gameManager : MonoBehaviour
     public static GameObject sun;
     [SerializeField] public NavMeshSurface surface;
 
+    #region PLAYER
     [Header("----- Player -----")] 
     public GameObject player;
     public playerController playerScript;
     public int currentLevel;
-
-
+    #endregion
+    #region GAME GOAL
     [Header("----- Game Goal -----")] 
     public int enemiesRemaining;
     public int waveCount;
@@ -36,7 +37,8 @@ public class gameManager : MonoBehaviour
     public EnemyWaveSystem enemyWaveSystem;
     private bool didWin;
     private bool didLose;
-    
+    #endregion
+    #region UI
     [Header("----- UI -----")] 
     public GameObject activeMenu;
     public GameObject pauseMenu;
@@ -48,10 +50,9 @@ public class gameManager : MonoBehaviour
     public GameObject speedBoostIcon;
     public GameObject healingIcon;
     public GameObject screenFlash;
-    float timer1;
-    float timer2;
-    float timer3;
-
+    float timer1; public bool t1On;
+    float timer2; public bool t2On;
+    float timer3; public bool t3On;
     //[SerializeField] private Text[] ammoCountText;
     [SerializeField] Image[] weaponIcons;
     [SerializeField]  TextMeshProUGUI[] weaponSlotNumber;
@@ -66,7 +67,8 @@ public class gameManager : MonoBehaviour
     public GameObject controlScreen;
     public Image LoadBar;
     public Text timer;
-
+    #endregion
+    #region UPGRADE MENU
     [Header("----- Upgrade Menu -----")]
     public GameObject upgradeMenu;
     public Text speed;
@@ -77,11 +79,13 @@ public class gameManager : MonoBehaviour
     public Text reload;
     public Text range;
     public Text cost;
-
+    #endregion
+    #region WEAPONS & AMMO
     [Header("----- Weapons and Ammo -----")]
     public int ammoRemaining;
     public int weaponsInLevel;
-
+    #endregion
+    #region LOOT DROPS
     [Header("----- Enemy Loot Drops -----")] 
     [SerializeField] GameObject coin10;
     [SerializeField] GameObject coin25;
@@ -92,12 +96,14 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject healthPowerUp;
     [SerializeField] GameObject oneShotPowerUp;
     [SerializeField] GameObject ammoPowerUp;
-
+    #endregion
+    #region BACKGROUND
     [Header("----- Background -----")] 
     public AudioSource audBackground;
     public AudioClip[] levelMusicBackground;
     [Range(0, 1)] [SerializeField] float levelVolBackground;
-
+    #endregion
+    #region MUSIC & SETTINGS
     [Header("----- Fight Music -----")] 
     public AudioSource aud;
     public AudioClip[] levelMusic;
@@ -106,7 +112,7 @@ public class gameManager : MonoBehaviour
     [Header("----- Game Settings -----]")] 
     public int sensitivity;
     public Material[] skyboxes = new Material[2];
-
+    #endregion
 
     void Awake()
     {
@@ -217,13 +223,42 @@ public class gameManager : MonoBehaviour
             }
 
         }
+
+        #region POWER UP TIMERS
+        if (t1On)
+        {
+            timer1 -= Time.deltaTime;
+            if (timer1 <= 0)
+            {
+                timer1 = 0;
+                t1On= false;
+                instaKillIcon.SetActive(false);
+            }
+        }
+        if (t2On)
+        {
+            timer2 -= Time.deltaTime;
+            if (timer2 <= 0)
+            {
+                timer2 = 0;
+                t2On= false;
+                instaKillIcon.SetActive(false);
+            }
+        }
+        if (t3On)
+        {
+            timer3 -= Time.deltaTime;
+            if (timer3 <= 0)
+            {
+                timer3 = 0; 
+                t3On= false;
+                instaKillIcon.SetActive(false);
+            }
+        }
+        #endregion
     }
 
-    public void StartGame()
-    {
-        StartCoroutine(StartGameHelper());
-    }
-
+    #region IENUM'S
     private IEnumerator StartGameHelper()
     {
         if (shipAnim != null)
@@ -268,83 +303,29 @@ public class gameManager : MonoBehaviour
         instance.updateWave();
         instance.UpdateUI();
     }
-
     public IEnumerator flash()
     {
         screenFlash.SetActive(true);
         yield return new WaitForSeconds(0.15f);
         screenFlash.SetActive(false);
     }
-
-    public void updateEnemyRemaining(int amount)
+    public IEnumerator rescueShipWin()
     {
-        enemiesRemaining += amount;
-        //        enemiesRemainingText.text = enemiesRemaining.ToString("F0");
-
-        // check to see if game is over based on enemy count <= 0
-
-
-        // if (enemiesRemaining <= 0)
-        // {
-        //     if (waveCount >= waveController.numWaves)
-        //     {
-        //         pauseGame();
-        //         activeMenu = winMenu;
-        //         activeMenu.SetActive(true);
-        //     }
-        //     else
-        //     {
-        //         updateWave();
-        //     }
-        // }
+        if (rescueAnim != null)
+        {
+            rescueAnim.clip = rescueAnim.GetClip("ShipsRescue");
+            rescueAnim.Play();
+        }
+        yield return new WaitForSeconds(1.5f);
     }
 
+    #endregion
+
+    #region UPDATE UI FUNCTIONS
     public void updatePlayerCoins(int amount)
     {
         playerScript.addCoins(amount);
     }
-
-    public void updateWave()
-    {
-        waveCount++;
-        nextWave = true;
-    }
-
-    public void pauseGame()
-    {
-        Time.timeScale = 0;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-    }
-
-    public void unpauseGame()
-    {
-        Time.timeScale = timeScaleOrig;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    public void youWin()
-    {
-        Time.timeScale = 0;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        activeMenu = winMenu;
-        didWin = true;
-        activeMenu.SetActive(true);
-    }
-
-    public void youLose()
-    {
-        Time.timeScale = 0;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        pauseGame();
-        didLose = true;
-        activeMenu = loseMenu;
-        activeMenu.SetActive(true);
-    }
-
     public void updateAmmoUI(bool gun = true)
     {
         if (gun)
@@ -357,13 +338,10 @@ public class gameManager : MonoBehaviour
             ammoText.text = $"\u221E / \u221E";
         }
     }
-
     public void updateAmmo(int ammo)
     {
         playerScript.ammo -= ammo;
     }
-
-
     public void UpdateUI()
     {
         if (playerScript.weaponList.Count > 0)
@@ -435,13 +413,76 @@ public class gameManager : MonoBehaviour
 
         cost.text = $"Cost to Upgrade: {playerScript.upgradeCost}";
     }
-
     public void updateCoinUI()
     {
         coinsText.text = playerScript.GetCoins().ToString();
     }
 
+    #endregion
 
+    #region GAME
+    public void StartGame()
+    {
+        StartCoroutine(StartGameHelper());
+    }
+    public void updateEnemyRemaining(int amount)
+    {
+        enemiesRemaining += amount;
+        //        enemiesRemainingText.text = enemiesRemaining.ToString("F0");
+
+        // check to see if game is over based on enemy count <= 0
+
+
+        // if (enemiesRemaining <= 0)
+        // {
+        //     if (waveCount >= waveController.numWaves)
+        //     {
+        //         pauseGame();
+        //         activeMenu = winMenu;
+        //         activeMenu.SetActive(true);
+        //     }
+        //     else
+        //     {
+        //         updateWave();
+        //     }
+        // }
+    }
+    public void updateWave()
+    {
+        waveCount++;
+        nextWave = true;
+    }
+    public void pauseGame()
+    {
+        Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+    public void unpauseGame()
+    {
+        Time.timeScale = timeScaleOrig;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+    public void youWin()
+    {
+        Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        activeMenu = winMenu;
+        didWin = true;
+        activeMenu.SetActive(true);
+    }
+    public void youLose()
+    {
+        Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        pauseGame();
+        didLose = true;
+        activeMenu = loseMenu;
+        activeMenu.SetActive(true);
+    }
     public void DropLoot(Transform trans, GameObject weapon = null, bool doesDropWeapon = false,
         bool doesDropPowerUp = false, bool doesDropCoins = false)
     {
@@ -526,13 +567,27 @@ public class gameManager : MonoBehaviour
         key += 1;
     }
 
-    public IEnumerator rescueShipWin()
+
+    public void IconTimer(PowerStat p)
     {
-        if (rescueAnim != null)
+        if(p.shootDmgBonus != 0)
         {
-            rescueAnim.clip = rescueAnim.GetClip("ShipsRescue");
-            rescueAnim.Play();
+            timer1 = p.effectDuration;
+            t1On = true;
+            instaKillIcon.SetActive(true);
         }
-        yield return new WaitForSeconds(1.5f);
+        else if(p.healthBonus != 0)
+        {
+            timer2 = p.effectDuration;
+            t2On = true;
+            healingIcon.SetActive(true);
+        }
+        else if (p.speedBonus != 0)
+        {
+            timer3 = p.effectDuration;
+            t3On = true;
+            speedBoostIcon.SetActive(true);
+        }
     }
+    #endregion
 }
