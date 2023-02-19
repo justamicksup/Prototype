@@ -13,12 +13,15 @@ public class gameManager : MonoBehaviour
     public static Animation rescueAnim;
     public static GameObject sun;
     [SerializeField] public NavMeshSurface surface;
-    [Header("----- Player -----")] public GameObject player;
+
+    [Header("----- Player -----")] 
+    public GameObject player;
     public playerController playerScript;
     public int currentLevel;
 
 
-    [Header("----- Game Goal -----")] public int enemiesRemaining;
+    [Header("----- Game Goal -----")] 
+    public int enemiesRemaining;
     public int waveCount;
     float timeScaleOrig;
     public GameObject playerSpawnPos;
@@ -44,8 +47,10 @@ public class gameManager : MonoBehaviour
     public GameObject instaKillIcon;
     public GameObject speedBoostIcon;
     public GameObject healingIcon;
-
     public GameObject screenFlash;
+    float timer1;
+    float timer2;
+    float timer3;
 
     //[SerializeField] private Text[] ammoCountText;
     [SerializeField] Image[] weaponIcons;
@@ -75,28 +80,29 @@ public class gameManager : MonoBehaviour
 
     [Header("----- Weapons and Ammo -----")]
     public int ammoRemaining;
-
     public int weaponsInLevel;
 
-    [Header("----- Enemy Loot Drops -----")] [SerializeField]
-    GameObject coin10;
-
+    [Header("----- Enemy Loot Drops -----")] 
+    [SerializeField] GameObject coin10;
     [SerializeField] GameObject coin25;
     [SerializeField] GameObject coin50;
     [SerializeField] GameObject coin500;
     [SerializeField] GameObject speedPowerUp;
     [SerializeField] GameObject ammoPickup;
-
-
     [SerializeField] GameObject healthPowerUp;
     [SerializeField] GameObject oneShotPowerUp;
     [SerializeField] GameObject ammoPowerUp;
-    [Header("----- Background -----")] public AudioSource audBackground;
+
+    [Header("----- Background -----")] 
+    public AudioSource audBackground;
     public AudioClip[] levelMusicBackground;
     [Range(0, 1)] [SerializeField] float levelVolBackground;
-    [Header("----- Fight Music -----")] public AudioSource aud;
+
+    [Header("----- Fight Music -----")] 
+    public AudioSource aud;
     public AudioClip[] levelMusic;
     [Range(0, 1)] [SerializeField] float levelVol;
+
     [Header("----- Game Settings -----]")] 
     public int sensitivity;
     public Material[] skyboxes = new Material[2];
@@ -440,12 +446,12 @@ public class gameManager : MonoBehaviour
         bool doesDropPowerUp = false, bool doesDropCoins = false)
     {
         // for drop rates the number is percent chance it will drop, e.g. 5 is 5% chance to drop
-        int coin500DropRate = 1;
-        int coin50DropRate = 4;
-        int coin25DropRate = 10;
-        int coin10DropRate = 25;
+        int coin500DropRate = 10;
+        int coin50DropRate = 20;
+        int coin25DropRate = 35;
+        int coin10DropRate = 60;
         int weaponDropRate = 5;
-        int powerUpDropRate = 5;
+        int powerUpDropRate = 8;
 
         int ammoDropRate = 50;
 
@@ -458,19 +464,19 @@ public class gameManager : MonoBehaviour
         if (doesDropCoins)
         {
             rand = Random.Range(1, 100);
-            if (rand == coin500DropRate) // 1% change for 500 coins
+            if (rand <= coin500DropRate) // 10% change for 500 coins
             {
                 Instantiate(coin500, trans.position, trans.rotation);
             }
-            else if (rand > coin500DropRate && rand <= coin50Var) // 4% chance for 50 coins
+            else if (rand > coin500DropRate && rand <= coin50Var) // 20% chance for 50 coins
             {
                 Instantiate(coin50, trans.position, trans.rotation);
             }
-            else if (rand > coin50Var && rand <= coin25Var) // 10% chance for 25 coins
+            else if (rand > coin50Var && rand <= coin25Var) // 35% chance for 25 coins
             {
                 Instantiate(coin25, trans.position, trans.rotation);
             }
-            else if (rand > coin25Var && rand <= coin10Var) // 25% chance for 10 coins
+            else if (rand > coin25Var && rand <= coin10Var) // 60% chance for 10 coins
             {
                 Instantiate(coin10, trans.position, trans.rotation);
             }

@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 public enum UpgradeTypes { PlayerSpeed, PlayerHealth, PlayerStamina, GunDmg, GunReload, GunRange, GunMaxAmmo }
 public class playerController : MonoBehaviour
 {
+    #region COMPONENTS
     [Header("----- Components -----")]
     [SerializeField]
     CharacterController controller;
@@ -19,13 +20,14 @@ public class playerController : MonoBehaviour
     [SerializeField] public ParticleSystem killPart;
     public GameObject mainCamera;
     public LayerMask groundLayer;
+    #endregion
 
+    #region PLAYER STATS
     [Header("----- Player Stats -----")]
     [Range(1,100)] [SerializeField] private float playerBaseHealth = 100;
     [Range(1, 100)] [SerializeField] private float playerBaseStamina = 100;
     private float currentHealth;
     public float currentStamina;
-
     [SerializeField] private LayerMask enemyMask;
     private Coroutine staminaRegen;
     [SerializeField] public int playerBaseSpeed;
@@ -42,12 +44,12 @@ public class playerController : MonoBehaviour
     [SerializeField] private float playerSpeedMultiplier = 1;
     [SerializeField] private float playerStaminaMultiplier = 1;
     [SerializeField] private float playerHealthMultiplier = 1;
-
     public float PlayerSpeed { get { return playerBaseSpeed * playerSpeedMultiplier; } }
     public float PlayerMaxStamina { get { return playerBaseStamina * playerStaminaMultiplier; } }
     public float PlayerMaxHealth { get { return playerBaseHealth * playerHealthMultiplier; } }
+    #endregion
 
-
+    #region AUDIO
     [Header("----- Audio -----")]
     [SerializeField] AudioClip[] audPlayerDamage;
     [Range(0, 1)] [SerializeField] float audPlayerDamageVol;
@@ -57,9 +59,10 @@ public class playerController : MonoBehaviour
     [Range(0, 1)] [SerializeField] float audPlayerStepsVol;
     [SerializeField] AudioClip audReload;
     [Range(0, 1)] [SerializeField] float audReloadVol;
+    #endregion
 
+    #region GUN STATS
     [Header("----- Gun Stats -----")]
-
     [SerializeField] int gunLevel;
     [SerializeField] public int shootDamage;
     [SerializeField] int range;
@@ -81,8 +84,9 @@ public class playerController : MonoBehaviour
     public float GunShootRange { get { return range * gunRangeMultiplier; } }
     public int MaxAmmo { get { return maxAmmo + maxAmmoMultiplier; } }
 
+    #endregion
 
-
+    #region MELEE STATS
     [Header("----- Melee Stats -----")]
 
     [SerializeField] int meleeLevel;
@@ -92,32 +96,25 @@ public class playerController : MonoBehaviour
     [SerializeField] float swingSpeed;
     private bool canMeleeAttack = true;
     [SerializeField] private LayerMask meleeMask;
+    #endregion
 
+    #region EXPLOSIVES
     [Header("----- Explosive Stats -----")]
     [SerializeField] public GameObject explosive;
     public bool hasExplosive;
+    #endregion
 
-    //public GameObject viewModel;
-
-    [Header("----- Player Info -----")]
+    #region WEAPONS
     [Header("----- Weapon Slots -----")]
-    //[SerializeField] public List<MasterWeapon> weaponList = new List<MasterWeapon>();
     public List<Weapon> weaponList = new List<Weapon>();
-
     [SerializeField] public int currentWeapon;
-
-    //[SerializeField] List<ProjectileWeaponScriptableObjects> gunList = new List<ProjectileWeaponScriptableObjects>();
-
-    //[SerializeField] List<MeleeWeaponScriptableObjects> meleeList = new List<MeleeWeaponScriptableObjects>();
-
-
-
     [SerializeField] private List<GameObject> WeaponSlots;
+    #endregion
 
     public Vector3 pushBack;
     [SerializeField] int pushBackTime;
 
-
+    #region BOOLEAN
     bool isShooting;
     bool isReloading;
     bool staminaLeft;
@@ -127,6 +124,8 @@ public class playerController : MonoBehaviour
     bool isPlayingSteps;
     bool isSprinting;
     bool isExplosiveAttacking;
+    #endregion
+
 
     // Start is called before the first frame update
     void Start()
@@ -188,6 +187,7 @@ public class playerController : MonoBehaviour
         }
     }
 
+    #region Player
     void movement()
     {
         //check if on ground
@@ -284,29 +284,61 @@ public class playerController : MonoBehaviour
         controller.Move(playerVelocity * Time.deltaTime);
         animator.SetFloat("Speed", move.magnitude);
     }
+    public void takeDamage(float damage)
+    {
+        currentHealth -= damage;
+        updatePlayerHP();
+        StartCoroutine(gameManager.instance.flash());
+        aud.PlayOneShot(audPlayerDamage[Random.Range(0, audPlayerDamage.Length)], audPlayerDamageVol);
+        if (currentHealth <= 0)
+        {
+            gameManager.instance.youLose();
+        }
+    }
+    public void Attack()
+    {
+        // if no weapons
+        //show no weapon dialog to player
 
+        //if current weapon is a gun
+        if (weaponList[currentWeapon].isGun)
+        {
+            //call shoot logic
+            //Debug.Log("Call Shoot attack");
+            StartCoroutine(shoot((ProjectileWeaponScriptableObjects)weaponList[currentWeapon].weapon));
+        }
+        // else if current weapon is a melee
+        else if (!weaponList[currentWeapon].isGun && canMeleeAttack)
+        {
+            //Debug.Log("Call Melee attack");
+            StartCoroutine(MeleeAttack());
+            //call melee logic
+        }
+        //if current weapon is a explosive
+        else if (weaponList[currentWeapon].isExplosive)
+        {
+            StartCoroutine(ExplosiveAttack());
+        }
+        // call explosive logic
+
+        //if current weapon is a heal
+        // call heal logic
+    }
+    public void respawnPlayer()
+    {
+        controller.enabled = false;
+        transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        controller.enabled = true;
+    }
+    #endregion
+
+    #region Ienum's
     IEnumerator Jumping()
     {
         yield return new WaitForSeconds(0.1f);
         isJumping = false;
         yield break;
     }
-
-    public bool IsGrounded()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position + Vector3.up * 0.15f, Vector3.down, out hit, 0.2f, groundLayer))
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public void AddAmmo(int amount)
-    {
-        ammoRemaining += amount;
-    }
-
     IEnumerator shoot(ProjectileWeaponScriptableObjects projectileWeaponScriptableObjects)
     {
         isAttacking = true;
@@ -393,36 +425,6 @@ public class playerController : MonoBehaviour
         animator.SetBool("Reloading", false);
         isReloading = false;
     }
-
-
-    public void takeDamage(float damage)
-    {
-        currentHealth -= damage;
-        updatePlayerHP();
-        StartCoroutine(gameManager.instance.flash());
-        aud.PlayOneShot(audPlayerDamage[Random.Range(0, audPlayerDamage.Length)], audPlayerDamageVol);
-        if (currentHealth <= 0)
-        {
-            gameManager.instance.youLose();
-        }
-    }
-
-    public void useStamina(float energy)
-    {
-        if (currentStamina - energy >= 0)
-        {
-            currentStamina -= energy;
-            updatePlayerStamina();
-        }
-
-        if (staminaRegen != null)
-        {
-            StopCoroutine(regainStamina());
-        }
-
-        staminaRegen = StartCoroutine(regainStamina());
-    }
-
     IEnumerator regainStamina()
     {
         yield return new WaitForSeconds(2);
@@ -436,28 +438,229 @@ public class playerController : MonoBehaviour
 
         staminaRegen = null;
     }
+    IEnumerator MeleeAttack()
+    {
+        anim.Play();
+        canMeleeAttack = false;
+        Collider[] cols = Physics.OverlapSphere(transform.position, meleeReach, meleeMask);
+        //RaycastHit[] hits = Physics.SphereCastAll(transform.position, meleeReach, transform.forward, meleeMask);
+        for (int i = 0; i < cols.Length; i++)
+        {
+            IDamage enemy = cols[i].GetComponent<IDamage>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(meleeDamage);
+            }
+        }
+        yield return new WaitForSeconds(0.5f);
+        anim.Stop();
+        canMeleeAttack = true;
+        yield break;
+    }
+    IEnumerator ExplosiveAttack()
+    {
+        isExplosiveAttacking = true;
+        GameObject explosiveClone = Instantiate(explosive, muzzle[currentWeapon].position, Camera.main.transform.rotation);
+        explosiveClone.GetComponent<Rigidbody>().velocity = (Camera.main.transform.forward + new Vector3(0, 1, 0)) * 7;
+        yield return new WaitForSeconds(3f);
+        isExplosiveAttacking = false;
+    }
+    IEnumerator playSteps()
+    {
+        //if (controller.isGrounded)
+        if(IsGrounded())
+        {
+            isPlayingSteps = true;
+            aud.PlayOneShot(audPlayerSteps[Random.Range(0, audPlayerSteps.Length)], audPlayerStepsVol);
+            if (!isSprinting)
+            {
+                yield return new WaitForSeconds(0.5f);
+            }
+            else
+            {
+                yield return new WaitForSeconds(0.3f);
+            }
 
+            isPlayingSteps = false;
+        }
+
+    }
+    IEnumerator healOverTime(float effectDuration, int healStep)
+    {
+        if (currentHealth + 1 > PlayerMaxHealth)
+        {
+            currentHealth = PlayerMaxHealth;
+            updatePlayerHP();
+
+        }
+        if (currentHealth < PlayerMaxHealth)
+        {
+            for (int i = 0; i < effectDuration; i++)
+            {
+                if (currentHealth + 1 > PlayerMaxHealth)
+                {
+                    currentHealth = PlayerMaxHealth;
+                    break;
+                }
+                yield return new WaitForSeconds(1.0f);
+                currentHealth += healStep;
+                updatePlayerHP();
+            }
+        }
+    }
+
+    #endregion
+
+    #region Getters
     public int GetCoins()
     {
         return coins;
     }
-
     public float getHP()
     {
         return currentHealth;
     }
-
     public float getStamina()
     {
         return PlayerMaxStamina;
     }
+    public string GetWeaponType(MasterWeapon tempArmoryListOfWeapon, int index)
+    {
+        if (tempArmoryListOfWeapon.GetType() == typeof(ProjectileWeaponScriptableObjects))
+        {
+            //Debug.Log("Projectile");
+            return "Projectile";
+        }
 
+        else if (tempArmoryListOfWeapon.GetType() == typeof(MeleeWeaponScriptableObjects))
+        {
+            //Debug.Log("Melee");
+            return "Melee";
+        }
+        return "";
+    }
+    public bool IsGrounded()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + Vector3.up * 0.15f, Vector3.down, out hit, 0.2f, groundLayer))
+        {
+            return true;
+        }
+        return false;
+    }
     public void addCoins(int amount)
     {
         coins += amount;
         gameManager.instance.updateCoinUI();
     }
 
+    #endregion
+
+    #region Setters
+    public void AddAmmo(int amount)
+    {
+        ammoRemaining += amount;
+    }
+    public void SetGunStats(ProjectileWeaponScriptableObjects projectileWeaponScriptableObjects, int index, bool newWeapon = true)
+    {
+        //gunList.Add(projectileWeaponScriptableObjects);
+
+        gunLevel = projectileWeaponScriptableObjects.gunLevel;
+        shootDamage = projectileWeaponScriptableObjects.damage;
+        range = projectileWeaponScriptableObjects.range;
+        shootRate = projectileWeaponScriptableObjects.shootRate;
+        shootForce = projectileWeaponScriptableObjects.shootForce;
+        //ammoRemaining = projectileWeaponScriptableObjects.ammoCapacity;
+        //weaponList[currentWeapon].currentClip = projectileWeaponScriptableObjects.ammoRemaining;
+        if (newWeapon)
+            weaponList[currentWeapon].currentClip = 0;
+        reloadTime = projectileWeaponScriptableObjects.reloadTime;
+
+        if (projectileWeaponScriptableObjects.bullet != null)
+        {
+            bullet = projectileWeaponScriptableObjects.bullet;
+            bulletSpeed = projectileWeaponScriptableObjects.bulletSpeed;
+        }
+
+
+        WeaponSlots[index].GetComponent<MeshFilter>().sharedMesh =
+            projectileWeaponScriptableObjects.Model.GetComponent<MeshFilter>().sharedMesh;
+
+        WeaponSlots[index].GetComponent<MeshRenderer>().sharedMaterials =
+            projectileWeaponScriptableObjects.Model.GetComponent<MeshRenderer>().sharedMaterials;
+
+        WeaponSlots[index].transform.localScale = projectileWeaponScriptableObjects.Model.transform.localScale;
+        //WeaponSlots[index].transform.rotation = projectileWeaponScriptableObjects.Model.transform.rotation;
+        WeaponSlots[index].transform.localRotation = Quaternion.Euler(projectileWeaponScriptableObjects.rotationOffset);
+        WeaponSlots[index].transform.localPosition = projectileWeaponScriptableObjects.positionOffset;
+
+        muzzle[currentWeapon].transform.localPosition = projectileWeaponScriptableObjects.GetMuzzleLocation().localPosition;
+        muzzle[currentWeapon].transform.localRotation = Quaternion.Euler(projectileWeaponScriptableObjects.rotationOffset);
+            ammo = projectileWeaponScriptableObjects.magMax;
+
+        animator.SetInteger("WeaponType", 2);
+    }
+    public void SetMeleeStats(MeleeWeaponScriptableObjects meleeWeaponScriptableObjects, int index)
+    {
+        //meleeList.Add(meleeWeaponScriptableObjects);
+
+        meleeLevel = meleeWeaponScriptableObjects.meleeLevel;
+        meleeReach = meleeWeaponScriptableObjects.damage;
+        knockbackForce = meleeWeaponScriptableObjects.knockbackForce;
+        swingSpeed = meleeWeaponScriptableObjects.swingSpeed;
+
+
+        WeaponSlots[index].GetComponent<MeshFilter>().sharedMesh =
+            meleeWeaponScriptableObjects.Model.GetComponent<MeshFilter>().sharedMesh;
+
+        WeaponSlots[index].GetComponent<MeshRenderer>().sharedMaterials =
+            meleeWeaponScriptableObjects.Model.GetComponent<MeshRenderer>().sharedMaterials;
+
+        WeaponSlots[index].transform.localScale = meleeWeaponScriptableObjects.Model.transform.localScale;
+        WeaponSlots[index].transform.localRotation = meleeWeaponScriptableObjects.Model.transform.rotation;
+
+        animator.SetInteger("WeaponType", 1);
+    }
+    public void AddWeaponToInventory(MasterWeapon tempArmoryListOfWeapon)
+    {
+        //if no weapons in list 
+        if (weaponList.Count == 0)
+        {
+            currentWeapon = 0;
+            weaponList.Add(new Weapon(tempArmoryListOfWeapon, (GetWeaponType(tempArmoryListOfWeapon, currentWeapon) == "Projectile" ? true : false), 0));
+            WeaponSlots[currentWeapon].SetActive(true);
+        } //if weapon inventory is full
+        else if (weaponList.Count == 3)
+        {
+            weaponList[currentWeapon] = new Weapon(tempArmoryListOfWeapon, (GetWeaponType(tempArmoryListOfWeapon, currentWeapon) == "Projectile" ? true : false), 0);
+        } //if weapon inventory is over max
+        else if (weaponList.Count > 3)
+        {
+            //Debug.Log("Too Many Weapons in AddWeaponToInventory");
+        } //if weapon inventory is in between
+        else
+        {
+            WeaponSlots[currentWeapon].SetActive(false);
+            currentWeapon += 1;
+            weaponList.Add(new Weapon(tempArmoryListOfWeapon, (GetWeaponType(tempArmoryListOfWeapon, currentWeapon) == "Projectile" ? true : false), 0));
+            WeaponSlots[currentWeapon].SetActive(true);
+        }
+        gameManager.instance.UpdateUI();
+        if (weaponList[currentWeapon].isGun)
+        {
+            SetGunStats((ProjectileWeaponScriptableObjects)tempArmoryListOfWeapon, currentWeapon);
+            gameManager.instance.updateAmmoUI(true);
+        }
+        else
+        {
+            SetMeleeStats((MeleeWeaponScriptableObjects)tempArmoryListOfWeapon, currentWeapon);
+            gameManager.instance.updateAmmoUI(false);
+        }
+
+        if(weaponList[currentWeapon].isGun)
+            StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon].weapon));
+
+    }
     public void changeWeapon(int weapon)
     {
         if (weaponList.Count > weapon)
@@ -478,7 +681,9 @@ public class playerController : MonoBehaviour
             //Debug.Log("bad math");
         }
     }
+    #endregion
 
+    #region Stats
     public bool UpgradeStat(UpgradeTypes type, float amount = 0.1f)
     {
         if (coins < upgradeCost) return false;
@@ -511,54 +716,6 @@ public class playerController : MonoBehaviour
         
         return true;
     }
-
-    public void updatePlayerHP()
-    {
-        gameManager.instance.playerHPBar.fillAmount = (float)currentHealth / (float)PlayerMaxHealth;
-    }
-
-    public void updatePlayerStamina()
-    {
-        gameManager.instance.playerStaminaBar.fillAmount = (float)currentStamina / (float)PlayerMaxStamina;
-    }
-
-    public void respawnPlayer()
-    {
-        controller.enabled = false;
-        transform.position = gameManager.instance.playerSpawnPos.transform.position;
-        controller.enabled = true;
-    }
-
-    public void Attack()
-    {
-        // if no weapons
-        //show no weapon dialog to player
-
-        //if current weapon is a gun
-        if (weaponList[currentWeapon].isGun)
-        {
-            //call shoot logic
-            //Debug.Log("Call Shoot attack");
-            StartCoroutine(shoot((ProjectileWeaponScriptableObjects)weaponList[currentWeapon].weapon));
-        }
-        // else if current weapon is a melee
-        else if (!weaponList[currentWeapon].isGun && canMeleeAttack)
-        {
-            //Debug.Log("Call Melee attack");
-            StartCoroutine(MeleeAttack());
-            //call melee logic
-        }
-        //if current weapon is a explosive
-        else if (weaponList[currentWeapon].isExplosive)
-        {
-            StartCoroutine(ExplosiveAttack());
-        }
-        // call explosive logic
-
-        //if current weapon is a heal
-        // call heal logic
-    }
-
     public void powerPickup(PowerStat power)
     {
         if (power.speedBonus != 0)
@@ -615,198 +772,32 @@ public class playerController : MonoBehaviour
             AddWeaponToInventory(power.weapon);
         }        
     }
-
-    IEnumerator MeleeAttack()
+    public void useStamina(float energy)
     {
-        anim.Play();
-        canMeleeAttack = false;
-        Collider[] cols = Physics.OverlapSphere(transform.position, meleeReach, meleeMask);
-        //RaycastHit[] hits = Physics.SphereCastAll(transform.position, meleeReach, transform.forward, meleeMask);
-        for (int i = 0; i < cols.Length; i++)
+        if (currentStamina - energy >= 0)
         {
-            IDamage enemy = cols[i].GetComponent<IDamage>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage(meleeDamage);
-            }
+            currentStamina -= energy;
+            updatePlayerStamina();
         }
-        yield return new WaitForSeconds(0.5f);
-        anim.Stop();
-        canMeleeAttack = true;
-        yield break;
+
+        if (staminaRegen != null)
+        {
+            StopCoroutine(regainStamina());
+        }
+
+        staminaRegen = StartCoroutine(regainStamina());
     }
 
-    IEnumerator ExplosiveAttack()
+    #endregion
+    public void updatePlayerHP()
     {
-        isExplosiveAttacking = true;
-        GameObject explosiveClone = Instantiate(explosive, muzzle[currentWeapon].position, Camera.main.transform.rotation);
-        explosiveClone.GetComponent<Rigidbody>().velocity = (Camera.main.transform.forward + new Vector3(0, 1, 0)) * 7;
-        yield return new WaitForSeconds(3f);
-        isExplosiveAttacking = false;
+        gameManager.instance.playerHPBar.fillAmount = (float)currentHealth / (float)PlayerMaxHealth;
+    }
+    public void updatePlayerStamina()
+    {
+        gameManager.instance.playerStaminaBar.fillAmount = (float)currentStamina / (float)PlayerMaxStamina;
     }
 
-    public void SetGunStats(ProjectileWeaponScriptableObjects projectileWeaponScriptableObjects, int index, bool newWeapon = true)
-    {
-        //gunList.Add(projectileWeaponScriptableObjects);
-
-        gunLevel = projectileWeaponScriptableObjects.gunLevel;
-        shootDamage = projectileWeaponScriptableObjects.damage;
-        range = projectileWeaponScriptableObjects.range;
-        shootRate = projectileWeaponScriptableObjects.shootRate;
-        shootForce = projectileWeaponScriptableObjects.shootForce;
-        //ammoRemaining = projectileWeaponScriptableObjects.ammoCapacity;
-        //weaponList[currentWeapon].currentClip = projectileWeaponScriptableObjects.ammoRemaining;
-        if (newWeapon)
-            weaponList[currentWeapon].currentClip = 0;
-        reloadTime = projectileWeaponScriptableObjects.reloadTime;
-
-        if (projectileWeaponScriptableObjects.bullet != null)
-        {
-            bullet = projectileWeaponScriptableObjects.bullet;
-            bulletSpeed = projectileWeaponScriptableObjects.bulletSpeed;
-        }
-
-
-        WeaponSlots[index].GetComponent<MeshFilter>().sharedMesh =
-            projectileWeaponScriptableObjects.Model.GetComponent<MeshFilter>().sharedMesh;
-
-        WeaponSlots[index].GetComponent<MeshRenderer>().sharedMaterials =
-            projectileWeaponScriptableObjects.Model.GetComponent<MeshRenderer>().sharedMaterials;
-
-        WeaponSlots[index].transform.localScale = projectileWeaponScriptableObjects.Model.transform.localScale;
-        //WeaponSlots[index].transform.rotation = projectileWeaponScriptableObjects.Model.transform.rotation;
-        WeaponSlots[index].transform.localRotation = Quaternion.Euler(projectileWeaponScriptableObjects.rotationOffset);
-        WeaponSlots[index].transform.localPosition = projectileWeaponScriptableObjects.positionOffset;
-
-        muzzle[currentWeapon].transform.localPosition = projectileWeaponScriptableObjects.GetMuzzleLocation().localPosition;
-        muzzle[currentWeapon].transform.localRotation = Quaternion.Euler(projectileWeaponScriptableObjects.rotationOffset);
-            ammo = projectileWeaponScriptableObjects.magMax;
-
-        animator.SetInteger("WeaponType", 2);
-    }
-
-    public void SetMeleeStats(MeleeWeaponScriptableObjects meleeWeaponScriptableObjects, int index)
-    {
-        //meleeList.Add(meleeWeaponScriptableObjects);
-
-        meleeLevel = meleeWeaponScriptableObjects.meleeLevel;
-        meleeReach = meleeWeaponScriptableObjects.damage;
-        knockbackForce = meleeWeaponScriptableObjects.knockbackForce;
-        swingSpeed = meleeWeaponScriptableObjects.swingSpeed;
-
-
-        WeaponSlots[index].GetComponent<MeshFilter>().sharedMesh =
-            meleeWeaponScriptableObjects.Model.GetComponent<MeshFilter>().sharedMesh;
-
-        WeaponSlots[index].GetComponent<MeshRenderer>().sharedMaterials =
-            meleeWeaponScriptableObjects.Model.GetComponent<MeshRenderer>().sharedMaterials;
-
-        WeaponSlots[index].transform.localScale = meleeWeaponScriptableObjects.Model.transform.localScale;
-        WeaponSlots[index].transform.localRotation = meleeWeaponScriptableObjects.Model.transform.rotation;
-
-        animator.SetInteger("WeaponType", 1);
-    }
-
-    public string GetWeaponType(MasterWeapon tempArmoryListOfWeapon, int index)
-    {
-        if (tempArmoryListOfWeapon.GetType() == typeof(ProjectileWeaponScriptableObjects))
-        {
-            //Debug.Log("Projectile");
-            return "Projectile";
-        }
-
-        else if (tempArmoryListOfWeapon.GetType() == typeof(MeleeWeaponScriptableObjects))
-        {
-            //Debug.Log("Melee");
-            return "Melee";
-        }
-        return "";
-    }
-
-    public void AddWeaponToInventory(MasterWeapon tempArmoryListOfWeapon)
-    {
-        //if no weapons in list 
-        if (weaponList.Count == 0)
-        {
-            currentWeapon = 0;
-            weaponList.Add(new Weapon(tempArmoryListOfWeapon, (GetWeaponType(tempArmoryListOfWeapon, currentWeapon) == "Projectile" ? true : false), 0));
-            WeaponSlots[currentWeapon].SetActive(true);
-        } //if weapon inventory is full
-        else if (weaponList.Count == 3)
-        {
-            weaponList[currentWeapon] = new Weapon(tempArmoryListOfWeapon, (GetWeaponType(tempArmoryListOfWeapon, currentWeapon) == "Projectile" ? true : false), 0);
-        } //if weapon inventory is over max
-        else if (weaponList.Count > 3)
-        {
-            //Debug.Log("Too Many Weapons in AddWeaponToInventory");
-        } //if weapon inventory is in between
-        else
-        {
-            WeaponSlots[currentWeapon].SetActive(false);
-            currentWeapon += 1;
-            weaponList.Add(new Weapon(tempArmoryListOfWeapon, (GetWeaponType(tempArmoryListOfWeapon, currentWeapon) == "Projectile" ? true : false), 0));
-            WeaponSlots[currentWeapon].SetActive(true);
-        }
-        gameManager.instance.UpdateUI();
-        if (weaponList[currentWeapon].isGun)
-        {
-            SetGunStats((ProjectileWeaponScriptableObjects)tempArmoryListOfWeapon, currentWeapon);
-            gameManager.instance.updateAmmoUI(true);
-        }
-        else
-        {
-            SetMeleeStats((MeleeWeaponScriptableObjects)tempArmoryListOfWeapon, currentWeapon);
-            gameManager.instance.updateAmmoUI(false);
-        }
-
-        if(weaponList[currentWeapon].isGun)
-            StartCoroutine(reload((ProjectileWeaponScriptableObjects)weaponList[currentWeapon].weapon));
-
-    }
-
-    IEnumerator playSteps()
-    {
-        //if (controller.isGrounded)
-        if(IsGrounded())
-        {
-            isPlayingSteps = true;
-            aud.PlayOneShot(audPlayerSteps[Random.Range(0, audPlayerSteps.Length)], audPlayerStepsVol);
-            if (!isSprinting)
-            {
-                yield return new WaitForSeconds(0.5f);
-            }
-            else
-            {
-                yield return new WaitForSeconds(0.3f);
-            }
-
-            isPlayingSteps = false;
-        }
-
-    }
-    IEnumerator healOverTime(float effectDuration, int healStep)
-    {
-        if (currentHealth + 1 > PlayerMaxHealth)
-        {
-            currentHealth = PlayerMaxHealth;
-            updatePlayerHP();
-
-        }
-        if (currentHealth < PlayerMaxHealth)
-        {
-            for (int i = 0; i < effectDuration; i++)
-            {
-                if (currentHealth + 1 > PlayerMaxHealth)
-                {
-                    currentHealth = PlayerMaxHealth;
-                    break;
-                }
-                yield return new WaitForSeconds(1.0f);
-                currentHealth += healStep;
-                updatePlayerHP();
-            }
-        }
-    }
 }
 
 public class Weapon
