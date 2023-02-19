@@ -70,7 +70,7 @@ public class playerController : MonoBehaviour
     [SerializeField] float reloadTime;
     [SerializeField] GameObject bullet;
     [SerializeField] public int bulletSpeed;
-    public Transform muzzle;
+    public Transform[] muzzle;
     [SerializeField] private float gunDmgMultiplier = 1;
     [SerializeField] private float gunReloadMultiplier = 1;
     [SerializeField] private float gunRangeMultiplier = 1;
@@ -329,19 +329,19 @@ public class playerController : MonoBehaviour
             {
                 for (int i = 0; i < bullet.transform.childCount; i++)
                 {
-                    GameObject BuckShot = Instantiate(bullet, muzzle.position, bullet.transform.rotation);
+                    GameObject BuckShot = Instantiate(bullet, muzzle[currentWeapon].position, bullet.transform.rotation);
                     Rigidbody[] buckShotRigidbodies = BuckShot.GetComponentsInChildren<Rigidbody>();
                     foreach (Rigidbody buckShotRigidbody in buckShotRigidbodies)
                     {
 
-                        buckShotRigidbody.velocity = Camera.main.transform.forward * bulletSpeed;
+                        buckShotRigidbody.velocity = mainCamera.transform.forward * bulletSpeed; 
                         buckShotRigidbody.GetComponent<bullet>().bulletDamage = GunDamage;
                     }
                 }
             } // regular single bullet weapon
             else
             {
-                GameObject bulletClone = Instantiate(bullet, muzzle.position, bullet.transform.rotation);
+                GameObject bulletClone = Instantiate(bullet, muzzle[currentWeapon].position, bullet.transform.rotation);
                 bulletClone.GetComponent<Rigidbody>().AddForce(mainCamera.transform.forward * bulletSpeed, ForceMode.Impulse);
                 bulletClone.GetComponent<bullet>().bulletDamage = GunDamage;
             }
@@ -639,7 +639,7 @@ public class playerController : MonoBehaviour
     IEnumerator ExplosiveAttack()
     {
         isExplosiveAttacking = true;
-        GameObject explosiveClone = Instantiate(explosive, muzzle.position, Camera.main.transform.rotation);
+        GameObject explosiveClone = Instantiate(explosive, muzzle[currentWeapon].position, Camera.main.transform.rotation);
         explosiveClone.GetComponent<Rigidbody>().velocity = (Camera.main.transform.forward + new Vector3(0, 1, 0)) * 7;
         yield return new WaitForSeconds(3f);
         isExplosiveAttacking = false;
@@ -678,9 +678,9 @@ public class playerController : MonoBehaviour
         WeaponSlots[index].transform.localRotation = Quaternion.Euler(projectileWeaponScriptableObjects.rotationOffset);
         WeaponSlots[index].transform.localPosition = projectileWeaponScriptableObjects.positionOffset;
 
-        muzzle.transform.localPosition = projectileWeaponScriptableObjects.GetMuzzleLocation().localPosition;
-
-        ammo = projectileWeaponScriptableObjects.magMax;
+        muzzle[currentWeapon].transform.localPosition = projectileWeaponScriptableObjects.GetMuzzleLocation().localPosition;
+        muzzle[currentWeapon].transform.localRotation = Quaternion.Euler(projectileWeaponScriptableObjects.rotationOffset);
+            ammo = projectileWeaponScriptableObjects.magMax;
 
         animator.SetInteger("WeaponType", 2);
     }
