@@ -35,9 +35,9 @@ public class settingsMenu : MonoBehaviour
             musicSlider.value = music;
         }
 
-        if(PlayerPrefs.HasKey("SFX"))
+        if(PlayerPrefs.HasKey("sfx"))
         {
-            SFX = PlayerPrefs.GetFloat("SFX");
+            SFX = PlayerPrefs.GetFloat("sfx");
             SFXSlider.value = SFX;
         }
         if(PlayerPrefs.HasKey("master"))
