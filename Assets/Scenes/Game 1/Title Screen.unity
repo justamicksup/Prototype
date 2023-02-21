@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -867,6 +867,7 @@ MonoBehaviour:
   SFXSlider: {fileID: 2002574259}
   masterSlider: {fileID: 1549906515}
   mixer: {fileID: 24100000, guid: d56f5fbf4581b4a119a7a863f773c059, type: 2}
+  fullscreen: {fileID: 2052710866}
 --- !u!1 &226048914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1861,7 +1862,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
-    m_LineSpacing: 2
+    m_LineSpacing: 1.5
   m_Text: 'WASD: Move
 
     L Shift: Sprint
@@ -1875,7 +1876,10 @@ MonoBehaviour:
 
     LMB: Shoot
 
-    RMB: Grenade'
+    RMB: Grenade
+
+    1, 2, 3: Change
+    Weapon'
 --- !u!222 &444352955
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5242,6 +5246,7 @@ GameObject:
   - component: {fileID: 1309348826}
   - component: {fileID: 1309348825}
   - component: {fileID: 1309348829}
+  - component: {fileID: 1309348830}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -5362,6 +5367,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: {fileID: 2800000, guid: 362cdacdaba7bff4d840fb2c75f259cf, type: 3}
   positionOffset: {x: 0, y: 0, z: 0}
+--- !u!45 &1309348830
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309348824}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 97637a2a763b7f24b8da4e139e4144ca, type: 2}
 --- !u!1 &1406674994
 GameObject:
   m_ObjectHideFlags: 0
@@ -7836,18 +7850,6 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2052710865}
-        m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
-        m_MethodName: fullscreen
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2052710866}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 564064146}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play

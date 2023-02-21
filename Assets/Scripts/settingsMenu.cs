@@ -20,6 +20,9 @@ public class settingsMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        fullscreen.onValueChanged.AddListener((value) => FullScreen(value));
+
         if(PlayerPrefs.HasKey("sensitivity"))
         {
             sensitivity = PlayerPrefs.GetFloat("sensitivity");
@@ -42,16 +45,31 @@ public class settingsMenu : MonoBehaviour
             master = PlayerPrefs.GetFloat("master");
             masterSlider.value = master;
         }
-
-        if(Screen.fullScreenMode == FullScreenMode.FullScreenWindow)
+        if(PlayerPrefs.HasKey("fs"))
         {
-            fullscreen.enabled = true;
+            switch(PlayerPrefs.GetInt("fs"))
+            {
+                case 0:
+                    fullscreen.isOn = false;
+                    return;
+                case 1:
+                    fullscreen.isOn = true;
+                    return;
+            }
+        }    
+        
+    }
+
+    void FullScreen(bool value)
+    {
+        if(value)
+        {
+            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
         }
         else
         {
-            fullscreen.enabled = false;
+            Screen.fullScreenMode = FullScreenMode.Windowed;
         }
-        
     }
 
     // Update is called once per frame
@@ -73,6 +91,7 @@ public class settingsMenu : MonoBehaviour
         PlayerPrefs.SetFloat("music", music);
         PlayerPrefs.SetFloat("sfx", SFX);
         PlayerPrefs.SetFloat("master", master);
+        PlayerPrefs.SetInt("fs", (fullscreen.isOn ? 1 : 0));
 
         if(gameManager.instance != null)
         {

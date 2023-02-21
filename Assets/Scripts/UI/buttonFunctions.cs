@@ -30,32 +30,14 @@ public class buttonFunctions : MonoBehaviour
         Application.Quit();
     }
 
-    public void fullscreen(Toggle fs)
-    {
-        if(Screen.fullScreenMode == FullScreenMode.FullScreenWindow || Screen.fullScreenMode == FullScreenMode.ExclusiveFullScreen)
-        {
-            fs.isOn = true;
-        }
-        if(fs.isOn)
-        {
-            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
-            // Debug.Log("fullscreen");
-        }
-        else
-        {
-            Screen.fullScreenMode = FullScreenMode.Windowed;
-            // Debug.Log("windowed");
-        }
-    }
-
     public void sensitivity(Slider slider)
     {
         gameManager.instance.sensitivity = (int)slider.value;
     }
 
-    public void StartGame()
+    public void LoadScene(int scene)
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(scene);
     }
 
     public void open(GameObject gameObject)

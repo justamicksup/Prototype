@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1417,7 +1417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1929,7 +1929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3908,7 +3908,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
-    m_LineSpacing: 2
+    m_LineSpacing: 1.5
   m_Text: 'WASD: Move
 
     L Shift: Sprint
@@ -3922,7 +3922,10 @@ MonoBehaviour:
 
     LMB: Shoot
 
-    RMB: Grenade'
+    RMB: Grenade
+
+    1, 2, 3: Change
+    Weapon'
 --- !u!1 &2970891850902234137
 GameObject:
   m_ObjectHideFlags: 0
@@ -4473,7 +4476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1980288447885123909
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5484,7 +5487,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -175}
+  m_AnchoredPosition: {x: 0, y: -182.9}
   m_SizeDelta: {x: 1145.2316, y: 274.053}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5433981520393345820
@@ -5880,7 +5883,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -264}
+  m_AnchoredPosition: {x: 0, y: -280.9}
   m_SizeDelta: {x: 678.4158, y: 324.4728}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7671283129509736927
@@ -6311,7 +6314,7 @@ MonoBehaviour:
   SFXSlider: {fileID: 1283271479347495707}
   masterSlider: {fileID: 2669541878327438474}
   mixer: {fileID: 24100000, guid: d56f5fbf4581b4a119a7a863f773c059, type: 2}
-  fullscreen: {fileID: 0}
+  fullscreen: {fileID: 8561659069258593934}
 --- !u!1 &4842170875856009770
 GameObject:
   m_ObjectHideFlags: 0
@@ -8226,7 +8229,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 150, y: 455.2}
+  m_AnchoredPosition: {x: 150, y: 408}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8270495695441862194
