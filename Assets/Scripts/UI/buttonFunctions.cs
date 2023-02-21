@@ -22,7 +22,7 @@ public class buttonFunctions : MonoBehaviour
     {
         gameManager.instance.unpauseGame();
         gameManager.instance.LoadScreen.SetActive(true);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        StartCoroutine(gameManager.instance.reloadScene());     
     }
 
     public void quit()

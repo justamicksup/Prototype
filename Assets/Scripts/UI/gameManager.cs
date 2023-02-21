@@ -4,6 +4,7 @@ using TMPro;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using Cursor = UnityEngine.Cursor;
 
 public class gameManager : MonoBehaviour
@@ -566,6 +567,18 @@ public class gameManager : MonoBehaviour
     {
         key += 1;
     }
+
+    public IEnumerator reloadScene()
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+
+        while(!operation.isDone)
+        {
+            LoadBar.fillAmount = operation.progress;
+            yield return null;
+        }
+    }
+
 
 
     public void IconTimer(PowerStat p)
