@@ -55,8 +55,9 @@ namespace Enemy.Enemy_AI_Scripts
             GetStats((EnemyMeleeScriptableObject)masterEnemyScriptableObject);
             GetNavMesh();
             stoppingDistOrig = agent.stoppingDistance;
-       
-       
+            weaponCollider.enabled = false;
+
+
         }
 
         // Update is called once per frame

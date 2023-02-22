@@ -16,10 +16,10 @@ MonoBehaviour:
   speed: 8
   angularSpeed: 720
   acceleration: 50
-  stoppingDistance: 0
+  stoppingDistance: 2.2
   autoBraking: 0
   radius: 0.5
   height: 1
-  AvoidancePriority: 50
-  AutoTraverseOffMeshLink: 1
-  AutoRepath: 1
+  avoidancePriority: 50
+  autoTraverseOffMeshLink: 1
+  autoRepath: 1

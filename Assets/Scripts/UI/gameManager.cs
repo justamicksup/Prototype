@@ -267,7 +267,7 @@ public class gameManager : MonoBehaviour
             shipAnim.clip = shipAnim.GetClip("ShipsLanding");
             shipAnim.Play();
         }
-
+       
         if (sun != null)
         {
             RenderSettings.skybox = skyboxes[1];
@@ -299,7 +299,7 @@ public class gameManager : MonoBehaviour
             aud.Play();
         }
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(shipAnim.clip.length);
         enemyWaveSystem.SpawnTheWave();
         instance.updateWave();
         instance.UpdateUI();
