@@ -243,7 +243,7 @@ public class gameManager : MonoBehaviour
             {
                 timer2 = 0;
                 t2On= false;
-                instaKillIcon.SetActive(false);
+                healingIcon.SetActive(false);
             }
         }
         if (t3On)
@@ -253,7 +253,7 @@ public class gameManager : MonoBehaviour
             {
                 timer3 = 0; 
                 t3On= false;
-                instaKillIcon.SetActive(false);
+                speedBoostIcon.SetActive(false);
             }
         }
         #endregion
