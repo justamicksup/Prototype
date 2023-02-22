@@ -39,7 +39,7 @@ public class Barricade : MonoBehaviour, Odamage, IActionObject
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Action") && CheckPlayerCoins(repairCost) && !gameManager.instance.isPaused)
+        if (Input.GetButtonDown("Action") && HP <= 0 && CheckPlayerCoins(repairCost) && !gameManager.instance.isPaused)
         {
             PrimaryAction();
         }
