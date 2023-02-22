@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 25950304}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GameObject (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 923303638}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 5414315926804895428}
   - component: {fileID: 6850899301744671790}
   - component: {fileID: 6854461272095033636}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Slot 2
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -1024,7 +1024,7 @@ GameObject:
   - component: {fileID: 4604139058434941541}
   - component: {fileID: 7907617815174717265}
   - component: {fileID: 4321766192868844900}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Slot 3
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -1453,7 +1453,7 @@ GameObject:
   - component: {fileID: 6010441315407872496}
   - component: {fileID: 7890521364411316075}
   - component: {fileID: 1344530682368675948}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Slot 1
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -2104,8 +2104,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4797214078585733048}
-  m_LocalRotation: {x: -0.16554675, y: 0.0022911916, z: 0.008640034, w: 0.9861615}
-  m_LocalPosition: {x: -0.011599732, y: -0.052, z: -0.011}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2799,7 +2799,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7593725237640124462}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3354,7 +3354,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.75
-  m_Radius: 0.25
+  m_Radius: 0.35
   m_SlopeLimit: 45
   m_StepOffset: 0.2
   m_SkinWidth: 0.08
@@ -3404,7 +3404,7 @@ MonoBehaviour:
   currentStamina: 100
   enemyMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 25224
   playerBaseSpeed: 10
   jumpVelocity: 9
   gravity: 25
