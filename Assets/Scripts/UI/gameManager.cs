@@ -403,14 +403,14 @@ public class gameManager : MonoBehaviour
         }
 
         //Upgrade Menu
-        health.text = $"Health: {playerScript.PlayerMaxHealth}";
-        stamina.text = $"Stamina: {playerScript.PlayerMaxStamina}";
-        speed.text = $"Speed: {playerScript.PlayerSpeed}";
+        health.text = $"Health: {playerScript.PlayerMaxHealth.ToString("F0")}";
+        stamina.text = $"Stamina: {playerScript.PlayerMaxStamina.ToString("F0")}";
+        speed.text = $"Speed: {playerScript.PlayerSpeed.ToString("F0")}";
 
-        dmg.text = $"Damage: {playerScript.GunDamage}";
-        range.text = $"Range: {playerScript.GunShootRange}";
-        reload.text = $"Reload Time: {playerScript.GunReloadTime}";
-        maxammo.text = $"Max Ammo: {playerScript.MaxAmmo}";
+        dmg.text = $"Damage: {playerScript.GunDamage.ToString("F0")}";
+        range.text = $"Range: {playerScript.GunShootRange.ToString("F0")}";
+        reload.text = $"Reload Time: {playerScript.GunReloadTime.ToString("F2")}";
+        maxammo.text = $"Max Ammo: {playerScript.MaxAmmo.ToString("F0")}";
 
         cost.text = $"Cost to Upgrade: {playerScript.upgradeCost}";
     }
@@ -429,7 +429,7 @@ public class gameManager : MonoBehaviour
     public void updateEnemyRemaining(int amount)
     {
         enemiesRemaining += amount;
-        //        enemiesRemainingText.text = enemiesRemaining.ToString("F0");
+        //        enemiesRemainingText.text = enemiesRemaining.ToString("F2");
 
         // check to see if game is over based on enemy count <= 0
 
