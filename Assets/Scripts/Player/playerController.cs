@@ -24,6 +24,7 @@ public class playerController : MonoBehaviour
 
     #region PLAYER STATS
     [Header("----- Player Stats -----")]
+    public bool isDead = false;
     [Range(1,100)] [SerializeField] private float playerBaseHealth = 100;
     [Range(1, 100)] [SerializeField] private float playerBaseStamina = 100;
     private float currentHealth;
@@ -158,7 +159,7 @@ public class playerController : MonoBehaviour
         // {
         //     animator.SetTrigger("MeleeAttack");
         // }
-        if (!gameManager.instance.isPaused)
+        if (!gameManager.instance.isPaused && !isDead)
         {
             if (move.normalized.magnitude > 0.3f && !isPlayingSteps)
                 StartCoroutine(playSteps());
@@ -292,6 +293,7 @@ public class playerController : MonoBehaviour
         aud.PlayOneShot(audPlayerDamage[Random.Range(0, audPlayerDamage.Length)], audPlayerDamageVol);
         if (currentHealth <= 0)
         {
+            isDead = true;
             gameManager.instance.youLose();
         }
     }

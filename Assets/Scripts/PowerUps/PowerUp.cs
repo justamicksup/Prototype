@@ -30,6 +30,7 @@ public class PowerUp : MonoBehaviour
             }
             catch
             {
+                gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
             }
             Invoke(nameof(ResetStats), time);
         }
