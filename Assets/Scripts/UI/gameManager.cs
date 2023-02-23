@@ -68,6 +68,7 @@ public class gameManager : MonoBehaviour
     public GameObject controlScreen;
     public Image LoadBar;
     public Text timer;
+    public Text waveIncomingText;
     #endregion
     #region UPGRADE MENU
     [Header("----- Upgrade Menu -----")]
@@ -151,6 +152,7 @@ public class gameManager : MonoBehaviour
         waveText.SetActive(false);
         coinsText.text = playerScript.GetCoins().ToString();
         timer.text = "";
+        waveIncomingText.enabled = false;
 
         if (audBackground != null)
         {

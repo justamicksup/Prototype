@@ -29,7 +29,7 @@ namespace Enemy.Enemy_Wave_Scripts
             if (other.CompareTag("Player"))
             {
                 _playerInRange = true;
-                gameManager.instance.alertText.text = "E: Take The Key";
+                gameManager.instance.alertText.text = "E: Take Blackbeard's Gold";
                 gameManager.instance.updateKey();
             }
         }

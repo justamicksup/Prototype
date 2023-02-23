@@ -46,12 +46,14 @@ public class EnemyWaveSystem : MonoBehaviour
                 _waveDurationCountDown -= Time.deltaTime;
                 _waveDurationCountDown = Mathf.Max(_waveDurationCountDown, 0);
                 gameManager.instance.timer.text = _waveDurationCountDown.ToString("0:00.00");
+                gameManager.instance.waveIncomingText.enabled = false;
             }
             else
             {
                 _coolDownCountDown -= Time.deltaTime;
                 _coolDownCountDown = Mathf.Max(_coolDownCountDown, 0);
-                gameManager.instance.timer.text = _coolDownCountDown.ToString("0:00.00 - Rest");
+                gameManager.instance.timer.text = _coolDownCountDown.ToString("0:00.00");
+                gameManager.instance.waveIncomingText.enabled = true;
             }
             
             if (_waveDurationCountDown > 0 && !_onCoolDown && !_isSpawning)
