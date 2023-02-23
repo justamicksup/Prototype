@@ -3399,6 +3399,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
+  isDead: 0
   playerBaseHealth: 100
   playerBaseStamina: 100
   currentStamina: 100
@@ -3406,7 +3407,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 25224
   playerBaseSpeed: 10
-  jumpVelocity: 9
+  jumpVelocity: 8
   gravity: 25
   jumpMax: 1
   coins: 1300

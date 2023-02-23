@@ -5433,6 +5433,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3258901336190518701, guid: 0afedfbd6b28a374bbecd09da526e330, type: 3}
+      propertyPath: m_Text
+      value: 00:00
+      objectReference: {fileID: 0}
     - target: {fileID: 8958223624579302840, guid: 0afedfbd6b28a374bbecd09da526e330, type: 3}
       propertyPath: m_Name
       value: UI
@@ -7597,6 +7601,10 @@ PrefabInstance:
     - target: {fileID: 8232509961259550198, guid: 9df4a6daa600e804598876402fdd9c85, type: 3}
       propertyPath: m_Name
       value: Pirate Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542757337769196722, guid: 9df4a6daa600e804598876402fdd9c85, type: 3}
+      propertyPath: jumpVelocity
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8575185036756165397, guid: 9df4a6daa600e804598876402fdd9c85, type: 3}
       propertyPath: m_RootOrder
