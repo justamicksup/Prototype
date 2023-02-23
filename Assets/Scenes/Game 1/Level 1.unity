@@ -1206,6 +1206,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 483002, guid: 3f7ab927998f2f246ae149265ed28407, type: 3}
   m_PrefabInstance: {fileID: 297366407}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &345177800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 345177801}
+  - component: {fileID: 345177802}
+  m_Layer: 13
+  m_Name: Back of House
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &345177801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345177800}
+  m_LocalRotation: {x: -0, y: -0.11381776, z: -0, w: 0.99350166}
+  m_LocalPosition: {x: -0.86, y: 1.211, z: 3.7}
+  m_LocalScale: {x: 7.4234, y: 7.9372, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2061798440}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: -13.071, z: 0}
+--- !u!65 &345177802
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345177800}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &384055392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6610,6 +6655,7 @@ Transform:
   - {fileID: 35796635}
   - {fileID: 563634766}
   - {fileID: 753272608}
+  - {fileID: 345177801}
   m_Father: {fileID: 1921121168}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
