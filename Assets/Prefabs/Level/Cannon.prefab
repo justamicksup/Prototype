@@ -4859,8 +4859,8 @@ GameObject:
   m_Name: Cannon.Shape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &136702092536612735
 Transform:
@@ -9758,7 +9758,7 @@ GameObject:
   - component: {fileID: 9164615129010266568}
   - component: {fileID: 9164615129010266569}
   - component: {fileID: 1572908707}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9797,8 +9797,6 @@ MonoBehaviour:
   cannball: {fileID: 2119203057018113378, guid: 2710a32a68b158b49828b51f8ee87ffe, type: 3}
   smokeParticle: {fileID: 1779936557}
   muzzleFlash: {fileID: 7512194813187465942}
-  shootTime: {fileID: 0}
-  shootTimeFill: {fileID: 0}
   rotSpeed: 50
   rotRange: 70
   viewAngle: 60
