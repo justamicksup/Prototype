@@ -198,7 +198,7 @@ AudioSource:
   m_GameObject: {fileID: 4461273589378571234}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1574254653680237504, guid: d56f5fbf4581b4a119a7a863f773c059, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1934,7 +1934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cc827e59e246eda321be69cbd0e79e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 0
+  hp: 0
   rotationSpeed: 50
   lootValue: 0
   shootDamage: 0
@@ -1958,7 +1958,6 @@ MonoBehaviour:
   model: {fileID: 7886939071975061047}
   aud: {fileID: 7165698963279513722}
   weaponDrop: {fileID: 3994718407844185182, guid: c9ab19a24eca4cd4281ca79595853bc2, type: 3}
-  waveStats: {fileID: 0}
   stoppingDistOrig: 0
   audGunShotVol: 0.1
   offSetPlayerDir: {x: 0, y: 1, z: 0}
@@ -2060,6 +2059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 0}
+  deathEffectLocation: {fileID: 0}
   delay: 0.5
 --- !u!114 &9103919525943553694
 MonoBehaviour:
